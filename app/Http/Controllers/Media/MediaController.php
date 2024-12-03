@@ -32,4 +32,9 @@ class MediaController extends Controller
     {
         return view('media.detail2');
     }
+
+    public function top_rated()
+    {
+        return view('media.top-rated');
+    }
 }

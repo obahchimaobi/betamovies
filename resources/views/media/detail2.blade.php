@@ -4,7 +4,7 @@
     <div>
 
         <!-- Content -->
-        <div class="w-full lg:ps-64 font-inter">
+        <div class="w-full lg:ps-64">
             <div class="space-y-4 sm:space-y-6">
                 <!-- your content goes here ... -->
                 <div
@@ -49,14 +49,19 @@
                                             d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
                                     </svg>
                                     <!-- Rating -->
-                                    <span class="text-gray-300">7.5</span>
+                                    <span class="text-gray-300 text-sm">7.5</span>
                                 </li>
 
-                                <li class="-my-2 text-gray-300 text-2xl"><strong>.</strong></li>
-                                <li class="text-gray-300">2018</li>
+                                <li class="-my-2.5 text-gray-300 text-2xl"><strong>.</strong></li>
+                                <li class="text-gray-300 texst-sm">2018</li>
+                            </ul>
 
-                                <li class="-my-2 text-gray-300 text-2xl"><strong>.</strong></li>
-                                <li class="text-gray-300">1h 20mins</li>
+                            <ul class="flex gap-4 mt-10 text-white justify-center">
+                                <li class="text-gray-300">
+                                    <a href=""><span class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700">Action</span> </a>
+                                    <a href=""><span class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700">Drama</span> </a>
+                                    <a href=""><span class="text-xs border border-slate-500 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 dark:border-slate-700 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer focus:bg-slate-500 dark:focus:bg-slate-700">Adventure</span></a>
+                                </li>
                             </ul>
 
                             <p class="text-white mt-9 leading-relaxed text-sm">
@@ -66,7 +71,7 @@
                             </p>
 
                             <ul class="flex gap-7 mt-5 justify-center">
-                                <li class="bg-blue-600 text-white px-10 py-4 rounded-md -mr-3 uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
+                                <li class="bg-blue-600 text-white px-10 py-4 rounded-full -mr-3 uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
                                     aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-full-screen-modal"
                                     data-hs-overlay="#hs-full-screen-modal">
                                     <i class="fa fa-play pr-1" aria-hidden="true"></i> <button
@@ -75,18 +80,18 @@
                             </ul>
 
                             {{-- SOCIAL LINKS --}}
-                            <ul class="flex gap-5 mt-5 justify-center">
+                            <ul class="flex gap-5 mt-6 justify-center">
                                 <li>
-                                    <a href=""><i class="fa-brands fa-whatsapp text-white"></i></a>
+                                    <a href=""><i class="fa-brands fa-whatsapp text-white text-lg hover:text-slate-400 duration-200"></i></a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa-brands fa-facebook text-white"></i></a>
+                                    <a href=""><i class="fa-brands fa-facebook text-white text-lg hover:text-slate-400 duration-200"></i></a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa-brands fa-x-twitter text-white"></i></a>
+                                    <a href=""><i class="fa-brands fa-x-twitter text-white text-lg hover:text-slate-400 duration-200"></i></a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa-brands fa-instagram text-white"></i></a>
+                                    <a href=""><i class="fa-brands fa-instagram text-white text-lg hover:text-slate-400 duration-200"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -313,7 +318,20 @@
                         <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300 my-10 md:hidden">
                         <h1 class="font-bold font-inter text-gray-800 dark:text-white text-xl">Recommended Shows</h1>
 
-                        <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="grid lg:grid-cols-2 grid-cols-3 gap-4 mt-4">
+                            <div class="w-full">
+                                <a href="" wire:navigate>
+                                    <img src="https://nkiri.com/wp-content/uploads/2024/11/the-day-of-the-jackal-tv-series-200x300.jpg"
+                                        alt=""
+                                        class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
+                                </a>
+
+                                <div class="flex justify-between mt-2 gap-10">
+                                    <a href=""
+                                        class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
+                                        wire:navigate><span class="">HitPig (2024)</span></a>
+                                </div>
+                            </div>
                             <div class="w-full">
                                 <a href="" wire:navigate>
                                     <img src="https://nkiri.com/wp-content/uploads/2024/11/the-day-of-the-jackal-tv-series-200x300.jpg"

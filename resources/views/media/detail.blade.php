@@ -4,11 +4,10 @@
     <div>
 
         <!-- Content -->
-        <div class="w-full lg:ps-64 font-inter">
+        <div class="w-full lg:ps-64">
             <div class="space-y-4 sm:space-y-6">
                 <!-- your content goes here ... -->
-                <div
-                    class="w-full bg-[url('https://ca-times.brightspotcdn.com/dims4/default/25c5c0f/2147483647/strip/true/crop/4096x2160+0+0/resize/1200x633!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fda%2F17%2F3e9f3b0943e7858b45ab542744be%2Fthe-flash-flsh-ff-87683r.jpg')] h-auto bg-cover relative bg-center">
+                <div class="w-full bg-[url('https://ca-times.brightspotcdn.com/dims4/default/25c5c0f/2147483647/strip/true/crop/4096x2160+0+0/resize/1200x633!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fda%2F17%2F3e9f3b0943e7858b45ab542744be%2Fthe-flash-flsh-ff-87683r.jpg')] h-auto bg-cover relative bg-center">
                     <div class="absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-slate-900/60"></div>
                     <div class="relative w-11/12 mx-auto py-5">
 
@@ -52,11 +51,19 @@
                                     <span class="text-gray-300">7.5</span>
                                 </li>
 
-                                <li class="-my-2 text-gray-300 text-2xl"><strong>.</strong></li>
+                                <li class="-my-2.5 text-gray-300 text-2xl"><strong>.</strong></li>
                                 <li class="text-gray-300">2018</li>
 
-                                <li class="-my-2 text-gray-300 text-2xl"><strong>.</strong></li>
+                                <li class="-my-2.5 text-gray-300 text-2xl"><strong>.</strong></li>
                                 <li class="text-gray-300">1h 20mins</li>
+                            </ul>
+
+                            <ul class="flex gap-4 mt-10 text-white justify-center">
+                                <li class="text-gray-300">
+                                    <span class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700">Action</span> 
+                                    <span class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700">Drama</span> 
+                                    <span class="text-xs border border-slate-500 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 dark:border-slate-700 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer focus:bg-slate-500 dark:focus:bg-slate-700">Adventure</span>
+                                </li>
                             </ul>
 
                             <p class="text-white mt-9 leading-relaxed text-sm">
@@ -66,14 +73,14 @@
                             </p>
 
                             <ul class="flex gap-7 mt-5 justify-center">
-                                <li class="bg-blue-600 text-white px-10 py-4 rounded-md -mr-3 uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
+                                <li class="bg-blue-600 text-white px-10 py-4 rounded-full -mr-3 uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
                                     aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-full-screen-modal"
                                     data-hs-overlay="#hs-full-screen-modal">
                                     <i class="fa fa-play pr-1" aria-hidden="true"></i> <button
                                         class="uppercase">Trailer</button>
                                 </li>
                                 <li
-                                    class="bg-blue-600 text-white px-10 py-4 rounded-md -mr-3 uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
+                                    class="bg-blue-600 text-white px-8 py-4 rounded-full -mr-3 uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
                                     <i class="fa-solid fa-download"></i> <button class="uppercase">Download </button>
                                 </li>
                             </ul>
