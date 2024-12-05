@@ -183,7 +183,7 @@
                         <button id="hs-dropdown-account" type="button"
                             class="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white"
                             aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                            <img class="shrink-0 size-[38px] rounded-full" src="{{ auth()->user()->avatar }}"
+                            <img class="shrink-0 size-[38px] rounded-full" src="{{ auth()->user()->avatar ?? asset('icons/user.jpg') }}"
                                 alt="Avatar">
                         </button>
 

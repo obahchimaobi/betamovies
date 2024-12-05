@@ -32,12 +32,18 @@ class LoginForm extends Component
 
             // Check if the password matches
             if (Hash::check($validate['password'], $user->password)) {
-                Auth::login($user);
-                return redirect()->route('home');
+                if (!is_null($user->email_verified_at)) {
+                    # code...
+                    Auth::login($user);
+                    $this->redirectRoute('home', navigate:true);
+                } else {
+                    session()->flash('error', 'Your email address is not verified');
+                    $this->redirectRoute('login', navigate:true);
+                }
             } else {
                 // If password does not match, show the password error
                 session()->flash('error', 'Invalid credentials. Please try again.');
-                return redirect()->route('login');
+                $this->redirectRoute('login', navigate:true);
             }
         } else {
             // If no user is found with that email, show the generic error message
