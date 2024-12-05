@@ -6,6 +6,9 @@
         "dev": "vite"
     },
     "devDependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/forms": "^0.5.9",
+        "@tailwindcss/typography": "^0.5.15",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "concurrently": "^9.0.1",
@@ -15,7 +18,11 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@preline/remove-element": "^2.6.0",
+        "@preline/toggle-password": "^2.6.0",
+        "@tailwindcss/container-queries": "^0.1.1",
         "flowbite": "^2.5.2",
-        "preline": "^2.5.1"
+        "preline": "^2.5.1",
+        "tailwindcss-aspect-ratio": "^3.0.0"
     }
 }

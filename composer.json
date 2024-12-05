@@ -7,15 +7,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "andreiio/blade-remix-icon": "^3.5",
-        "brunocfalcao/blade-feather-icons": "^4.0",
-        "codeat3/blade-codicons": "^1.33",
-        "codeat3/blade-google-material-design-icons": "^1.19",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
-        "owenvoke/blade-fontawesome": "^2.8",
-        "postare/blade-mdi": "^1.1"
+        "mallardduck/blade-boxicons": "^2.4",
+        "postare/blade-mdi": "^1.1",
+        "socialiteproviders/google": "^4.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

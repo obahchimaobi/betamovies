@@ -193,20 +193,26 @@ dark:bg-slate-900 dark:border-slate-800"
                             Contact Us
                         </a>
                     </li>
-                    <li><a class="@if (Request::is('sign-in')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
-                            href="{{ route('login.page') }}" wire:navigate>
-                            @svg('gmdi-login-o', ['class' => 'size-4 shrink-0'])
+                    @guest
+                        <li><a class="@if (Request::is('sign-in')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                                href="{{ route('login') }}" wire:navigate>
+                                @svg('mdi-login', ['class' => 'size-4 shrink-0'])
 
-                            Sign In
-                        </a>
-                    </li>
-                    <li><a class="@if (Request::is('sign-up')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
-                            href="{{ route('register.page') }}" wire:navigate>
-                            @svg('feathericon-user-plus', ['class' => 'size-4 shrink-0'])
+                                Sign In
+                            </a>
+                        </li>
+                        <li><a class="@if (Request::is('sign-up')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else @endif w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300"
+                                href="{{ route('register.page') }}" wire:navigate>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0 fill-black/80 dark:fill-white/80"
+                                    viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z" />
+                                </svg>
 
-                            Sign Up
-                        </a>
-                    </li>
+                                Sign Up
+                            </a>
+                        </li>
+                    @endguest
                 </ul>
             </nav>
         </div>

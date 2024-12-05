@@ -88,7 +88,7 @@
                 <!-- your content goes here ... -->
                 <h1 class="text-gray-800 dark:text-white lg:text-3xl text-2xl font-semibold font-roboto">New Releases</h1>
 
-                <div class="grid xl:grid-cols-6 grid-cols-2 gap-4">
+                <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
                     <div class="w-full">
                         <a href="{{ route('details') }}" wire:navigate><img
                                 src="https://nkiri.com/wp-content/uploads/2024/11/hitpig-hollywood-movie-200x300.jpg"
@@ -126,7 +126,7 @@
                 <!-- your content goes here ... -->
                 <h1 class="text-gray-800 dark:text-white lg:text-3xl text-2xl font-semibold font-roboto">Trending Movies</h1>
 
-                <div class="grid xl:grid-cols-6 grid-cols-2 gap-4">
+                <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
                     <div class="w-full">
                         <a href="" wire:navigate><img
                                 src="https://nkiri.com/wp-content/uploads/2024/12/a-christmas-well-traveled-hollywood-movie-200x300.jpg"
@@ -164,7 +164,7 @@
                 <!-- your content goes here ... -->
                 <h1 class="text-gray-800 dark:text-white lg:text-3xl text-2xl font-semibold font-roboto">Trending Series</h1>
 
-                <div class="grid xl:grid-cols-6 grid-cols-2 gap-4">
+                <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
                     <div class="w-full">
                         <a href="" wire:navigate><img
                                 src="https://nkiri.com/wp-content/uploads/2024/11/hitpig-hollywood-movie-200x300.jpg"

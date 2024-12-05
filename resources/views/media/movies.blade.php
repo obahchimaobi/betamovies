@@ -28,7 +28,7 @@
                     </ol>
                 </div>
 
-                <div class="grid xl:grid-cols-6 grid-cols-2 gap-4">
+                <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
                     <div class="w-full">
                         <a href="" wire:navigate><img
                                 src="https://nkiri.com/wp-content/uploads/2024/11/hitpig-hollywood-movie-200x300.jpg"

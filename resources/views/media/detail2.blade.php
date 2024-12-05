@@ -10,9 +10,9 @@
                 <div
                     class="w-full bg-[url('https://ca-times.brightspotcdn.com/dims4/default/25c5c0f/2147483647/strip/true/crop/4096x2160+0+0/resize/1200x633!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fda%2F17%2F3e9f3b0943e7858b45ab542744be%2Fthe-flash-flsh-ff-87683r.jpg')] h-full bg-cover relative bg-center">
                     <div class="absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-slate-900/60"></div>
-                    <div class="relative w-11/12 mx-auto py-5">
+                    <div class="relative mx-auto py-5 bg-black/40 backdrop-blur-lg dark:bg-neutral-900/60">
 
-                        <div class="container mx-auto text-center xl:mt-48 xl:mb-5 mt-40 mb-4">
+                        <div class="container mx-auto text-center xl:mt-48 xl:mb-5 mt-40 mb-4 w-11/12">
 
                             <h1 class="text-white uppercase text-3xl xl:text-4xl font-bold tracking-wider leading-3 mt-7 font-keania">The Flash</h1>
                             <ul class="flex gap-4 mt-10 text-white justify-center">
@@ -70,12 +70,16 @@
                                 surrounding them.
                             </p>
 
-                            <ul class="flex gap-7 mt-5 justify-center">
-                                <li class="bg-blue-600 text-white px-10 py-4 rounded-full -mr-3 uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
+                            <ul class="flex flex-wrap gap-2 mt-5 justify-center items-center">
+                                <li class="bg-blue-600 text-white px-10 py-4 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
                                     aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-full-screen-modal"
                                     data-hs-overlay="#hs-full-screen-modal">
                                     <i class="fa fa-play pr-1" aria-hidden="true"></i> <button
                                         class="uppercase">Trailer</button>
+                                </li>
+                                <li
+                                    class="bg-blue-600 text-white px-8 py-4 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
+                                    <i class="fa-solid fa-plus"></i> <button class="uppercase">Watchlist </button>
                                 </li>
                             </ul>
 
@@ -388,7 +392,7 @@
                         </button>
                     </div>
                     <div class="overflow-y-auto">
-                        <iframe class="w-full aspect-video"
+                        <iframe class="w-full aspect-[16/9]"
                             src="https://www.youtube.com/embed/hebWYacbdvc?si=LG3ZZslZ5nZB-UYe"></iframe>
                     </div>
                     <div class="flex justify-end items-center gap-x-2 py-3 px-4 mt-auto border-t dark:border-neutral-700">
