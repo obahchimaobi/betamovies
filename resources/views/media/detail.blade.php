@@ -10,52 +10,51 @@
                 @foreach ($all as $item)
                     @if (isset($item))
                         @if ($item->type == 'movie')
-                            <div class="w-full relative bg-center"
+                            <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
                                 style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
-                                <div class="absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-slate-900/60"></div>
-                                <div class="relative mx-auto py-5 bg-black/40 backdrop-blur-lg dark:bg-neutral-900/60">
+                                <div class="absolute inset-0 dark:bg-black bg-white opacity-90"></div>
+                                <div class="relative mx-auto py-5">
 
                                     <div class="container mx-auto text-center mt-20 mb-20 w-11/12">
 
                                         <h1
-                                            class="text-white uppercase text-3xl xl:text-4xl font-bold tracking-wider mt-7 font-keania">
+                                            class="dark:text-gray-300 text-slate-800 uppercase text-3xl xl:text-4xl font-bold tracking-wider mt-7 font-keania">
                                             {{ $item->name }}</h1>
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="flex items-center space-x-1">
 
-                                                <span class="text-gray-300 text-sm">{{ $item->vote_count }}</span>
+                                                <span class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->vote_count }}</span>
                                             </li>
 
-                                            <li class="-my-2.5 text-gray-300 text-2xl"><strong>.</strong></li>
-                                            <li class="text-gray-300 text-sm">{{ $item->release_year }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->release_year }}</li>
 
-                                            <li class="-my-2.5 text-gray-300 text-2xl"><strong>.</strong></li>
-                                            <li class="text-gray-300 text-sm">{{ $item->runtime }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->language }}</li>
 
-                                            <li class="-my-2.5 text-gray-300 text-2xl"><strong>.</strong></li>
-                                            <li class="text-gray-300 text-sm">{{ $item->language }}</li>
-
-                                            <li class="-my-2.5 text-gray-300 text-2xl"><strong>.</strong></li>
-                                            <li class="text-gray-300 text-sm">{{ $item->origin_country }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->origin_country }}</li>
                                         </ul>
 
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="text-gray-300">
-                                                <span
-                                                    class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700">Action</span>
-                                                <span
-                                                    class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700">Drama</span>
-                                                <span
-                                                    class="text-xs border border-slate-500 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 dark:border-slate-700 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer focus:bg-slate-500 dark:focus:bg-slate-700">Adventure</span>
+                                                <a href=""><span
+                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Action</span>
+                                                </a>
+                                                <a href=""><span
+                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Drama</span>
+                                                </a>
+                                                <a href=""><span
+                                                        class="text-xs border border-slate-500 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 dark:border-slate-700 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Adventure</span></a>
                                             </li>
                                         </ul>
 
-                                        <p class="text-white mt-9 leading-relaxed text-sm">
+                                        <p class="dark:text-gray-300 text-slate-700 mt-9 leading-relaxed text-sm">
                                             {{ $item->overview }}
                                         </p>
 
                                         <ul class="flex flex-wrap gap-2 mt-5 justify-center items-center">
-                                            <li class="bg-blue-600 text-white px-10 py-4 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
+                                            <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
                                                 aria-haspopup="dialog" aria-expanded="false"
                                                 aria-controls="hs-full-screen-modal"
                                                 data-hs-overlay="#hs-full-screen-modal">
@@ -63,7 +62,7 @@
                                                     class="uppercase">Trailer</button>
                                             </li>
                                             <li
-                                                class="bg-blue-600 text-white px-8 py-4 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
+                                                class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
                                                 <i class="fa-solid fa-download"></i> <button class="uppercase">Download
                                                 </button>
                                             </li>
@@ -79,66 +78,58 @@
 
                     @if (isset($item))
                         @if ($item->type == 'series')
-                            <div class="w-full relative bg-center"
-                                style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
-                                <div class="absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-slate-900/60"></div>
-                                <div class="mx-auto py-5 bg-black/40 backdrop-blur-lg dark:bg-neutral-900/60">
+                            <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
+                            style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
+                                <div class="absolute inset-0 dark:bg-black bg-white/90 opacity-95"></div>
+                                <div class="mx-auto py-5 relative">
 
                                     <div class="container mx-auto text-center mt-20 mb-20 w-11/12">
 
                                         <h1
-                                            class="text-white uppercase text-3xl xl:text-4xl font-bold tracking-wider leading-3 mt-7 font-keania">
+                                            class="dark:text-gray-300 text-slate-800 uppercase text-3xl xl:text-4xl font-bold tracking-wider leading-3 mt-7 font-keania">
                                             {{ $item->name }}</h1>
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="flex items-center space-x-1">
 
-                                                <span class="text-gray-300 text-sm">{{ $item->vote_count }}</span>
+                                                <span class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->vote_count }}</span>
                                             </li>
 
-                                            <li class="-my-3 text-gray-300 text-2xl"><strong>.</strong></li>
-                                            <li class="text-gray-300 text-sm">{{ $item->release_year }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->release_year }}</li>
 
-                                            <li class="-my-3 text-gray-300 text-2xl"><strong>.</strong></li>
-                                            <li class="text-gray-300 text-sm">{{ $item->language }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->language }}</li>
 
-                                            <li class="-my-3 text-gray-300 text-2xl"><strong>.</strong></li>
-                                            <li class="text-gray-300 text-sm">{{ $item->origin_country }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->origin_country }}</li>
                                         </ul>
 
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="text-gray-300">
                                                 <a href=""><span
-                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700">Action</span>
+                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Action</span>
                                                 </a>
                                                 <a href=""><span
-                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700">Drama</span>
+                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Drama</span>
                                                 </a>
                                                 <a href=""><span
-                                                        class="text-xs border border-slate-500 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 dark:border-slate-700 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer focus:bg-slate-500 dark:focus:bg-slate-700">Adventure</span></a>
+                                                        class="text-xs border border-slate-500 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 dark:border-slate-700 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Adventure</span></a>
                                             </li>
                                         </ul>
 
-                                        <p class="text-white mt-9 leading-relaxed text-sm">
-                                            Due to unforeseeable circumstances, the Robinsons, a family of space colonists,
-                                            crash-land
-                                            on an unknown planet. Now, they must fight for survival and escape, despite the
-                                            dangers
-                                            surrounding them.
+                                        <p class="dark:text-gray-300 text-slate-700 mt-9 leading-relaxed text-sm">
+                                            {{ $item->overview }}
                                         </p>
 
                                         <ul class="flex flex-wrap gap-2 mt-6 justify-center items-center">
-                                            <li class="bg-blue-600 text-white px-10 py-4 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
+                                            <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
                                                 aria-haspopup="dialog" aria-expanded="false"
                                                 aria-controls="hs-full-screen-modal"
                                                 data-hs-overlay="#hs-full-screen-modal">
                                                 <i class="fa fa-play pr-1" aria-hidden="true"></i> <button
                                                     class="uppercase">Trailer</button>
                                             </li>
-                                            <li
-                                                class="bg-blue-600 text-white px-8 py-4 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
-                                                <i class="fa-solid fa-plus"></i> <button class="uppercase">Watchlist
-                                                </button>
-                                            </li>
+                                            <livewire:watch-list :movieId="$item->id" :movie_name="$item->name" :genres="$item->genres" :formatted_name="$item->formatted_name" :poster_path="$item->poster_path" />
                                         </ul>
                                     </div>
                                 </div>
@@ -231,7 +222,7 @@
                     @if ($item->type == 'movie')
                         <div class="grid md:grid-cols-8 grid-cols-none gap-5">
                             <!-- First Element -->
-                            <div class="col-span-12 sm:col-span-6 sm:gap-4">
+                            <div class="col-span-12 sm:col-span-12 md:col-span-6 sm:gap-4">
                                 <h1 class="font-bold dark:text-white text-2xl pb-4">More Like This</h1>
                                 <div class="hs-accordion-group space-y-3">
                                     @foreach ($merged as $more)
@@ -443,46 +434,24 @@
                                 <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300 my-10 md:hidden">
                                 <h1 class="font-bold font-inter text-gray-800 dark:text-white text-xl">Recommended Shows</h1>
 
-                                <div class="grid lg:grid-cols-2 grid-cols-3 gap-4 mt-4">
-                                    <div class="w-full">
-                                        <a href="" wire:navigate>
-                                            <img src="https://nkiri.com/wp-content/uploads/2024/11/the-day-of-the-jackal-tv-series-200x300.jpg"
-                                                alt=""
-                                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
-                                        </a>
+                                <div class="grid md:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">
+                                    @isset($recom)
+                                        @foreach ($recom as $recommended)
+                                        <div class="w-full">
+                                            <a href="{{ route('movie.details', ['name'=>$recommended->formatted_name]) }}" wire:navigate>
+                                                <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
+                                                    alt=""
+                                                    class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
+                                            </a>
 
-                                        <div class="flex justify-between mt-2 gap-10">
-                                            <a href=""
-                                                class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                                                wire:navigate><span class="">HitPig (2024)</span></a>
+                                            <div class="flex justify-between mt-2 gap-10">
+                                                <a href="{{ route('movie.details', ['name'=>$recommended->formatted_name]) }}"
+                                                    class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm dark:hover:text-slate-300"
+                                                    wire:navigate><span class="">{{ $recommended->name }} ({{ $recommended->release_year }})</span></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full">
-                                        <a href="" wire:navigate>
-                                            <img src="https://nkiri.com/wp-content/uploads/2024/11/the-day-of-the-jackal-tv-series-200x300.jpg"
-                                                alt=""
-                                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
-                                        </a>
-
-                                        <div class="flex justify-between mt-2 gap-10">
-                                            <a href=""
-                                                class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                                                wire:navigate><span class="">HitPig (2024)</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="w-full">
-                                        <a href="" wire:navigate>
-                                            <img src="https://nkiri.com/wp-content/uploads/2024/11/the-day-of-the-jackal-tv-series-200x300.jpg"
-                                                alt=""
-                                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
-                                        </a>
-
-                                        <div class="flex justify-between mt-2 gap-10">
-                                            <a href=""
-                                                class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                                                wire:navigate><span class="">HitPig (2024)</span></a>
-                                        </div>
-                                    </div>
+                                        @endforeach
+                                    @endisset
                                 </div>
                             </div>
                         </div>
@@ -493,8 +462,8 @@
                     @if ($item->type == 'series')
                         <div class="grid md:grid-cols-8 grid-cols-none gap-5">
                             <!-- First Element -->
-                            <div class="col-span-12 sm:col-span-6 sm:gap-4">
-                                <h1 class="font-bold dark:text-white text-2xl pb-4">Seasons and Episodes</h1>
+                            <div class="col-span-12 sm:col-span-12 md:col-span-6 sm:gap-4">
+                                <h1 class="font-bold dark:text-white text-slate-900 text-2xl pb-4">Seasons and Episodes</h1>
                                 <div class="hs-accordion-group space-y-3">
                                     <div class="hs-accordion active bg-white border -mt-px rounded-lg dark:bg-slate-800 dark:border-slate-700"
                                         id="hs-bordered-heading-one">
@@ -523,7 +492,7 @@
                                                 <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 mb-5">
                                                 <div class="grid xl:grid-cols-9 items-center gap-10">
                                                     <div class="col-span-1">
-                                                        <h1 class="text-end font-bold text-white text-3xl">01</h1>
+                                                        <h1 class="text-end font-bold text-slate-800 dark:text-slate-200 text-3xl">01</h1>
                                                     </div>
                                                     <div class="col-span-8 -mt-6 sm:-mt-0 flex gap-4">
                                                         <img src="https://img.awafim.tv/images/dzMP1J3rq1L1.192x0.webp"
@@ -542,7 +511,7 @@
                                                 <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 my-5">
                                                 <div class="grid xl:grid-cols-9 items-center gap-10">
                                                     <div class="col-span-1">
-                                                        <h1 class="text-end font-bold text-white text-3xl">02</h1>
+                                                        <h1 class="text-end font-bold text-slate-800 dark:text-slate-200 text-3xl">02</h1>
                                                     </div>
                                                     <div class="col-span-8 -mt-6 sm:-mt-0 flex gap-4">
                                                         <img src="https://img.awafim.tv/images/dzMP1J3rq1L1.192x0.webp"
@@ -787,48 +756,26 @@
                             <!-- Second Element -->
                             <div class="md:col-span-2 col-span-12">
                                 <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300 my-10 md:hidden">
-                                <h1 class="font-bold font-inter text-gray-800 dark:text-white text-xl">Recommended Shows</h1>
+                                <h1 class="font-bold font-inter text-gray-900 dark:text-white text-xl">Recommended Shows</h1>
 
-                                <div class="grid lg:grid-cols-2 grid-cols-3 gap-4 mt-4">
-                                    <div class="w-full">
-                                        <a href="" wire:navigate>
-                                            <img src="https://nkiri.com/wp-content/uploads/2024/11/the-day-of-the-jackal-tv-series-200x300.jpg"
-                                                alt=""
-                                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
-                                        </a>
+                                <div class="grid lg:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">
+                                    @isset($recom)
+                                        @foreach ($recom as $recommended)
+                                        <div class="w-full">
+                                            <a href="{{ route('movie.details', ['name'=>$recommended->formatted_name]) }}" wire:navigate>
+                                                <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
+                                                    alt=""
+                                                    class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
+                                            </a>
 
-                                        <div class="flex justify-between mt-2 gap-10">
-                                            <a href=""
-                                                class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                                                wire:navigate><span class="">HitPig (2024)</span></a>
+                                            <div class="flex justify-between mt-2 gap-10">
+                                                <a href="{{ route('movie.details', ['name'=>$recommended->formatted_name]) }}"
+                                                    class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm dark:hover:text-slate-300"
+                                                    wire:navigate><span class="">{{ $recommended->name }} ({{ $recommended->release_year }})</span></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full">
-                                        <a href="" wire:navigate>
-                                            <img src="https://nkiri.com/wp-content/uploads/2024/11/the-day-of-the-jackal-tv-series-200x300.jpg"
-                                                alt=""
-                                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
-                                        </a>
-
-                                        <div class="flex justify-between mt-2 gap-10">
-                                            <a href=""
-                                                class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                                                wire:navigate><span class="">HitPig (2024)</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="w-full">
-                                        <a href="" wire:navigate>
-                                            <img src="https://nkiri.com/wp-content/uploads/2024/11/the-day-of-the-jackal-tv-series-200x300.jpg"
-                                                alt=""
-                                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
-                                        </a>
-
-                                        <div class="flex justify-between mt-2 gap-10">
-                                            <a href=""
-                                                class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                                                wire:navigate><span class="">HitPig (2024)</span></a>
-                                        </div>
-                                    </div>
+                                        @endforeach
+                                    @endisset
                                 </div>
                             </div>
                         </div>
@@ -862,6 +809,9 @@
                         </div>
                         <div class="overflow-y-auto">
                             <iframe class="w-full aspect-[16/9]" src="{{ $item->trailer_url }}"></iframe>
+                            <div wire:loading>
+                                Loading trailer...
+                            </div>
                         </div>
                         <div
                             class="flex justify-end items-center gap-x-2 py-3 px-4 mt-auto border-t dark:border-neutral-700">

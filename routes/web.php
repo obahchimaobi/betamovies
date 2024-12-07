@@ -15,16 +15,18 @@ use Illuminate\Support\Facades\Route;
 // })->name('home');
 Route::get('/', [MoviesController::class, 'getMoviesAndSeries'])->name('home');
 
-Route::get('/movies', [MediaController::class, 'movies'])->name('movies.page');
-Route::get('/series', [MediaController::class, 'series'])->name('series.page');
+Route::get('/movies', [MoviesController::class, 'movies'])->name('movies.page');
+Route::get('/series', [MoviesController::class, 'series'])->name('series.page');
 Route::get('/new-releases', [MediaController::class, 'new_releases'])->name('new.releases');
 Route::get('/details', [MediaController::class, 'details'])->name('details');
 Route::get('/details2', [MediaController::class, 'details2'])->name('details2');
-Route::get('/top-rated', [MediaController::class, 'top_rated'])->name('rated.page');
+Route::get('/top-rated', [MoviesController::class, 'top_rated'])->name('rated.page');
 
 Route::get('/contact-us', [PageController::class, 'contact_us'])->name('contact.page');
 
 Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
+Route::get('/search', [MoviesController::class, 'search'])->name('search');
+Route::get('/autocomplete', [MoviesController::class, 'autocomplete'])->name('autocomplete');
 
 // Auth
 Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page');

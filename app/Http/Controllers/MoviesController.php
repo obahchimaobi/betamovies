@@ -9,6 +9,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class MoviesController extends Controller
 {
@@ -51,27 +52,27 @@ class MoviesController extends Controller
         if (!$recom) {
             // Fetch recommendations from series and movies and merge them
             $recommend = DB::table('series')
-                ->where('vote_count', '>', 7)
+                ->where('vote_count', '>', 6)
                 ->where('formatted_name', '<>', $name)
-                ->where('status', '!=', 'pending')
                 ->whereNull('deleted_at')
                 ->inRandomOrder()
-                ->limit(5)
+                ->limit(4)
                 ->get();
 
             $recommend2 = DB::table('movies')
-                ->where('vote_count', '>', 1)
+                ->where('vote_count', '>', 6)
                 ->where('formatted_name', '<>', $name)
-                ->where('status', '!=', 'pending')
                 ->whereNull('deleted_at')
                 ->inRandomOrder()
-                ->limit(5)
+                ->limit(4)
                 ->get();
 
-            // Use merge() for collections instead of union for query builders
+            // Merge the collections
             $recom = $recommend->merge($recommend2);
 
-            // dd($recommend2);
+            // Optionally shuffle the merged results if needed
+            $recom = $recom->shuffle();
+
 
             Cache::put($cache, $recom, 360);
         }
@@ -128,5 +129,69 @@ class MoviesController extends Controller
         $all_comments = Comment::where('title', $name)->count();
 
         return view('media.detail', compact('all', 'merged', 'recom', 'comments', 'all_comments'));
+    }
+
+    public function movies()
+    {
+        // get movies from database
+        $movies = Movies::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])->paginate('24');
+
+        return view('media.movies', compact('movies'));
+    }
+
+    public function series()
+    {
+        $series = Series::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])->paginate('24');
+
+        return view('media.series', compact('series'));
+    }
+
+    public function top_rated()
+    {
+        $top_rated_movies = Movies::where('vote_count', '>', '7')->get();
+        $top_rated_series = Series::where('vote_count', '>', '7')->get();
+
+        $top_rated = $top_rated_movies->concat($top_rated_series);
+
+        $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
+
+        // Items per page
+        $perPage = 24;
+
+        // Slice the collection to get the items to display in current page
+        $currentPageResults = $top_rated->slice(($page * $perPage) - $perPage, $perPage)->values();
+
+        // Create our paginator and add it to the view
+        $paginatedResults = new LengthAwarePaginator($currentPageResults, count($top_rated), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+
+        return view('media.top-rated', compact('paginatedResults'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('search');
+
+        $movies = Movies::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('formatted_name', 'LIKE', "%{$query}%")
+            ->get();
+
+        $series = Series::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('formatted_name', 'LIKE', "%{$query}%")
+            ->get();
+
+            $allResults = $movies->concat($series);
+
+            $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
+
+            // Items per page
+            $perPage = 36;
+
+            // Slice the collection to get the items to display in current page
+            $currentPageResults = $allResults->slice(($page * $perPage) - $perPage, $perPage)->values();
+
+            // Create our paginator and add it to the view
+            $paginatedResults = new LengthAwarePaginator($currentPageResults, count($allResults), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+
+        return view('media.search', compact('paginatedResults'));
     }
 }

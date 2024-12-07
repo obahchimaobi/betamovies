@@ -2,6 +2,7 @@
 
 @section('content')
     <div>
+
         <!-- Content -->
         <div class="w-full lg:ps-64">
             <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -92,16 +93,17 @@
                     @if ($merge)
                         @foreach ($merge as $movies)
                             <div class="w-full">
-                                <a href="{{ route('movie.details', ['name'=>$movies->formatted_name]) }}" wire:navigate><img
-                                        src="{{ asset('storage/images/' . $movies->poster_path) }}"
-                                        alt=""
+                                <a href="{{ route('movie.details', ['name' => $movies->formatted_name]) }}" wire:navigate><img
+                                        src="{{ asset('storage/images/' . $movies->poster_path) }}" alt=""
                                         class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                                 <div class="flex justify-between mt-2 gap-4">
-                                    <a href="{{ route('movie.details', ['name'=>$movies->formatted_name]) }}"
+                                    <a href="{{ route('movie.details', ['name' => $movies->formatted_name]) }}"
                                         class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                                        wire:navigate><span class="">{{ $movies->name }} ({{ $movies->release_year }})</span></a>
-                                    <span class="text-gray-800 font-semibold dark:text-white lg:text-xs text-sm">{{ $movies->type }}</span>
+                                        wire:navigate><span class="">{{ $movies->name }}
+                                            ({{ $movies->release_year }})</span></a>
+                                    <span
+                                        class="text-gray-800 font-semibold dark:text-white lg:text-xs text-sm">{{ $movies->type }}</span>
                                 </div>
                             </div>
                         @endforeach

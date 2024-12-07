@@ -83,8 +83,8 @@ dark:bg-slate-900 dark:border-slate-800"
 
                                         <svg class="hs-accordion-active:hidden ms-auto block size-4"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
                                             <path d="m6 9 6 6 6-6" />
                                         </svg>
                                     </button>
@@ -178,7 +178,8 @@ dark:bg-slate-900 dark:border-slate-800"
                         </li>
                         <li><a class="@if (Request::is('sign-up')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else @endif w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300"
                                 href="{{ route('register.page') }}" wire:navigate>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0 fill-black/80 dark:fill-white/80"
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="size-4 shrink-0 fill-black/80 dark:fill-white/80"
                                     viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                     <path
                                         d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z" />
@@ -188,6 +189,33 @@ dark:bg-slate-900 dark:border-slate-800"
                             </a>
                         </li>
                     @endguest
+                    <li><a class="@if (Request::is('trending-series')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                            href="{{ route('movies.page') }}" wire:navigate>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-4" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z" />
+                            </svg>
+
+
+
+                            Trending Movies
+                        </a>
+                    </li>
+                    <li><a class="@if (Request::is('trending-movies')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                            href="{{ route('movies.page') }}" wire:navigate>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-4" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                            </svg>
+
+
+                            Trending Series
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

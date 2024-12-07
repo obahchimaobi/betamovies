@@ -154,7 +154,7 @@ class GetSeries extends Command
                                 $webpPath = storage_path('app/' . $path);
 
                                 // Quality: 0 (lowest file size) to 100 (highest quality)
-                                $quality = 55;
+                                $quality = 65;
                                 imagewebp($image, $webpPath, $quality);
 
                                 // Free up memory

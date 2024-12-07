@@ -1,4 +1,25 @@
 <!-- ========== HEADER ========== -->
+
+<!-- Toast -->
+<div id="dismiss-toast"
+    class="fixed top-2 right-2 z-50 hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-slate-800 dark:border-slate-700"
+    role="alert" tabindex="-1" aria-labelledby="hs-toast-dismiss-button-label" wire:offline>
+    <div class="flex p-4 gap-2">
+        <div class="shrink-0">
+            <svg class="shrink-0 size-4 text-blue-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16"
+                height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path
+                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z">
+                </path>
+            </svg>
+        </div>
+        <p id="hs-toast-dismiss-button-label" class="text-sm text-gray-700 dark:text-slate-200">
+            Whoops, your device has lost connection. The web page you are viewing is offline.
+        </p>
+    </div>
+</div>
+<!-- End Toast -->
+
 <header
     class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 lg:ps-[260px] dark:bg-slate-900 dark:border-slate-800">
     <nav class="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
@@ -64,21 +85,7 @@
                 </button>
 
                 <!-- Search Input -->
-                <div class="relative md:flex hidden">
-                    @persist('search')
-                    <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
-                        <svg class="shrink-0 size-4 text-gray-400 dark:text-white/60" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8" />
-                            <path d="m21 21-4.3-4.3" />
-                        </svg>
-                    </div>
-                    <input type="text"
-                        class="py-2 ps-10 pe-16 block w-full border bg-white border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder:text-slate-400 dark:focus:ring-slate-600"
-                        placeholder="Search">
-                    @endpersist()
-                </div>
+                    <livewire:search>
                 <!-- End Search Input -->
 
                 <button type="button"
@@ -170,8 +177,8 @@
                         <button id="hs-dropdown-account" type="button"
                             class="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white"
                             aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                            <img class="shrink-0 size-[38px] rounded-full" src="{{ auth()->user()->avatar ?? asset('icons/user.jpg') }}"
-                                alt="Avatar">
+                            <img class="shrink-0 size-[38px] rounded-full"
+                                src="{{ auth()->user()->avatar ?? asset('icons/user.jpg') }}" alt="Avatar">
                         </button>
 
                         <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
@@ -207,8 +214,8 @@
                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
                                     href="{{ route('logout') }}" wire:navigate>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                        class="size-4 shrink-0 fill-slate-600 dark:fill-slate-500" width="24" height="24"
-                                        stroke-width="2"
+                                        class="size-4 shrink-0 fill-slate-600 dark:fill-slate-500" width="24"
+                                        height="24" stroke-width="2"
                                         stroke="currentColor"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                         <path
                                             d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
@@ -247,43 +254,9 @@
                 </button>
             </div>
             <div class="">
-                <div class="w-full">
-                    <!-- SearchBox -->
-                    <div class="relative"
-                        data-hs-combo-box='{
-                  "groupingType": "default",
-                  "isOpenOnFocus": true,
-                  "apiUrl": "",
-                  "apiGroupField": "category",
-                  "outputItemTemplate": "<div data-hs-combo-box-output-item><span class=\"flex items-center cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200\"><div class=\"flex items-center w-full\"><div class=\"flex items-center justify-center rounded-full bg-gray-200 size-6 overflow-hidden me-2.5\"><img class=\"shrink-0\" data-hs-combo-box-output-item-attr=&apos;[{\"valueFrom\": \"image\", \"attr\": \"src\"}, {\"valueFrom\": \"name\", \"attr\": \"alt\"}]&apos; /></div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></span></div>",
-                  "groupingTitleTemplate": "<div class=\"text-xs uppercase text-gray-500 m-3 mb-1 dark:text-slate-500\"></div>"
-                }'>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
-                                <svg class="shrink-0 size-4 text-gray-400 dark:text-white/60"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.3-4.3"></path>
-                                </svg>
-                            </div>
-                            <input
-                                class="py-3 ps-10 pe-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder-slate-400 dark:focus:ring-slate-600"
-                                type="text" role="combobox" aria-expanded="false" placeholder="Type a name"
-                                value="" data-hs-combo-box-input="">
-                        </div>
-
-                        <!-- SearchBox Dropdown -->
-                        <div class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg dark:bg-neutral-800 dark:border-neutral-700"
-                            style="display: none;" data-hs-combo-box-output="hello">
-                            <div class="max-h-72 rounded-b-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
-                                data-hs-combo-box-output-items-wrapper=""></div>
-                        </div>
-                        <!-- End SearchBox Dropdown -->
-                    </div>
-                    <!-- End SearchBox -->
-                </div>
+                <!-- Search Input -->
+                
+                <!-- End Search Input -->
             </div>
         </div>
     </div>
