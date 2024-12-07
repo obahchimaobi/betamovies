@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AuthMiddleware;
+use App\Http\Middleware\CheckIfUserExistsMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //
         $middleware->alias([
             'auth.user' => AuthMiddleware::class,
+            'user.exists' => CheckIfUserExistsMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

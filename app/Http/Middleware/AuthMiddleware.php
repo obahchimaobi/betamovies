@@ -18,7 +18,7 @@ class AuthMiddleware
     {
         if (! Auth::check()) {
             // code...
-            session()->flash('message', 'Registration successful! A confirmation email has been sent to the email provided. Please check your inbox (and spam folder) to verify your email and activate your account.');
+            session()->flash('error', 'Login Required');
 
             return redirect()->route('login');
         }

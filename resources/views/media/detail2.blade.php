@@ -7,8 +7,7 @@
         <div class="w-full lg:ps-64">
             <div class="space-y-4 sm:space-y-6">
                 <!-- your content goes here ... -->
-                <div
-                    class="w-full bg-[url('https://ca-times.brightspotcdn.com/dims4/default/25c5c0f/2147483647/strip/true/crop/4096x2160+0+0/resize/1200x633!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fda%2F17%2F3e9f3b0943e7858b45ab542744be%2Fthe-flash-flsh-ff-87683r.jpg')] h-full bg-cover relative bg-center">
+                <div class="w-full bg-[url('https://ca-times.brightspotcdn.com/dims4/default/25c5c0f/2147483647/strip/true/crop/4096x2160+0+0/resize/1200x633!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fda%2F17%2F3e9f3b0943e7858b45ab542744be%2Fthe-flash-flsh-ff-87683r.jpg')] h-full bg-cover relative bg-center">
                     <div class="absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-slate-900/60"></div>
                     <div class="relative mx-auto py-5 bg-black/40 backdrop-blur-lg dark:bg-neutral-900/60">
 
@@ -115,8 +114,7 @@
                         <div class="hs-accordion-group space-y-3">
                             <div class="hs-accordion active bg-white border -mt-px rounded-lg dark:bg-slate-800 dark:border-slate-700"
                                 id="hs-bordered-heading-one">
-                                <button
-                                    class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
+                                <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
                                     aria-expanded="true" aria-controls="hs-basic-bordered-collapse-one">
                                     <svg class="hs-accordion-active:hidden block size-3.5"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

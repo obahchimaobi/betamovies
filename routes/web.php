@@ -1,15 +1,19 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Google\GoogleController;
 use App\Http\Controllers\Media\MediaController;
+use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\Pages\PageController;
+use App\Http\Controllers\ReplyController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+// Route::get('/', function () {
+//     return view('home');
+// })->name('home');
+Route::get('/', [MoviesController::class, 'getMoviesAndSeries'])->name('home');
 
 Route::get('/movies', [MediaController::class, 'movies'])->name('movies.page');
 Route::get('/series', [MediaController::class, 'series'])->name('series.page');
@@ -26,6 +30,10 @@ Route::get('/release-year', [MediaController::class, 'year'])->name('year.page')
 Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page');
 Route::get('/sign-in', [AuthController::class, 'login_page'])->name('login');
 Route::get('/reset-password', [AuthController::class, 'forgot_password_page'])->name('forgot.password');
+
+Route::post('/comment/{name}/{id}', [CommentController::class, 'comment'])->name('comment');
+Route::post('/reply/{name}/{id}/{comment_id}/{comment_name}', [ReplyController::class, 'reply'])->name('reply');
+
 // Route::get('/email/verify', function() {
 //     return view('auth.verify-email');
 // })->name('email.verify');
@@ -61,4 +69,7 @@ Route::get('/logout', function () {
     return redirect()->route('home');
 })->name('logout');
 
-Route::get('/profile', [AuthController::class, 'profile_page'])->name('user.profile');
+Route::get('/profile', [AuthController::class, 'profile_page'])->name('user.profile')->middleware('auth');
+Route::get('/my-watchlist', [AuthController::class, 'watchlist_page'])->name('my.watchlist')->middleware('auth');
+
+Route::get('/{name}', [MoviesController::class, 'show'])->name('movie.details');

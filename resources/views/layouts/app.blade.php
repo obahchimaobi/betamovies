@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Betamovies: @yield('title', 'Download The Best Movies and Series')</title>
+
+    <link rel="shortcut icon" href="{{ asset('icons/betamovies-icon.png') }}" type="image/x-icon">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

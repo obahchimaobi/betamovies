@@ -31,4 +31,9 @@ class AuthController extends Controller
     {
         return view('auth.profile');
     }
+
+    public function watchlist_page()
+    {
+        return view('auth.watchlist');
+    }
 }

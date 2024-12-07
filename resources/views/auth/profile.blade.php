@@ -3,6 +3,43 @@
 @section('content')
     <div class="w-full lg:ps-64">
         <div class="p-4 sm:p-6 space-y-4 sm:space-y-6 my-5 gap-5">
+
+            @if (session()->has('error'))
+                <!-- Toast -->
+                <div id="dismiss-toast"
+                    class="fixed top-2 right-2 z-50 hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-slate-800 dark:border-slate-700"
+                    role="alert" tabindex="-1" aria-labelledby="hs-toast-dismiss-button-label">
+                    <div class="flex p-4 gap-2">
+                        <div class="shrink-0">
+                            <svg class="shrink-0 size-4 text-red-500 mt-0.5" xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z">
+                                </path>
+                            </svg>
+                        </div>
+                        <p id="hs-toast-dismiss-button-label" class="text-sm text-gray-700 dark:text-slate-200">
+                            {{ session('error') }}
+                        </p>
+
+                        <div class="ms-auto">
+                            <button type="button"
+                                class="inline-flex shrink-0 justify-center items-center size-5 rounded-lg text-gray-800 opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                                aria-label="Close" data-hs-remove-element="#dismiss-toast">
+                                <span class="sr-only">Close</span>
+                                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 6 6 18"></path>
+                                    <path d="m6 6 12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Toast -->
+            @endif
+
             @if (session()->has('success'))
                 <!-- Toast -->
                 <div id="dismiss-toast"
@@ -38,6 +75,7 @@
                 </div>
                 <!-- End Toast -->
             @endif
+
             <h1 @class([
                 'text-black dark:text-slate-100 text-3xl',
                 'font-bold' => true,
@@ -80,6 +118,37 @@
                     </div>
                 </div>
             @endif
+
+            <div class="grid xl:grid-cols-3 pt-5">
+                <div>
+                    <h1 @class([
+                        'text-black dark:text-slate-100 text-base',
+                        'font-bold' => true,
+                    ])>Browser Sessions</h1>
+                    <p @class([
+                        'text-slate-800 dark:text-slate-400 text-sm',
+                        'font-bold' => false,
+                    ])>Manage and log out your active sessions on other browsers and devices.</p>
+                </div>
+
+                <div class="col-span-2 xl:mt-0 mt-3">
+                    <div class="dark:bg-slate-800 p-6 rounded-lg bg-white/10 border dark:border-black/30">
+                        <div @class(['flex flex-col mb-4', 'font-semibold' => false])>
+                            <h1 class="text-slate-600 dark:text-slate-400">Once your account is deleted, all of your
+                                resources and data will be permanently erased. Before deleting your account, please
+                                download any data or information you wish to keep.</h1>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10 dark:text-slate-400 text-slate-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                                  </svg>
+                                  <span class="dark:text-slate-400 text-slate-700">Linux - Chrome <br> <span class="text-xs">127.0.0.1</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="grid xl:grid-cols-3 pt-5">
                 <div>

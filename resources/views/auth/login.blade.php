@@ -46,7 +46,7 @@
                     class="fixed top-2 right-2 z-50 hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-slate-800 dark:border-slate-700"
                     role="alert" tabindex="-1" aria-labelledby="hs-toast-dismiss-button-label">
                     <div class="flex p-4 gap-2">
-                        <<div class="shrink-0">
+                        <div class="shrink-0">
                             <svg class="shrink-0 size-4 text-teal-500 mt-0.5" xmlns="http://www.w3.org/2000/svg"
                                 width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path
