@@ -72,7 +72,7 @@ class GetSeries extends Command
                         $base_url = 'https://image.tmdb.org/t/p/w780' . $poster_path;
 
                         // download the backdrop image
-                        $backdrop_url = 'https://image.tmdb.org/t/p/original' . $backdrop_path;
+                        $backdrop_url = 'https://image.tmdb.org/t/p/w780' . $backdrop_path;
 
                         // Get the contents of the image from the URL
                         $backdrop_contents = file_get_contents($backdrop_url);
@@ -81,7 +81,7 @@ class GetSeries extends Command
                         $backdrop_image_name = pathinfo($backdrop_url, PATHINFO_FILENAME) . '.webp';
 
                         // Define the path to save the WebP image
-                        $backdrop_directory = '';
+                        $backdrop_directory = 'public/backdrop/';
                         $backdrop_path = $backdrop_directory . $backdrop_image_name;
 
                         if (!is_dir(storage_path('app/' . $backdrop_directory))) {
@@ -90,10 +90,6 @@ class GetSeries extends Command
 
                         // Check if the WebP image already exists in storage, if not, save it
                         if (!Storage::exists($backdrop_path)) {
-                            if (!is_dir(storage_path('temp/'))) {
-                                mkdir(storage_path('temp/'), 0755, true);
-                            }
-
                             // Save the image to a temporary path first
                             $backdrop_tempPath = 'temp/' . basename($backdrop_url);
                             Storage::put($backdrop_tempPath, $backdrop_contents);
@@ -174,7 +170,7 @@ class GetSeries extends Command
                             'name' => $full_name,
                             'formatted_name' => $formatted_name3,
                             'poster_path' => $image_name,
-                            'backdrop_path' => $backdrop_path,
+                            'backdrop_path' => $backdrop_image_name,
                             'origin_country' => $country,
                             'language' => $language,
                             'overview' => $overview,

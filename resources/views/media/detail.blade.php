@@ -67,11 +67,7 @@
                                                 <i class="fa-solid fa-download"></i> <button class="uppercase">Download
                                                 </button>
                                             </li>
-                                            <li
-                                                class="bg-blue-600 text-white px-8 py-4 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
-                                                <i class="fa-solid fa-plus"></i> <button class="uppercase">Watchlist
-                                                </button>
-                                            </li>
+                                            <livewire:watch-list :movieId="$item->id" :movie_name="$item->name" :genres="$item->genres" :formatted_name="$item->formatted_name" :poster_path="$item->poster_path" />
                                         </ul>
                                     </div>
                                 </div>

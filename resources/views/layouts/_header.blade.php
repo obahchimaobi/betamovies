@@ -178,7 +178,7 @@
                             role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-account">
                             <div class="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-slate-700">
                                 <p class="text-sm text-gray-500 dark:text-slate-400">Signed in as</p>
-                                <p class="text-sm font-medium text-gray-800 dark:text-neutral-200">
+                                <p class="text-sm font-medium text-gray-600 dark:text-neutral-200">
                                     {{ auth()->user()->email }}</p>
                             </div>
                             <div class="p-1.5 space-y-0.5">
@@ -207,7 +207,7 @@
                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
                                     href="{{ route('logout') }}" wire:navigate>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                        class="size-4 shrink-0 fill-white/40" width="24" height="24"
+                                        class="size-4 shrink-0 fill-slate-600 dark:fill-slate-500" width="24" height="24"
                                         stroke-width="2"
                                         stroke="currentColor"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                         <path

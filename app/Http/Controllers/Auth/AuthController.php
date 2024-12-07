@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\MyList;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -34,6 +36,8 @@ class AuthController extends Controller
 
     public function watchlist_page()
     {
-        return view('auth.watchlist');
+        $watchlists = MyList::where('userId', Auth::id())->get();
+
+        return view('auth.watchlist', compact('watchlists'));
     }
 }

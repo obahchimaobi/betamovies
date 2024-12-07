@@ -77,14 +77,14 @@
             @endif
 
             <h1 @class([
-                'text-black dark:text-slate-100 text-3xl',
+                'text-slate-800 dark:text-slate-100 text-3xl',
                 'font-bold' => true,
             ])>My Profile</h1>
 
             <div class="grid xl:grid-cols-3">
                 <div class="xl:mt-0 mt-5">
                     <h1 @class([
-                        'text-black dark:text-slate-100 text-base',
+                        'text-slate-800 dark:text-slate-100 text-base',
                         'font-bold' => true,
                     ])>Profile Information</h1>
                     <p @class([
@@ -122,7 +122,7 @@
             <div class="grid xl:grid-cols-3 pt-5">
                 <div>
                     <h1 @class([
-                        'text-black dark:text-slate-100 text-base',
+                        'text-slate-800 dark:text-slate-100 text-base',
                         'font-bold' => true,
                     ])>Browser Sessions</h1>
                     <p @class([
@@ -153,7 +153,7 @@
             <div class="grid xl:grid-cols-3 pt-5">
                 <div>
                     <h1 @class([
-                        'text-black dark:text-slate-100 text-base',
+                        'text-slate-800 dark:text-slate-100 text-base',
                         'font-bold' => true,
                     ])>Delete Account</h1>
                     <p @class([
