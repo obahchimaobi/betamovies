@@ -31,7 +31,7 @@
             @endforeach
         </div>
 
-        
+
     </nav>
 
 @endif

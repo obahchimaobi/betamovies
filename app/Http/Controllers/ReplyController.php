@@ -27,6 +27,7 @@ class ReplyController extends Controller
         $reply->save();
 
         session()->flash('success', 'Your reply was posted successfully');
+
         return redirect()->back();
     }
 
@@ -51,6 +52,7 @@ class ReplyController extends Controller
         $reply->save();
 
         session()->flash('success', 'Your reply was posted successfully');
+
         return redirect()->back();
     }
 }

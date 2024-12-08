@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reply;
+use App\Models\Comment;
 use App\Models\Movies;
 use App\Models\Series;
-use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class MoviesController extends Controller
 {
@@ -20,7 +19,7 @@ class MoviesController extends Controller
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
-            ->paginate(24)
+            ->paginate('12')
             ->map(function ($item) {
                 return (object) array_merge((array) $item, ['poster_path' => $item->poster_path ?? null]);
             });
@@ -29,7 +28,7 @@ class MoviesController extends Controller
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
-            ->paginate('24')
+            ->paginate('12')
             ->map(function ($item) {
                 return (object) array_merge((array) $item, ['poster_path' => $item->poster_path ?? null]);
             });
@@ -46,10 +45,10 @@ class MoviesController extends Controller
     public static function show($name)
     {
 
-        $cache = 'recommend_' . $name;
+        $cache = 'recommend_'.$name;
         $recom = Cache::get($cache);
 
-        if (!$recom) {
+        if (! $recom) {
             // Fetch recommendations from series and movies and merge them
             $recommend = DB::table('series')
                 ->where('vote_count', '>', 6)
@@ -73,7 +72,6 @@ class MoviesController extends Controller
             // Optionally shuffle the merged results if needed
             $recom = $recom->shuffle();
 
-
             Cache::put($cache, $recom, 360);
         }
 
@@ -93,11 +91,11 @@ class MoviesController extends Controller
         the below code uses the same structure as above
         read it and understand it's workings
         */
-        $cacheKey = 'moreSeries_' . $name;
+        $cacheKey = 'moreSeries_'.$name;
 
         $merged = Cache::get($cacheKey);
 
-        if (!$merged) {
+        if (! $merged) {
             $mergedSeries = DB::table('series')
                 ->where('formatted_name', '<>', $name)
                 // ->where('status', '!=', 'pending')
@@ -123,7 +121,6 @@ class MoviesController extends Controller
             // Cache the results with a dynamic expiration time
             Cache::put($cacheKey, $merged, $cacheDuration ?? 160);
         }
-
 
         $comments = Comment::where('title', $name)->with('replies')->orderByDesc('id')->get();
         $all_comments = Comment::where('title', $name)->count();
@@ -179,19 +176,40 @@ class MoviesController extends Controller
             ->orWhere('formatted_name', 'LIKE', "%{$query}%")
             ->get();
 
-            $allResults = $movies->concat($series);
+        $allResults = $movies->concat($series);
 
-            $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
+        $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
 
-            // Items per page
-            $perPage = 36;
+        // Items per page
+        $perPage = 36;
 
-            // Slice the collection to get the items to display in current page
-            $currentPageResults = $allResults->slice(($page * $perPage) - $perPage, $perPage)->values();
+        // Slice the collection to get the items to display in current page
+        $currentPageResults = $allResults->slice(($page * $perPage) - $perPage, $perPage)->values();
 
-            // Create our paginator and add it to the view
-            $paginatedResults = new LengthAwarePaginator($currentPageResults, count($allResults), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+        // Create our paginator and add it to the view
+        $paginatedResults = new LengthAwarePaginator($currentPageResults, count($allResults), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
         return view('media.search', compact('paginatedResults'));
+    }
+
+    public function new_releases()
+    {
+        $new_released_movies = Movies::where('vote_count', '>', '7')->get();
+        $new_released_series = Series::where('vote_count', '>', '7')->get();
+
+        $new_released = $new_released_movies->concat($new_released_series);
+
+        $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
+
+        // Items per page
+        $perPage = 24;
+
+        // Slice the collection to get the items to display in current page
+        $currentPageResults = $new_released->slice(($page * $perPage) - $perPage, $perPage)->values();
+
+        // Create our paginator and add it to the view
+        $paginatedResults = new LengthAwarePaginator($currentPageResults, count($new_released), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+
+        return view('media.new-releases', compact('paginatedResults'));
     }
 }

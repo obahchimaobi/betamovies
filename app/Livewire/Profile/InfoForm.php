@@ -3,12 +3,13 @@
 namespace App\Livewire\Profile;
 
 use App\Models\User;
-use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class InfoForm extends Component
 {
     public $name;
+
     public $email;
 
     public function mount()
@@ -25,7 +26,7 @@ class InfoForm extends Component
         // Validate the input
         $validated = $this->validate([
             'name' => 'required|string|max:255', // Add proper validation rules
-            'email' => "required|email|unique:users,email," . auth()->id(), // Ensure email uniqueness, excluding the current user
+            'email' => 'required|email|unique:users,email,'.auth()->id(), // Ensure email uniqueness, excluding the current user
         ]);
 
         // Update the user's information
@@ -37,7 +38,7 @@ class InfoForm extends Component
         session()->flash('success', 'Your profile information has been updated successfully.');
 
         // Redirect to the home route
-        $this->redirectRoute('user.profile', navigate:true);
+        $this->redirectRoute('user.profile', navigate: true);
     }
 
     public function render()

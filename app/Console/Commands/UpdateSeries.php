@@ -34,7 +34,7 @@ class UpdateSeries extends Command
             foreach ($fetch as $movie) {
 
                 $id = $movie->movieId;
-                $imageUrl = pathinfo($movie->imageUrl, PATHINFO_FILENAME) . '.jpg';
+                $imageUrl = pathinfo($movie->imageUrl, PATHINFO_FILENAME).'.jpg';
 
                 $response = Http::withToken('eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTg4ZDY3NDI1ZmJiN2VhYjIzNWViMDM4NTQyYjY0ZiIsInN1YiI6IjY1MjU3Y2FhMDcyMTY2NDViNDAwMTVhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GaTStrEdn0AWqdlwpzn75h8vo_-X5qoOxVxZEEBYJXc')
                     ->accept('application/json')

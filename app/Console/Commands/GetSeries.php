@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
-use Http;
 use App\Models\Series;
-use Illuminate\Support\Str;
+use Http;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class GetSeries extends Command
 {
@@ -40,7 +40,7 @@ class GetSeries extends Command
 
             if ($response->failed()) {
                 // Handle error
-                echo 'Http Error: ' . $response->body();
+                echo 'Http Error: '.$response->body();
 
                 break;
             }
@@ -58,51 +58,51 @@ class GetSeries extends Command
                     // Check if the series is already in the db
                     $fetch = Series::where('movieId', $id)->first();
 
-                    if (!$fetch) {
+                    if (! $fetch) {
                         $backdrop_path = isset($result['backdrop_path']) ? $result['backdrop_path'] : $result['poster_path'];
                         $country = isset($result['origin_country'][0]) ? $result['origin_country'][0] : null;
 
                         // dd($country);
                         $language = strtoupper($result['original_language']);
-                        $name = $result['name'] . ' ' . $year . ' download series';
+                        $name = $result['name'].' '.$year.' download series';
                         $overview = $result['overview'];
                         $poster_path = $result['poster_path'];
                         $vote_average = $result['vote_average'];
 
-                        $base_url = 'https://image.tmdb.org/t/p/w780' . $poster_path;
+                        $base_url = 'https://image.tmdb.org/t/p/w780'.$poster_path;
 
                         // download the backdrop image
-                        $backdrop_url = 'https://image.tmdb.org/t/p/w780' . $backdrop_path;
+                        $backdrop_url = 'https://image.tmdb.org/t/p/w780'.$backdrop_path;
 
                         // Get the contents of the image from the URL
                         $backdrop_contents = file_get_contents($backdrop_url);
 
                         // Get the image name from the URL (removing the extension)
-                        $backdrop_image_name = pathinfo($backdrop_url, PATHINFO_FILENAME) . '.webp';
+                        $backdrop_image_name = pathinfo($backdrop_url, PATHINFO_FILENAME).'.webp';
 
                         // Define the path to save the WebP image
                         $backdrop_directory = 'public/backdrop/';
-                        $backdrop_path = $backdrop_directory . $backdrop_image_name;
+                        $backdrop_path = $backdrop_directory.$backdrop_image_name;
 
-                        if (!is_dir(storage_path('app/' . $backdrop_directory))) {
-                            mkdir(storage_path('app/' . $backdrop_directory), 0755, true);
+                        if (! is_dir(storage_path('app/'.$backdrop_directory))) {
+                            mkdir(storage_path('app/'.$backdrop_directory), 0755, true);
                         }
 
                         // Check if the WebP image already exists in storage, if not, save it
-                        if (!Storage::exists($backdrop_path)) {
+                        if (! Storage::exists($backdrop_path)) {
                             // Save the image to a temporary path first
-                            $backdrop_tempPath = 'temp/' . basename($backdrop_url);
+                            $backdrop_tempPath = 'temp/'.basename($backdrop_url);
                             Storage::put($backdrop_tempPath, $backdrop_contents);
 
                             // Get the full temporary path
-                            $backdrop_fullTempPath = storage_path('app/' . $backdrop_tempPath);
+                            $backdrop_fullTempPath = storage_path('app/'.$backdrop_tempPath);
 
                             // Create an image resource from the temporary file (assume it's a JPG)
                             $backdrop_image = imagecreatefromjpeg($backdrop_fullTempPath);
 
                             if ($backdrop_image !== false) {
                                 // Convert and save the image as WebP
-                                $backdrop_webpPath = storage_path('app/' . $backdrop_path);
+                                $backdrop_webpPath = storage_path('app/'.$backdrop_path);
 
                                 // Quality: 0 (lowest file size) to 100 (highest quality)
                                 imagewebp($backdrop_image, $backdrop_webpPath);
@@ -127,31 +127,31 @@ class GetSeries extends Command
                         $contents = file_get_contents($url);
 
                         // Get the image name from the URL (removing the extension)
-                        $image_name = pathinfo($url, PATHINFO_FILENAME) . '.webp';
+                        $image_name = pathinfo($url, PATHINFO_FILENAME).'.webp';
 
                         // Define the path to save the WebP image
                         $directory = 'public/images/';
-                        $path = $directory . $image_name;
+                        $path = $directory.$image_name;
 
-                        if (!is_dir(storage_path('app/' . $directory))) {
-                            mkdir(storage_path('app/' . $directory), 0755, true);
+                        if (! is_dir(storage_path('app/'.$directory))) {
+                            mkdir(storage_path('app/'.$directory), 0755, true);
                         }
 
                         // Check if the WebP image already exists in storage, if not, save it
-                        if (!Storage::exists($path)) {
+                        if (! Storage::exists($path)) {
                             // Save the image to a temporary path first
-                            $tempPath = 'temp/' . basename($url);
+                            $tempPath = 'temp/'.basename($url);
                             Storage::put($tempPath, $contents);
 
                             // Get the full temporary path
-                            $fullTempPath = storage_path('app/' . $tempPath);
+                            $fullTempPath = storage_path('app/'.$tempPath);
 
                             // Create an image resource from the temporary file (assume it's a JPG)
                             $image = imagecreatefromjpeg($fullTempPath);
 
                             if ($image !== false) {
                                 // Convert and save the image as WebP
-                                $webpPath = storage_path('app/' . $path);
+                                $webpPath = storage_path('app/'.$path);
 
                                 // Quality: 0 (lowest file size) to 100 (highest quality)
                                 $quality = 65;
@@ -181,9 +181,9 @@ class GetSeries extends Command
                             'status' => 'pending',
                         ]);
 
-                        echo '✔ ' . $full_name . " - has been added to database ✔ \n";
+                        echo '✔ '.$full_name." - has been added to database ✔ \n";
                     } else {
-                        echo '✘ ' . $full_name . " - already in database ✘ \n";
+                        echo '✘ '.$full_name." - already in database ✘ \n";
                     }
                 }
             } else {
@@ -192,7 +192,7 @@ class GetSeries extends Command
             }
 
             // Check if there are more pages to fetch
-            if (!isset($data['total_pages']) || $pages >= $data['total_pages']) {
+            if (! isset($data['total_pages']) || $pages >= $data['total_pages']) {
                 break;
             }
 

@@ -51,7 +51,7 @@ class RegisterForm extends Component
         Mail::to($validatedData['email'])->send(new RegisterMail($user, $otp, $email, $hash, $verificationUrl));
 
         // return redirect()->route('login');
-        $this->redirectRoute('login', navigate:true);
+        $this->redirectRoute('login', navigate: true);
     }
 
     public function render()

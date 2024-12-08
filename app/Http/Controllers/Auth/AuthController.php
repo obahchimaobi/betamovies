@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\MyList;
 use App\Http\Controllers\Controller;
+use App\Models\MyList;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller

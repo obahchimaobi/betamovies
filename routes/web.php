@@ -7,26 +7,31 @@ use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\ReplyController;
+use App\Livewire\DisplayMovies;
+use App\Livewire\DisplaySeries;
+use App\Livewire\HomePage;
+use App\Livewire\NewReleases;
+use App\Livewire\Search;
+use App\Livewire\TopRated;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('home');
 // })->name('home');
-Route::get('/', [MoviesController::class, 'getMoviesAndSeries'])->name('home');
+Route::get('/', HomePage::class)->name('home');
 
-Route::get('/movies', [MoviesController::class, 'movies'])->name('movies.page');
-Route::get('/series', [MoviesController::class, 'series'])->name('series.page');
-Route::get('/new-releases', [MediaController::class, 'new_releases'])->name('new.releases');
+Route::get('/movies', DisplayMovies::class)->name('movies.page');
+Route::get('/series', DisplaySeries::class)->name('series.page');
+Route::get('/new-releases', NewReleases::class)->name('new.releases');
 Route::get('/details', [MediaController::class, 'details'])->name('details');
 Route::get('/details2', [MediaController::class, 'details2'])->name('details2');
-Route::get('/top-rated', [MoviesController::class, 'top_rated'])->name('rated.page');
+Route::get('/top-rated', TopRated::class)->name('rated.page');
 
 Route::get('/contact-us', [PageController::class, 'contact_us'])->name('contact.page');
 
 Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
-Route::get('/search', [MoviesController::class, 'search'])->name('search');
-Route::get('/autocomplete', [MoviesController::class, 'autocomplete'])->name('autocomplete');
+Route::get('/search', Search::class)->name('search');
 
 // Auth
 Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page');

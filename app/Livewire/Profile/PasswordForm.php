@@ -2,13 +2,15 @@
 
 namespace App\Livewire\Profile;
 
-use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
 
 class PasswordForm extends Component
 {
     public $old_password;
+
     public $new_password;
+
     public $new_password_confirmation;
 
     public function update_password()
@@ -23,19 +25,20 @@ class PasswordForm extends Component
             'new_password_confirmation' => 'required',
         ]);
 
-        if (!Hash::check($validate['old_password'], $userPassword)) {
-            # code...
+        if (! Hash::check($validate['old_password'], $userPassword)) {
+            // code...
             session()->flash('error', 'The old password you entered is incorrect. Please try again.');
-            $this->redirectRoute('user.profile', navigate:true);
+            $this->redirectRoute('user.profile', navigate: true);
         } else {
-            # code...
+            // code...
             $user->password = Hash::make($validate['new_password']);
             $user->save();
 
             session()->flash('success', 'Your profile information has been saved');
-            $this->redirectRoute('user.profile', navigate:true);
+            $this->redirectRoute('user.profile', navigate: true);
         }
     }
+
     public function render()
     {
         return view('livewire.profile.password-form');

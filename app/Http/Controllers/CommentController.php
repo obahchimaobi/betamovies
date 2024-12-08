@@ -12,7 +12,7 @@ class CommentController extends Controller
     {
         $request->validate([
             'commentor' => 'required|string',
-            'comment' => 'required|string'
+            'comment' => 'required|string',
         ]);
 
         $comment = Comment::create([
@@ -25,6 +25,7 @@ class CommentController extends Controller
         $comment->save();
 
         session()->flash('success', 'Your comment has been added successfully!');
+
         return redirect()->back();
     }
 }

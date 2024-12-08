@@ -30,7 +30,8 @@
                                                     class="sr-only">Search article</span></label>
                                             <input type="email" name="hs-search-article-1" id="hs-search-article-1"
                                                 class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none"
-                                                placeholder="Search article">
+                                                placeholder="Search article" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-basic-modal"
+                                                data-hs-overlay="#hs-basic-modal">
                                         </div>
                                         <div>
                                             <a class="size-[46px] inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"

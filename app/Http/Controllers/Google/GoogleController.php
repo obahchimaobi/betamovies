@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Google;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
@@ -27,7 +26,7 @@ class GoogleController extends Controller
         if ($existingUser) {
             Auth::login($existingUser);
 
-            if (!$existingUser->email_verified_at) {
+            if (! $existingUser->email_verified_at) {
                 $existingUser->email_verified_at = now();
                 $existingUser->save();
             }

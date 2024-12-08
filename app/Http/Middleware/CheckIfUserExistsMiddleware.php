@@ -16,8 +16,9 @@ class CheckIfUserExistsMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && !Auth::user()) {
+        if (Auth::check() && ! Auth::user()) {
             Auth::logout();
+
             return redirect()->route('login')->with('error', 'Your account no longer exists.');
         }
 
