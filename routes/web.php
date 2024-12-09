@@ -28,6 +28,8 @@ Route::get('/details', [MediaController::class, 'details'])->name('details');
 Route::get('/details2', [MediaController::class, 'details2'])->name('details2');
 Route::get('/top-rated', TopRated::class)->name('rated.page');
 
+Route::get('/tag/{genre}', [MoviesController::class, 'genres'])->name('genre');
+
 Route::get('/contact-us', [PageController::class, 'contact_us'])->name('contact.page');
 
 Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
@@ -40,13 +42,6 @@ Route::get('/reset-password', [AuthController::class, 'forgot_password_page'])->
 
 Route::post('/comment/{name}/{id}', [CommentController::class, 'comment'])->name('comment');
 Route::post('/reply/{name}/{id}/{comment_id}/{comment_name}', [ReplyController::class, 'reply'])->name('reply');
-
-// Route::get('/email/verify', function() {
-//     return view('auth.verify-email');
-// })->name('email.verify');
-// Route::get('/resend-code', function () {
-//     return view('auth.resend-code');
-// })->name('resend-code');
 
 Route::get('/email/verify/{email}/{hash}', function ($email, $hash) {
     $user = User::where('email', $email)->firstOrFail();

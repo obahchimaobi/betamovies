@@ -1,4 +1,30 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
+
+@foreach ($all as $item)
+    @section('title')
+        Download {{ $item->name }} ({{ $item->release_year }}) For Free | {{ config('app.name') }}
+    @endsection
+
+    @section('meta_description')
+        {{ $item->name }}: {{ $item->overview }}
+    @endsection
+
+    @section('og_title')
+        {{ $item->name }} ({{ $item->release_year }})
+    @endsection
+
+    @section('og_image')
+        {{ asset('storage/images/' . $item->poster_path) }}
+    @endsection
+
+    @section('og_description')
+        Download {{ $item->name }} ({{ $item->release_year }}) from {{ config('app.name') }} for free
+    @endsection
+
+    @section('og_url')
+        {{ Request::url() }}
+    @endsection
+@endforeach
 
 @section('content')
     <div>
@@ -23,17 +49,24 @@
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="flex items-center space-x-1">
 
-                                                <span class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->vote_count }}</span>
+                                                <span
+                                                    class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->vote_count }}</span>
                                             </li>
 
-                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
-                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->release_year }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong>
+                                            </li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->release_year }}
+                                            </li>
 
-                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
-                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->language }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong>
+                                            </li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->language }}
+                                            </li>
 
-                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
-                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->origin_country }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong>
+                                            </li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">
+                                                {{ $item->origin_country }}</li>
                                         </ul>
 
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
@@ -66,7 +99,8 @@
                                                 <i class="fa-solid fa-download"></i> <button class="uppercase">Download
                                                 </button>
                                             </li>
-                                            <livewire:watch-list :movieId="$item->id" :movie_name="$item->name" :genres="$item->genres" :formatted_name="$item->formatted_name" :poster_path="$item->poster_path" />
+                                            <livewire:watch-list :movieId="$item->id" :movie_name="$item->name" :genres="$item->genres"
+                                                :formatted_name="$item->formatted_name" :poster_path="$item->poster_path" />
                                         </ul>
                                     </div>
                                 </div>
@@ -79,7 +113,7 @@
                     @if (isset($item))
                         @if ($item->type == 'series')
                             <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
-                            style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
+                                style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
                                 <div class="absolute inset-0 dark:bg-black bg-white/90 opacity-95"></div>
                                 <div class="mx-auto py-5 relative">
 
@@ -91,17 +125,24 @@
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="flex items-center space-x-1">
 
-                                                <span class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->vote_count }}</span>
+                                                <span
+                                                    class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->vote_count }}</span>
                                             </li>
 
-                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
-                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->release_year }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong>
+                                            </li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->release_year }}
+                                            </li>
 
-                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
-                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->language }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong>
+                                            </li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->language }}
+                                            </li>
 
-                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong></li>
-                                            <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->origin_country }}</li>
+                                            <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl"><strong>.</strong>
+                                            </li>
+                                            <li class="dark:text-gray-300 text-slate-700 text-sm">
+                                                {{ $item->origin_country }}</li>
                                         </ul>
 
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
@@ -129,7 +170,8 @@
                                                 <i class="fa fa-play pr-1" aria-hidden="true"></i> <button
                                                     class="uppercase">Trailer</button>
                                             </li>
-                                            <livewire:watch-list :movieId="$item->id" :movie_name="$item->name" :genres="$item->genres" :formatted_name="$item->formatted_name" :poster_path="$item->poster_path" />
+                                            <livewire:watch-list :movieId="$item->id" :movie_name="$item->name" :genres="$item->genres"
+                                                :formatted_name="$item->formatted_name" :poster_path="$item->poster_path" />
                                         </ul>
                                     </div>
                                 </div>
@@ -437,19 +479,22 @@
                                 <div class="grid md:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">
                                     @isset($recom)
                                         @foreach ($recom as $recommended)
-                                        <div class="w-full">
-                                            <a href="{{ route('movie.details', ['name'=>$recommended->formatted_name]) }}" wire:navigate>
-                                                <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
-                                                    alt=""
-                                                    class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
-                                            </a>
+                                            <div class="w-full">
+                                                <a href="{{ route('movie.details', ['name' => $recommended->formatted_name]) }}"
+                                                    wire:navigate>
+                                                    <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
+                                                        alt=""
+                                                        class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
+                                                </a>
 
-                                            <div class="flex justify-between mt-2 gap-10">
-                                                <a href="{{ route('movie.details', ['name'=>$recommended->formatted_name]) }}"
-                                                    class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm dark:hover:text-slate-300"
-                                                    wire:navigate><span class="">{{ $recommended->name }} ({{ $recommended->release_year }})</span></a>
+                                                <div class="flex justify-between mt-2 gap-10">
+                                                    <a href="{{ route('movie.details', ['name' => $recommended->formatted_name]) }}"
+                                                        class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm dark:hover:text-slate-300"
+                                                        wire:navigate><span class="">{{ $recommended->name }}
+                                                            ({{ $recommended->release_year }})
+                                                        </span></a>
+                                                </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     @endisset
                                 </div>
@@ -465,137 +510,71 @@
                             <div class="col-span-12 sm:col-span-12 md:col-span-6 sm:gap-4">
                                 <h1 class="font-bold dark:text-white text-slate-900 text-2xl pb-4">Seasons and Episodes</h1>
                                 <div class="hs-accordion-group space-y-3">
-                                    <div class="hs-accordion active bg-white border -mt-px rounded-lg dark:bg-slate-800 dark:border-slate-700"
-                                        id="hs-bordered-heading-one">
-                                        <button
-                                            class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
-                                            aria-expanded="true" aria-controls="hs-basic-bordered-collapse-one">
-                                            <svg class="hs-accordion-active:hidden block size-3.5"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M5 12h14"></path>
-                                                <path d="M12 5v14"></path>
-                                            </svg>
-                                            <svg class="hs-accordion-active:block hidden size-3.5"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M5 12h14"></path>
-                                            </svg>
-                                            Season 01 <span class="text-sm">9 Episodes</span>
-                                        </button>
-                                        <div id="hs-basic-bordered-collapse-one"
-                                            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-                                            role="region" aria-labelledby="hs-bordered-heading-one">
-                                            <div class="pb-4 px-5">
-                                                <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 mb-5">
-                                                <div class="grid xl:grid-cols-9 items-center gap-10">
-                                                    <div class="col-span-1">
-                                                        <h1 class="text-end font-bold text-slate-800 dark:text-slate-200 text-3xl">01</h1>
-                                                    </div>
-                                                    <div class="col-span-8 -mt-6 sm:-mt-0 flex gap-4">
-                                                        <img src="https://img.awafim.tv/images/dzMP1J3rq1L1.192x0.webp"
-                                                            alt="" class="xl:h-28 h-40 rounded-md">
-                                                        <h1 class="font-inter"><a href=""
-                                                                class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
-                                                                wire:navigate>Chapter One: The Pilot</a> <br> <span
-                                                                class="dark:text-slate-300 text-xs">Lorem ipsum dolor sit amet
-                                                                consectetur adipisicing elit. Repudiandae corporis ut eveniet
-                                                                pariatur. Placeat, quia, soluta asperiores iusto architecto,
-                                                                dolor obcaecati eos magni voluptatibus molestias ad assumenda
-                                                                reprehenderit. In, voluptas.</span></h1>
-                                                        <br>
-                                                    </div>
-                                                </div>
-                                                <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 my-5">
-                                                <div class="grid xl:grid-cols-9 items-center gap-10">
-                                                    <div class="col-span-1">
-                                                        <h1 class="text-end font-bold text-slate-800 dark:text-slate-200 text-3xl">02</h1>
-                                                    </div>
-                                                    <div class="col-span-8 -mt-6 sm:-mt-0 flex gap-4">
-                                                        <img src="https://img.awafim.tv/images/dzMP1J3rq1L1.192x0.webp"
-                                                            alt="" class="xl:h-28 h-40 rounded-md">
-                                                        <h1 class="font-inter"><a href=""
-                                                                class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
-                                                                wire:navigate>Chapter Two: The Pilot</a> <br> <span
-                                                                class="dark:text-slate-300 text-xs">Lorem ipsum dolor sit amet
-                                                                consectetur adipisicing elit. Repudiandae corporis ut eveniet
-                                                                pariatur. Placeat, quia, soluta asperiores iusto architecto,
-                                                                dolor obcaecati eos magni voluptatibus molestias ad assumenda
-                                                                reprehenderit. In, voluptas.</span></h1>
-                                                        <br>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @if (count($seasons) > 0)
+                                        @php
+                                            $groupedSeasons = $seasons->groupBy('season_number');
+                                        @endphp
 
-                                    <div class="hs-accordion bg-white border -mt-px rounded-lg dark:bg-slate-800 dark:border-slate-700"
-                                        id="hs-bordered-heading-two">
-                                        <button
-                                            class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
-                                            aria-expanded="false" aria-controls="hs-basic-bordered-collapse-two">
-                                            <svg class="hs-accordion-active:hidden block size-3.5"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M5 12h14"></path>
-                                                <path d="M12 5v14"></path>
-                                            </svg>
-                                            <svg class="hs-accordion-active:block hidden size-3.5"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M5 12h14"></path>
-                                            </svg>
-                                            Season 02 <span class="text-sm">5 Episodes</span>
-                                        </button>
-                                        <div id="hs-basic-bordered-collapse-two"
-                                            class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                                            role="region" aria-labelledby="hs-bordered-heading-two">
-                                            <div class="pb-4 px-5">
-                                                <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 mb-5">
-                                                <div class="grid xl:grid-cols-9 items-center gap-10">
-                                                    <div class="col-span-1">
-                                                        <h1 class="text-end font-bold text-white text-3xl">01</h1>
-                                                    </div>
-                                                    <div class="col-span-8 -mt-6 sm:-mt-0 flex gap-4">
-                                                        <img src="https://img.awafim.tv/images/dzMP1J3rq1L1.192x0.webp"
-                                                            alt="" class="xl:h-28 h-40 rounded-md">
-                                                        <h1 class="font-inter"><a href=""
-                                                                class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
-                                                                wire:navigate>Chapter One: The Pilot</a> <br> <span
-                                                                class="dark:text-slate-300 text-xs">Lorem ipsum dolor sit amet
-                                                                consectetur adipisicing elit. Repudiandae corporis ut eveniet
-                                                                pariatur. Placeat, quia, soluta asperiores iusto architecto,
-                                                                dolor obcaecati eos magni voluptatibus molestias ad assumenda
-                                                                reprehenderit. In, voluptas.</span></h1>
-                                                        <br>
-                                                    </div>
-                                                </div>
-                                                <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 my-5">
-                                                <div class="grid xl:grid-cols-9 items-center gap-10">
-                                                    <div class="col-span-1">
-                                                        <h1 class="text-end font-bold text-white text-3xl">02</h1>
-                                                    </div>
-                                                    <div class="col-span-8 -mt-6 sm:-mt-0 flex gap-4">
-                                                        <img src="https://img.awafim.tv/images/dzMP1J3rq1L1.192x0.webp"
-                                                            alt="" class="xl:h-28 h-40 rounded-md">
-                                                        <h1 class="font-inter"><a href=""
-                                                                class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
-                                                                wire:navigate>Chapter Two: The Pilot</a> <br> <span
-                                                                class="dark:text-slate-300 text-xs">Lorem ipsum dolor sit amet
-                                                                consectetur adipisicing elit. Repudiandae corporis ut eveniet
-                                                                pariatur. Placeat, quia, soluta asperiores iusto architecto,
-                                                                dolor obcaecati eos magni voluptatibus molestias ad assumenda
-                                                                reprehenderit. In, voluptas.</span></h1>
-                                                        <br>
-                                                    </div>
+                                        @foreach ($groupedSeasons as $seasonNumber => $episodes)
+                                            <div class="hs-accordion {{ $loop->first ? 'active' : '' }} bg-white border -mt-px rounded-lg dark:bg-slate-800 dark:border-slate-700"
+                                                id="hs-bordered-heading-{{ $loop->index }}}">
+                                                <button
+                                                    class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
+                                                    aria-expanded="true"
+                                                    aria-controls="hs-basic-bordered-collapse-{{ $loop->index }}">
+                                                    <svg class="hs-accordion-active:hidden block size-3.5"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M5 12h14"></path>
+                                                        <path d="M12 5v14"></path>
+                                                    </svg>
+                                                    <svg class="hs-accordion-active:block hidden size-3.5"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M5 12h14"></path>
+                                                    </svg>
+                                                    Season {{ $seasonNumber }} <span class="text-sm">{{ $episodes->count() }}
+                                                        Episodes</span>
+                                                </button>
+
+                                                <div id="hs-basic-bordered-collapse-{{ $loop->index }}"
+                                                    class="hs-accordion-content {{ $loop->first ? '' : 'hidden' }} w-full overflow-hidden transition-[height] duration-300"
+                                                    role="region" aria-labelledby="hs-bordered-heading-{{ $loop->index }}">
+                                                    @foreach ($episodes as $index => $episode)
+                                                        <div class="pb-4 px-5">
+                                                            <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 mb-5">
+                                                            <div class="grid xl:grid-cols-9 items-center gap-10">
+                                                                <div class="col-span-1">
+                                                                    <h1
+                                                                        class="text-end font-bold text-slate-800 dark:text-slate-200 text-3xl">
+                                                                        {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                                                                    </h1>
+                                                                </div>
+                                                                <div class="col-span-8 -mt-6 sm:-mt-0 flex gap-4">
+                                                                    <img src="{{ asset('storage/seasons/' . $episode->poster_path) }}"
+                                                                        alt="{{ $episode->title }}"
+                                                                        class="xl:h-28 h-40 rounded-md">
+                                                                    <h1 class="font-inter">
+                                                                        <a href=""
+                                                                            class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
+                                                                            wire:navigate>
+                                                                            {{ $episode->episode_title ?? $episode->name . ' Season ' . $episode->season_number . ' Episode ' . $episode->episode_number }}
+                                                                        </a>
+                                                                        <br>
+                                                                        <span
+                                                                            class="dark:text-slate-300 text-xs">{{ $episode->overview }}</span>
+                                                                    </h1>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        @endforeach
+                                    @endif
+
                                 </div>
 
                                 <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300 my-10">
@@ -761,19 +740,22 @@
                                 <div class="grid lg:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">
                                     @isset($recom)
                                         @foreach ($recom as $recommended)
-                                        <div class="w-full">
-                                            <a href="{{ route('movie.details', ['name'=>$recommended->formatted_name]) }}" wire:navigate>
-                                                <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
-                                                    alt=""
-                                                    class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
-                                            </a>
+                                            <div class="w-full">
+                                                <a href="{{ route('movie.details', ['name' => $recommended->formatted_name]) }}"
+                                                    wire:navigate>
+                                                    <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
+                                                        alt=""
+                                                        class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
+                                                </a>
 
-                                            <div class="flex justify-between mt-2 gap-10">
-                                                <a href="{{ route('movie.details', ['name'=>$recommended->formatted_name]) }}"
-                                                    class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm dark:hover:text-slate-300"
-                                                    wire:navigate><span class="">{{ $recommended->name }} ({{ $recommended->release_year }})</span></a>
+                                                <div class="flex justify-between mt-2 gap-10">
+                                                    <a href="{{ route('movie.details', ['name' => $recommended->formatted_name]) }}"
+                                                        class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm dark:hover:text-slate-300"
+                                                        wire:navigate><span class="">{{ $recommended->name }}
+                                                            ({{ $recommended->release_year }})
+                                                        </span></a>
+                                                </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     @endisset
                                 </div>

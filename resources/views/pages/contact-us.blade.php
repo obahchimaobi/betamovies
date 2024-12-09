@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('components.layouts.app')
+
+@section('title')
+    Contact Us | Reach Out to {{ config('app.name') }} for Support and Inquiries
+@endsection
 
 @section('content')
     <div>

@@ -1,4 +1,12 @@
 <div>
+    @section('title')
+        Download Top Rated Movies For Free | {{ config('app.name') }}
+    @endsection
+
+    @section('meta_description')
+    Explore top-rated movies on {{ config('app.name') }}. Download the highest-rated films and add your favorites to your watchlist today.
+    @endsection
+
     @section('content')
         <div>
 

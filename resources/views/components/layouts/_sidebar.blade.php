@@ -1,4 +1,31 @@
 <!-- Sidebar -->
+@php
+    use App\Models\Movies;
+    use App\Models\Series;
+
+    $movieGenres = Movies::pluck('genres')->filter(function ($genre) {
+        // Remove empty genres and exclude genres containing the '&' character
+        return !empty($genre) && strpos($genre, '&') === false;
+    });
+
+    $seriesGenres = Series::pluck('genres')->filter(function ($genre) {
+        // Remove empty genres and exclude genres containing the '&' character
+        return !empty($genre) && strpos($genre, '&') === false;
+    });
+
+    // Combine both collections, split by comma, and trim spaces
+    $allGenres = $movieGenres
+        ->concat($seriesGenres)
+        ->flatMap(function ($genres) {
+            return explode(',', $genres); // Split genres by comma
+        })
+        ->map(fn($genre) => trim($genre)) // Trim whitespace around genres
+        ->unique() // Ensure each genre is unique
+        ->sort() // Optional: Sort alphabetically
+        ->values();
+
+@endphp
+
 <div id="hs-application-sidebar"
     class="hs-overlay  [--auto-close:lg]
 hs-overlay-open:translate-x-0
@@ -93,12 +120,15 @@ dark:bg-slate-900 dark:border-slate-800"
                                         class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
                                         role="region" aria-labelledby="users-accordion-sub-1">
                                         <ul class="pt-1 ps-8 space-y-1">
-                                            <li>
-                                                <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
-                                                    href="#">
-                                                    Action
-                                                </a>
-                                            </li>
+                                            @foreach ($allGenres as $genres)
+                                                <li>
+                                                    <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
+                                                        href="{{ route('genre', ['genre' => Str::lower($genres)]) }}"
+                                                        wire:navigate>
+                                                        {{ $genres }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </li>

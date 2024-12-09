@@ -15,8 +15,8 @@ class HomePage extends Component
     public function render()
     {
         $all_series = DB::table('series')
-            ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
+            // ->whereNull('deleted_at')
+            // ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
             ->paginate('12')
@@ -25,8 +25,8 @@ class HomePage extends Component
             });
 
         $all_movies = DB::table('movies')
-            ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
+            // ->whereNull('deleted_at')
+            // ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
             ->paginate('12')

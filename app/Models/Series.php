@@ -26,4 +26,9 @@ class Series extends Model
         'status',
         'approved_at',
     ];
+
+    public function series()
+    {
+        return $this->hasMany(Seasons::class);
+    }
 }

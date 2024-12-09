@@ -2,7 +2,6 @@
     {{-- Stop trying to control. --}}
     @section('content')
         <div>
-
             <!-- Content -->
             <div class="w-full lg:ps-64">
                 <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -23,13 +22,13 @@
                                     <!-- Form -->
                                     <form>
                                         <div
-                                            class="relative z-10 flex gap-x-3 p-2 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-800 dark:border-slate-700 dark:shadow-gray-900/20">
-                                            <div class="w-full">
+                                            class="relative z-10 flex gap-x-3 p-2 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-800 dark:border-slate-700 dark:shadow-gray-900/20 hover:cursor-pointer">
+                                            <div class="w-full hover:cursor-pointer">
                                                 <label for="hs-search-article-1"
-                                                    class="block text-sm text-gray-700 font-medium dark:text-white"><span
+                                                    class="block text-sm text-gray-700 font-medium dark:text-white hover:cursor-pointer"><span
                                                         class="sr-only">Search article</span></label>
                                                 <input type="email" name="hs-search-article-1" id="hs-search-article-1"
-                                                    class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none"
+                                                    class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none hover:cursor-pointer"
                                                     placeholder="Search article" aria-haspopup="dialog"
                                                     aria-expanded="false" aria-controls="hs-basic-modal"
                                                     data-hs-overlay="#hs-basic-modal">

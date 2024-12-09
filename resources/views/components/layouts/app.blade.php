@@ -5,11 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Betamovies: @yield('title', 'Download The Best Movies and Series')</title>
+    <title>@yield('title', 'Download moves and series for free | ' . config('app.name') )</title>
 
     <link rel="shortcut icon" href="{{ asset('icons/betamovies-icon.png') }}" type="image/x-icon">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <meta name="description" content="@yield('meta_description', 'Discover a world of movies and series on '. config('app.name') .'. Explore, download, and watch top-rated, new releases, and your favorite films, all in one place. Join now and build your ultimate watchlist!')">
+
+    <meta name="keywords" content="movies series mkv srt mp4 season episode download">
+
+    <meta property="og:title" content="@yield('og_title', 'Download Free Hollywood Movies, Series and Drama Online | ' . config('app.name') )">
+    <meta property="og:description" content="@yield('og_description', 'Explore the best movies and series on '.config('app.name').'. Download the latest releases, add to your watchlist, and enjoy top-rated films all in one place.')">
+    <meta property="og:image" content="@yield('og_image', asset('icons/betamovies.jpeg'))">
+    <meta property="og:url" content="@yield('og_url', Request::url() )">
+    <meta property="og:type" content="Website">
+
+    <meta property="og:image:width" content="1200"> <!-- Replace with your desired width -->
+    <meta property="og:image:height" content="1200">
 
     {{-- GOOGLE FONTS --}}
     {{-- ROBOTO --}}
@@ -45,11 +58,11 @@
 
 <body class="dark:bg-slate-900 bg-white font-grotesk">
 
-    @include('layouts._header')
-    @include('layouts._main')
-    @include('layouts._sidebar')
+    @include('components.layouts._header')
+    @include('components.layouts._main')
+    @include('components.layouts._sidebar')
     @yield('content')
-    @include('layouts._footer')
+    @include('components.layouts._footer')
 
     @livewireScripts
     <!-- ========== END MAIN CONTENT ========== -->
