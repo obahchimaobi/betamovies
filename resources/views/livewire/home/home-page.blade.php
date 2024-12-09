@@ -42,6 +42,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
+                    </button>
 
                 </div>
             @endif
@@ -59,32 +60,37 @@
             </h1>
 
             <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
-                <div class="w-full">
-                    <a href="" wire:navigate><img
-                            src="https://nkiri.com/wp-content/uploads/2024/12/a-christmas-well-traveled-hollywood-movie-200x300.jpg"
-                            alt=""
-                            class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                @foreach ($trending_movies as $trending)
+                    <div class="w-full">
+                        <a href="" wire:navigate><img
+                                src="https://nkiri.com/wp-content/uploads/2024/12/a-christmas-well-traveled-hollywood-movie-200x300.jpg"
+                                alt=""
+                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
-                    <div class="flex justify-between mt-2 gap-10">
-                        <a href=""
-                            class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                            wire:navigate><span class="">HitPig (2024)</span></a>
-                        <span class="text-gray-800 font-semibold dark:text-white lg:text-xs text-sms">8.1</span>
+                        <div class="flex justify-between mt-2 gap-10">
+                            <a href=""
+                                class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
+                                wire:navigate><span class="">HitPig (2024)</span></a>
+                            <span class="text-gray-800 font-semibold dark:text-white lg:text-xs text-sms">8.1</span>
+                        </div>
                     </div>
+                @endforeach
+            </div>
+
+            @if (count($trending_movies) > 12)
+                <div class="mx-auto text-center">
+                    <button type="button"
+                        class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        Show more
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </button>
                 </div>
-            </div>
-
-            <div class="mx-auto text-center">
-                <button type="button"
-                    class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                    Show more
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-4">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-
-            </div>
+            @else
+            @endif
         </div>
     </div>
     <!-- End Content -->
@@ -100,32 +106,37 @@
             </h1>
 
             <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
-                <div class="w-full">
-                    <a href="" wire:navigate><img
-                            src="https://nkiri.com/wp-content/uploads/2024/11/hitpig-hollywood-movie-200x300.jpg"
-                            alt=""
-                            class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                @foreach ($trending_series as $trending_serie)
+                    <div class="w-full">
+                        <a href="" wire:navigate><img
+                                src="https://nkiri.com/wp-content/uploads/2024/11/hitpig-hollywood-movie-200x300.jpg"
+                                alt=""
+                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
-                    <div class="flex justify-between mt-2 gap-10">
-                        <a href=""
-                            class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
-                            wire:navigate><span class="">HitPig (2024)</span></a>
-                        <span class="text-gray-800 font-semibold dark:text-white lg:text-xs text-sms">8.1</span>
+                        <div class="flex justify-between mt-2 gap-10">
+                            <a href=""
+                                class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm truncate dark:hover:text-slate-300"
+                                wire:navigate><span class="">HitPig (2024)</span></a>
+                            <span class="text-gray-800 font-semibold dark:text-white lg:text-xs text-sms">8.1</span>
+                        </div>
                     </div>
+                @endforeach
+            </div>
+
+            @if (count($trending_series) > 12)
+                <div class="mx-auto text-center">
+                    <button type="button"
+                        class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        Show more
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </button>
                 </div>
-            </div>
-
-            <div class="mx-auto text-center">
-                <button type="button"
-                    class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                    Show more
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-4">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-
-            </div>
+            @else
+            @endif
         </div>
     </div>
     <!-- End Content -->

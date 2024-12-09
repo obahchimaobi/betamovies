@@ -71,14 +71,16 @@
 
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="text-gray-300">
-                                                <a href=""><span
-                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Action</span>
-                                                </a>
-                                                <a href=""><span
-                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Drama</span>
-                                                </a>
-                                                <a href=""><span
-                                                        class="text-xs border border-slate-500 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 dark:border-slate-700 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Adventure</span></a>
+                                                @php
+                                                    $genres = explode(', ', $item->genres);
+                                                @endphp
+
+                                                @foreach ($genres as $genre)
+                                                    <a href="{{ route('genre', ['genre' => Str::lower($genre)]) }}"
+                                                        wire:navigate><span
+                                                            class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-1 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">{{ trim($genre) }}</span>
+                                                    </a>
+                                                @endforeach
                                             </li>
                                         </ul>
 
@@ -147,14 +149,16 @@
 
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="text-gray-300">
-                                                <a href=""><span
-                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Action</span>
-                                                </a>
-                                                <a href=""><span
-                                                        class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-2 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Drama</span>
-                                                </a>
-                                                <a href=""><span
-                                                        class="text-xs border border-slate-500 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 dark:border-slate-700 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">Adventure</span></a>
+                                                @php
+                                                    $genres = explode(', ', $item->genres);
+                                                @endphp
+
+                                                @foreach ($genres as $genre)
+                                                    <a href="{{ route('genre', ['genre' => Str::lower($genre)]) }}"
+                                                        wire:navigate><span
+                                                            class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-1 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">{{ trim($genre) }}</span>
+                                                    </a>
+                                                @endforeach
                                             </li>
                                         </ul>
 

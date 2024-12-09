@@ -1,5 +1,9 @@
 @extends('components.layouts.app')
 
+@section('title')
+    Download {{ Str::ucfirst($genre) }} movies and series for free | {{ config('app.name') }}
+@endsection
+
 @section('content')
     <div>
 
@@ -21,8 +25,7 @@
                             </svg>
                         </li>
                         <li class="inline-flex items-center">
-                            <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-slate-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
-                                href="#">
+                            <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-slate-500 dark:hover:text-blue-500 dark:focus:text-blue-500 hover:cursor-default">
                                 tag
                             </a>
                             <svg class="shrink-0 size-5 text-gray-400 dark:text-slate-600 mx-2" width="16" height="16"

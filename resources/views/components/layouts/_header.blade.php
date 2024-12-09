@@ -37,7 +37,7 @@
             <div class="hidden md:block">
                 <!-- Search Input -->
                 <div class="relative">
-
+                    
                 </div>
                 <!-- End Search Input -->
             </div>
@@ -85,7 +85,7 @@
                 </button>
 
                 <button type="button"
-                    class="size-[38px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-700 dark:focus:bg-slate-700" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-basic-modal"
+                    class="size-[38px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-700 dark:focus:bg-slate-700 md:hidden" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-basic-modal"
                     data-hs-overlay="#hs-basic-modal">
                     <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -96,76 +96,15 @@
                     <span class="sr-only">Search</span>
                 </button>
 
-                {{-- @auth
-                    <div class="hs-dropdown [--placement:bottom-right] relative inline-flex">
-                        <button id="hs-dropdown-account" type="button"
-                            class="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-800 dark:focus:bg-slate-800 relative"
-                            aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-
-                            <!-- Notification Icon -->
-                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-                                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-                            </svg>
-
-                            <!-- Notification Badge (Red Dot) -->
-                            <span class="flex absolute top-1 end-2 size-3 -mt-1.5 -me-1.5">
-                                <span class="animate-ping absolute inline-flex size-full rounded-full bg-red-400 opacity-75 dark:bg-red-600"></span>
-                                <span class="relative inline-flex rounded-full size-3 bg-red-500"></span>
-                              </span>
-
-                            <span class="sr-only">Notifications</span>
-                        </button>
-
-
-                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
-                            role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-account">
-                            <div class="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-slate-700">
-                                <p class="text-sm text-gray-500 dark:text-slate-400">You are subscribed to</p>
-                                <p class="text-sm font-medium text-gray-800 dark:text-neutral-200">
-                                    New Movies Alerts
-                                </p>
-                            </div>
-
-                            <div class="p-1.5 space-y-0.5">
-                                <!-- Notification item 1 -->
-                                <a href="{{ route('details') }}"
-                                    class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300" wire:navigate>
-                                    <!-- Image on the left -->
-                                    <img src="https://img.awafim.tv/images/RrvP6bWZAAn2.192x0.webp" alt="movie image"
-                                        class="w-12 h-12 rounded-full object-cover">
-                                    <!-- Movie title and year in one line -->
-                                    <div class="flex flex-col justify-center">
-                                        <span class="text-sm font-medium text-gray-800 dark:text-neutral-200">Movie
-                                            Title</span>
-                                        <span class="text-xs text-gray-500 dark:text-slate-400">2024</span>
-                                    </div>
-                                </a>
-
-                                <!-- Notification item 2 -->
-                                <a href="#"
-                                    class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300">
-                                    <!-- Image on the left -->
-                                    <img src="https://img.awafim.tv/images/1kw5y30yLpoA.192x0.webp" alt="movie image"
-                                        class="w-12 h-12 rounded-full object-cover">
-                                    <!-- Movie title and year in one line -->
-                                    <div class="flex flex-col justify-center">
-                                        <span class="text-sm font-medium text-gray-800 dark:text-neutral-200">Another Movie
-                                            Title</span>
-                                        <span class="text-xs text-gray-500 dark:text-slate-400">2024</span>
-                                    </div>
-                                </a>
-
-                                <!-- More items can be added here in the same structure -->
-                            </div>
-
-                            <!-- Other links, such as Profile, Watchlist, etc., remain unchanged -->
-
-                        </div>
+                <div class="relative hover:cursor-pointer md:block hidden" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-basic-modal"
+                data-hs-overlay="#hs-basic-modal">
+                    <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
+                      <svg class="shrink-0 size-4 text-gray-400 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                      </svg>
                     </div>
-                @endauth --}}
+                    <input class="py-3 ps-10 pe-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none hover:cursor-pointer" type="text" aria-expanded="false" placeholder="Search" value="">
 
                 @auth
                     <div class="hs-dropdown [--placement:bottom-right] relative inline-flex">

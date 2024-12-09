@@ -24,6 +24,6 @@
             {{ $paginatedResults->links(data: ['scrollTo' => false]) }}
         </div>
     @else
-        <p>No result found</p>
+        <p class="text-center text-2xl text-slate-800 dark:text-slate-200 font-semibold mt-20">No result found</p>
     @endif
 </div>

@@ -223,12 +223,12 @@ class MoviesController extends Controller
     {
         $movies = Movies::where('genres', 'LIKE', "%{$genre}%")
             ->whereNull('deleted_at')
-            // ->where('status', '!=', 'pending')
+            ->where('status', '!=', 'pending')
             ->get();
 
         $series = Series::where('genres', 'LIKE', "%{$genre}%")
             ->whereNull('deleted_at')
-            // ->where('status', '!=', 'pending')
+            ->where('status', '!=', 'pending')
             ->get();
 
         $merge_them = $movies->merge($series);
