@@ -36,7 +36,8 @@ class AuthController extends Controller
 
     public function watchlist_page()
     {
-        $watchlists = MyList::where('userId', Auth::id())->get();
+        $watchlists = MyList::where('userId', Auth::id())
+        ->whereNull('deleted_at')->get();
 
         return view('auth.watchlist', compact('watchlists'));
     }

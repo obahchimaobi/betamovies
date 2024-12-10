@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('watchlist', function (Blueprint $table) {
+        Schema::create('my_lists', function (Blueprint $table) {
             $table->id();
             $table->string('movieId')->nullable();
             $table->string('movie_name')->nullable();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('watchlist');
+        Schema::dropIfExists('my_lists');
     }
 };

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('watchlist', function (Blueprint $table) {
+        Schema::table('my_lists', function (Blueprint $table) {
             //
             $table->string('userId')->nullable()->after('id');
             $table->string('userName')->nullable()->after('userId');
@@ -24,7 +24,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('watchlist', function (Blueprint $table) {
+        Schema::table('my_lists', function (Blueprint $table) {
             //
         });
     }

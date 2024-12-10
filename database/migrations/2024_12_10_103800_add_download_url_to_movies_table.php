@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('reply', function (Blueprint $table) {
+        Schema::table('movies', function (Blueprint $table) {
             //
-            $table->string('reply_is_to')->nullable();
+            $table->string('download_url')->nullable()->after('status');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('reply', function (Blueprint $table) {
+        Schema::table('movies', function (Blueprint $table) {
             //
         });
     }
