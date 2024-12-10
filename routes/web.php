@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Download\DownloadController;
 use App\Http\Controllers\Google\GoogleController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\MoviesController;
@@ -73,5 +74,7 @@ Route::get('/logout', function () {
 
 Route::get('/profile', [AuthController::class, 'profile_page'])->name('user.profile')->middleware('auth');
 Route::get('/my-watchlist', [AuthController::class, 'watchlist_page'])->name('my.watchlist')->middleware('auth');
+
+Route::get('/download-movie/{name}', [DownloadController::class, 'downloadMovie'])->name('download.movie');
 
 Route::get('/{name}', [MoviesController::class, 'show'])->name('movie.details');

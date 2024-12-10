@@ -96,11 +96,19 @@
                                                 <i class="fa fa-play pr-1" aria-hidden="true"></i> <button
                                                     class="uppercase">Trailer</button>
                                             </li>
+                                            @if (is_null($item->download_url) || empty($item->download_url))
                                             <li
+                                                class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs font-black duration-200 hover:cursor-not-allowed">
+                                                <i class="fa-solid fa-download hover:cursor-not-allowed"></i> <button class="uppercase hover:cursor-not-allowed">Download Unavailable
+                                                </button>
+                                            </li>
+                                            @else
+                                            <a href="{{ route('download.movie', ['name'=>$item->formatted_name]) }}"
                                                 class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
                                                 <i class="fa-solid fa-download"></i> <button class="uppercase">Download
                                                 </button>
-                                            </li>
+                                            </a>
+                                            @endif
                                             <livewire:watch-list :movieId="$item->id" :movie_name="$item->name" :genres="$item->genres"
                                                 :formatted_name="$item->formatted_name" :poster_path="$item->poster_path" />
                                         </ul>

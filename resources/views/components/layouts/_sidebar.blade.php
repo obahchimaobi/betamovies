@@ -41,7 +41,7 @@ dark:bg-slate-900 dark:border-slate-800"
         <div class="px-6 pt-4">
             <!-- Logo -->
             <a class="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
-                href="#" aria-label="Preline">
+                href="{{ route('home') }}" aria-label="Preline" wire:navigate>
                 <img src="{{ asset('icons/betamovies.png') }}" alt="" class="h-14 w-64">
             </a>
             <!-- End Logo -->

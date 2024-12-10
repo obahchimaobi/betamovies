@@ -26,7 +26,7 @@
         <div class="me-5 lg:me-0 lg:hidden">
             <!-- Logo -->
             <a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
-                href="#" aria-label="Preline">
+                href="{{ route('home') }}" aria-label="Preline" wire:naivgate>
                 <img src="{{ asset('icons/betamovies.png') }}" alt="" class="h-12 w-80">
             </a>
             <!-- End Logo -->
