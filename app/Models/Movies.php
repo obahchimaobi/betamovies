@@ -22,7 +22,8 @@ class Movies extends Model
         'type',
         'runtime',
         'genres',
-        'trailer',
+        'trailer_url',
+        'downloads',
         'download_url',
         'status',
     ];

@@ -35,7 +35,7 @@ class WatchList extends Component
         if (! Auth::id()) {
             // code...
             session()->flash('error', 'You must login to add a movie to watchlist');
-            $this->redirectRoute('login', navigate: true);
+            $this->redirect(url()->previous(), navigate: true);
         } else {
             if (! $this->isInWatchlist) {
                 MyList::create([

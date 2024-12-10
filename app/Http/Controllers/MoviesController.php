@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use Livewire\WithoutUrlPagination;
-use Livewire\WithPagination;
 
 class MoviesController extends Controller
 {
@@ -80,11 +78,15 @@ class MoviesController extends Controller
 
         $media = DB::table('series')
             ->where('formatted_name', $name)
+            ->whereNull('deleted_at')
+            ->where('status', '!=', 'pending')
             // ->where('titleType', $type)
             ->get();
 
         $media2 = DB::table('movies')
             ->where('formatted_name', $name)
+            ->whereNull('deleted_at')
+            ->where('status', '!=', 'pending')
             // ->where('titleType', $type)
             ->get();
 
@@ -101,14 +103,16 @@ class MoviesController extends Controller
         if (! $merged) {
             $mergedSeries = DB::table('series')
                 ->where('formatted_name', '<>', $name)
-                // ->where('status', '!=', 'pending')
+                ->whereNull('deleted_at')
+                ->where('status', '!=', 'pending')
                 ->inRandomOrder()
                 ->limit($seriesLimit ?? 2) // Use dynamic limit if provided
                 ->get();
 
             $mergedMovies = DB::table('movies')
                 ->where('formatted_name', '<>', $name)
-                // ->where('status', '!=', 'pending')
+                ->whereNull('deleted_at')
+                ->where('status', '!=', 'pending')
                 ->inRandomOrder()
                 ->limit($moviesLimit ?? 2) // Use dynamic limit if provided
                 ->get();
@@ -128,7 +132,7 @@ class MoviesController extends Controller
         $seasons = Seasons::where('formatted_name', $name)->get();
         $totalEpisodes = $seasons->sum('episode_number');
 
-        $comments = Comment::where('title', $name)->with('replies')->orderByDesc('id')->get();
+        $comments = Comment::where('title', $name)->with('replies')->whereNull('deleted_at')->orderByDesc('id')->get();
         $all_comments = Comment::where('title', $name)->count();
 
         return view('media.detail', compact('all', 'merged', 'recom', 'comments', 'all_comments', 'seasons'));
