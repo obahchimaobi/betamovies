@@ -46,6 +46,6 @@ class Search extends Component
         // Create our paginator and add it to the view
         $paginatedResults = new LengthAwarePaginator($currentPageResults, count($allResults), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
-        return view('livewire.media.search', compact('paginatedResults'));
+        return view('livewire.media.search', compact('paginatedResults', 'query'));
     }
 }

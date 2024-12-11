@@ -24,6 +24,9 @@
             {{ $paginatedResults->links(data: ['scrollTo' => false]) }}
         </div>
     @else
-        <p class="text-center text-2xl text-slate-800 dark:text-slate-200 font-semibold mt-20">No result found</p>
+        <div class="text-center">
+            <p class="text-center text-2xl text-slate-800 dark:text-slate-200 font-semibold mt-20 mb-6">No result found</p>
+            <a href="https://wa.me/2349133381269?text=Hello%20BetaMovies,%20I%20would%20like%20to%20request%20the%20movie%20titled%20{{ $query }}" class="text-blue-600 underline font-semibold">Request it</a>
+        </div>
     @endif
 </div>

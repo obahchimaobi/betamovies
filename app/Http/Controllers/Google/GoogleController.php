@@ -35,6 +35,8 @@ class GoogleController extends Controller
                 $existingUser->email_verified_at = now();
                 $existingUser->save();
             }
+
+            return redirect()->route('home');
         } else {
             $newUser = User::create([
                 'name' => $user->getName(),

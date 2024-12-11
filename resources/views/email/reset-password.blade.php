@@ -1,22 +1,24 @@
 @component('mail::message')
-{{-- # Hello {{ $validatedData['email'] }}, --}}
+{{-- Optional Logo --}}
+@if(config('app.logo'))
+<img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') }} Logo" style="max-width: 200px; margin: 0 auto; display: block; margin-bottom: 20px;">
+@endif
 
-Thank you for signing up for {{ config('app.name') }}. We're thrilled to have you on board!
+{{-- Greeting --}}
+# Hello {{ $email }},
 
-To ensure the security of your account and enable full access to our platform, we need to verify your email address. Your One-Time Password (OTP) for verification is valid for 10 minutes.
+Your password has been successfully reset. Below is your new password:
 
-Please verify your email by clicking the button below:
+@component('mail::panel')
+**{{ $new_password }}**
+@endcomponent
 
-
+Please use this password to log in to your account. We recommend changing your password immediately after logging in to keep your account secure.
 
 ---
 
-### Why Verify Your Email?
-- Protect your account from unauthorized access.
-- Access premium features and personalized content.
-- Stay updated with the latest offers and notifications.
-
-If you did not initiate this request, please disregard this email or contact our support team.
+### Need Help?
+If you did not initiate this request or believe this is an error, please contact our support team immediately.
 
 ---
 
@@ -26,6 +28,6 @@ Thank you for choosing {{ config('app.name') }}!
 {{ config('app.name') }} Team
 
 @component('mail::subcopy')
-If you’re having trouble clicking the "Verify Email" button, copy and paste the following URL into your web browser:
+If you have any questions or need further assistance, feel free to contact us at [support@{{ config('app.url') }}](mailto:support@{{ config('app.url') }}).
 @endcomponent
 @endcomponent

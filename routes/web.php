@@ -19,26 +19,21 @@ use App\Livewire\TrendingSeries;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('home');
-// })->name('home');
 Route::get('/', HomePage::class)->name('home');
 
 Route::get('/movies', DisplayMovies::class)->name('movies.page');
 Route::get('/series', DisplaySeries::class)->name('series.page');
 Route::get('/new-releases', NewReleases::class)->name('new.releases');
-Route::get('/details', [MediaController::class, 'details'])->name('details');
-Route::get('/details2', [MediaController::class, 'details2'])->name('details2');
 Route::get('/top-rated', TopRated::class)->name('rated.page');
 Route::get('/trending-movies', TrendingMovies::class)->name('trending.movies');
 Route::get('/trending-series', TrendingSeries::class)->name('trending.series');
+Route::get('/search', Search::class)->name('search');
 
 Route::get('/tag/{genre}', [MoviesController::class, 'genres'])->name('genre');
 
 Route::get('/contact-us', [PageController::class, 'contact_us'])->name('contact.page');
 
 Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
-Route::get('/search', Search::class)->name('search');
 
 // Auth
 Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page');
@@ -76,8 +71,8 @@ Route::get('/logout', function () {
     return redirect()->route('home');
 })->name('logout');
 
-Route::get('/profile', [AuthController::class, 'profile_page'])->name('user.profile')->middleware('auth');
-Route::get('/my-watchlist', [AuthController::class, 'watchlist_page'])->name('my.watchlist')->middleware('auth');
+Route::get('/profile', [AuthController::class, 'profile_page'])->name('user.profile')->middleware('auth.user');
+Route::get('/my-watchlist', [AuthController::class, 'watchlist_page'])->name('my.watchlist')->middleware('auth.user');
 
 Route::get('/download-movie/{name}', [DownloadController::class, 'downloadMovie'])->name('download.movie');
 

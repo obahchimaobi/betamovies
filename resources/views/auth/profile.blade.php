@@ -1,5 +1,9 @@
 @extends('components.layouts.app')
 
+@section('title')
+    My Profile | {{ config('app.name') }}
+@endsection
+
 @section('content')
     <div class="w-full lg:ps-64">
         <div class="p-4 sm:p-6 space-y-4 sm:space-y-6 my-5 gap-5">
@@ -119,7 +123,7 @@
                 </div>
             @endif
 
-            <div class="grid xl:grid-cols-3 pt-5">
+            {{-- <div class="grid xl:grid-cols-3 pt-5">
                 <div>
                     <h1 @class([
                         'text-slate-800 dark:text-slate-100 text-base',
@@ -148,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="grid xl:grid-cols-3 pt-5">
                 <div>

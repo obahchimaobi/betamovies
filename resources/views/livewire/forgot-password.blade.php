@@ -21,6 +21,7 @@
                         <!-- Form Group -->
                         <div>
                             <label for="email" class="block text-sm mb-2 dark:text-white">Email address</label>
+                          
                             <div class="relative">
                                 <input type="email" id="email" name="email"
                                     class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder-slate-500 dark:focus:ring-slate-600 focus:outline-none"
@@ -41,7 +42,15 @@
 
                         <button type="submit"
                             class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Reset
-                            password</button>
+                            password
+                        
+                            <div wire:loading>
+                                <div class="animate-spin inline-block size-5 border-[3px] border-current border-t-transparent text-white rounded-full"
+                                    role="status" aria-label="loading">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </button>
                     </div>
                 </form>
                 <!-- End Form -->
