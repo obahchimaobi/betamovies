@@ -55,6 +55,7 @@ class MoviesController extends Controller
                 ->where('vote_count', '>', 6)
                 ->where('formatted_name', '<>', $name)
                 ->whereNull('deleted_at')
+                ->where('status', '!=', 'pending')
                 ->inRandomOrder()
                 ->limit(4)
                 ->get();
@@ -63,6 +64,7 @@ class MoviesController extends Controller
                 ->where('vote_count', '>', 6)
                 ->where('formatted_name', '<>', $name)
                 ->whereNull('deleted_at')
+                ->where('status', '!=', 'pending')
                 ->inRandomOrder()
                 ->limit(4)
                 ->get();
@@ -129,7 +131,7 @@ class MoviesController extends Controller
             Cache::put($cacheKey, $merged, $cacheDuration ?? 160);
         }
 
-        $seasons = Seasons::where('formatted_name', $name)->get();
+        $seasons = Seasons::where('formatted_name', $name)->whereNull('deleted_at')->where('status', '!=', 'pending')->get();
         $totalEpisodes = $seasons->sum('episode_number');
 
         $comments = Comment::where('title', $name)->with('replies')->whereNull('deleted_at')->orderByDesc('id')->get();

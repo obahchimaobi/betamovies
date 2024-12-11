@@ -14,6 +14,8 @@ use App\Livewire\HomePage;
 use App\Livewire\NewReleases;
 use App\Livewire\Search;
 use App\Livewire\TopRated;
+use App\Livewire\TrendingMovies;
+use App\Livewire\TrendingSeries;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,8 @@ Route::get('/new-releases', NewReleases::class)->name('new.releases');
 Route::get('/details', [MediaController::class, 'details'])->name('details');
 Route::get('/details2', [MediaController::class, 'details2'])->name('details2');
 Route::get('/top-rated', TopRated::class)->name('rated.page');
+Route::get('/trending-movies', TrendingMovies::class)->name('trending.movies');
+Route::get('/trending-series', TrendingSeries::class)->name('trending.series');
 
 Route::get('/tag/{genre}', [MoviesController::class, 'genres'])->name('genre');
 
@@ -76,5 +80,7 @@ Route::get('/profile', [AuthController::class, 'profile_page'])->name('user.prof
 Route::get('/my-watchlist', [AuthController::class, 'watchlist_page'])->name('my.watchlist')->middleware('auth');
 
 Route::get('/download-movie/{name}', [DownloadController::class, 'downloadMovie'])->name('download.movie');
+
+Route::get('/download-seasons/{name}/S0{season}/E0{episode}', [DownloadController::class, 'downloadSeason'])->name('download');
 
 Route::get('/{name}', [MoviesController::class, 'show'])->name('movie.details');

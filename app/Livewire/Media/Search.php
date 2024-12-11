@@ -12,7 +12,7 @@ use Livewire\WithPagination;
 
 class Search extends Component
 {
-    use WithoutUrlPagination, WithPagination;
+    use WithPagination;
 
     public function placeholder()
     {

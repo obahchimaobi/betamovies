@@ -75,6 +75,7 @@ class GetMovies extends Command
 
                         // Extract and prepare movie details
                         $adult = $result['adult'];
+                        $popularity = $result['popularity'] ?? 0;
                         $language = strtoupper($result['original_language']);
                         $overview = $result['overview'];
                         $poster_path = $result['poster_path'];
@@ -195,6 +196,7 @@ class GetMovies extends Command
                             'vote_count' => $rating,
                             'type' => 'movie',
                             'status' => 'pending',
+                            'popularity' => $popularity,
                             'created_at' => Carbon::now()->format('Y-m-d'),
                         ]);
 

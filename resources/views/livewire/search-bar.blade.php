@@ -1,6 +1,6 @@
 <div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-    <div class="relative flex mx-auto w-96 md:w-full">
+    <div class="relative flex mx-auto">
         <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
             <svg class="shrink-0 size-4 text-gray-400 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -34,7 +34,7 @@
 
     @if (sizeof($results) > 0)
         <div
-            class="p-1.5 space-y-0.5 rounded-lg mt-2 bg-white border border-gray-300 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 relative flex-col flex w-96 md:w-full">
+            class="p-1.5 space-y-0.5 rounded-lg mt-2 bg-white border border-gray-300 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 relative flex-col flex mx-auto">
 
             @foreach ($results as $search_result)
                 <a href="{{ route('movie.details', ['name' => $search_result->formatted_name]) }}"
@@ -55,7 +55,7 @@
         </div>
     @elseif ($error)
         <div
-            class="p-1.5 space-y-0.5 rounded-lg mt-2 bg-white border border-gray-300 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 relative text-center">
+            class="p-1.5 space-y-0.5 rounded-lg mt-2 bg-white border border-gray-300 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 relative text-center mx-auto">
             <h1 class="text-sm font-medium text-slate-600 dark:text-slate-200 py-5">
                 @php
                     echo $error;

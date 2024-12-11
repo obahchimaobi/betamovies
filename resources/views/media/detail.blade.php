@@ -97,17 +97,18 @@
                                                     class="uppercase">Trailer</button>
                                             </li>
                                             @if (is_null($item->download_url) || empty($item->download_url))
-                                            <li
-                                                class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs font-black duration-200 hover:cursor-not-allowed">
-                                                <i class="fa-solid fa-download hover:cursor-not-allowed"></i> <button class="uppercase hover:cursor-not-allowed">Download Unavailable
-                                                </button>
-                                            </li>
+                                                <li
+                                                    class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs font-black duration-200 hover:cursor-not-allowed">
+                                                    <i class="fa-solid fa-download hover:cursor-not-allowed"></i> <button
+                                                        class="uppercase hover:cursor-not-allowed">Download Unavailable
+                                                    </button>
+                                                </li>
                                             @else
-                                            <a href="{{ route('download.movie', ['name'=>$item->formatted_name]) }}"
-                                                class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
-                                                <i class="fa-solid fa-download"></i> <button class="uppercase">Download
-                                                </button>
-                                            </a>
+                                                <a href="{{ route('download.movie', ['name' => $item->formatted_name]) }}"
+                                                    class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
+                                                    <i class="fa-solid fa-download"></i> <button class="uppercase">Download
+                                                    </button>
+                                                </a>
                                             @endif
                                             <livewire:watch-list :movieId="$item->id" :movie_name="$item->name" :genres="$item->genres"
                                                 :formatted_name="$item->formatted_name" :poster_path="$item->poster_path" />
@@ -541,11 +542,28 @@
                                                                         alt="{{ $episode->title }}"
                                                                         class="xl:h-28 h-40 rounded-md">
                                                                     <h1 class="font-inter">
-                                                                        <a href=""
-                                                                            class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
-                                                                            wire:navigate>
-                                                                            {{ $episode->episode_title ?? $episode->name . ' Season ' . $episode->season_number . ' Episode ' . $episode->episode_number }}
-                                                                        </a>
+                                                                        <div class="flex justify-between items-center">
+                                                                            <a href=""
+                                                                                class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
+                                                                                wire:navigate>
+                                                                                {{ $episode->episode_title ?? $episode->name . ' Season ' . $episode->season_number . ' Episode ' . $episode->episode_number }}
+                                                                            </a>
+
+                                                                            @if (is_null($episode->download_url) || empty($episode->download_url))
+                                                                            @else
+                                                                                <a href="{{ route('download', ['name' => $episode->formatted_name, 'season' => $episode->season_number, 'episode' => $episode->episode_number]) }}"
+                                                                                    class="flex items-center bg-blue-600 hover:bg-blue-700 text-slate-100 font-bold px-2 py-1.5 rounded-md"><svg
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        fill="none" viewBox="0 0 24 24"
+                                                                                        stroke-width="1.5"
+                                                                                        stroke="currentColor" class="size-5">
+                                                                                        <path stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                                                                    </svg>
+                                                                                </a>
+                                                                            @endif
+                                                                        </div>
                                                                         <br>
                                                                         <span
                                                                             class="dark:text-slate-300 text-xs">{{ $episode->overview }}</span>

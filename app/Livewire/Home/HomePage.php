@@ -6,9 +6,12 @@ use App\Models\Movies;
 use App\Models\Series;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 class HomePage extends Component
 {
+    use WithPagination, WithoutUrlPagination;
     public function placeholder()
     {
         return view('placeholder');
@@ -40,16 +43,16 @@ class HomePage extends Component
 
         $merge = $all_series->merge($all_movies);
 
-        $trending_movies = Movies::where('status', '!=', 'pending')
-            ->where('downloads', '>', '10')
+        $trending_movies = Movies::where('popularity', '>=', 100)
+            ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
-            ->orderByDesc('downloads')
+            ->orderByDesc('popularity')
             ->paginate('12');
 
-        $trending_series = Series::where('status', '!=', 'pending')
-            ->where('downloads', '>', '10')
+        $trending_series = Series::where('popularity', '>=', 100)
+            ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
-            ->orderByDesc('downloads')
+            ->orderByDesc('popularity')
             ->paginate('12');
 
         return view('livewire.home.home-page', [

@@ -219,8 +219,8 @@ dark:bg-slate-900 dark:border-slate-800"
                             </a>
                         </li>
                     @endguest
-                    <li><a class="@if (Request::is('trending-series')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
-                            href="{{ route('movies.page') }}" wire:navigate>
+                    <li><a class="@if (Request::is('trending-movies')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                            href="{{ route('trending.movies') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4" stroke-width="1.5">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -234,8 +234,8 @@ dark:bg-slate-900 dark:border-slate-800"
                             Trending Movies
                         </a>
                     </li>
-                    <li><a class="@if (Request::is('trending-movies')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
-                            href="{{ route('movies.page') }}" wire:navigate>
+                    <li><a class="@if (Request::is('trending-series')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                            href="{{ route('trending.series') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4" stroke-width="1.5">
                                 <path stroke-linecap="round" stroke-linejoin="round"

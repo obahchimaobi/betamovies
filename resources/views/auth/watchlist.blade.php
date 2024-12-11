@@ -30,7 +30,7 @@
                                 <thead class="bg-gray-50 dark:bg-slate-700">
                                     <tr>
                                         <th scope="col"
-                                            class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-slate-400 hidden sm:flex">
+                                            class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-slate-400">
                                             </th>
                                         <th scope="col"
                                             class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-slate-400">
@@ -38,17 +38,14 @@
                                         <th scope="col"
                                             class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-slate-400">
                                             Date Added</th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-slate-400">
-                                            Download</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 dark:divide-slate-700">
                                     @foreach ($watchlists as $watchlist)
                                         <tr>
                                             <td
-                                                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-slate-200 hidden sm:flex">
-                                                <img src="{{ asset('storage/images/' . $watchlist->poster_path) }}" alt="" class="w-12 h-12 rounded md:rounded-full object-cover">
+                                                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-slate-200">
+                                                <a href="{{ route('movie.details', ['name'=>$watchlist->formatted_name]) }}" wire:navigate><img src="{{ asset('storage/images/' . $watchlist->poster_path) }}" alt="" class="w-12 h-12 rounded-full object-cover"></a>
                                             </td>
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-slate-200">
@@ -56,15 +53,6 @@
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-slate-200">
                                                 {{ $watchlist->created_at->diffForHumans() }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                                <button type="button"
-                                                class="inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent disabled:opacity-50 disabled:pointer-events-none text-white hover:bg-blue-600 bg-blue-500 px-2 py-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                                                  </svg>
-                                                  Download
-                                                </button>
-                                                
-                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

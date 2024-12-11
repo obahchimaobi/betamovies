@@ -64,6 +64,7 @@ class GetSeries extends Command
 
                         // dd($country);
                         $language = strtoupper($result['original_language']);
+                        $popularity = $result['popularity'] ?? 0;
                         $name = $result['name'].' '.$year.' download series';
                         $overview = $result['overview'];
                         $poster_path = $result['poster_path'];
@@ -179,6 +180,7 @@ class GetSeries extends Command
                             'vote_count' => $rating,
                             'type' => 'series',
                             'status' => 'pending',
+                            'popularity' => $popularity,
                         ]);
 
                         echo '✔ '.$full_name." - has been added to database ✔ \n";

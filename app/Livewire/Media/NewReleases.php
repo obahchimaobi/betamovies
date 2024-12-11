@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 
 class NewReleases extends Component
 {
-    use WithoutUrlPagination, WithPagination;
+    use WithPagination;
 
     public function placeholder()
     {
@@ -20,15 +20,13 @@ class NewReleases extends Component
 
     public function render()
     {
-        $new_released_movies = Movies::whereNotNull('approved_at')
+        $new_released_movies = Movies::where('status', '!=', 'pending')
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
             ->get();
-        $new_released_series = Series::whereNotNull('approved_at')
+        $new_released_series = Series::where('status', '!=', 'pending')
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
             ->get();

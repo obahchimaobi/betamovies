@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('series', function (Blueprint $table) {
             //
-            $table->string('downloads')->after('status')->nullable();
+            $table->string('downloads')->after('status')->default(0);
         });
     }
 

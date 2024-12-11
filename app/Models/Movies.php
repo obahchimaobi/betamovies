@@ -24,6 +24,7 @@ class Movies extends Model
         'genres',
         'trailer_url',
         'downloads',
+        'popularity',
         'download_url',
         'status',
     ];

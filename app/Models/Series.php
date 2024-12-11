@@ -25,6 +25,8 @@ class Series extends Model
         'trailer',
         'status',
         'approved_at',
+        'downloads',
+        'popularity',
     ];
 
     public function series()

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('movies', function (Blueprint $table) {
             //
-            $table->string('downloads')->after('status')->default(0);
+            $table->string('popularity')->after('downloads')->nullable();
         });
     }
 
