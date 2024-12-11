@@ -46,7 +46,7 @@ class RegisterForm extends Component
             ['email' => $user->email, 'hash' => $hash]
         );
 
-        session()->flash('success', 'Registration successful! A confirmation email has been sent to '.$validatedData['email'].'. Click the verification link sent to your email to complete the verification process');
+        session()->flash('success', 'A confirmation email has been sent to '.$validatedData['email'].'. Click the verification link sent to your email to complete the verification process');
 
         Mail::to($validatedData['email'])->send(new RegisterMail($user, $otp, $email, $hash, $verificationUrl));
 

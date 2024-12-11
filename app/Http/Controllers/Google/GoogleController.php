@@ -23,7 +23,12 @@ class GoogleController extends Controller
         // check if the user already exists in the database
         $existingUser = User::where('email', $user->getEmail())->first();
 
-        if ($existingUser) {
+        if ($existingUser && $existingUser->is_admin == true) {
+
+            session()->flash('error', 'Email already exists');
+            return redirect()->route('login');
+
+        } elseif ($existingUser) {
             Auth::login($existingUser);
 
             if (! $existingUser->email_verified_at) {
@@ -41,8 +46,8 @@ class GoogleController extends Controller
             ]);
 
             Auth::login($newUser);
-        }
 
-        return redirect()->route('home');
+            return redirect()->route('home');
+        }
     }
 }
