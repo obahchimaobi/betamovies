@@ -100,7 +100,7 @@
                                                 <li
                                                     class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs font-black duration-200 hover:cursor-not-allowed">
                                                     <i class="fa-solid fa-download hover:cursor-not-allowed"></i> <button
-                                                        class="uppercase hover:cursor-not-allowed">Download Unavailable
+                                                        class="uppercase hover:cursor-not-allowed" disabled>Download Unavailable
                                                     </button>
                                                 </li>
                                             @else
@@ -543,8 +543,7 @@
                                                                         class="xl:h-28 h-40 rounded-md">
                                                                     <h1 class="font-inter">
                                                                         <div class="flex justify-between items-center">
-                                                                            <a
-                                                                                class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
+                                                                            <a class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
                                                                                 wire:navigate>
                                                                                 {{ $episode->episode_title ?? $episode->name . ' Season ' . $episode->season_number . ' Episode ' . $episode->episode_number }}
                                                                             </a>
@@ -809,16 +808,27 @@
                             @endif
 
                             @if ($item->type == 'movie')
-                                <button type="button"
-                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                                    Download
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                                    </svg>
-
-                                </button>
+                                @if (!is_null($item->download_url))
+                                    <a href="{{ route('download.movie', ['name' => $item->formatted_name]) }}"
+                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                        Download
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                        </svg>
+                                    </a>
+                                @else
+                                    <button type="button"
+                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" disabled>
+                                        Download Unavailable
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                        </svg>
+                                    </button>
+                                @endif
                             @endif
                         </div>
                     </div>
