@@ -20,21 +20,19 @@
 
                                 <div class="mt-7 sm:mt-12 mx-auto max-w-xl relative">
                                     <!-- Form -->
-                                    <form>
+                                    <form action="{{ route('search') }}" method="get">
                                         <div
                                             class="relative z-10 flex gap-x-3 p-2 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-800 dark:border-slate-700 dark:shadow-gray-900/20 hover:cursor-pointer">
                                             <div class="w-full hover:cursor-pointer">
                                                 <label for="hs-search-article-1"
-                                                    class="block text-sm text-gray-700 font-medium dark:text-white hover:cursor-pointer"><span
+                                                    class="block text-sm text-gray-700 font-medium dark:text-white"><span
                                                         class="sr-only">Search article</span></label>
-                                                <input type="email" name="hs-search-article-1" id="hs-search-article-1"
-                                                    class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none hover:cursor-pointer"
-                                                    placeholder="Search article" aria-haspopup="dialog"
-                                                    aria-expanded="false" aria-controls="hs-basic-modal"
-                                                    data-hs-overlay="#hs-basic-modal">
+                                                <input type="text" name="hs-search-article-1" id="hs-search-article-1"
+                                                    class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none" required
+                                                    placeholder="Search movies and TV series">
                                             </div>
                                             <div>
-                                                <a class="size-[46px] inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                                                <button type="submit" class="size-[46px] inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                                                     href="#">
                                                     <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg"
                                                         width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -43,7 +41,7 @@
                                                         <circle cx="11" cy="11" r="8" />
                                                         <path d="m21 21-4.3-4.3" />
                                                     </svg>
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

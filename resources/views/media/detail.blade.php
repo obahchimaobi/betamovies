@@ -131,7 +131,7 @@
                                     <div class="container mx-auto text-center mt-20 mb-20 w-11/12">
 
                                         <h1
-                                            class="dark:text-gray-300 text-slate-800 uppercase text-3xl xl:text-4xl font-bold tracking-wider leading-3 mt-7 font-keania">
+                                            class="dark:text-gray-300 text-slate-800 uppercase text-3xl xl:text-4xl font-bold tracking-wider mt-7 font-keania">
                                             {{ $item->name }}</h1>
                                         <ul class="flex gap-4 mt-10 text-white justify-center">
                                             <li class="flex items-center space-x-1">
@@ -543,7 +543,7 @@
                                                                         class="xl:h-28 h-40 rounded-md">
                                                                     <h1 class="font-inter">
                                                                         <div class="flex justify-between items-center">
-                                                                            <a href=""
+                                                                            <a
                                                                                 class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
                                                                                 wire:navigate>
                                                                                 {{ $episode->episode_title ?? $episode->name . ' Season ' . $episode->season_number . ' Episode ' . $episode->episode_number }}

@@ -19,6 +19,6 @@
         @endforeach
     </div>
     <div class="mt-8">
-        {{ $paginatedResults->appends(request()->query())->onEachSide(2)->links(data: ['scrollTo' => false]) }}
+        {{ $paginatedResults->links(data: ['scrollTo' => '#new_releases']) }}
     </div>
 </div>

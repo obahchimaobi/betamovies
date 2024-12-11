@@ -13,36 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class MoviesController extends Controller
 {
-    //
-    // public function getMoviesAndSeries()
-    // {
-    //     $all_series = DB::table('series')
-    //         ->whereNull('deleted_at')
-    //         ->orderByDesc('approved_at')
-    //         ->orderByDesc('id')
-    //         ->paginate('12')
-    //         ->map(function ($item) {
-    //             return (object) array_merge((array) $item, ['poster_path' => $item->poster_path ?? null]);
-    //         });
-
-    //     $all_movies = DB::table('movies')
-    //         ->whereNull('deleted_at')
-    //         ->orderByDesc('approved_at')
-    //         ->orderByDesc('id')
-    //         ->paginate('12')
-    //         ->map(function ($item) {
-    //             return (object) array_merge((array) $item, ['poster_path' => $item->poster_path ?? null]);
-    //         });
-
-    //     // dd($all_movies);
-
-    //     $merge = $all_series->merge($all_movies);
-
-    //     // dd($merge);
-
-    //     return view('home', compact('merge'));
-    // }
-
     public static function show($name)
     {
 
@@ -140,42 +110,6 @@ class MoviesController extends Controller
         return view('media.detail', compact('all', 'merged', 'recom', 'comments', 'all_comments', 'seasons'));
     }
 
-    // public function movies()
-    // {
-    //     // get movies from database
-    //     $movies = Movies::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])->paginate('24');
-
-    //     return view('media.movies', compact('movies'));
-    // }
-
-    // public function series()
-    // {
-    //     $series = Series::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])->paginate('24');
-
-    //     return view('media.series', compact('series'));
-    // }
-
-    // public function top_rated()
-    // {
-    //     $top_rated_movies = Movies::where('vote_count', '>', '7')->get();
-    //     $top_rated_series = Series::where('vote_count', '>', '7')->get();
-
-    //     $top_rated = $top_rated_movies->concat($top_rated_series);
-
-    //     $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
-
-    //     // Items per page
-    //     $perPage = 24;
-
-    //     // Slice the collection to get the items to display in current page
-    //     $currentPageResults = $top_rated->slice(($page * $perPage) - $perPage, $perPage)->values();
-
-    //     // Create our paginator and add it to the view
-    //     $paginatedResults = new LengthAwarePaginator($currentPageResults, count($top_rated), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
-
-    //     return view('media.top-rated', compact('paginatedResults'));
-    // }
-
     public function search(Request $request)
     {
         $query = $request->get('search');
@@ -203,27 +137,6 @@ class MoviesController extends Controller
 
         return view('media.search', compact('paginatedResults'));
     }
-
-    // public function new_releases()
-    // {
-    //     $new_released_movies = Movies::where('vote_count', '>', '7')->get();
-    //     $new_released_series = Series::where('vote_count', '>', '7')->get();
-
-    //     $new_released = $new_released_movies->concat($new_released_series);
-
-    //     $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
-
-    //     // Items per page
-    //     $perPage = 24;
-
-    //     // Slice the collection to get the items to display in current page
-    //     $currentPageResults = $new_released->slice(($page * $perPage) - $perPage, $perPage)->values();
-
-    //     // Create our paginator and add it to the view
-    //     $paginatedResults = new LengthAwarePaginator($currentPageResults, count($new_released), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
-
-    //     return view('media.new-releases', compact('paginatedResults'));
-    // }
 
     public function genres($genre)
     {
