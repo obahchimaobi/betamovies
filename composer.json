@@ -9,6 +9,7 @@
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.31",
+        "laravel/pulse": "*",
         "laravel/tinker": "^2.9",
         "laravolt/avatar": "*",
         "livewire/livewire": "^3.5",
