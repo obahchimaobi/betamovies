@@ -17,12 +17,14 @@ class ResetMail extends Mailable
      * Create a new message instance.
      */
 
+    public $name;
     public $email;
     public $new_password;
 
-    public function __construct($email, $new_password)
+    public function __construct($name, $email, $new_password)
     {
         //
+        $this->name = $name;
         $this->email = $email;
         $this->new_password = $new_password;
     }

@@ -1,4 +1,9 @@
 @component('mail::message')
+
+@if(config('app.logo'))
+<img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') }} Logo" style="max-width: 200px; margin: 0 auto; display: block; margin-bottom: 20px;">
+@endif
+
 # Hello {{ $user->name }},
 
 Thank you for signing up for {{ config('app.name') }}. We're thrilled to have you on board!

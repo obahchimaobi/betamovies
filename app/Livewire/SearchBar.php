@@ -28,7 +28,7 @@ class SearchBar extends Component
             $results = Series::where('name', 'like', '%'.$this->searchBar.'%')
                 ->whereNull('deleted_at')
                 ->where('status', '!=', 'pending')
-                ->select(['name', 'formatted_name', 'poster_path', 'release_year'])->union($movies_results)->simplePaginate('7');
+                ->select(['name', 'formatted_name', 'poster_path', 'release_year'])->union($movies_results)->simplePaginate('20');
             // dump($results);
         }
 

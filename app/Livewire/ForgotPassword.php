@@ -27,12 +27,16 @@ class ForgotPassword extends Component
         } elseif (!$check_email) {
             session()->flash('error', 'Email does not exist. Consider registering');
             $this->redirectRoute('forgot.password', navigate: true);
+        } elseif ($check_email && !is_null($check_email->google_id)) {
+            session()->flash('error', 'This is a google account. Login using google');
+            $this->redirectRoute('forgot.password', navigate: true);
         } else {
 
+            $name = $check_email->name;
             $new_password = Str::random('10');
             $email = $validatedData['email'];
 
-            Mail::to($validatedData['email'])->send(new ResetMail($email, $new_password));
+            Mail::to($validatedData['email'])->send(new ResetMail($email, $new_password, $name));
 
             $check_email->password = $new_password;
             $check_email->save();

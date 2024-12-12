@@ -3,12 +3,14 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Console\Command;
+use function Laravel\Prompts\info;
 use function Laravel\Prompts\text;
+use function Laravel\Prompts\table;
 use Illuminate\Support\Facades\Hash;
 use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\password;
-use function Laravel\Prompts\info;
 
 class FilamentUser extends Command
 {
@@ -55,11 +57,24 @@ class FilamentUser extends Command
 
         // check if the admin is already created
         $getAdmin = User::where('email', $email)->first();
-        
+
         if ($getAdmin && $getAdmin->is_admin == true) {
             info('This admin already exists');
         } elseif ($getAdmin && $getAdmin->is_admin == false) {
             info('This email already exists and it is not an admin');
+
+            table(
+                headers: ['Id', 'Name', 'Email', 'Date Created', 'Admin'],
+                rows: User::all(['id', 'name', 'email', 'created_at', 'is_admin'])->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'email' => $user->email,
+                        'created_at' => Carbon::parse($user->created_at)->diffForHumans(),
+                        'is_admin' => $user->is_admin ? 'Yes' : 'No',
+                    ];
+                })->toArray()
+            );
         } else {
             $newAdmin = User::create([
                 'name' => $name,
@@ -67,7 +82,7 @@ class FilamentUser extends Command
                 'password' => Hash::make($password),
                 'is_admin' => $isAdmin,
             ]);
-            
+
             if ($newAdmin) {
                 info('Admin created successfully');
             } else {

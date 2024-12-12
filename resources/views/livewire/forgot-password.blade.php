@@ -24,8 +24,7 @@
                           
                             <div class="relative">
                                 <input type="email" id="email" name="email"
-                                    class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder-slate-500 dark:focus:ring-slate-600 focus:outline-none"
-                                    required aria-describedby="email-error" wire:model='email'>
+                                    class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder-slate-500 dark:focus:ring-slate-600 focus:outline-none" aria-describedby="email-error" wire:model='email'>
                                 <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                                     <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor"
                                         viewBox="0 0 16 16" aria-hidden="true">

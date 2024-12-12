@@ -5,7 +5,7 @@
 @endif
 
 {{-- Greeting --}}
-# Hello {{ $email }},
+# Hello {{ $name }},
 
 Your password has been successfully reset. Below is your new password:
 

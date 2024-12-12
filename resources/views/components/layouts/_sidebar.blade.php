@@ -74,7 +74,7 @@ dark:bg-slate-900 dark:border-slate-800"
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
                             </svg>
-                            Browse
+                            Genres
 
                             <svg class="hs-accordion-active:block ms-auto hidden size-4"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ dark:bg-slate-900 dark:border-slate-800"
                             class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
                             role="region" aria-labelledby="users-accordion">
                             <ul class="hs-accordion-group ps-8 pt-1 space-y-1" data-hs-accordion-always-open>
-                                <li class="hs-accordion" id="users-accordion-sub-1">
+                                {{-- <li class="hs-accordion" id="users-accordion-sub-1">
                                     <button type="button"
                                         class="hs-accordion-toggle w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
                                         aria-expanded="true" aria-controls="users-accordion-sub-1-child">
@@ -131,14 +131,21 @@ dark:bg-slate-900 dark:border-slate-800"
                                             @endforeach
                                         </ul>
                                     </div>
-                                </li>
-
-                                {{-- <li>
-                                    <a class="@if (Request::is('release-year')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
-                                        href="{{ route('year.page') }}" wire:navigate>
-                                        Release Year
-                                    </a>
                                 </li> --}}
+
+                                <li>
+                                    <ul class="pt-1 ps-8 space-y-1">
+                                        @foreach ($allGenres as $genres)
+                                            <li>
+                                                <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
+                                                    href="{{ route('genre', ['genre' => Str::lower($genres)]) }}"
+                                                    wire:navigate>
+                                                    {{ $genres }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -214,7 +221,7 @@ dark:bg-slate-900 dark:border-slate-800"
                             Trending Series
                         </a>
                     </li>
-                    <li><a class="@if (Request::is('contact-us')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                    {{-- <li><a class="@if (Request::is('contact-us')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
                             href="{{ route('contact.page') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4 shrink-0">
@@ -224,7 +231,7 @@ dark:bg-slate-900 dark:border-slate-800"
 
                             Contact Us
                         </a>
-                    </li>
+                    </li> --}}
                     @guest
                         <li><a class="@if (Request::is('sign-in')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
                                 href="{{ route('login') }}" wire:navigate>

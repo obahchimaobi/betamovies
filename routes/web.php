@@ -36,9 +36,9 @@ Route::get('/contact-us', [PageController::class, 'contact_us'])->name('contact.
 Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
 
 // Auth
-Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page');
-Route::get('/sign-in', [AuthController::class, 'login_page'])->name('login');
-Route::get('/reset-password', [AuthController::class, 'forgot_password_page'])->name('forgot.password');
+Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page')->middleware('loggedin');
+Route::get('/sign-in', [AuthController::class, 'login_page'])->name('login')->middleware('loggedin');
+Route::get('/reset-password', [AuthController::class, 'forgot_password_page'])->name('forgot.password')->middleware('loggedin');
 
 Route::post('/comment/{name}/{id}', [CommentController::class, 'comment'])->name('comment');
 Route::post('/reply/{name}/{id}/{comment_id}/{comment_name}', [ReplyController::class, 'reply'])->name('reply');
@@ -77,5 +77,19 @@ Route::get('/my-watchlist', [AuthController::class, 'watchlist_page'])->name('my
 Route::get('/download-movie/{name}', [DownloadController::class, 'downloadMovie'])->name('download.movie');
 
 Route::get('/download-seasons/{name}/S0{season}/E0{episode}', [DownloadController::class, 'downloadSeason'])->name('download');
+
+Route::get('/delete-account', function () {
+    $user = auth()->user(); // Get the currently authenticated user.
+
+    if ($user) {
+        $user->delete(); // Delete the logged-in user's account.
+        auth()->logout(); // Log the user out after account deletion.
+        Auth::logoutOtherDevices($user->password);
+
+        return redirect()->route('home')->with('success', 'Account deleted successfully.');
+    }
+
+    return redirect()->route('home')->with('error', 'Unable to delete account.');
+})->name('account.delete')->middleware('auth');
 
 Route::get('/{name}', [MoviesController::class, 'show'])->name('movie.details');

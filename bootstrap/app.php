@@ -3,6 +3,7 @@
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\CheckIfUserExistsMiddleware;
 use App\Http\Middleware\IsDeleted;
+use App\Http\Middleware\isLoggedIn;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -18,7 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'auth.user' => AuthMiddleware::class,
             'user.exists' => CheckIfUserExistsMiddleware::class,
-            'user.deleted' => IsDeleted::class,
+            'loggedin' => isLoggedIn::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

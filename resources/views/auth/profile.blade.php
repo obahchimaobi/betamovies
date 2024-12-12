@@ -248,7 +248,7 @@
                         Cancel
                     </button>
                     <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-red-500 text-white hover:bg-red-600 disabled:opacity-50 disabled:pointer-events-none"
-                        href="#">
+                        href="{{ route('account.delete', ['id'=>auth()->id()]) }}">
                         Delete personal account
                     </a>
                 </div>

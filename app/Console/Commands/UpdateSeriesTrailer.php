@@ -70,7 +70,7 @@ class UpdateSeriesTrailer extends Command
                             $movie->trailer_url = $trailer;
                             $movie->save();
 
-                            echo '✔ Trailer updated successfully for '.$movie->full_name.' ✔'."\n";
+                            echo '✔ Trailer updated successfully for '.$movie->name.' ✔'."\n";
                         }
                     }
                 }
