@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Movies extends Model
 {
     //
+    use Searchable;
+
     protected $fillable = [
         'movieId',
         'name',
@@ -28,4 +31,15 @@ class Movies extends Model
         'download_url',
         'status',
     ];
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $array['name'] = $this->full_name;
+
+        // Customize array...
+
+        return $array;
+    }
 }

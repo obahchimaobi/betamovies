@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Movies;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use function Laravel\Prompts\info;
 
 class UpdateMovies extends Command
 {
@@ -63,10 +64,12 @@ class UpdateMovies extends Command
 
                 $movie->save();
 
-                echo '✔ '.$movie->name." - updated successfully ✔ \n";
+                // echo '✔ '.$movie->name." - updated successfully ✔ \n";
+                info('✔ ' . $movie->name . ' - updated successfully ✔' . "\n");
             }
         } else {
-            echo '✘ No movie to update ✘ '."\n";
+            // echo '✘ No movie to update ✘ '."\n";
+            info('✘ No movie to update ✘');
         }
     }
 }

@@ -11,6 +11,7 @@
         "laravel/framework": "^11.31",
         "laravel/prompts": "*",
         "laravel/pulse": "*",
+        "laravel/scout": "*",
         "laravel/tinker": "^2.9",
         "laravolt/avatar": "*",
         "livewire/livewire": "^3.5",
@@ -19,6 +20,7 @@
         "socialiteproviders/google": "^4.1"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "*",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",

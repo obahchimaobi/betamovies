@@ -12,7 +12,7 @@ use Livewire\WithPagination;
 
 class Search extends Component
 {
-    use WithPagination;
+    use WithPagination, WithoutUrlPagination;
 
     public function placeholder()
     {
@@ -21,19 +21,13 @@ class Search extends Component
 
     public function render(Request $request)
     {
-        $query = $request->get('search');
+        $query = $request->input('search');
 
-        $movies = Movies::where('name', 'LIKE', "%{$query}%")
-            ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
-            ->get();
+        $movies = Movies::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
 
-        $series = Series::where('name', 'LIKE', "%{$query}%")
-            ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
-            ->get();
+        $series = Series::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
 
-        $allResults = $movies->concat($series);
+        $allResults = $movies->merge($series);
 
         $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
 

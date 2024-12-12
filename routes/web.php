@@ -1,23 +1,23 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\Download\DownloadController;
-use App\Http\Controllers\Google\GoogleController;
-use App\Http\Controllers\Media\MediaController;
-use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\Pages\PageController;
-use App\Http\Controllers\ReplyController;
+use App\Models\User;
+use App\Livewire\HomePage;
+use App\Livewire\TopRated;
+use App\Livewire\NewReleases;
+use App\Livewire\Media\Search;
 use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;
-use App\Livewire\HomePage;
-use App\Livewire\NewReleases;
-use App\Livewire\Search;
-use App\Livewire\TopRated;
 use App\Livewire\TrendingMovies;
 use App\Livewire\TrendingSeries;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Pages\PageController;
+use App\Http\Controllers\Media\MediaController;
+use App\Http\Controllers\Google\GoogleController;
+use App\Http\Controllers\Download\DownloadController;
 
 Route::get('/', HomePage::class)->name('home');
 
@@ -27,7 +27,7 @@ Route::get('/new-releases', NewReleases::class)->name('new.releases');
 Route::get('/top-rated', TopRated::class)->name('rated.page');
 Route::get('/trending-movies', TrendingMovies::class)->name('trending.movies');
 Route::get('/trending-series', TrendingSeries::class)->name('trending.series');
-Route::get('/search', Search::class)->name('search');
+Route::get('/search', [MoviesController::class, 'search'])->name('search');
 
 Route::get('/tag/{genre}', [MoviesController::class, 'genres'])->name('genre');
 

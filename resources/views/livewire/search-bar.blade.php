@@ -12,8 +12,7 @@
         <form action="{{ route('search') }}" class="w-full">
             <input type="text"
                 class="py-2 ps-10 pe-16 block w-full border bg-white border-slate-200 rounded-lg text-sm focus:border-slate-100 focus:ring-slate-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder:text-slate-400 dark:focus:ring-slate-600"
-                placeholder="Search" wire:model.live.debounce.300ms='searchBar' autofocus name="search"
-                autocomplete="off">
+                placeholder="Search" wire:model.live.debounce.300ms='searchBar' autofocus name="search">
         </form>
 
         <div wire:loading class="absolute right-3 top-1/2 -translate-y-1/2">
@@ -34,7 +33,8 @@
     </div>
 
     @if (sizeof($results) > 0)
-        <div class="p-1.5 space-y-0.5 rounded-lg mt-2 bg-white border border-gray-300 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 relative flex-col flex mx-auto overflow-y-auto max-h-[500px] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 [&::-webkit-scrollbar-track]:rounded-lg [&::-webkit-scrollbar-thumb]:rounded-lg">
+        <div
+            class="p-1.5 space-y-0.5 rounded-lg mt-2 bg-white border border-gray-300 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 relative flex-col flex mx-auto overflow-y-auto max-h-[500px] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 [&::-webkit-scrollbar-track]:rounded-lg [&::-webkit-scrollbar-thumb]:rounded-lg">
             @foreach ($results as $search_result)
                 <a href="{{ route('movie.details', ['name' => $search_result->formatted_name]) }}"
                     class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300 relative"

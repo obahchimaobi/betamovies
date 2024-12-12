@@ -5,7 +5,6 @@
     @endsection
     
     @section('content')
-        <div>
 
             <!-- Content -->
             <div class="w-full lg:ps-64">
@@ -36,6 +35,5 @@
                 </div>
             </div>
             <!-- End Content -->
-        </div>
     @endsection
 </div>

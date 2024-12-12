@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Series extends Model
 {
+    use Searchable;
     //
     protected $fillable = [
         'movieId',
@@ -32,5 +34,16 @@ class Series extends Model
     public function series()
     {
         return $this->hasMany(Seasons::class);
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $array['name'] = $this->full_name;
+
+        // Customize array...
+
+        return $array;
     }
 }

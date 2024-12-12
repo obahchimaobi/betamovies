@@ -112,7 +112,7 @@ class MoviesController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->get('search');
+        $query = $request->input('search');
 
         $movies = Movies::where('name', 'LIKE', "%{$query}%")
             ->orWhere('formatted_name', 'LIKE', "%{$query}%")
@@ -127,7 +127,7 @@ class MoviesController extends Controller
         $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
 
         // Items per page
-        $perPage = 36;
+        $perPage = 24;
 
         // Slice the collection to get the items to display in current page
         $currentPageResults = $allResults->slice(($page * $perPage) - $perPage, $perPage)->values();
@@ -135,7 +135,7 @@ class MoviesController extends Controller
         // Create our paginator and add it to the view
         $paginatedResults = new LengthAwarePaginator($currentPageResults, count($allResults), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
-        return view('media.search', compact('paginatedResults'));
+        return view('media.search', compact('paginatedResults', 'query'));
     }
 
     public function genres($genre)
