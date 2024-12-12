@@ -15,7 +15,6 @@ class MoviesController extends Controller
 {
     public static function show($name)
     {
-
         $cache = 'recommend_'.$name;
         $recom = Cache::get($cache);
 

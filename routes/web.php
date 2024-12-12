@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Details;
+use App\Livewire\Genres;
 use App\Models\User;
 use App\Livewire\HomePage;
 use App\Livewire\TopRated;
@@ -29,7 +31,7 @@ Route::get('/trending-movies', TrendingMovies::class)->name('trending.movies');
 Route::get('/trending-series', TrendingSeries::class)->name('trending.series');
 Route::get('/search', [MoviesController::class, 'search'])->name('search');
 
-Route::get('/tag/{genre}', [MoviesController::class, 'genres'])->name('genre');
+Route::get('/tag/{genre}', Genres::class)->name('genre');
 
 Route::get('/contact-us', [PageController::class, 'contact_us'])->name('contact.page');
 
@@ -92,4 +94,4 @@ Route::get('/delete-account', function () {
     return redirect()->route('home')->with('error', 'Unable to delete account.');
 })->name('account.delete')->middleware('auth');
 
-Route::get('/{name}', [MoviesController::class, 'show'])->name('movie.details');
+Route::get('/{name}', Details::class)->name('movie.details');
