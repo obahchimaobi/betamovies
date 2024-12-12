@@ -4,7 +4,7 @@ use App\Models\User;
 use App\Livewire\HomePage;
 use App\Livewire\TopRated;
 use App\Livewire\NewReleases;
-use App\Livewire\Media\Search;
+use App\Livewire\Search;
 use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;
 use App\Livewire\TrendingMovies;

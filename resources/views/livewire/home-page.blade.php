@@ -75,7 +75,7 @@
                                                         class="sr-only">Search article</span></label>
                                                 <input type="text" name="search" id="hs-search-article-1"
                                                     class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none"
-                                                    required placeholder="Search movies and TV series">
+                                                    required placeholder="Search movies and TV series" wire:model='searchBar'>
                                             </div>
                                             <div>
                                                 <button type="submit"

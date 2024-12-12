@@ -114,13 +114,9 @@ class MoviesController extends Controller
     {
         $query = $request->input('search');
 
-        $movies = Movies::where('name', 'LIKE', "%{$query}%")
-            ->orWhere('formatted_name', 'LIKE', "%{$query}%")
-            ->get();
+        $movies = Movies::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
 
-        $series = Series::where('name', 'LIKE', "%{$query}%")
-            ->orWhere('formatted_name', 'LIKE', "%{$query}%")
-            ->get();
+        $series = Series::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
 
         $allResults = $movies->concat($series);
 

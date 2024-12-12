@@ -12,20 +12,40 @@ use Livewire\WithPagination;
 
 class Search extends Component
 {
-    use WithPagination, WithoutUrlPagination;
+    use WithPagination;
+
+    public $searchBar = '';
+
+    public function redirectToSearch()
+    {
+        // Validate the search term
+        if (!empty($this->searchBar)) {
+            // Redirect to the search page with the query string
+            return redirect()->route('search');
+        }
+    }
 
     public function placeholder()
     {
         return view('placeholder');
     }
 
-    public function render(Request $request)
+
+    public function render()
     {
-        $query = $request->input('search');
+        $query = '';
 
-        $movies = Movies::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
+        dump($this->searchBar);
 
-        $series = Series::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
+        $movies = Movies::where('name', 'like', '%' . $this->searchBar . '%')
+            ->whereNull('deleted_at')
+            ->where('status', '!=', 'pending')
+            ->get();
+
+        $series = Series::where('name', 'like', '%' . $this->searchBar . '%')
+            ->whereNull('deleted_at')
+            ->where('status', '!=', 'pending')
+            ->get();
 
         $allResults = $movies->merge($series);
 
