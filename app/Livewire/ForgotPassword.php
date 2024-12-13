@@ -2,11 +2,11 @@
 
 namespace App\Livewire;
 
-use Str;
-use Mail;
-use App\Models\User;
 use App\Mail\ResetMail;
+use App\Models\User;
 use Livewire\Component;
+use Mail;
+use Str;
 
 class ForgotPassword extends Component
 {
@@ -24,10 +24,10 @@ class ForgotPassword extends Component
         if ($check_email && $check_email->is_admin == true) {
             session()->flash('error', 'Email does not exist.');
             $this->redirectRoute('forgot.password', navigate: true);
-        } elseif (!$check_email) {
+        } elseif (! $check_email) {
             session()->flash('error', 'Email does not exist. Consider registering');
             $this->redirectRoute('forgot.password', navigate: true);
-        } elseif ($check_email && !is_null($check_email->google_id)) {
+        } elseif ($check_email && ! is_null($check_email->google_id)) {
             session()->flash('error', 'This is a google account. Login using google');
             $this->redirectRoute('forgot.password', navigate: true);
         } else {
@@ -41,11 +41,12 @@ class ForgotPassword extends Component
             $check_email->password = $new_password;
             $check_email->save();
 
-            session()->flash('success', 'We have sent a new password to ' . $validatedData['email']);
+            session()->flash('success', 'We have sent a new password to '.$validatedData['email']);
 
             $this->redirectRoute('login', navigate: true);
         }
     }
+
     public function render()
     {
         return view('livewire.forgot-password');

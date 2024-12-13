@@ -9,10 +9,15 @@ use Livewire\Component;
 class ReplyForm extends Component
 {
     public $name;
+
     public $id;
+
     public $reply_name;
+
     public $reply;
+
     public $comment_id;
+
     public $comment_name;
 
     public function mount($name = null, $id = null, $comment_id = null, $comment_name = null)
@@ -45,8 +50,9 @@ class ReplyForm extends Component
         $reply->save();
 
         session()->flash('success', 'Your reply was posted successfully');
-        $this->redirect(url()->previous(), navigate:true);
+        $this->redirect(url()->previous(), navigate: true);
     }
+
     public function render()
     {
         return view('livewire.reply-form');

@@ -14,7 +14,7 @@ class TrendingMovies extends Component
     {
         return view('placeholder');
     }
-    
+
     public function render()
     {
         $trending_movies = Movies::where('popularity', '>=', 100)

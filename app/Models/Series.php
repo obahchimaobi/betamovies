@@ -8,6 +8,7 @@ use Laravel\Scout\Searchable;
 class Series extends Model
 {
     use Searchable;
+
     //
     protected $fillable = [
         'movieId',

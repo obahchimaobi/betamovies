@@ -11,7 +11,8 @@ use Livewire\WithPagination;
 
 class HomePage extends Component
 {
-    use WithPagination, WithoutUrlPagination;
+    use WithoutUrlPagination, WithPagination;
+
     public function placeholder()
     {
         return view('placeholder');

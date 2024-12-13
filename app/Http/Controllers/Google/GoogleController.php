@@ -26,6 +26,7 @@ class GoogleController extends Controller
         if ($existingUser && $existingUser->is_admin == true) {
 
             session()->flash('error', 'Email already exists');
+
             return redirect()->route('login');
 
         } elseif ($existingUser) {

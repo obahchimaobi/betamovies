@@ -2,7 +2,6 @@
 
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\CheckIfUserExistsMiddleware;
-use App\Http\Middleware\IsDeleted;
 use App\Http\Middleware\isLoggedIn;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;

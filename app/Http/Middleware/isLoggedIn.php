@@ -18,9 +18,10 @@ class isLoggedIn
     {
         if (Auth::check()) {
             session()->flash('error', 'You are already logged in');
+
             return redirect()->route('home');
         }
-        
+
         return $next($request);
     }
 }

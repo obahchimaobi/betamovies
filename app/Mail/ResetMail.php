@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -16,9 +15,10 @@ class ResetMail extends Mailable
     /**
      * Create a new message instance.
      */
-
     public $name;
+
     public $email;
+
     public $new_password;
 
     public function __construct($name, $email, $new_password)

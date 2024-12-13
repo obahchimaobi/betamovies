@@ -4,14 +4,14 @@ namespace App\Livewire\Media;
 
 use App\Models\Movies;
 use App\Models\Series;
-use Livewire\Component;
-use Livewire\WithPagination;
-use Livewire\WithoutUrlPagination;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 class Genres extends Component
 {
-    use WithPagination, WithoutUrlPagination;
+    use WithoutUrlPagination, WithPagination;
 
     public $genre;
 
@@ -53,7 +53,7 @@ class Genres extends Component
         return view('livewire.media.genres', [
             'paginatedResults' => $paginatedResults,
             'page' => $page,
-            'genre' => $this->genre
+            'genre' => $this->genre,
         ]);
     }
 }

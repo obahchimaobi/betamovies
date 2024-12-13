@@ -4,13 +4,14 @@ namespace App\Livewire\Media;
 
 use App\Models\Comment;
 use App\Models\Seasons;
-use Livewire\Component;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class Details extends Component
 {
     public $name;
+
     public $all;
 
     public function mount(Details|string $name)
@@ -22,12 +23,13 @@ class Details extends Component
     {
         return view('placeholder');
     }
+
     public function render()
     {
-        $cache = 'recommend_' . $this->name;
+        $cache = 'recommend_'.$this->name;
         $recom = Cache::get($cache);
 
-        if (!$recom) {
+        if (! $recom) {
             // Fetch recommendations from series and movies and merge them
             $recommend = DB::table('series')
                 ->where('vote_count', '>', 6)
@@ -76,11 +78,11 @@ class Details extends Component
         the below code uses the same structure as above
         read it and understand it's workings
         */
-        $cacheKey = 'moreSeries_' . $this->name;
+        $cacheKey = 'moreSeries_'.$this->name;
 
         $merged = Cache::get($cacheKey);
 
-        if (!$merged) {
+        if (! $merged) {
             $mergedSeries = DB::table('series')
                 ->where('formatted_name', '<>', $this->name)
                 ->whereNull('deleted_at')

@@ -1,25 +1,24 @@
 <?php
 
-use App\Livewire\Media\Details;
-use App\Livewire\Genres;
-use App\Models\User;
-use App\Livewire\HomePage;
-use App\Livewire\TopRated;
-use App\Livewire\NewReleases;
-use App\Livewire\Search;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Download\DownloadController;
+use App\Http\Controllers\Google\GoogleController;
+use App\Http\Controllers\Media\MediaController;
+use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\Pages\PageController;
+use App\Http\Controllers\ReplyController;
 use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;
+use App\Livewire\Genres;
+use App\Livewire\HomePage;
+use App\Livewire\Media\Details;
+use App\Livewire\NewReleases;
+use App\Livewire\TopRated;
 use App\Livewire\TrendingMovies;
 use App\Livewire\TrendingSeries;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ReplyController;
-use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Pages\PageController;
-use App\Http\Controllers\Media\MediaController;
-use App\Http\Controllers\Google\GoogleController;
-use App\Http\Controllers\Download\DownloadController;
 
 Route::get('/', HomePage::class)->name('home');
 

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Download;
 
-use App\Models\Movies;
-use App\Models\Series;
-use App\Models\Seasons;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Movies;
+use App\Models\Seasons;
+use App\Models\Series;
 
 class DownloadController extends Controller
 {

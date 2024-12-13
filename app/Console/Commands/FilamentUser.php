@@ -3,14 +3,15 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
-use Illuminate\Support\Carbon;
 use Illuminate\Console\Command;
-use function Laravel\Prompts\info;
-use function Laravel\Prompts\text;
-use function Laravel\Prompts\table;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+
 use function Laravel\Prompts\confirm;
+use function Laravel\Prompts\info;
 use function Laravel\Prompts\password;
+use function Laravel\Prompts\table;
+use function Laravel\Prompts\text;
 
 class FilamentUser extends Command
 {

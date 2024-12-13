@@ -33,12 +33,12 @@ class WatchList extends Component
 
     public function addToWatchlist()
     {
-        if (!Auth::id()) {
+        if (! Auth::id()) {
             // code...
             session()->flash('error', 'You must login to add a movie to watchlist');
             $this->redirect(url()->previous(), navigate: true);
         } else {
-            if (!$this->isInWatchlist) {
+            if (! $this->isInWatchlist) {
 
                 // get users watchlists
                 $userWatchLists = MyList::where('userId', Auth::id())->whereNull('deleted_at')->count();
