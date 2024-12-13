@@ -6,7 +6,6 @@ use App\Http\Controllers\Download\DownloadController;
 use App\Http\Controllers\Google\GoogleController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\ReplyController;
 use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;
@@ -18,6 +17,7 @@ use App\Livewire\TopRated;
 use App\Livewire\TrendingMovies;
 use App\Livewire\TrendingSeries;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class)->name('home');
@@ -31,8 +31,6 @@ Route::get('/trending-series', TrendingSeries::class)->name('trending.series');
 Route::get('/search', [MoviesController::class, 'search'])->name('search');
 
 Route::get('/tag/{genre}', Genres::class)->name('genre');
-
-Route::get('/contact-us', [PageController::class, 'contact_us'])->name('contact.page');
 
 Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
 
