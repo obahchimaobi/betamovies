@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('reply', function (Blueprint $table) {
+        Schema::table('replies', function (Blueprint $table) {
             //
             $table->string('reply_is_to')->nullable();
         });
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('reply', function (Blueprint $table) {
+        Schema::table('replies', function (Blueprint $table) {
             //
         });
     }

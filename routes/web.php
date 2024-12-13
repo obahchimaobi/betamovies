@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Details;
+use App\Livewire\Media\Details;
 use App\Livewire\Genres;
 use App\Models\User;
 use App\Livewire\HomePage;

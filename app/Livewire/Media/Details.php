@@ -22,7 +22,6 @@ class Details extends Component
     {
         return view('placeholder');
     }
-    
     public function render()
     {
         $cache = 'recommend_' . $this->name;
