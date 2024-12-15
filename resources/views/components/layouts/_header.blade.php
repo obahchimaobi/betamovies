@@ -43,18 +43,6 @@
             </div>
 
             <div class="flex flex-row items-center justify-end gap-1">
-                {{-- <button type="button"
-                class="md:hidden size-[38px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.3-4.3" />
-                </svg>
-                <span class="sr-only">Search</span>
-            </button> --}}
-
-
                 <button type="button"
                     class="hs-dark-mode hs-dark-mode-active:hidden inline-flex items-center gap-x-2 py-2 px-2 bg-slate-200 rounded-full text-sm text-neutral-700 hover:bg-slate-300 focus:outline-none"
                     data-hs-theme-click-value="dark">
@@ -174,7 +162,7 @@
 <!-- ========== END HEADER ========== -->
 
 <div id="hs-basic-modal"
-    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none"
+    class="hs-overlay hs-overlay-backdrop-open:bg-gray-500/90 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none dark:hs-overlay-backdrop-open:bg-slate-900/90"
     role="dialog" tabindex="-1" aria-labelledby="hs-basic-modal-label">
     <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
         <div class="flex flex-col shadow-sm rounded-xl pointer-events-auto">
