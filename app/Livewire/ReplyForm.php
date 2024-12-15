@@ -3,8 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Reply;
-use Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class ReplyForm extends Component
 {
