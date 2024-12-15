@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Download;
 
-use App\Http\Controllers\Controller;
+use Log;
 use App\Models\Movies;
-use App\Models\Seasons;
 use App\Models\Series;
+use App\Models\Seasons;
+use App\Http\Controllers\Controller;
 
 class DownloadController extends Controller
 {
@@ -18,7 +19,7 @@ class DownloadController extends Controller
 
             $movie->increment('downloads');
 
-            \Log::info('Download URL: ', ['url' => $movie->download_url]);
+            // Log::info('Download URL: ', ['url' => $movie->download_url]);
 
             return redirect()->away($movie->download_url);
         }
