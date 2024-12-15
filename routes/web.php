@@ -7,6 +7,7 @@ use App\Http\Controllers\Google\GoogleController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\Search\SearchController;
 use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;
 use App\Livewire\Genres;
@@ -28,7 +29,7 @@ Route::get('/new-releases', NewReleases::class)->name('new.releases');
 Route::get('/top-rated', TopRated::class)->name('rated.page');
 Route::get('/trending-movies', TrendingMovies::class)->name('trending.movies');
 Route::get('/trending-series', TrendingSeries::class)->name('trending.series');
-Route::get('/search', [MoviesController::class, 'search'])->name('search');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 Route::get('/tag/{genre}', Genres::class)->name('genre');
 
@@ -38,9 +39,6 @@ Route::get('/release-year', [MediaController::class, 'year'])->name('year.page')
 Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page')->middleware('loggedin');
 Route::get('/sign-in', [AuthController::class, 'login_page'])->name('login')->middleware('loggedin');
 Route::get('/reset-password', [AuthController::class, 'forgot_password_page'])->name('forgot.password')->middleware('loggedin');
-
-Route::post('/comment/{name}/{id}', [CommentController::class, 'comment'])->name('comment');
-Route::post('/reply/{name}/{id}/{comment_id}/{comment_name}', [ReplyController::class, 'reply'])->name('reply');
 
 Route::get('/email/verify/{email}/{hash}', function ($email, $hash) {
     $user = User::where('email', $email)->firstOrFail();

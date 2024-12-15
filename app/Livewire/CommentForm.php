@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Comment;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CommentForm extends Component
