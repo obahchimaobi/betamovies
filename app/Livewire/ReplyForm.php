@@ -20,10 +20,13 @@ class ReplyForm extends Component
 
     public $comment_name;
 
+    public $avatar;
+
     public function mount($name = null, $id = null, $comment_id = null, $comment_name = null)
     {
         if (Auth::check()) {
             $this->reply_name = Auth::user()->name;
+            $this->avatar = Auth::user()->avatar;
         }
         $this->name = $name;
         $this->id = $id;
@@ -45,6 +48,7 @@ class ReplyForm extends Component
             'title' => $this->name,
             'comment_id' => $this->comment_id,
             'comment_name' => $this->comment_name,
+            'avatar' => $this->avatar,
         ]);
 
         $reply->save();

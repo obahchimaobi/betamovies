@@ -82,6 +82,7 @@ class FilamentUser extends Command
                 'email' => $email,
                 'password' => Hash::make($password),
                 'is_admin' => $isAdmin,
+                'email_verified_at' => Carbon::now(),
             ]);
 
             if ($newAdmin) {

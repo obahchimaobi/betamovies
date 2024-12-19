@@ -47,7 +47,7 @@
 
                                             <h1
                                                 class="dark:text-gray-300 text-slate-800 uppercase text-3xl xl:text-4xl font-bold tracking-wider mt-7 font-keania">
-                                                {{ $item->name }}</h1>
+                                                Download {{ $item->name }} For Free</h1>
                                             <ul class="flex gap-4 mt-10 text-white justify-center">
                                                 <li class="flex items-center space-x-1">
 
@@ -346,7 +346,7 @@
                                                             <p
                                                                 class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                 <img class="mr-2 w-6 h-6 rounded-full"
-                                                                    src="{{ $comment->avatar ?? Avatar::create($comment->comment_name)->toBase64() }}"
+                                                                    src="{{ $comment->avatar ?? Avatar::create($comment->comment_name)->toGravatar() }}"
                                                                     alt="Michael Gough">{{ $comment->comment_name }}
                                                             </p>
                                                             <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate
@@ -396,7 +396,7 @@
                                                                 <p
                                                                     class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                     <img class="mr-2 w-6 h-6 rounded-full"
-                                                                        src="{{ Avatar::create($reply->reply_name)->toBase64() }}"
+                                                                        src="{{ $reply->avatar ?? Avatar::create($reply->reply_name)->toGravatar() }}"
                                                                         alt="Jese Leos">{{ $reply->reply_name }}
                                                                 </p>
                                                                 <p class="text-sm text-gray-600 dark:text-gray-400"><time
@@ -563,7 +563,7 @@
                                                             <p
                                                                 class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                 <img class="mr-2 w-6 h-6 rounded-full"
-                                                                    src="{{ Avatar::create($comment->comment_name)->toBase64() }}"
+                                                                    src="{{ $comment->avatar ?? Avatar::create($comment->comment_name)->toGravatar() }}"
                                                                     alt="Michael Gough">{{ $comment->comment_name }}
                                                             </p>
                                                             <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate
@@ -612,7 +612,7 @@
                                                                 <p
                                                                     class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                     <img class="mr-2 w-6 h-6 rounded-full"
-                                                                        src="{{ Avatar::create($reply->reply_name)->toBase64() }}"
+                                                                        src="{{ $reply->avatar ?? Avatar::create($reply->reply_name)->toGravatar() }}"
                                                                         alt="Jese Leos">{{ $reply->reply_name }}
                                                                 </p>
                                                                 <p class="text-sm text-gray-600 dark:text-gray-400"><time
@@ -635,7 +635,7 @@
                                 <!-- Second Element -->
                                 <div class="md:col-span-2 col-span-12">
                                     <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300 my-10 md:hidden">
-                                    <h1 class="font-bold font-inter text-gray-900 dark:text-white text-xl">Recommended Shows
+                                    <h1 class="font-bold text-gray-900 dark:text-white text-xl">Recommended Shows
                                     </h1>
 
                                     <div class="grid lg:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">

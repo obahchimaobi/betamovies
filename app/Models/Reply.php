@@ -16,6 +16,7 @@ class Reply extends Model
         'comment_name',
         'reply_to_id',
         'reply_is_to',
+        'avatar',
     ];
 
     public function comment()
