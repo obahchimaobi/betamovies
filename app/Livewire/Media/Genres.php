@@ -11,9 +11,11 @@ use Livewire\WithPagination;
 
 class Genres extends Component
 {
-    use WithoutUrlPagination, WithPagination;
+    use WithPagination;
 
     public $genre;
+
+    public $yearFilter = null; // For real-time filtering by year
 
     public function mount(Genres|string $genre)
     {
@@ -25,35 +27,58 @@ class Genres extends Component
         return view('placeholder');
     }
 
+    public function updated($key)
+    {
+        if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+    }
+
     public function render()
     {
-        $movies = Movies::where('genres', 'LIKE', "%{$this->genre}%")
+        // Fetch movies and series based on genre and year filter
+        $moviesQuery = Movies::where('genres', 'LIKE', "%{$this->genre}%")
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
-            ->get();
+            ->where('status', '!=', 'pending');
 
-        $series = Series::where('genres', 'LIKE', "%{$this->genre}%")
+        $seriesQuery = Series::where('genres', 'LIKE', "%{$this->genre}%")
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
-            ->get();
+            ->where('status', '!=', 'pending');
 
+        // Apply year filter if selected
+        if ($this->yearFilter) {
+            $moviesQuery->where('release_year', $this->yearFilter);
+            $seriesQuery->where('release_year', $this->yearFilter);
+        }
+
+        $movies = $moviesQuery->get();
+        $series = $seriesQuery->get();
+
+        // Merge movies and series
         $merge_them = $movies->merge($series);
 
+        // Pagination logic
         $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
-
-        // Items per page
         $perPage = 24;
-
-        // Slice the collection to get the items to display in current page
         $currentPageResults = $merge_them->slice(($page * $perPage) - $perPage, $perPage)->values();
+        $paginatedResults = new LengthAwarePaginator($currentPageResults, count($merge_them), $perPage, $page, [
+            'path' => LengthAwarePaginator::resolveCurrentPath(),
+        ]);
 
-        // Create our paginator and add it to the view
-        $paginatedResults = new LengthAwarePaginator($currentPageResults, count($merge_them), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+        // Fetch all years for the dropdown
+        $year = Movies::pluck('release_year')
+            ->concat(Series::pluck('release_year'))
+            ->filter(fn($year) => !empty($year)) // Remove empty years
+            ->unique()
+            ->sortDesc() // Sort by latest year (descending)
+            ->values();
 
         return view('livewire.media.genres', [
             'paginatedResults' => $paginatedResults,
             'page' => $page,
             'genre' => $this->genre,
+            'year' => $year, // Pass years for dropdown
+            'yearFilter' => $this->yearFilter, // Keep track of the selected year
         ]);
     }
 }

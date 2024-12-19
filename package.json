@@ -21,6 +21,7 @@
         "@preline/combobox": "^2.6.0",
         "@preline/overlay": "^2.6.0",
         "@preline/remove-element": "^2.6.0",
+        "@preline/select": "^2.6.0",
         "@preline/toggle-password": "^2.6.0",
         "@tailwindcss/container-queries": "^0.1.1",
         "flowbite": "^2.5.2",

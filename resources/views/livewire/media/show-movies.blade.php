@@ -1,4 +1,15 @@
 <div>
+    <div class="pb-5 pt-3">
+        <select id="countries"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none"
+            wire:model.live="yearFilter">
+            <option value="">Choose a year</option>
+            @foreach ($year as $item)
+                <option value="{{ $item }}">{{ $item }}</option>
+            @endforeach
+        </select>
+    </div>
+
     {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
         @foreach ($movies->lazy() as $movie)
@@ -20,6 +31,6 @@
         @endforeach
     </div>
     <div class="mt-8">
-        {{ $movies->links(data: ['scrollTo' => false]) }}
+        {{ $movies->links(data: ['scrollTo' => '#movies']) }}
     </div>
 </div>
