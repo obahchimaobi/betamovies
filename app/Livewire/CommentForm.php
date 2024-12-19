@@ -10,6 +10,8 @@ class CommentForm extends Component
 {
     public $commentor;
 
+    public $avatar;
+
     public $comment;
 
     public $name;
@@ -20,6 +22,7 @@ class CommentForm extends Component
     {
         if (Auth::check()) {
             $this->commentor = Auth::user()->name;
+            $this->avatar = Auth::user()->avatar;
         }
 
         $this->name = $name;
@@ -38,6 +41,7 @@ class CommentForm extends Component
             'comment' => $validatedData['comment'],
             'movie_id' => $this->id,
             'title' => $this->name,
+            'avatar' => $this->avatar,
         ]);
 
         $comment->save();

@@ -88,7 +88,7 @@
                                                     @php
                                                         $genres = $item->genres ? explode(', ', $item->genres) : []; // Default to an empty array if no genres
                                                     @endphp
-                                                
+
                                                     @if (count($genres) > 0)
                                                         @foreach ($genres as $genre)
                                                             <a href="{{ route('genre', ['genre' => Str::lower(trim($genre))]) }}"
@@ -102,7 +102,7 @@
                                                         <span class="text-xs italic text-gray-500 dark:text-gray-400">No genres available</span>
                                                     @endif
                                                 </li>
-                                                
+
                                             </ul>
 
                                             <p class="dark:text-gray-300 text-slate-700 mt-9 leading-relaxed text-sm">
@@ -121,8 +121,7 @@
                                                     <li
                                                         class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs font-black duration-200 hover:cursor-not-allowed">
                                                         <i class="fa-solid fa-download hover:cursor-not-allowed"></i>
-                                                        <button class="uppercase hover:cursor-not-allowed" disabled>Download
-                                                            Unavailable
+                                                        <button class="uppercase hover:cursor-not-allowed" disabled>Coming Soon
                                                         </button>
                                                     </li>
                                                 @else
@@ -347,7 +346,7 @@
                                                             <p
                                                                 class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                 <img class="mr-2 w-6 h-6 rounded-full"
-                                                                    src="{{ Avatar::create($comment->comment_name)->toBase64() }}"
+                                                                    src="{{ $comment->avatar ?? Avatar::create($comment->comment_name)->toBase64() }}"
                                                                     alt="Michael Gough">{{ $comment->comment_name }}
                                                             </p>
                                                             <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate
@@ -420,10 +419,10 @@
                                 <!-- Second Element -->
                                 <div class="md:col-span-2 col-span-12">
                                     <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300 my-10 md:hidden">
-                                    <h1 class="font-bold font-inter text-gray-800 dark:text-white text-xl">Recommended Shows
+                                    <h1 class="font-bold text-gray-800 dark:text-white text-xl">Recommended Shows
                                     </h1>
 
-                                    <div class="grid md:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">
+                                    <div class="grid md:grid-cols-2 sm:grid-cols-4 grid-cols-2 gap-4 mt-4">
                                         @isset($recom)
                                             @foreach ($recom as $recommended)
                                                 <div class="w-full">
@@ -723,7 +722,7 @@
                                         <button type="button"
                                             class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                                             disabled>
-                                            Download Unavailable
+                                            Coming Soon
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="size-4">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
