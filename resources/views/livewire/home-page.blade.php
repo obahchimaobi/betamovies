@@ -51,16 +51,16 @@
                         </div>
                         <!-- End Toast -->
                     @endif
-                    
+
                     <!-- Hero -->
                     <div class="relative overflow-hidden">
-                        <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
+                        <div class="max-w-[85rem] mx-auto py-10 sm:py-24">
                             <div class="text-center">
-                                <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-neutral-200">
+                                <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-slate-200">
                                     Search
                                 </h1>
 
-                                <p class="mt-3 text-gray-600 text-sm lg:text-base dark:text-neutral-400">
+                                <p class="mt-3 text-gray-600 text-sm lg:text-base dark:text-slate-400">
                                     Search for movies, series, and stories that captivate
                                 </p>
 
@@ -74,7 +74,7 @@
                                                     class="block text-sm text-gray-700 font-medium dark:text-white"><span
                                                         class="sr-only">Search article</span></label>
                                                 <input type="text" name="search" id="hs-search-article-1"
-                                                    class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none"
+                                                    class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-slate-400 dark:placeholder-slate-400 dark:focus:ring-slate-600 dark:focus:outline-none"
                                                     required placeholder="Search movies and TV series" wire:model='searchBar'>
                                             </div>
                                             <div>

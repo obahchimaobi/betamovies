@@ -154,7 +154,7 @@
 
                                             <h1
                                                 class="dark:text-gray-300 text-slate-800 uppercase text-3xl xl:text-4xl font-bold tracking-wider mt-7 font-keania">
-                                                {{ $item->name }}</h1>
+                                                Download {{ $item->name }} For Free</h1>
                                             <ul class="flex gap-4 mt-10 text-white justify-center">
                                                 <li class="flex items-center space-x-1">
 
