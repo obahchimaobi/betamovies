@@ -50,7 +50,7 @@ class HomePage extends Component
             ->orderByDesc('popularity')
             ->paginate('12');
 
-        $trending_series = Series::where('popularity', '>=', 100)
+        $trending_series = Series::where('popularity', '>=', 500)
             ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
