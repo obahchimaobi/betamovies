@@ -4,7 +4,6 @@ namespace App\Livewire\Media;
 
 use App\Models\Movies;
 use Livewire\Component;
-use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
 class ShowMovies extends Component
@@ -40,7 +39,7 @@ class ShowMovies extends Component
         $movies = $moviesQuery->paginate('24');
 
         $year = Movies::pluck('release_year')
-            ->filter(fn($year) => !empty($year))
+            ->filter(fn ($year) => ! empty($year))
             ->unique()
             ->sortDesc()
             ->values();

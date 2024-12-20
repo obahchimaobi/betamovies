@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Download\DownloadController;
 use App\Http\Controllers\Google\GoogleController;
 use App\Http\Controllers\Media\MediaController;
-use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\Search\SearchController;
 use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;

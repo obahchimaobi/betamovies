@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Download;
 
-use Log;
-use App\Models\Movies;
-use App\Models\Series;
-use App\Models\Seasons;
 use App\Http\Controllers\Controller;
+use App\Models\Movies;
+use App\Models\Seasons;
+use App\Models\Series;
+use Log;
 
 class DownloadController extends Controller
 {

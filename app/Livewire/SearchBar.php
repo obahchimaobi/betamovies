@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Movies;
 use App\Models\Series;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;

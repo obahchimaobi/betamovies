@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Search;
 
+use App\Http\Controllers\Controller;
 use App\Models\Movies;
 use App\Models\Series;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchController extends Controller
