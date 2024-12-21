@@ -638,7 +638,7 @@
                                     <h1 class="font-bold text-gray-900 dark:text-white text-xl">Recommended Shows
                                     </h1>
 
-                                    <div class="grid lg:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">
+                                    <div class="grid lg:grid-cols-2 sm:grid-cols-4 grid-cols-2 gap-4 mt-4">
                                         @isset($recom)
                                             @foreach ($recom as $recommended)
                                                 <div class="w-full">
