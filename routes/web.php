@@ -9,6 +9,7 @@ use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;
 use App\Livewire\Genres;
 use App\Livewire\HomePage;
+use App\Livewire\KoreanDramas;
 use App\Livewire\Media\Details;
 use App\Livewire\NewReleases;
 use App\Livewire\TopRated;
@@ -27,6 +28,7 @@ Route::get('/top-rated', TopRated::class)->name('rated.page');
 Route::get('/trending-movies', TrendingMovies::class)->name('trending.movies');
 Route::get('/trending-series', TrendingSeries::class)->name('trending.series');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/k-drama', KoreanDramas::class)->name('korean.drama');
 
 Route::get('/tag/{genre}', Genres::class)->name('genre');
 
