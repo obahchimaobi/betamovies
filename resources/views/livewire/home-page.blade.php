@@ -95,7 +95,7 @@
                                     <!-- End Form -->
 
                                     <!-- SVG Element -->
-                                    <div class="hidden md:block absolute top-0 end-0 -translate-y-12 translate-x-20">
+                                    <div class="block md:block absolute top-0 end-0 -translate-y-12 translate-x-20">
                                         <svg class="w-16 h-auto text-orange-500" width="121" height="135"
                                             viewBox="0 0 121 135" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164"
@@ -109,7 +109,7 @@
                                     <!-- End SVG Element -->
 
                                     <!-- SVG Element -->
-                                    <div class="hidden md:block absolute bottom-0 start-0 translate-y-10 -translate-x-32">
+                                    <div class="block md:block absolute bottom-0 start-0 translate-y-10 -translate-x-32">
                                         <svg class="w-40 h-auto text-cyan-500" width="347" height="188"
                                             viewBox="0 0 347 188" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
