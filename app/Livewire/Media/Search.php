@@ -4,24 +4,18 @@ namespace App\Livewire\Media;
 
 use App\Models\Movies;
 use App\Models\Series;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
+use Illuminate\Http\Request;
 use Livewire\WithPagination;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Search extends Component
 {
     use WithPagination;
 
-    public $searchBar = '';
+    public $search;
 
-    public function redirectToSearch()
-    {
-        // Validate the search term
-        if (! empty($this->searchBar)) {
-            // Redirect to the search page with the query string
-            return redirect()->route('search');
-        }
-    }
+    protected $queryString = ['search'];
 
     public function placeholder()
     {
@@ -30,26 +24,28 @@ class Search extends Component
 
     public function render()
     {
-        $query = '';
+        $query = $this->search;
 
-        dump($this->searchBar);
+        // dump($query);
 
-        $movies = Movies::search($this->searchBar)->get();
+        $movies = Movies::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
+        $series = Series::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
 
-        $series = Series::search($this->searchBar)->get();
-
-        $allResults = $movies->merge($series);
+        $allResults = $movies->concat($series);
 
         $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
 
-        // Items per page
         $perPage = 24;
 
-        // Slice the collection to get the items to display in current page
         $currentPageResults = $allResults->slice(($page * $perPage) - $perPage, $perPage)->values();
 
-        // Create our paginator and add it to the view
-        $paginatedResults = new LengthAwarePaginator($currentPageResults, count($allResults), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+        $paginatedResults = new LengthAwarePaginator(
+            $currentPageResults,
+            count($allResults),
+            $perPage,
+            $page,
+            ['path' => LengthAwarePaginator::resolveCurrentPath()]
+        );
 
         return view('livewire.media.search', compact('paginatedResults', 'query'));
     }
