@@ -16,6 +16,8 @@ class Genres extends Component
 
     public $yearFilter = null; // For real-time filtering by year
 
+    public $countryFilter = null;
+
     public function mount(Genres|string $genre)
     {
         $this->genre = $genre;
@@ -31,12 +33,15 @@ class Genres extends Component
         if ($key === 'yearFilter') {
             $this->resetPage();
         }
+
+        if ($key === 'countryFilter') {
+            $this->resetPage();
+        }
     }
 
     public function refresh()
     {
-        $this->reset();
-        $this->resetPage();
+        $this->reset(['yearFilter', 'countryFilter']);
     }
 
     public function render()
@@ -54,6 +59,11 @@ class Genres extends Component
         if ($this->yearFilter) {
             $moviesQuery->where('release_year', $this->yearFilter);
             $seriesQuery->where('release_year', $this->yearFilter);
+        }
+
+        if ($this->countryFilter) {
+            $moviesQuery->where('country', $this->countryFilter);
+            $seriesQuery->where('country', $this->countryFilter);
         }
 
         $movies = $moviesQuery->get();
@@ -78,11 +88,17 @@ class Genres extends Component
             ->sortDesc() // Sort by latest year (descending)
             ->values();
 
+        $country = Movies::pluck('country')
+            ->concat(Series::pluck('country'))
+            ->unique()
+            ->values();
+
         return view('livewire.media.genres', [
             'paginatedResults' => $paginatedResults,
             'page' => $page,
             'genre' => $this->genre,
             'year' => $year, // Pass years for dropdown
+            'country' => $country,
             'yearFilter' => $this->yearFilter, // Keep track of the selected year
         ]);
     }

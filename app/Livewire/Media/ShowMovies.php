@@ -12,6 +12,8 @@ class ShowMovies extends Component
 
     public $yearFilter = null;
 
+    public $countryFilter = null;
+
     public function placeholder()
     {
         return view('placeholder');
@@ -20,6 +22,10 @@ class ShowMovies extends Component
     public function updated($key)
     {
         if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+
+        if ($key === 'countryFilter') {
             $this->resetPage();
         }
     }
@@ -42,7 +48,15 @@ class ShowMovies extends Component
             $moviesQuery->where('release_year', $this->yearFilter);
         }
 
+        if ($this->countryFilter) {
+            $moviesQuery->where('country', $this->countryFilter);
+        }
+
         $movies = $moviesQuery->paginate('36');
+
+        $country = Movies::pluck('country')
+            ->unique()
+            ->values();
 
         $year = Movies::pluck('release_year')
             ->filter(fn ($year) => ! empty($year))
@@ -50,6 +64,6 @@ class ShowMovies extends Component
             ->sortDesc()
             ->values();
 
-        return view('livewire.media.show-movies', compact('movies', 'year'));
+        return view('livewire.media.show-movies', compact('movies', 'year', 'country'));
     }
 }

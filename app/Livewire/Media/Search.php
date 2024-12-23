@@ -17,11 +17,22 @@ class Search extends Component
 
     public $movieFilter = null;
 
+    public $countryFilter = null;
+
     public function updated($key)
     {
         if ($key === 'movieFilter') {
             $this->resetPage();
         }
+
+        if ($key === 'countryFilter') {
+            $this->resetPage();
+        }
+    }
+
+    public function refresh()
+    {
+        $this->reset(['movieFilter', 'countryFilter']);
     }
 
     protected $queryString = ['search'];
@@ -45,6 +56,11 @@ class Search extends Component
             $seriesQuery->where('type', $this->movieFilter);
         }
 
+        if ($this->countryFilter) {
+            $moviesQuery->where('country', $this->countryFilter);
+            $seriesQuery->where('country', $this->countryFilter);
+        }
+
         $movies = $moviesQuery->get();
         $series = $seriesQuery->get();
 
@@ -64,6 +80,10 @@ class Search extends Component
             ['path' => LengthAwarePaginator::resolveCurrentPath()]
         );
 
-        return view('livewire.media.search', compact('paginatedResults', 'query'));
+        $country = Movies::pluck('country')
+            ->unique()
+            ->values();
+
+        return view('livewire.media.search', compact('paginatedResults', 'query', 'country'));
     }
 }

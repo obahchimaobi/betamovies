@@ -13,9 +13,15 @@ class ShowSeries extends Component
 
     public $yearFilter = null;
 
+    public $countryFilter = null;
+
     public function updated($key)
     {
         if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+
+        if ($key === 'countryFilter') {
             $this->resetPage();
         }
     }
@@ -43,6 +49,10 @@ class ShowSeries extends Component
             $seriesQuery->where('release_year', $this->yearFilter);
         }
 
+        if ($this->countryFilter) {
+            $seriesQuery->where('country', $this->countryFilter);
+        }
+
         $series = $seriesQuery->paginate('36');
 
         $year = Series::pluck('release_year')
@@ -51,6 +61,10 @@ class ShowSeries extends Component
             ->sortDesc()
             ->values();
 
-        return view('livewire.media.show-series', compact('series', 'year'));
+        $country = Series::pluck('country')
+            ->unique()
+            ->values();
+
+        return view('livewire.media.show-series', compact('series', 'year', 'country'));
     }
 }

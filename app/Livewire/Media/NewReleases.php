@@ -14,6 +14,8 @@ class NewReleases extends Component
 
     public $yearFilter = null;
 
+    public $countryFilter = null;
+
     public function placeholder()
     {
         return view('placeholder');
@@ -22,6 +24,10 @@ class NewReleases extends Component
     public function updated($key)
     {
         if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+
+        if ($key === 'countryFilter') {
             $this->resetPage();
         }
     }
@@ -48,6 +54,11 @@ class NewReleases extends Component
             $new_released_series_query->where('release_year', $this->yearFilter);
         }
 
+        if ($this->countryFilter) {
+            $new_released_movies_query->where('country', $this->countryFilter);
+            $new_released_series_query->where('country', $this->countryFilter);
+        }
+
         $new_released_movies = $new_released_movies_query->get();
         $new_released_series = $new_released_series_query->get();
 
@@ -71,6 +82,11 @@ class NewReleases extends Component
             ->sortDesc() // Sort by latest year (descending)
             ->values();
 
-        return view('livewire.media.new-releases', compact('paginatedResults', 'year'));
+        $country = Movies::pluck('country')
+            ->concat(Series::pluck('country'))
+            ->unique()
+            ->values();
+
+        return view('livewire.media.new-releases', compact('paginatedResults', 'year', 'country'));
     }
 }

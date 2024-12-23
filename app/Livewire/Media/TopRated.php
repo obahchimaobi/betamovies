@@ -15,6 +15,8 @@ class TopRated extends Component
 
     public $yearFilter = null;
 
+    public $countryFilter = null;
+
     public function placeholder()
     {
         return view('placeholder');
@@ -23,6 +25,10 @@ class TopRated extends Component
     public function updated($key)
     {
         if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+
+        if ($key === 'countryFilter') {
             $this->resetPage();
         }
     }
@@ -52,6 +58,11 @@ class TopRated extends Component
             $top_rated_series_query->where('release_year', $this->yearFilter);
         }
 
+        if ($this->countryFilter) {
+            $top_rated_movies_query->where('country', $this->countryFilter);
+            $top_rated_series_query->where('country', $this->countryFilter);
+        }
+
         $top_rated_movies = $top_rated_movies_query->get();
         $top_rated_series = $top_rated_series_query->get();
 
@@ -60,7 +71,7 @@ class TopRated extends Component
         $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
 
         // Items per page
-        $perPage = 36;
+        $perPage = 24;
 
         // Slice the collection to get the items to display in current page
         $currentPageResults = $top_rated->slice(($page * $perPage) - $perPage, $perPage)->values();
@@ -75,6 +86,11 @@ class TopRated extends Component
             ->sortDesc() // Sort by latest year (descending)
             ->values();
 
-        return view('livewire.media.top-rated', compact('paginatedResults', 'year'));
+        $country = Series::pluck('country')
+            ->concat(Series::pluck('country'))
+            ->unique()
+            ->values();
+
+        return view('livewire.media.top-rated', compact('paginatedResults', 'year', 'country'));
     }
 }

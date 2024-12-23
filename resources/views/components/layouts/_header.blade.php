@@ -1,5 +1,5 @@
 <!-- ========== HEADER ========== -->
-@use('\App\Models\MyList');
+@use('\App\Models\MyList')
 @php
     $number_of_lists = MyList::count();
 @endphp
