@@ -12,23 +12,44 @@ class NewReleases extends Component
 {
     use WithPagination;
 
+    public $yearFilter = null;
+
     public function placeholder()
     {
         return view('placeholder');
     }
 
+    public function updated($key)
+    {
+        if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+    }
+
+    public function refresh()
+    {
+        $this->reset();
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $new_released_movies = Movies::where('status', '!=', 'pending')
+        $new_released_movies_query = Movies::where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
-            ->orderByDesc('id')
-            ->get();
-        $new_released_series = Series::where('status', '!=', 'pending')
+            ->orderByDesc('id');
+        $new_released_series_query = Series::where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
-            ->orderByDesc('id')
-            ->get();
+            ->orderByDesc('id');
+
+        if ($this->yearFilter) {
+            $new_released_movies_query->where('release_year', $this->yearFilter);
+            $new_released_series_query->where('release_year', $this->yearFilter);
+        }
+
+        $new_released_movies = $new_released_movies_query->get();
+        $new_released_series = $new_released_series_query->get();
 
         $new_released = $new_released_movies->concat($new_released_series);
 
@@ -43,6 +64,13 @@ class NewReleases extends Component
         // Create our paginator and add it to the view
         $paginatedResults = new LengthAwarePaginator($currentPageResults, count($new_released), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
-        return view('livewire.media.new-releases', compact('paginatedResults'));
+        $year = Movies::pluck('release_year')
+            ->concat(Series::pluck('release_year'))
+            ->filter(fn ($year) => ! empty($year)) // Remove empty years
+            ->unique()
+            ->sortDesc() // Sort by latest year (descending)
+            ->values();
+
+        return view('livewire.media.new-releases', compact('paginatedResults', 'year'));
     }
 }

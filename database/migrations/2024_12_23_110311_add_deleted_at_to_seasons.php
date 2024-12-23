@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('movies', function (Blueprint $table) {
-            //
-            $table->timestamp('deleted_at')->after('approved_at')->nullable();
-        });
+        if (!Schema::hasColumn('seasons', 'deleted_at')) {
+            Schema::table('seasons', function (Blueprint $table) {
+                //
+                $table->timestamp('deleted_at')->nullable();
+            });
+        }
     }
 
     /**
@@ -22,7 +24,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('movies', function (Blueprint $table) {
+        Schema::table('seasons', function (Blueprint $table) {
             //
         });
     }

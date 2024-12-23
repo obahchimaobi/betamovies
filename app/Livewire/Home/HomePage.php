@@ -50,16 +50,22 @@ class HomePage extends Component
             ->orderByDesc('popularity')
             ->paginate('12');
 
-        $trending_series = Series::where('popularity', '>=', 500)
+        $trending_series = Series::where('popularity', '>=', 100)
             ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
             ->paginate('12');
 
+        $movies = Movies::whereNull('deleted_at')->where('status', '!=', 'pending')->orderByDesc('approved_at')->orderByDesc('id')->paginate('24');
+
+        $series = Series::whereNull('deleted_at')->where('status', '!=', 'pending')->orderByDesc('approved_at')->orderByDesc('id')->paginate('24');
+
         return view('livewire.home.home-page', [
             'merge' => $merge,
             'trending_movies' => $trending_movies,
             'trending_series' => $trending_series,
+            'movies_section' => $movies,
+            'series_section' => $series,
         ]);
     }
 }

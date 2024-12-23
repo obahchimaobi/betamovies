@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('comments', function (Blueprint $table) {
-            //
-            $table->string('movie_id')->after('id')->nullable();
-        });
+        if (!Schema::hasColumn('comments', 'movie_id')) {
+            Schema::table('comments', function (Blueprint $table) {
+                //
+                $table->string('movie_id')->after('id')->nullable();
+            });
+        }
     }
 
     /**

@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('comments', function (Blueprint $table) {
-            //
-            $table->string('deleted_at')->nullable();
-        });
+        if (!Schema::hasColumn('comments', 'deleted_at')) {
+            Schema::table('comments', function (Blueprint $table) {
+                //
+                $table->string('deleted_at')->nullable();
+            });
+        }
     }
 
     /**

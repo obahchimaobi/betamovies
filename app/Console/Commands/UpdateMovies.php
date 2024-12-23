@@ -30,7 +30,7 @@ class UpdateMovies extends Command
     public function handle()
     {
         //
-        $fetch = Movies::whereNull('origin_country')->orWhereNull('genres')->orWhereNull('runtime')->get();
+        $fetch = Movies::whereNull('origin_country')->orWhereNull('genres')->orWhereNull('runtime')->orWhereNull('popularity')->get();
 
         if (count($fetch) > 0) {
             foreach ($fetch as $movie) {
@@ -62,6 +62,10 @@ class UpdateMovies extends Command
                 $minutes = $runtime % 60;
                 $runtimeText = ($hours ? "{$hours} hour".($hours > 1 ? 's' : '') : '').($minutes ? " {$minutes} minutes" : '');
                 $movie->runtime = $runtimeText;
+
+                // update popularity
+                $popularity = $data['popularity'];
+                $movie->popularity = $popularity;
 
                 $movie->save();
 

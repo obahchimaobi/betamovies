@@ -33,6 +33,12 @@ class Genres extends Component
         }
     }
 
+    public function refresh()
+    {
+        $this->reset();
+        $this->resetPage();
+    }
+
     public function render()
     {
         // Fetch movies and series based on genre and year filter

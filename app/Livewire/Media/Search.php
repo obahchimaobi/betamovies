@@ -52,7 +52,7 @@ class Search extends Component
 
         $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
 
-        $perPage = 24;
+        $perPage = 36;
 
         $currentPageResults = $allResults->slice(($page * $perPage) - $perPage, $perPage)->values();
 

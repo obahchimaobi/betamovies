@@ -28,7 +28,7 @@ class UpdateSeries extends Command
     public function handle()
     {
         //
-        $fetch = Series::whereNull('genres')->get();
+        $fetch = Series::whereNull('genres')->orWhereNull('popularity')->get();
 
         if (count($fetch) > 0) {
             foreach ($fetch as $movie) {
@@ -64,6 +64,9 @@ class UpdateSeries extends Command
 
                 // update the movie in the database
                 $movie->genres = $genres;
+
+                $popularity = $data['popularity'];
+                $movie->popularity = $popularity;
 
                 $movie->save();
 

@@ -1,4 +1,8 @@
 <!-- ========== HEADER ========== -->
+@use('\App\Models\MyList');
+@php
+    $number_of_lists = MyList::count();
+@endphp
 
 <!-- Toast -->
 <div id="dismiss-toast"
@@ -26,7 +30,7 @@
         <div class="me-5 lg:me-0 lg:hidden">
             <!-- Logo -->
             <a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
-                href="{{ route('home') }}" aria-label="Preline" wire:naivgate>
+                href="{{ route('home') }}" aria-label="Preline" wire:navigate>
                 <img src="{{ asset('icons/betamovies.png') }}" alt="" class="h-12 w-80">
             </a>
             <!-- End Logo -->
@@ -130,9 +134,10 @@
 
                                         Profile
                                     </a>
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300 justify-between"
                                         href="{{ route('my.watchlist') }}" wire:navigate>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        <div class="flex gap-x-3.5 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="2" stroke="currentColor" class="size-4 shrink-0"
                                             width="24" height="24">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -140,6 +145,11 @@
                                         </svg>
 
                                         My Watchlist
+                                        </div>
+
+                                        <span class="text-xs font-medium bg-red-500 text-white py-0.5 px-1.5 rounded-full">
+                                            {{ $number_of_lists }}
+                                        </span>
                                     </a>
                                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
                                         href="{{ route('logout') }}" wire:navigate>

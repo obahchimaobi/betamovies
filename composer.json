@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "codeat3/blade-system-uicons": "*",
         "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.31",
         "laravel/prompts": "*",
@@ -15,8 +16,10 @@
         "laravel/tinker": "^2.9",
         "laravolt/avatar": "*",
         "livewire/livewire": "^3.5",
+        "lwwcas/laravel-countries": "*",
         "mallardduck/blade-boxicons": "^2.4",
         "postare/blade-mdi": "^1.1",
+        "rinvex/countries": "*",
         "socialiteproviders/google": "^4.1"
     },
     "require-dev": {

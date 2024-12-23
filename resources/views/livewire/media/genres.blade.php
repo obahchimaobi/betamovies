@@ -1,6 +1,4 @@
 <div>
-
-
     <div class="flex items-center justify-between">
         <h1 class="text-black dark:text-white lg:text-3xl text-2xl font-semibold">{{ Str::ucfirst($genre) }}
         </h1>
@@ -33,7 +31,8 @@
     </div>
 
     <div class="pt-10 relative flex">
-        <select id="countries"
+        <div class="flex w-full gap-2">
+            <select id="countries"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none"
             wire:model.live="yearFilter">
             <option value="">Choose a year</option>
@@ -42,14 +41,27 @@
             @endforeach
         </select>
 
-        <div wire:loading class="absolute right-6 top-3/4 -translate-y-1/2">
-            <div class="animate-spin inline-block size-5 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-white" role="status" aria-label="loading">
+        <button type="button" wire:click='refresh'
+                class="py-1 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                Reset
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-4 shrink-0">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                </svg>
+
+            </button>
+        </div>
+
+        <div wire:loading class="absolute right-32 top-3/4 -translate-y-1/2">
+            <div class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-slate-300"
+                role="status" aria-label="loading">
                 <span class="sr-only">Loading...</span>
-              </div>
+            </div>
         </div>
     </div>
 
-    <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4 mt-6">
+    <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-y-5 gap-4 mt-6">
         @if (sizeof($paginatedResults) > 0)
             @foreach ($paginatedResults as $movie)
                 <div class="w-full">
@@ -64,7 +76,15 @@
                                 ({{ $movie->release_year }})
                             </span></a>
                         <span
-                            class="text-gray-800 font-semibold dark:text-white lg:text-xs text-sms">{{ $movie->vote_count }}</span>
+                            class="text-gray-800 font-semibold dark:text-white lg:text-xs text-sm flex gap-1 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="size-3 fill-yellow-400">
+                                <path fill-rule="evenodd"
+                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            {{ $movie->vote_count }}
+                        </span>
                     </div>
                 </div>
             @endforeach

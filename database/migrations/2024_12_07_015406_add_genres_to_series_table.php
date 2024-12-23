@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('series', function (Blueprint $table) {
-            //
-            $table->string('genres')->nullable()->after('country');
-        });
+        if (!Schema::hasColumn('series', 'genres')) {
+            Schema::table('series', function (Blueprint $table) {
+                //
+                $table->string('genres')->nullable()->after('country');
+            });
+        }
     }
 
     /**

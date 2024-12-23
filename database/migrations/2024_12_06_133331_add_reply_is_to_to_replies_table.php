@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('replies', function (Blueprint $table) {
-            //
-            $table->string('reply_is_to')->nullable();
-        });
+        if (!Schema::hasColumn('replies', 'reply_is_to')) {
+            Schema::table('replies', function (Blueprint $table) {
+                //
+                $table->string('reply_is_to')->nullable();
+            });
+        }
     }
 
     /**

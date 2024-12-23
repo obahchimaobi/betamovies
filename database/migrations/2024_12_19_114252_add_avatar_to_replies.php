@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('replies', function (Blueprint $table) {
-            //
-            $table->string('avatar')->nullable();
-        });
+        if (!Schema::hasColumn('replies', 'avatar')) {
+            Schema::table('replies', function (Blueprint $table) {
+                //
+                $table->string('avatar')->nullable();
+            });
+        }
     }
 
     /**

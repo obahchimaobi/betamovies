@@ -24,6 +24,12 @@ class ShowMovies extends Component
         }
     }
 
+    public function refresh()
+    {
+        $this->reset();
+        $this->resetPage();
+    }
+
     public function render()
     {
         $moviesQuery = Movies::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])
@@ -36,7 +42,7 @@ class ShowMovies extends Component
             $moviesQuery->where('release_year', $this->yearFilter);
         }
 
-        $movies = $moviesQuery->paginate('24');
+        $movies = $moviesQuery->paginate('36');
 
         $year = Movies::pluck('release_year')
             ->filter(fn ($year) => ! empty($year))

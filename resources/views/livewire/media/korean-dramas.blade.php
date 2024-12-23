@@ -17,6 +17,6 @@
         @endforeach
     </div>
     <div class="mt-8">
-        {{ $kdrama->appends(request()->query())->onEachSide(2)->links(data: ['scrollTo' => false]) }}
+        {{ $kdrama->links(data: ['scrollTo' => "#korean-drama"]) }}
     </div>
 </div>
