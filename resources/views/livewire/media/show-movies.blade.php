@@ -1,5 +1,5 @@
 <div>
-    <div class="pb-5 pt-3">
+    <div class="pb-5 pt-3 relative flex">
         <select id="countries"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none"
             wire:model.live="yearFilter">
@@ -8,6 +8,12 @@
                 <option value="{{ $item }}">{{ $item }}</option>
             @endforeach
         </select>
+
+        <div wire:loading class="absolute right-7 top-1/2 -translate-y-1/2">
+            <div class="animate-spin inline-block size-5 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-white" role="status" aria-label="loading">
+                <span class="sr-only">Loading...</span>
+              </div>
+        </div>
     </div>
 
     {{-- Because she competes with no one, no one can compete with her. --}}

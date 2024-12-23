@@ -32,7 +32,7 @@
         </ol>
     </div>
 
-    <div class="pt-10">
+    <div class="pt-10 relative flex">
         <select id="countries"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none"
             wire:model.live="yearFilter">
@@ -41,10 +41,16 @@
                 <option value="{{ $item }}">{{ $item }}</option>
             @endforeach
         </select>
+
+        <div wire:loading class="absolute right-6 top-3/4 -translate-y-1/2">
+            <div class="animate-spin inline-block size-5 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-white" role="status" aria-label="loading">
+                <span class="sr-only">Loading...</span>
+              </div>
+        </div>
     </div>
 
     <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4 mt-6">
-        @if ($paginatedResults)
+        @if (sizeof($paginatedResults) > 0)
             @foreach ($paginatedResults as $movie)
                 <div class="w-full">
                     <a href="{{ route('movie.details', ['name' => $movie->formatted_name]) }}" wire:navigate><img
@@ -63,7 +69,7 @@
                 </div>
             @endforeach
         @else
-            {{-- <p>No result found</p> --}}
+            <p class="dark:text-white/70 text-slate-800">No result found</p>
         @endif
     </div>
     <div class="mt-8">

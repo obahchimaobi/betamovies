@@ -15,6 +15,15 @@ class Search extends Component
 
     public $search;
 
+    public $movieFilter = null;
+
+    public function updated($key)
+    {
+        if ($key === 'movieFilter') {
+            $this->resetPage();
+        }
+    }
+
     protected $queryString = ['search'];
 
     public function placeholder()
@@ -28,8 +37,16 @@ class Search extends Component
 
         // dump($query);
 
-        $movies = Movies::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
-        $series = Series::search($query)->get()->whereNull('deleted_at')->where('status', '!=', 'pending');
+        $moviesQuery = Movies::where('name', 'like', '%' . $query . '%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
+        $seriesQuery = Series::where('name', 'like', '%' . $query . '%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
+
+        if ($this->movieFilter) {
+            $moviesQuery->where('type', $this->movieFilter);
+            $seriesQuery->where('type', $this->movieFilter);
+        }
+
+        $movies = $moviesQuery->get();
+        $series = $seriesQuery->get();
 
         $allResults = $movies->concat($series);
 
