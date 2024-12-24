@@ -70,11 +70,11 @@ class UpdateMovies extends Command
                 $movie->save();
 
                 // echo '✔ '.$movie->name." - updated successfully ✔ \n";
-                info('✔ '.$movie->name.' - updated successfully ✔'."\n");
+                $this->info('✔ '.$movie->name.' - updated successfully ✔');
             }
         } else {
             // echo '✘ No movie to update ✘ '."\n";
-            info('✘ No movie to update ✘');
+            $this->info('✘ No movie to update ✘');
         }
     }
 }

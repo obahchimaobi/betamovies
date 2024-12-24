@@ -12,7 +12,8 @@
         <form action="{{ route('search') }}" class="w-full">
             <input type="text"
                 class="py-2 ps-10 pe-16 block w-full border bg-white border-slate-200 rounded-lg text-sm focus:border-slate-100 focus:ring-slate-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder:text-slate-400 dark:focus:ring-slate-600"
-                placeholder="Search" wire:model.live.debounce.300ms='searchBar' autofocus name="search" autocomplete="off">
+                placeholder="Search" wire:model.live.debounce.300ms='searchBar' autofocus name="search"
+                autocomplete="off">
         </form>
 
         <div wire:loading class="absolute right-3 top-1/2 -translate-y-1/2">
@@ -55,7 +56,12 @@
     @elseif ($error)
         <div
             class="p-1.5 space-y-0.5 rounded-lg mt-2 bg-white border border-gray-300 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 relative text-center mx-auto">
-            <h1 class="text-sm font-medium text-slate-600 dark:text-slate-200 py-5">
+            <svg class="fi-ta-empty-state-icon w-10 h-10 mt-4 text-gray-500 dark:text-gray-400 dark:bg-slate-600 rounded-full p-2 mx-auto"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" aria-hidden="true" data-slot="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+            </svg>
+            <h1 class="text-sm font-medium text-slate-600 dark:text-slate-200 pb-4 pt-3">
                 @php
                     echo $error;
                 @endphp

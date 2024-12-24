@@ -1,8 +1,11 @@
 <!-- ========== HEADER ========== -->
 @use('\App\Models\MyList')
 @php
-    $user = auth()->user()->id;
-    $number_of_lists = MyList::where('userId', $user)->count();
+    $user = "";
+    if (Auth::check()) {
+        $user = auth()->user()->id;
+    }
+    $number_of_lists = MyList::where('userId', $user)->whereNull('deleted_at')->count();
 @endphp
 
 <!-- Toast -->
