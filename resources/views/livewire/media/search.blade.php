@@ -29,11 +29,12 @@
 
             </button>
         </div>
+    </div>
 
-        <div wire:loading class="absolute right-8 top-1/2 -translate-y-1/2">
-            <div class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-slate-300" role="status" aria-label="loading">
-                <span class="sr-only">Loading...</span>
-              </div>
+    <div wire:loading class="right-5 top-1/2 -translate-y-1/2">
+        <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-slate-300"
+            role="status" aria-label="loading">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
 
