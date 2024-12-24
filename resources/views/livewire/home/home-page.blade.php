@@ -28,22 +28,6 @@
                     @endforeach
                 @endif
             </div>
-
-            @if (count($seasons) >= 24)
-                <div class="mx-auto text-center">
-                    <a href="{{ route('movies.page') }}"
-                        class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                        wire:navigate>
-                        Show more
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-4">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                    </a>
-
-                </div>
-            @endif
         </div>
     </div>
     <!-- End Content -->

@@ -59,7 +59,7 @@ class HomePage extends Component
             ->orderBy('s1.approved_at', 'desc')
             ->whereNull('deleted_at')
             ->orderBy('id', 'desc')
-            ->paginate(18);
+            ->paginate(24);
 
         return view('livewire.home.home-page', [
             'trending_movies' => $trending_movies,
