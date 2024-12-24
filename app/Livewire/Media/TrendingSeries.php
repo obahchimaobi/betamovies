@@ -12,6 +12,8 @@ class TrendingSeries extends Component
 
     public $yearFilter  = null;
 
+    public $countryFilter = null;
+
     public function placeholder()
     {
         return view('placeholder');
@@ -20,6 +22,9 @@ class TrendingSeries extends Component
     public function updated($key)
     {
         if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+        if ($key === 'countryFilter') {
             $this->resetPage();
         }
     }
@@ -42,6 +47,10 @@ class TrendingSeries extends Component
             $trending_series_query->where('release_year', $this->yearFilter);
         }
 
+        if ($this->countryFilter) {
+            $trending_series_query->where('country', $this->countryFilter);
+        }
+
         $trending_series = $trending_series_query->paginate('36');
 
         $year = Series::pluck('release_year')
@@ -50,6 +59,10 @@ class TrendingSeries extends Component
             ->sortDesc()
             ->values();
 
-        return view('livewire.media.trending-series', compact('trending_series', 'year'));
+        $country = Series::pluck('country')
+            ->unique()
+            ->values();
+
+        return view('livewire.media.trending-series', compact('trending_series', 'year', 'country'));
     }
 }

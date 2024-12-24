@@ -12,6 +12,8 @@ class TrendingMovies extends Component
 
     public $yearFilter = null;
 
+    public $countryFilter = null;
+
     public function placeholder()
     {
         return view('placeholder');
@@ -20,6 +22,10 @@ class TrendingMovies extends Component
     public function updated($key)
     {
         if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+
+        if ($key === 'countryFilter') {
             $this->resetPage();
         }
     }
@@ -41,6 +47,10 @@ class TrendingMovies extends Component
             $trending_movies_query->where('release_year', $this->yearFilter);
         }
 
+        if ($this->countryFilter) {
+            $trending_movies_query->where('country', $this->countryFilter);
+        }
+
         $trending_movies = $trending_movies_query->paginate('36');
 
         $year = Movies::pluck('release_year')
@@ -49,6 +59,10 @@ class TrendingMovies extends Component
             ->sortDesc()
             ->values();
 
-        return view('livewire.media.trending-movies', compact('trending_movies', 'year'));
+        $country = Movies::pluck('country')
+            ->unique()
+            ->values();
+
+        return view('livewire.media.trending-movies', compact('trending_movies', 'year', 'country'));
     }
 }

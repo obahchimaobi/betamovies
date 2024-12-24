@@ -574,7 +574,7 @@
                                                                     </div>
                                                                     <div
                                                                         class="col-span-8 -mt-6 sm:-mt-0 flex gap-4 justify-between">
-                                                                        <div class="flex items-center gap-4">
+                                                                        <div class="flex gap-4">
                                                                             <img src="{{ asset('storage/uploads/' . $episode->poster_path) }}"
                                                                                 alt="{{ $episode->title }}"
                                                                                 class="xl:h-28 h-40 rounded-md">
