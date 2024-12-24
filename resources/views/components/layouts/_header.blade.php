@@ -1,7 +1,8 @@
 <!-- ========== HEADER ========== -->
 @use('\App\Models\MyList')
 @php
-    $number_of_lists = MyList::count();
+    $user = auth()->user()->id;
+    $number_of_lists = MyList::where('userId', $user)->count();
 @endphp
 
 <!-- Toast -->

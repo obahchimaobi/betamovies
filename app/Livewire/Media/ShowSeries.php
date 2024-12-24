@@ -28,8 +28,7 @@ class ShowSeries extends Component
 
     public function refresh()
     {
-        $this->reset();
-        $this->resetPage();
+        $this->reset(['yearFilter', 'countryFilter']);
     }
 
     public function placeholder()

@@ -32,13 +32,13 @@ class TrendingMovies extends Component
 
     public function refresh()
     {
-        $this->reset();
-        $this->resetPage();
+        $this->reset(['yearFilter', 'countryFilter']);
     }
 
     public function render()
     {
         $trending_movies_query = Movies::where('popularity', '>=', 100)
+            ->select(['name', 'formatted_name', 'poster_path', 'vote_count', 'release_year'])
             ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('popularity');
@@ -51,7 +51,7 @@ class TrendingMovies extends Component
             $trending_movies_query->where('country', $this->countryFilter);
         }
 
-        $trending_movies = $trending_movies_query->paginate('36');
+        $trending_movies = $trending_movies_query->paginate('24');
 
         $year = Movies::pluck('release_year')
             ->filter(fn ($year) => ! empty($year))

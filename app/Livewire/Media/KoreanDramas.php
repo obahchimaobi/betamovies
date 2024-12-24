@@ -10,6 +10,21 @@ class KoreanDramas extends Component
 {
     use WithPagination;
 
+    public $yearFilter = null;
+
+    public function updated($key)
+    {
+        if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+    }
+
+    public function refresh()
+    {
+        $this->reset();
+        $this->resetPage();
+    }
+
     public function placeholder()
     {
         return view('placeholder');
@@ -24,15 +39,29 @@ class KoreanDramas extends Component
         ];
 
         // Retrieve series where the mapped country is 'Korea' and status is not 'pending'
-        $korean_drama = Series::where('status', '!=', 'pending')
+        $korean_drama_query = Series::where('status', '!=', 'pending')
+            ->select(['name', 'formatted_name', 'release_year', 'country', 'origin_country', 'deleted_at', 'id', 'poster_path'])
             ->whereIn('origin_country', array_keys(array_filter($countryMapping, fn($val) => $val === 'Korea')))
             ->orderByDesc('release_year')
             ->whereNull('deleted_at')
-            ->orderByDesc('id')
-            ->paginate(36);
+            ->where('status', '!=', 'pending')
+            ->orderByDesc('id');
+
+        if ($this->yearFilter) {
+            $korean_drama_query->where('release_year', $this->yearFilter);
+        }
+
+        $korean_drama = $korean_drama_query->paginate(24);
+
+        $year = Series::pluck('release_year')
+            ->filter(fn ($year) => ! empty($year))
+            ->unique()
+            ->sortDesc()
+            ->values();
 
         return view('livewire.media.korean-dramas', [
             'kdrama' => $korean_drama,
+            'year' => $year,
         ]);
     }
 }

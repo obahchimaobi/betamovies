@@ -20,52 +20,53 @@ class HomePage extends Component
 
     public function render()
     {
-        $all_series = DB::table('series')
-            ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
-            ->orderByDesc('approved_at')
-            ->orderByDesc('id')
-            ->paginate('12')
-            ->map(function ($item) {
-                return (object) array_merge((array) $item, ['poster_path' => $item->poster_path ?? null]);
-            });
-
-        $all_movies = DB::table('movies')
-            ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
-            ->orderByDesc('approved_at')
-            ->orderByDesc('id')
-            ->paginate('12')
-            ->map(function ($item) {
-                return (object) array_merge((array) $item, ['poster_path' => $item->poster_path ?? null]);
-            });
-
-        // dd($all_movies);
-
-        $merge = $all_series->merge($all_movies);
 
         $trending_movies = Movies::where('popularity', '>=', 100)
+            ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year'])
             ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
             ->paginate('12');
 
         $trending_series = Series::where('popularity', '>=', 100)
+            ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year'])
             ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
             ->paginate('12');
 
-        $movies = Movies::whereNull('deleted_at')->where('status', '!=', 'pending')->orderByDesc('approved_at')->orderByDesc('id')->paginate('24');
+        $movies = Movies::whereNull('deleted_at')
+            ->where('status', '!=', 'pending')
+            ->orderByDesc('approved_at')
+            ->select(['name', 'formatted_name', 'release_year', 'vote_count', 'poster_path'])
+            ->orderByDesc('id')
+            ->paginate('24');
 
-        $series = Series::whereNull('deleted_at')->where('status', '!=', 'pending')->orderByDesc('approved_at')->orderByDesc('id')->paginate('24');
+        $series = Series::whereNull('deleted_at')
+            ->where('status', '!=', 'pending')
+            ->orderByDesc('approved_at')
+            ->orderByDesc('id')
+            ->select(['name', 'formatted_name', 'release_year', 'vote_count', 'poster_path'])
+            ->orderByDesc('id')
+            ->paginate('24');
+
+        $seasons = DB::table('seasons as s1')
+            ->select('s1.*')
+            ->join(DB::raw('(SELECT MAX(id) as id, movieId FROM seasons WHERE status != "pending" GROUP BY movieId) as s2'), function ($join) {
+                $join->on('s1.id', '=', 's2.id');
+                $join->on('s1.movieId', '=', 's2.movieId');
+            })
+            ->orderBy('s1.approved_at', 'desc')
+            ->whereNull('deleted_at')
+            ->orderBy('id', 'desc')
+            ->paginate(18);
 
         return view('livewire.home.home-page', [
-            'merge' => $merge,
             'trending_movies' => $trending_movies,
             'trending_series' => $trending_series,
             'movies_section' => $movies,
             'series_section' => $series,
+            'seasons' => $seasons,
         ]);
     }
 }

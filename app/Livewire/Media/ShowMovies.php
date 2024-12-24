@@ -32,17 +32,16 @@ class ShowMovies extends Component
 
     public function refresh()
     {
-        $this->reset();
-        $this->resetPage();
+        $this->reset(['yearFilter', 'countryFilter']);
     }
 
     public function render()
     {
-        $moviesQuery = Movies::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])
-            ->whereNull('deleted_at')
+        $moviesQuery = Movies::whereNull('deleted_at')
             ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
-            ->orderByDesc('id');
+            ->orderByDesc('id')
+            ->select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count']);
 
         if ($this->yearFilter) {
             $moviesQuery->where('release_year', $this->yearFilter);
@@ -52,7 +51,7 @@ class ShowMovies extends Component
             $moviesQuery->where('country', $this->countryFilter);
         }
 
-        $movies = $moviesQuery->paginate('36');
+        $movies = $moviesQuery->paginate('24');
 
         $country = Movies::pluck('country')
             ->unique()
