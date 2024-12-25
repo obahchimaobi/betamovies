@@ -217,8 +217,8 @@ dark:bg-slate-900 dark:border-slate-800"
                             role="region" aria-labelledby="users-accordion">
                             <ul class="hs-accordion-group ps-8 pt-1 space-y-1" data-hs-accordion-always-open>
 
-                                <li><a class="@if (Request::is('contact-us')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
-                                        href="" wire:navigate>
+                                <li><a class="@if (Request::is('korean-movies')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                                        href="{{ route('korean.movies') }}" wire:navigate>
 
                                         Movies
                                     </a>

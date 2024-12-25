@@ -2,15 +2,15 @@
 
 namespace App\Livewire\Media;
 
-use App\Models\Series;
+use App\Models\Movies;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class KoreanDramas extends Component
+class KoreanMovies extends Component
 {
     use WithPagination;
 
-    public $yearFilter = null;
+    public $yearFilter;
 
     public function updated($key)
     {
@@ -26,36 +26,35 @@ class KoreanDramas extends Component
 
     public function render()
     {
+        // Define the country mapping array
         $countryMapping = [
             'KR' => 'Korea',
             'KP' => 'Korea',
             // Add other Korean-related codes as necessary
         ];
 
-        // Retrieve series where the mapped country is 'Korea' and status is not 'pending'
-        $korean_drama_query = Series::where('status', '!=', 'pending')
-            ->select(['name', 'formatted_name', 'release_year', 'country', 'origin_country', 'deleted_at', 'id', 'poster_path'])
+        $korean_movies_query = Movies::select(['name', 'formatted_name', 'poster_path', 'release_year', 'vote_count', 'id'])
+            ->where('status', '!=', 'pending')
             ->whereIn('origin_country', array_keys(array_filter($countryMapping, fn($val) => $val === 'Korea')))
             ->orderByDesc('release_year')
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
             ->orderByDesc('id');
 
         if ($this->yearFilter) {
-            $korean_drama_query->where('release_year', $this->yearFilter);
+            $korean_movies_query->where('release_year', $this->yearFilter);
         }
 
-        $korean_drama = $korean_drama_query->paginate(24);
+        $korean_movies = $korean_movies_query->paginate(24);
 
-        $year = Series::pluck('release_year')
+        $year = Movies::pluck('release_year')
             ->filter(fn ($year) => ! empty($year))
             ->unique()
             ->sortDesc()
             ->values();
 
-        return view('livewire.media.korean-dramas', [
-            'kdrama' => $korean_drama,
-            'year' => $year,
+        return view('livewire.media.korean-movies', [
+            'korean_movies' => $korean_movies,
+            'year' => $year
         ]);
     }
 }
