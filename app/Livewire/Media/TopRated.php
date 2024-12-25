@@ -42,14 +42,14 @@ class TopRated extends Component
     {
         $top_rated_movies_query = Movies::where('status', '!=', 'pending')
             ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year'])
-            ->where('vote_count', '>', 6)
+            ->where('vote_count', '>', 5)
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
             ->orderByDesc('id');
 
         $top_rated_series_query = Series::where('status', '!=', 'pending')
             ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year'])
-            ->where('vote_count', '>', 6)
+            ->where('vote_count', '>', 5)
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
             ->orderByDesc('id');
