@@ -33,7 +33,7 @@ Route::get('/k-drama', KoreanDramas::class)->name('korean.drama');
 
 Route::get('/tag/{genre}', Genres::class)->name('genre');
 
-Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
+// Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
 
 // Auth
 Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page')->middleware('loggedin');
@@ -43,7 +43,7 @@ Route::get('/reset-password', [AuthController::class, 'forgot_password_page'])->
 Route::get('/email/verify/{email}/{hash}', function ($email, $hash) {
     $user = User::where('email', $email)->firstOrFail();
 
-    if (! hash_equals(sha1($user->otp), $hash)) {
+    if (!hash_equals(sha1($user->otp), $hash)) {
         abort(403, 'Invalid verification link.');
     }
 
@@ -88,5 +88,21 @@ Route::get('/delete-account', function () {
 
     return redirect()->route('home')->with('error', 'Unable to delete account.');
 })->name('account.delete')->middleware('auth');
+
+Route::get('/sitemap', function () {
+    $sitemapPath = public_path('sitemap.xml');
+    if (file_exists($sitemapPath)) {
+        $sitemapContent = simplexml_load_file($sitemapPath);
+        $urls = [];
+
+        foreach ($sitemapContent->url as $url) {
+            $urls[] = (string) $url->loc;
+        }
+
+        return view('sitemap', ['urls' => $urls]);
+    } else {
+        return response('Sitemap not found', 404);
+    }
+})->name('sitemap');
 
 Route::get('/{name}', Details::class)->name('movie.details');
