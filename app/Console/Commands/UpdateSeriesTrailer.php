@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Series;
 use Illuminate\Console\Command;
+use function Laravel\Prompts\info;
 
 class UpdateSeriesTrailer extends Command
 {
@@ -70,13 +71,13 @@ class UpdateSeriesTrailer extends Command
                             $movie->trailer_url = $trailer;
                             $movie->save();
 
-                            echo '✔ Trailer updated successfully for '.$movie->name.' ✔'."\n";
+                            $this->info('✔ Trailer updated successfully for '.$movie->name.' ✔');
                         }
                     }
                 }
             }
         } else {
-            echo '😙No missing series trailer found😙';
+            $this->info('😙No missing series trailer found😙');
         }
 
         echo "\n";
@@ -111,11 +112,11 @@ class UpdateSeriesTrailer extends Command
                     $nonTrailer->trailer_url = $videoTrailer;
                     $nonTrailer->save();
 
-                    echo 'Trailer updated for '.$nonTrailer->name."\n";
+                    $this->info('Trailer updated for '.$nonTrailer->name);
                 }
             }
         } else {
-            echo '😙No missing series trailer found😙';
+            $this->info('😙No missing series trailer found😙');
         }
     }
 }

@@ -12,6 +12,15 @@ class KoreanDramas extends Component
 
     public $yearFilter = null;
 
+    protected function queryString()
+    {
+        return [
+            'yearFilter' => [
+                'except' => null,
+            ],
+        ];
+    }
+
     public function updated($key)
     {
         if ($key === 'yearFilter') {
@@ -21,7 +30,7 @@ class KoreanDramas extends Component
 
     public function refresh()
     {
-        $this->reset(['yearFilter', 'countryFilter']);
+        $this->reset(['yearFilter']);
     }
 
     public function render()

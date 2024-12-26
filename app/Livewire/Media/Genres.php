@@ -18,6 +18,18 @@ class Genres extends Component
 
     public $countryFilter = null;
 
+    protected function queryString()
+    {
+        return [
+            'yearFilter' => [
+                'except' => null,
+            ],
+            'countryFilter' => [
+                'except' => null
+            ]
+        ];
+    }
+
     public function mount(Genres|string $genre)
     {
         $this->genre = $genre;

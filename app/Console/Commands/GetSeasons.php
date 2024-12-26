@@ -7,6 +7,7 @@ use App\Models\Series;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use function Laravel\Prompts\info;
 
 class GetSeasons extends Command
 {
@@ -80,7 +81,7 @@ class GetSeasons extends Command
                         ->count();
 
                     if ($pendingEpisodesCount >= 10) {
-                        echo 'Skipping Season '.$season.' for '.$full_name.' - More than 10 episodes pending'."\n";
+                        $this->info('Skipping Season '.$season.' for '.$full_name.' - More than 10 episodes pending');
                         break;
                     }
 
@@ -89,7 +90,7 @@ class GetSeasons extends Command
                         ->get("https://api.themoviedb.org/3/tv/{$movie_id}/season/{$season}?language=en-US");
 
                     if ($response->failed()) {
-                        echo 'Failed to fetch season '.$season.' for '.$full_name."\n";
+                        $this->info('Failed to fetch season '.$season.' for '.$full_name);
 
                         continue;
                     }
@@ -152,7 +153,7 @@ class GetSeasons extends Command
                             $overview = isset($episode['overview']) ? $episode['overview'] : null;
 
                             if (isset($existingSeasonsEpisodes[$season_number]) && in_array($episode_number, $existingSeasonsEpisodes[$season_number])) {
-                                echo 'Season for '.$full_name.' already in database'."\n";
+                                $this->info('Season for '.$full_name.' already in database');
 
                                 continue;
                             }
@@ -174,7 +175,7 @@ class GetSeasons extends Command
                                 'download_url' => '',
                             ]);
 
-                            echo $full_name.' Season '.$season_number.' Episode '.$episode_number.' added successfully'."\n";
+                            $this->info($full_name.' Season '.$season_number.' Episode '.$episode_number.' added successfully');
                         }
                     } else {
                         // No more episodes, stop the loop
@@ -183,7 +184,7 @@ class GetSeasons extends Command
                 }
             }
         } else {
-            echo "No approved series found in the database \n";
+            $this->info("No approved series found in the database");
         }
     }
 }

@@ -68,6 +68,7 @@
                 </div>
             @endforeach
         @else
+            <p class="dark:text-white/70 text-slate-800">No result found</p>
         @endif
     </div>
     <div class="mt-8">

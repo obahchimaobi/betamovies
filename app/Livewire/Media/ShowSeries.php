@@ -15,6 +15,18 @@ class ShowSeries extends Component
 
     public $countryFilter = null;
 
+    protected function queryString()
+    {
+        return [
+            'yearFilter' => [
+                'except' => null,
+            ],
+            'countryFilter' => [
+                'except' => null
+            ]
+        ];
+    }
+
     public function updated($key)
     {
         if ($key === 'yearFilter') {

@@ -14,6 +14,18 @@ class TrendingSeries extends Component
 
     public $countryFilter = null;
 
+    protected function queryString()
+    {
+        return [
+            'yearFilter' => [
+                'except' => null,
+            ],
+            'countryFilter' => [
+                'except' => null
+            ]
+        ];
+    }
+
     public function placeholder()
     {
         return view('placeholder');

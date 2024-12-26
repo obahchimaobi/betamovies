@@ -19,6 +19,18 @@ class Search extends Component
 
     public $countryFilter = null;
 
+    protected function queryString()
+    {
+        return [
+            'movieFilter' => [
+                'except' => null,
+            ],
+            'countryFilter' => [
+                'except' => null
+            ]
+        ];
+    }
+
     public function updated($key)
     {
         if ($key === 'movieFilter') {
