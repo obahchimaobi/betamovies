@@ -40,13 +40,13 @@
     </div>
 
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-    <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
+    <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-y-5 gap-4">
         @if (sizeof($series) > 0)
             @foreach ($series as $serie)
                 <div class="w-full">
                     <a href="{{ route('movie.details', ['name' => $serie->formatted_name]) }}" wire:navigate><img
                             src="{{ asset('storage/images/' . $serie->poster_path) }}" alt="{{ $serie->name }}"
-                            class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                            class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                     <div class="flex justify-between mt-2 gap-5">
                         <a href="{{ route('movie.details', ['name' => $serie->formatted_name]) }}"

@@ -15,7 +15,7 @@
                             <a href="{{ route('movie.details', ['name' => $season->formatted_name]) }}"
                                 wire:navigate><img src="{{ asset('storage/uploads/' . $season->poster_path) }}"
                                     alt=""
-                                    class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                                    class="rounded-lg lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                             <div class="flex justify-between mt-2 gap-4">
                                 <a href="{{ route('movie.details', ['name' => $season->formatted_name]) }}"
@@ -49,7 +49,7 @@
                             <a href="{{ route('movie.details', ['name' => $movies->formatted_name]) }}"
                                 wire:navigate><img src="{{ asset('storage/images/' . $movies->poster_path) }}"
                                     alt=""
-                                    class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                                    class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                             <div class="flex justify-between mt-2 gap-4">
                                 <a href="{{ route('movie.details', ['name' => $movies->formatted_name]) }}"
@@ -110,7 +110,7 @@
                             <a href="{{ route('movie.details', ['name' => $series->formatted_name]) }}"
                                 wire:navigate><img src="{{ asset('storage/images/' . $series->poster_path) }}"
                                     alt=""
-                                    class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                                    class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                             <div class="flex justify-between mt-2 gap-4">
                                 <a href="{{ route('movie.details', ['name' => $series->formatted_name]) }}"
@@ -169,7 +169,7 @@
                     <div class="w-full">
                         <a href="{{ route('movie.details', ['name' => $trending->formatted_name]) }}" wire:navigate><img
                                 src="{{ asset('storage/images/' . $trending->poster_path) }}" alt=""
-                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                                class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                         <div class="flex justify-between mt-2 gap-4">
                             <a href="{{ route('movie.details', ['name' => $trending->formatted_name]) }}"
@@ -227,7 +227,7 @@
                         <a href="{{ route('movie.details', ['name' => $trending_serie->formatted_name]) }}"
                             wire:navigate><img src="{{ asset('storage/images/' . $trending_serie->poster_path) }}"
                                 alt=""
-                                class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                                class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                         <div class="flex justify-between mt-2 gap-4">
                             <a href="{{ route('movie.details', ['name' => $trending_serie->formatted_name]) }}"

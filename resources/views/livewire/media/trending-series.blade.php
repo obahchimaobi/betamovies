@@ -40,13 +40,13 @@
     </div>
 
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-    <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4">
+    <div class="grid xl:grid-cols-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-y-5 gap-4">
         @if (sizeof($trending_series) > 0)
             @foreach ($trending_series as $trending)
                 <div class="w-full">
                     <a href="{{ route('movie.details', ['name' => $trending->formatted_name]) }}" wire:navigate><img
                             src="{{ asset('storage/images/' . $trending->poster_path) }}" alt="{{ $trending->name }}"
-                            class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
+                            class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                     <div class="flex justify-between mt-2 gap-3">
                         <a href="{{ route('movie.details', ['name' => $trending->formatted_name]) }}"
