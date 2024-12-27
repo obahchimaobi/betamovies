@@ -111,7 +111,7 @@ class GetSeasons extends Command
                         $image_name = pathinfo($url, PATHINFO_FILENAME).'.webp';
 
                         // Define the path to save the WebP image
-                        $directory = 'public/seasons/';
+                        $directory = 'public/uploads/';
                         $path = $directory.$image_name;
 
                         if (! is_dir(storage_path('app/'.$directory))) {

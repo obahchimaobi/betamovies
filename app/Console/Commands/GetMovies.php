@@ -201,12 +201,12 @@ class GetMovies extends Command
                         ]);
 
                         // Output a success message
-                        echo '✔ '.$full_name." - has been added successfully ✔ \n";
+                        $this->info('✔ '.$full_name." - has been added successfully ✔");
 
                         // Optionally, dispatch the UpdateMoviesTrailer job here
                     } else {
                         // Output a message indicating the movie is already in the database
-                        echo '✘ '.$full_name." - already in database ✘ \n";
+                        $this->info('✘ '.$full_name." - already in database ✘");
                     }
                 }
             } else {

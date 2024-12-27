@@ -31,7 +31,14 @@ class UpdateSeasons extends Command
         //
 
         // Fetch all episodes that need updating
-        $episodes = Seasons::whereNull('overview')->orWhere('overview', '')->orWhereNull('episode_title')->orWhere('episode_title', '')->whereNull('deleted_at')->get();
+        $episodes = Seasons::where(function ($query) {
+            $query->whereNull('overview')
+                  ->orWhere('overview', '')
+                  ->orWhereNull('episode_title')
+                  ->orWhere('episode_title', '');
+        })
+        ->whereNull('deleted_at')
+        ->get();
 
         if (sizeof($episodes) > 0) {
             foreach ($episodes as $episode) {
@@ -46,10 +53,25 @@ class UpdateSeasons extends Command
                     if (isset($data['overview']) && !empty($data['overview'])) {
                         $episode->overview = $data['overview'];
                         $episode->episode_title = $data['name'];
+
+                        if (empty($episode->episode_title || $episode->episode_title === '')) {
+                            $episode->name = 'Episode ' . $episode->episode_number;
+                        }
+
                         $episode->save();
 
                         $this->info("Updated overview for {$episode->name} Episode {$episode->episode_number} of Season {$episode->season_number}.");
                     } else {
+
+                        $episode->overview = $data['overview'];
+                        $episode->episode_title = $data['name'];
+
+                        if (empty($episode->episode_title || $episode->episode_title === '')) {
+                            $episode->name = 'Episode ' . $episode->episode_number;
+                        }
+
+                        $episode->save();
+
                         $this->warn("No overview found for {$episode->name} Episode {$episode->episode_number} of Season {$episode->season_number}.");
                     }
                 } else {

@@ -587,7 +587,12 @@
                                                                                 </div>
                                                                                 <br>
                                                                                 <span
-                                                                                    class="dark:text-slate-300 text-xs">{{ $episode->overview }}</span>
+                                                                                    class="dark:text-slate-300 text-xs">{{ $episode->overview }}
+
+                                                                                    @if (empty($epsiode->overview))
+                                                                                        <span class="dark:text-slate-400"><i>No description available</i></span>
+                                                                                    @endif
+                                                                                </span>
                                                                             </h1>
                                                                         </div>
 

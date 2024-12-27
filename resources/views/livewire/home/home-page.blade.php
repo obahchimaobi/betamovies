@@ -20,7 +20,7 @@
                             <div class="flex justify-between mt-2 gap-4">
                                 <a href="{{ route('movie.details', ['name' => $season->formatted_name]) }}"
                                     class="text-gray-800 hover:text-gray-700 font-semibold dark:text-white lg:text-xs text-sm dark:hover:text-slate-300"
-                                    wire:navigate><span class="">{{ $season->name }}
+                                    wire:navigate><span class="">
                                         {{ $season->name . ' ' . 'Season ' . $season->season_number . ' Episode ' . $season->episode_number }} (Added)
                                     </span></a>
                             </div>

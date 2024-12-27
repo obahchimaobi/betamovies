@@ -54,7 +54,7 @@
 
                     <!-- Hero -->
                     <div class="relative overflow-hidden">
-                        <div class="max-w-[85rem] mx-auto py-10 sm:py-24">
+                        <div class="max-w-[85rem] mx-auto py-10 sm:py-12">
                             <div class="text-center">
                                 <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-slate-200">
                                     Search

@@ -265,7 +265,7 @@ dark:bg-slate-900 dark:border-slate-800"
                             </a>
                         </li>
                     @endguest
-                    <li class="bottom-2 absolute w-auto"><a class="w-full flex items-center gap-x-1 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 "
+                    <li class="bottom-2 absolute w-auto"><a class="w-full flex items-center gap-x-1 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 dark:text-neutral-200 dark:hover:text-neutral-300 dark:bg-slate-700 duration-200"
                             href="{{ route('trending.series') }}" wire:navigate>
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>

@@ -27,7 +27,8 @@ class Search extends Component
             ],
             'countryFilter' => [
                 'except' => null
-            ]
+            ],
+            'search'
         ];
     }
 
@@ -46,8 +47,6 @@ class Search extends Component
     {
         $this->reset(['movieFilter', 'countryFilter']);
     }
-
-    protected $queryString = ['search'];
 
     public function placeholder()
     {
