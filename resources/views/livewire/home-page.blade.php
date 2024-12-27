@@ -51,16 +51,16 @@
                         </div>
                         <!-- End Toast -->
                     @endif
-                    
+
                     <!-- Hero -->
                     <div class="relative overflow-hidden">
-                        <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
+                        <div class="max-w-[85rem] mx-auto py-10 sm:py-24">
                             <div class="text-center">
-                                <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-neutral-200">
+                                <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-slate-200">
                                     Search
                                 </h1>
 
-                                <p class="mt-3 text-gray-600 text-sm lg:text-base dark:text-neutral-400">
+                                <p class="mt-3 text-gray-600 text-sm lg:text-base dark:text-slate-400">
                                     Search for movies, series, and stories that captivate
                                 </p>
 
@@ -74,7 +74,7 @@
                                                     class="block text-sm text-gray-700 font-medium dark:text-white"><span
                                                         class="sr-only">Search article</span></label>
                                                 <input type="text" name="search" id="hs-search-article-1"
-                                                    class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none"
+                                                    class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-800 dark:border-transparent dark:text-slate-400 dark:placeholder-slate-400 dark:focus:ring-slate-600 dark:focus:outline-none"
                                                     required placeholder="Search movies and TV series" wire:model='searchBar'>
                                             </div>
                                             <div>
@@ -95,7 +95,7 @@
                                     <!-- End Form -->
 
                                     <!-- SVG Element -->
-                                    <div class="hidden md:block absolute top-0 end-0 -translate-y-12 translate-x-20">
+                                    <div class="block md:block absolute top-0 end-0 -translate-y-12 translate-x-20">
                                         <svg class="w-16 h-auto text-orange-500" width="121" height="135"
                                             viewBox="0 0 121 135" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164"
@@ -109,7 +109,7 @@
                                     <!-- End SVG Element -->
 
                                     <!-- SVG Element -->
-                                    <div class="hidden md:block absolute bottom-0 start-0 translate-y-10 -translate-x-32">
+                                    <div class="block md:block absolute bottom-0 start-0 translate-y-10 -translate-x-32">
                                         <svg class="w-40 h-auto text-cyan-500" width="347" height="188"
                                             viewBox="0 0 347 188" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path

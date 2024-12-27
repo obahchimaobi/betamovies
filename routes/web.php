@@ -1,17 +1,18 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Download\DownloadController;
 use App\Http\Controllers\Google\GoogleController;
 use App\Http\Controllers\Media\MediaController;
-use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\Search\SearchController;
 use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;
 use App\Livewire\Genres;
 use App\Livewire\HomePage;
+use App\Livewire\KoreanDramas;
+use App\Livewire\KoreanMovies;
 use App\Livewire\Media\Details;
+use App\Livewire\Search;
 use App\Livewire\NewReleases;
 use App\Livewire\TopRated;
 use App\Livewire\TrendingMovies;
@@ -28,24 +29,23 @@ Route::get('/new-releases', NewReleases::class)->name('new.releases');
 Route::get('/top-rated', TopRated::class)->name('rated.page');
 Route::get('/trending-movies', TrendingMovies::class)->name('trending.movies');
 Route::get('/trending-series', TrendingSeries::class)->name('trending.series');
-Route::get('/search', [MoviesController::class, 'search'])->name('search');
+Route::get('/search', Search::class)->name('search');
+Route::get('/k-drama', KoreanDramas::class)->name('korean.drama');
+Route::get('/korean-movies', KoreanMovies::class)->name('korean.movies');
 
 Route::get('/tag/{genre}', Genres::class)->name('genre');
 
-Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
+// Route::get('/release-year', [MediaController::class, 'year'])->name('year.page');
 
 // Auth
 Route::get('/sign-up', [AuthController::class, 'register_page'])->name('register.page')->middleware('loggedin');
 Route::get('/sign-in', [AuthController::class, 'login_page'])->name('login')->middleware('loggedin');
 Route::get('/reset-password', [AuthController::class, 'forgot_password_page'])->name('forgot.password')->middleware('loggedin');
 
-Route::post('/comment/{name}/{id}', [CommentController::class, 'comment'])->name('comment');
-Route::post('/reply/{name}/{id}/{comment_id}/{comment_name}', [ReplyController::class, 'reply'])->name('reply');
-
 Route::get('/email/verify/{email}/{hash}', function ($email, $hash) {
     $user = User::where('email', $email)->firstOrFail();
 
-    if (! hash_equals(sha1($user->otp), $hash)) {
+    if (!hash_equals(sha1($user->otp), $hash)) {
         abort(403, 'Invalid verification link.');
     }
 
@@ -90,5 +90,21 @@ Route::get('/delete-account', function () {
 
     return redirect()->route('home')->with('error', 'Unable to delete account.');
 })->name('account.delete')->middleware('auth');
+
+Route::get('/sitemap', function () {
+    $sitemapPath = public_path('sitemap.xml');
+    if (file_exists($sitemapPath)) {
+        $sitemapContent = simplexml_load_file($sitemapPath);
+        $urls = [];
+
+        foreach ($sitemapContent->url as $url) {
+            $urls[] = (string) $url->loc;
+        }
+
+        return view('sitemap', ['urls' => $urls]);
+    } else {
+        return response('Sitemap not found', 404);
+    }
+})->name('sitemap');
 
 Route::get('/{name}', Details::class)->name('movie.details');

@@ -53,7 +53,7 @@
                         @endforeach
                     </div>
                     <div class="mt-8">
-                        {{ $paginatedResults->links(data: ['scrollTo' => false]) }}
+                        {{ $paginatedResults->appends(request()->query())->links() }}
                     </div>
                 @else
                     <div class="text-center">

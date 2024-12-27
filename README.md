@@ -94,7 +94,7 @@ The revamped version includes performance optimizations, a cleaner UI, and enhan
 ### Steps:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/betamovies.git
+   git clone https://github.com/obahchimaobi/betamovies.git
    cd betamovies
    ```
 2. Install dependencies:

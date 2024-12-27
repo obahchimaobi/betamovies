@@ -12,6 +12,7 @@ class Comment extends Model
         'comment_name',
         'comment',
         'title',
+        'avatar',
     ];
 
     public function replies()

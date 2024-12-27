@@ -49,7 +49,7 @@ dark:bg-slate-900 dark:border-slate-800"
 
         <!-- Content -->
         <div
-            class="h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+            class="h-full overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500">
             <nav class="hs-accordion-group p-3 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
                 <ul class="flex flex-col space-y-1">
                     <li>
@@ -94,50 +94,13 @@ dark:bg-slate-900 dark:border-slate-800"
                         <div id="users-accordion-child"
                             class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
                             role="region" aria-labelledby="users-accordion">
-                            <ul class="hs-accordion-group ps-8 pt-1 space-y-1" data-hs-accordion-always-open>
-                                {{-- <li class="hs-accordion" id="users-accordion-sub-1">
-                                    <button type="button"
-                                        class="hs-accordion-toggle w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
-                                        aria-expanded="true" aria-controls="users-accordion-sub-1-child">
-                                        By Genres
-
-                                        <svg class="hs-accordion-active:block ms-auto hidden size-4"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="m18 15-6-6-6 6" />
-                                        </svg>
-
-                                        <svg class="hs-accordion-active:hidden ms-auto block size-4"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="m6 9 6 6 6-6" />
-                                        </svg>
-                                    </button>
-
-                                    <div id="users-accordion-sub-1-child"
-                                        class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
-                                        role="region" aria-labelledby="users-accordion-sub-1">
-                                        <ul class="pt-1 ps-8 space-y-1">
-                                            @foreach ($allGenres as $genres)
-                                                <li>
-                                                    <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
-                                                        href="{{ route('genre', ['genre' => Str::lower($genres)]) }}"
-                                                        wire:navigate>
-                                                        {{ $genres }}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </li> --}}
+                            <ul class="hs-accordion-group pt-1 space-y-1" data-hs-accordion-always-open>
 
                                 <li>
-                                    <ul class="pt-1 ps-8 space-y-1">
+                                    <ul class="pt-1 space-y-1">
                                         @foreach ($allGenres as $genres)
                                             <li>
-                                                <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
+                                                <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 ps-8 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
                                                     href="{{ route('genre', ['genre' => Str::lower($genres)]) }}"
                                                     wire:navigate>
                                                     {{ $genres }}
@@ -221,6 +184,55 @@ dark:bg-slate-900 dark:border-slate-800"
                             Trending Series
                         </a>
                     </li>
+
+
+                    <li class="hs-accordion" id="users-accordion">
+                        <button type="button"
+                            class="hs-accordion-toggle w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300"
+                            aria-expanded="true" aria-controls="users-accordion-child">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-4 shrink-0">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+                            </svg>
+                            Korean
+
+                            <svg class="hs-accordion-active:block ms-auto hidden size-4"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m18 15-6-6-6 6" />
+                            </svg>
+
+                            <svg class="hs-accordion-active:hidden ms-auto block size-4"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </button>
+
+                        <div id="users-accordion-child"
+                            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
+                            role="region" aria-labelledby="users-accordion">
+                            <ul class="hs-accordion-group ps-8 pt-1 space-y-1" data-hs-accordion-always-open>
+
+                                <li><a class="@if (Request::is('korean-movies')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                                        href="{{ route('korean.movies') }}" wire:navigate>
+
+                                        Movies
+                                    </a>
+                                </li>
+
+                                <li><a class="@if (Request::is('k-drama')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
+                                        href="{{ route('korean.drama') }}" wire:navigate>
+
+                                        K-Drama
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     {{-- <li><a class="@if (Request::is('contact-us')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
                             href="{{ route('contact.page') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -253,6 +265,15 @@ dark:bg-slate-900 dark:border-slate-800"
                             </a>
                         </li>
                     @endguest
+                    <li class="bottom-2 absolute w-auto"><a class="w-full flex items-center gap-x-1 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 "
+                            href="{{ route('trending.series') }}" wire:navigate>
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+                                <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+                              </svg>
+                              Join us on whatsapp
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

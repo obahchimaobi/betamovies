@@ -14,7 +14,7 @@
         <div class="w-full lg:ps-64">
             <div class="p-4 sm:p-6 space-y-4 sm:space-y-6 my-10">
                 <!-- your content goes here ... -->
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between" id="movies">
                     <h1 class="text-black dark:text-white lg:text-3xl text-2xl font-semibold">Movies</h1>
                     <ol class="flex items-center whitespace-nowrap">
                         <li class="inline-flex items-center">

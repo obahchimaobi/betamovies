@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('series', function (Blueprint $table) {
-            //
-            $table->timestamp('approved_at')->nullable();
-        });
+        if (!Schema::hasColumn('series', 'approved_at')) {
+            Schema::table('series', function (Blueprint $table) {
+                //
+                $table->timestamp('approved_at')->nullable();
+            });
+        }
     }
 
     /**

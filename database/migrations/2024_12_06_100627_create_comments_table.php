@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->string('comment_name')->nullable()->default('John Doe');
-            $table->longText('comment')->nullable();
-            $table->string('title')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('comments')) {
+            Schema::create('comments', function (Blueprint $table) {
+                $table->id();
+                $table->string('comment_name')->nullable()->default('John Doe');
+                $table->longText('comment')->nullable();
+                $table->string('title')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

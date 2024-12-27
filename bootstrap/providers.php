@@ -2,5 +2,5 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    Barryvdh\Debugbar\ServiceProvider::class,
+    App\Providers\TelescopeServiceProvider::class,
 ];

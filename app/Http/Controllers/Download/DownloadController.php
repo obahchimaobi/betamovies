@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Movies;
 use App\Models\Seasons;
 use App\Models\Series;
+use Log;
 
 class DownloadController extends Controller
 {
@@ -18,7 +19,7 @@ class DownloadController extends Controller
 
             $movie->increment('downloads');
 
-            \Log::info('Download URL: ', ['url' => $movie->download_url]);
+            // Log::info('Download URL: ', ['url' => $movie->download_url]);
 
             return redirect()->away($movie->download_url);
         }

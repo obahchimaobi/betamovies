@@ -4,24 +4,50 @@ namespace App\Livewire\Media;
 
 use App\Models\Movies;
 use App\Models\Series;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
+use Illuminate\Http\Request;
 use Livewire\WithPagination;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Search extends Component
 {
     use WithPagination;
 
-    public $searchBar = '';
+    public $search;
 
-    public function redirectToSearch()
+    public $movieFilter = null;
+
+    public $countryFilter = null;
+
+    protected function queryString()
     {
-        // Validate the search term
-        if (! empty($this->searchBar)) {
-            // Redirect to the search page with the query string
-            return redirect()->route('search');
+        return [
+            'movieFilter' => [
+                'except' => null,
+            ],
+            'countryFilter' => [
+                'except' => null
+            ]
+        ];
+    }
+
+    public function updated($key)
+    {
+        if ($key === 'movieFilter') {
+            $this->resetPage();
+        }
+
+        if ($key === 'countryFilter') {
+            $this->resetPage();
         }
     }
+
+    public function refresh()
+    {
+        $this->reset(['movieFilter', 'countryFilter']);
+    }
+
+    protected $queryString = ['search'];
 
     public function placeholder()
     {
@@ -30,27 +56,46 @@ class Search extends Component
 
     public function render()
     {
-        $query = '';
+        $query = $this->search;
 
-        dump($this->searchBar);
+        // dump($query);
 
-        $movies = Movies::search($this->searchBar)->get();
+        $moviesQuery = Movies::where('name', 'like', '%' . $query . '%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
+        $seriesQuery = Series::where('name', 'like', '%' . $query . '%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
 
-        $series = Series::search($this->searchBar)->get();
+        if ($this->movieFilter) {
+            $moviesQuery->where('type', $this->movieFilter);
+            $seriesQuery->where('type', $this->movieFilter);
+        }
 
-        $allResults = $movies->merge($series);
+        if ($this->countryFilter) {
+            $moviesQuery->where('country', $this->countryFilter);
+            $seriesQuery->where('country', $this->countryFilter);
+        }
+
+        $movies = $moviesQuery->get();
+        $series = $seriesQuery->get();
+
+        $allResults = $movies->concat($series);
 
         $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
 
-        // Items per page
-        $perPage = 24;
+        $perPage = 36;
 
-        // Slice the collection to get the items to display in current page
         $currentPageResults = $allResults->slice(($page * $perPage) - $perPage, $perPage)->values();
 
-        // Create our paginator and add it to the view
-        $paginatedResults = new LengthAwarePaginator($currentPageResults, count($allResults), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+        $paginatedResults = new LengthAwarePaginator(
+            $currentPageResults,
+            count($allResults),
+            $perPage,
+            $page,
+            ['path' => LengthAwarePaginator::resolveCurrentPath()]
+        );
 
-        return view('livewire.media.search', compact('paginatedResults', 'query'));
+        $country = Movies::pluck('country')
+            ->unique()
+            ->values();
+
+        return view('livewire.media.search', compact('paginatedResults', 'query', 'country'));
     }
 }

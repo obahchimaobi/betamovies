@@ -1,4 +1,12 @@
 <!-- ========== HEADER ========== -->
+@use('\App\Models\MyList')
+@php
+    $user = "";
+    if (Auth::check()) {
+        $user = auth()->user()->id;
+    }
+    $number_of_lists = MyList::where('userId', $user)->whereNull('deleted_at')->count();
+@endphp
 
 <!-- Toast -->
 <div id="dismiss-toast"
@@ -26,7 +34,7 @@
         <div class="me-5 lg:me-0 lg:hidden">
             <!-- Logo -->
             <a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
-                href="{{ route('home') }}" aria-label="Preline" wire:naivgate>
+                href="{{ route('home') }}" aria-label="Preline" wire:navigate>
                 <img src="{{ asset('icons/betamovies.png') }}" alt="" class="h-12 w-80">
             </a>
             <!-- End Logo -->
@@ -43,20 +51,8 @@
             </div>
 
             <div class="flex flex-row items-center justify-end gap-1">
-                {{-- <button type="button"
-                class="md:hidden size-[38px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.3-4.3" />
-                </svg>
-                <span class="sr-only">Search</span>
-            </button> --}}
-
-
                 <button type="button"
-                    class="hs-dark-mode hs-dark-mode-active:hidden inline-flex items-center gap-x-2 py-2 px-2 bg-slate-200 rounded-full text-sm text-neutral-700 hover:bg-slate-300 focus:outline-none"
+                    class="hs-dark-mode hs-dark-mode-active:hidden inline-flex items-center gap-x-2 py-2 px-2 bg-slate-200 rounded-full text-sm text-slate-700 hover:bg-slate-300 focus:outline-none"
                     data-hs-theme-click-value="dark">
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -109,18 +105,18 @@
                             </svg>
                         </div>
                         <input
-                            class="py-3 ps-10 pe-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-transparent dark:text-neutral-400 dark:placeholder-neutral-400 dark:focus:ring-slate-600 dark:focus:outline-none hover:cursor-pointer"
+                            class="py-2 ps-10 pe-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-transparent dark:text-slate-400 dark:placeholder-slate-400 dark:focus:ring-slate-600 dark:focus:outline-none hover:cursor-pointer"
                             type="text" aria-expanded="false" placeholder="Search" value="">
                     </div>
                 </div>
-                
+
                 @auth
                         <div class="hs-dropdown [--placement:bottom-right] relative inline-flex">
                             <button id="hs-dropdown-account" type="button"
                                 class="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white"
                                 aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                                <img class="shrink-0 size-[38px] rounded-full"
-                                    src="{{ auth()->user()->avatar ?? asset('icons/user.jpg') }}" alt="Avatar">
+                                <img class="shrink-0  rounded-full"
+                                    src="{{ auth()->user()->avatar ?? Avatar::create(auth()->user()->name)->setBackground('#000000')->toGravatar() }}" alt="Avatar">
                             </button>
 
                             <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
@@ -142,9 +138,10 @@
 
                                         Profile
                                     </a>
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300 justify-between"
                                         href="{{ route('my.watchlist') }}" wire:navigate>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        <div class="flex gap-x-3.5 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="2" stroke="currentColor" class="size-4 shrink-0"
                                             width="24" height="24">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -152,6 +149,11 @@
                                         </svg>
 
                                         My Watchlist
+                                        </div>
+
+                                        <span class="text-xs font-medium bg-red-500 text-white py-0.5 px-1.5 rounded-full">
+                                            {{ $number_of_lists }}
+                                        </span>
                                     </a>
                                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
                                         href="{{ route('logout') }}" wire:navigate>
@@ -174,7 +176,7 @@
 <!-- ========== END HEADER ========== -->
 
 <div id="hs-basic-modal"
-    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none"
+    class="hs-overlay hs-overlay-backdrop-open:bg-gray-500/90 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none dark:hs-overlay-backdrop-open:bg-slate-900/90"
     role="dialog" tabindex="-1" aria-labelledby="hs-basic-modal-label">
     <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
         <div class="flex flex-col shadow-sm rounded-xl pointer-events-auto">

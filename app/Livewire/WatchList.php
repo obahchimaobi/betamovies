@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\MyList;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class WatchList extends Component

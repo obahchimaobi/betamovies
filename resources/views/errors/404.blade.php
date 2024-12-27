@@ -88,6 +88,10 @@
                                     class="text-indigo-600 font-semibold ">Oops!</span> It seems like you've taken a
                                 wrong turn</h5>
                             <p class="text-sm text-gray-500">We're working to bring it back.</p>
+
+                            <div class="mt-3.5">
+                                <a href="{{ route('home') }}" class="bg-blue-700 px-4 py-2 text-white rounded-md hover:bg-blue-600 font-grotesk text-sm" wire:navigate>Go Home</a>
+                            </div>
                         </div>
                     </div>
                 </div>

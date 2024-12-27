@@ -9,7 +9,39 @@ use Livewire\WithPagination;
 
 class ShowSeries extends Component
 {
-    use WithoutUrlPagination, WithPagination;
+    use WithPagination;
+
+    public $yearFilter = null;
+
+    public $countryFilter = null;
+
+    protected function queryString()
+    {
+        return [
+            'yearFilter' => [
+                'except' => null,
+            ],
+            'countryFilter' => [
+                'except' => null
+            ]
+        ];
+    }
+
+    public function updated($key)
+    {
+        if ($key === 'yearFilter') {
+            $this->resetPage();
+        }
+
+        if ($key === 'countryFilter') {
+            $this->resetPage();
+        }
+    }
+
+    public function refresh()
+    {
+        $this->reset(['yearFilter', 'countryFilter']);
+    }
 
     public function placeholder()
     {
@@ -18,13 +50,32 @@ class ShowSeries extends Component
 
     public function render()
     {
-        $series = Series::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])
+        $seriesQuery = Series::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])
             ->whereNull('deleted_at')
             ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
-            ->orderByDesc('id')
-            ->paginate('24');
+            ->orderByDesc('id');
 
-        return view('livewire.media.show-series', compact('series'));
+        if ($this->yearFilter) {
+            $seriesQuery->where('release_year', $this->yearFilter);
+        }
+
+        if ($this->countryFilter) {
+            $seriesQuery->where('country', $this->countryFilter);
+        }
+
+        $series = $seriesQuery->paginate('36');
+
+        $year = Series::pluck('release_year')
+            ->filter(fn ($year) => ! empty($year))
+            ->unique()
+            ->sortDesc()
+            ->values();
+
+        $country = Series::pluck('country')
+            ->unique()
+            ->values();
+
+        return view('livewire.media.show-series', compact('series', 'year', 'country'));
     }
 }

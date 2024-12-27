@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('movies', function (Blueprint $table) {
             //
+            $table->timestamp('approved_at')->nullable();
         });
     }
 

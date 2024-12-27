@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\Movies;
 use Illuminate\Console\Command;
-
 use function Laravel\Prompts\info;
 
 class UpdateMoviesTrailer extends Command
@@ -115,12 +114,12 @@ class UpdateMoviesTrailer extends Command
                     $nonTrailer->save();
 
                     // echo 'Trailer updated for '.$nonTrailer->name."\n";
-                    info('Trailer updated for '.$nonTrailer->name."\n");
+                    $this->info('Trailer updated for '.$nonTrailer->name);
                 }
             }
         } else {
             // echo '😙No missing movie trailer found😙'."\n";
-            info('😙No missing movie trailer found😙');
+            $this->info('😙No missing movie trailer found😙');
         }
     }
 }

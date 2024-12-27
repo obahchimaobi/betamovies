@@ -4,8 +4,8 @@
         <div class="dark:bg-slate-800 p-6 rounded-lg bg-white/10 border dark:border-black/30">
             <div class="mb-5">
                 <h1 class="text-slate-800 dark:text-slate-100">Photo</h1>
-                <img src="{{ auth()->user()->avatar ?? asset('icons/user.jpg') }}" alt=""
-                    class="rounded-full mt-3 border border-white h-32 w-32">
+                <img src="{{ auth()->user()->avatar ?? Avatar::create(auth()->user()->name)->setBackground('#000000')->toGravatar() }}" alt=""
+                    class="rounded-full mt-3 border h-32 w-32">
             </div>
             <div @class(['flex flex-col mb-4', 'font-semibold' => false])>
                 <label for="Name" class="text-slate-800 dark:text-slate-100">Name<span

@@ -38,7 +38,7 @@
                     @foreach ($all as $item)
                         @if (isset($item))
                             @if ($item->type == 'movie')
-                                <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
+                                <div class="w-full relative bg-center bg-no-repeat bg-fixed bg-cover border-b-2 border-slate-400 dark:border-slate-700"
                                     style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
                                     <div class="absolute inset-0 dark:bg-black bg-white opacity-90"></div>
                                     <div class="relative mx-auto py-5">
@@ -47,38 +47,74 @@
 
                                             <h1
                                                 class="dark:text-gray-300 text-slate-800 uppercase text-3xl xl:text-4xl font-bold tracking-wider mt-7 font-keania">
-                                                {{ $item->name }}</h1>
-                                            <ul class="flex gap-4 mt-10 text-white justify-center">
+                                                Download {{ $item->name }} For Free</h1>
+                                            <ul class="flex flex-wrap gap-4 mt-10 text-white justify-center font-semibold">
                                                 <li class="flex items-center space-x-1">
 
                                                     <span
-                                                        class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->vote_count }}</span>
+                                                        class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1"><svg
+                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="size-4">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                                                        </svg>
+                                                        {{ $item->vote_count }}</span>
                                                 </li>
 
                                                 <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
                                                     <strong>.</strong>
                                                 </li>
-                                                <li class="dark:text-gray-300 text-slate-700 text-sm">
+                                                <li
+                                                    class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="size-4">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                                    </svg>
                                                     {{ $item->release_year }}
                                                 </li>
 
                                                 <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
                                                     <strong>.</strong>
                                                 </li>
-                                                <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->language }}
+                                                <li
+                                                    class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="size-4">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802" />
+                                                    </svg>
+                                                    {{ $item->language }}
                                                 </li>
 
                                                 <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
                                                     <strong>.</strong>
                                                 </li>
-                                                <li class="dark:text-gray-300 text-slate-700 text-sm">
-                                                    {{ $item->origin_country }}
+                                                <li
+                                                    class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="size-4">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                                                    </svg>
+                                                    {{ $item->country }}
                                                 </li>
 
                                                 <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
                                                     <strong>.</strong>
                                                 </li>
-                                                <li class="dark:text-gray-300 text-slate-700 text-sm">
+                                                <li
+                                                    class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="size-4 shrink-0">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                    </svg>
                                                     {{ $item->runtime }}
                                                 </li>
                                             </ul>
@@ -88,21 +124,23 @@
                                                     @php
                                                         $genres = $item->genres ? explode(', ', $item->genres) : []; // Default to an empty array if no genres
                                                     @endphp
-                                                
+
                                                     @if (count($genres) > 0)
                                                         @foreach ($genres as $genre)
                                                             <a href="{{ route('genre', ['genre' => Str::lower(trim($genre))]) }}"
                                                                 wire:navigate>
-                                                                <span class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-1.5 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">
+                                                                <span
+                                                                    class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-1.5 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">
                                                                     {{ trim($genre) }}
                                                                 </span>
                                                             </a>
                                                         @endforeach
                                                     @else
-                                                        <span class="text-xs italic text-gray-500 dark:text-gray-400">No genres available</span>
+                                                        <span class="text-xs italic text-gray-500 dark:text-gray-400">No
+                                                            genres available</span>
                                                     @endif
                                                 </li>
-                                                
+
                                             </ul>
 
                                             <p class="dark:text-gray-300 text-slate-700 mt-9 leading-relaxed text-sm">
@@ -121,8 +159,8 @@
                                                     <li
                                                         class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs font-black duration-200 hover:cursor-not-allowed">
                                                         <i class="fa-solid fa-download hover:cursor-not-allowed"></i>
-                                                        <button class="uppercase hover:cursor-not-allowed" disabled>Download
-                                                            Unavailable
+                                                        <button class="uppercase hover:cursor-not-allowed" disabled>Coming
+                                                            Soon
                                                         </button>
                                                     </li>
                                                 @else
@@ -146,7 +184,7 @@
 
                         @if (isset($item))
                             @if ($item->type == 'series')
-                                <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
+                                <div class="w-full relative bg-center bg-fixed bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
                                     style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
                                     <div class="absolute inset-0 dark:bg-black bg-white/90 opacity-95"></div>
                                     <div class="mx-auto py-5 relative">
@@ -155,33 +193,63 @@
 
                                             <h1
                                                 class="dark:text-gray-300 text-slate-800 uppercase text-3xl xl:text-4xl font-bold tracking-wider mt-7 font-keania">
-                                                {{ $item->name }}</h1>
-                                            <ul class="flex gap-4 mt-10 text-white justify-center">
-                                                <li class="flex items-center space-x-1">
+                                                Download {{ $item->name }} For Free</h1>
+                                                <ul class="flex flex-wrap gap-4 mt-10 text-white justify-center font-semibold">
+                                                    <li class="flex items-center space-x-1">
 
-                                                    <span
-                                                        class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->vote_count }}</span>
-                                                </li>
+                                                        <span
+                                                            class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1"><svg
+                                                                xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                                class="size-4">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                                                            </svg>
+                                                            {{ $item->vote_count }}</span>
+                                                    </li>
 
-                                                <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
-                                                    <strong>.</strong>
-                                                </li>
-                                                <li class="dark:text-gray-300 text-slate-700 text-sm">
-                                                    {{ $item->release_year }}
-                                                </li>
+                                                    <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
+                                                        <strong>.</strong>
+                                                    </li>
+                                                    <li
+                                                        class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="size-4">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                                        </svg>
+                                                        {{ $item->release_year }}
+                                                    </li>
 
-                                                <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
-                                                    <strong>.</strong>
-                                                </li>
-                                                <li class="dark:text-gray-300 text-slate-700 text-sm">{{ $item->language }}
-                                                </li>
+                                                    <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
+                                                        <strong>.</strong>
+                                                    </li>
+                                                    <li
+                                                        class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="size-4">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802" />
+                                                        </svg>
+                                                        {{ $item->language }}
+                                                    </li>
 
-                                                <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
-                                                    <strong>.</strong>
-                                                </li>
-                                                <li class="dark:text-gray-300 text-slate-700 text-sm">
-                                                    {{ $item->origin_country }}</li>
-                                            </ul>
+                                                    <li class="-my-3 dark:text-gray-300 text-slate-700 text-2xl">
+                                                        <strong>.</strong>
+                                                    </li>
+                                                    <li
+                                                        class="dark:text-gray-300 text-slate-700 text-sm flex items-center gap-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="size-4">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                                                        </svg>
+                                                        {{ $item->country }}
+                                                    </li>
+                                                </ul>
 
                                             <ul class="flex gap-4 mt-10 text-white justify-center">
                                                 <li class="text-gray-300">
@@ -192,7 +260,7 @@
                                                     @foreach ($genres as $genre)
                                                         <a href="{{ route('genre', ['genre' => Str::lower($genre)]) }}"
                                                             wire:navigate><span
-                                                                class="text-xs border border-slate-500 dark:border-slate-700 px-5 py-2 rounded-full dark:hover:bg-slate-700 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-1 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">{{ trim($genre) }}</span>
+                                                                class="text-xs border border-slate-500 dark:border-slate-800 px-5 py-2 rounded-full dark:hover:bg-slate-900 hover:bg-slate-500 font-bold dark:text-slate-400 dark:hover:text-slate-200 cursor-pointer mr-1 focus:bg-slate-500 dark:focus:bg-slate-700 text-slate-600 hover:text-slate-200">{{ trim($genre) }}</span>
                                                         </a>
                                                     @endforeach
                                                 </li>
@@ -347,7 +415,7 @@
                                                             <p
                                                                 class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                 <img class="mr-2 w-6 h-6 rounded-full"
-                                                                    src="{{ Avatar::create($comment->comment_name)->toBase64() }}"
+                                                                    src="{{ $comment->avatar ?? Avatar::create($comment->comment_name)->toGravatar() }}"
                                                                     alt="Michael Gough">{{ $comment->comment_name }}
                                                             </p>
                                                             <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate
@@ -382,7 +450,8 @@
                                                                     </h2>
                                                                 </div>
 
-                                                                <livewire:reply-form :id="$item->movieId" :name="$item->formatted_name" :comment_id="$comment->id" :comment_name="$comment->comment_name">
+                                                                <livewire:reply-form :id="$item->movieId" :name="$item->formatted_name"
+                                                                    :comment_id="$comment->id" :comment_name="$comment->comment_name">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -397,7 +466,7 @@
                                                                 <p
                                                                     class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                     <img class="mr-2 w-6 h-6 rounded-full"
-                                                                        src="{{ Avatar::create($reply->reply_name)->toBase64() }}"
+                                                                        src="{{ $reply->avatar ?? Avatar::create($reply->reply_name)->toGravatar() }}"
                                                                         alt="Jese Leos">{{ $reply->reply_name }}
                                                                 </p>
                                                                 <p class="text-sm text-gray-600 dark:text-gray-400"><time
@@ -420,10 +489,10 @@
                                 <!-- Second Element -->
                                 <div class="md:col-span-2 col-span-12">
                                     <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300 my-10 md:hidden">
-                                    <h1 class="font-bold font-inter text-gray-800 dark:text-white text-xl">Recommended Shows
+                                    <h1 class="font-bold text-gray-800 dark:text-white text-xl">Recommended Shows
                                     </h1>
 
-                                    <div class="grid md:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">
+                                    <div class="grid md:grid-cols-2 sm:grid-cols-4 grid-cols-2 gap-4 mt-4">
                                         @isset($recom)
                                             @foreach ($recom as $recommended)
                                                 <div class="w-full">
@@ -499,41 +568,43 @@
                                                                 <div class="grid xl:grid-cols-9 items-center gap-10">
                                                                     <div class="col-span-1">
                                                                         <h1
-                                                                            class="text-end font-bold text-slate-800 dark:text-slate-200 text-3xl">
+                                                                            class="text-end font-bold text-slate-800 dark:text-slate-200 md:text-2xl text-xl">
                                                                             {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
                                                                         </h1>
                                                                     </div>
-                                                                    <div class="col-span-8 -mt-6 sm:-mt-0 flex gap-4">
-                                                                        <img src="{{ asset('storage/seasons/' . $episode->poster_path) }}"
-                                                                            alt="{{ $episode->title }}"
-                                                                            class="xl:h-28 h-40 rounded-md">
-                                                                        <h1 class="font-inter">
-                                                                            <div class="flex justify-between items-center">
-                                                                                <a class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
-                                                                                    wire:navigate>
-                                                                                    {{ $episode->episode_title ?? $episode->name . ' Season ' . $episode->season_number . ' Episode ' . $episode->episode_number }}
-                                                                                </a>
-
-                                                                                @if (is_null($episode->download_url) || empty($episode->download_url))
-                                                                                @else
-                                                                                    <a href="{{ route('download', ['name' => $episode->formatted_name, 'season' => $episode->season_number, 'episode' => $episode->episode_number]) }}"
-                                                                                        class="flex items-center bg-blue-600 hover:bg-blue-700 text-slate-100 font-bold px-2 py-1.5 rounded-md"><svg
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            fill="none" viewBox="0 0 24 24"
-                                                                                            stroke-width="1.5"
-                                                                                            stroke="currentColor"
-                                                                                            class="size-5">
-                                                                                            <path stroke-linecap="round"
-                                                                                                stroke-linejoin="round"
-                                                                                                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                                                                                        </svg>
+                                                                    <div
+                                                                        class="col-span-8 -mt-6 sm:-mt-0 flex gap-4 justify-between">
+                                                                        <div class="flex gap-4">
+                                                                            <img src="{{ asset('storage/uploads/' . $episode->poster_path) }}"
+                                                                                alt="{{ $episode->title }}"
+                                                                                class="xl:h-28 h-40 rounded-md">
+                                                                            <h1 class="font-inter">
+                                                                                <div class="flex justify-between items-center">
+                                                                                    <a class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
+                                                                                        wire:navigate>
+                                                                                        {{ $episode->episode_title ?? $episode->name . ' Season ' . $episode->season_number . ' Episode ' . $episode->episode_number }}
                                                                                     </a>
-                                                                                @endif
-                                                                            </div>
-                                                                            <br>
-                                                                            <span
-                                                                                class="dark:text-slate-300 text-xs">{{ $episode->overview }}</span>
-                                                                        </h1>
+                                                                                </div>
+                                                                                <br>
+                                                                                <span
+                                                                                    class="dark:text-slate-300 text-xs">{{ $episode->overview }}</span>
+                                                                            </h1>
+                                                                        </div>
+
+                                                                        @if (is_null($episode->download_url) || empty($episode->download_url))
+                                                                        @else
+                                                                            <a href="{{ route('download', ['name' => $episode->formatted_name, 'season' => $episode->season_number, 'episode' => $episode->episode_number]) }}"
+                                                                                class="flex items-center bg-blue-600 hover:bg-blue-700 text-slate-100 font-bold px-2 py-1.5 rounded-md ml-2 h-9"><svg
+                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                    fill="none" viewBox="0 0 24 24"
+                                                                                    stroke-width="1.5" stroke="currentColor"
+                                                                                    class="size-5">
+                                                                                    <path stroke-linecap="round"
+                                                                                        stroke-linejoin="round"
+                                                                                        d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                                                                </svg>
+                                                                            </a>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -564,7 +635,7 @@
                                                             <p
                                                                 class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                 <img class="mr-2 w-6 h-6 rounded-full"
-                                                                    src="{{ Avatar::create($comment->comment_name)->toBase64() }}"
+                                                                    src="{{ $comment->avatar ?? Avatar::create($comment->comment_name)->toGravatar() }}"
                                                                     alt="Michael Gough">{{ $comment->comment_name }}
                                                             </p>
                                                             <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate
@@ -598,43 +669,8 @@
                                                                         Replies
                                                                     </h2>
                                                                 </div>
-                                                                <form class="pb-4 lg:pb-4"
-                                                                    action="{{ route('reply', ['name' => $item->formatted_name, 'id' => $item->movieId, 'comment_id' => $comment->id, 'comment_name' => $comment->comment_name]) }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    <div class="grid grid-cols-full gap-3">
-                                                                        <div
-                                                                            class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                                                                            <label for="comment" class="sr-only">Your
-                                                                                name</label>
-                                                                            <input type="text"
-                                                                                class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                                                                                placeholder="Name (required)" @required(true)
-                                                                                name="reply_name"
-                                                                                @auth value="{{ auth()->user()->name }}" @endauth>
-                                                                        </div>
-
-                                                                        @error('reply_name')
-                                                                            <span class="text-red-500">{{ $message }}</span>
-                                                                        @enderror
-                                                                    </div>
-                                                                    <div
-                                                                        class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                                                                        <label for="comment" class="sr-only">Your
-                                                                            comment</label>
-                                                                        <textarea id="comment" rows="6"
-                                                                            class="px-0 w-full text-sm text-gray-700 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                                                                            placeholder="Write a comment..." required name="reply"></textarea>
-
-                                                                        @error('reply')
-                                                                            <span class="text-red-500">{{ $message }}</span>
-                                                                        @enderror
-                                                                    </div>
-                                                                    <button type="submit"
-                                                                        class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-0 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                                                        Post reply
-                                                                    </button>
-                                                                </form>
+                                                                <livewire:reply-form :id="$item->movieId" :name="$item->formatted_name"
+                                                                    :comment_id="$comment->id" :comment_name="$comment->comment_name">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -649,7 +685,7 @@
                                                                 <p
                                                                     class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                                                                     <img class="mr-2 w-6 h-6 rounded-full"
-                                                                        src="{{ Avatar::create($reply->reply_name)->toBase64() }}"
+                                                                        src="{{ $reply->avatar ?? Avatar::create($reply->reply_name)->toGravatar() }}"
                                                                         alt="Jese Leos">{{ $reply->reply_name }}
                                                                 </p>
                                                                 <p class="text-sm text-gray-600 dark:text-gray-400"><time
@@ -672,10 +708,10 @@
                                 <!-- Second Element -->
                                 <div class="md:col-span-2 col-span-12">
                                     <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300 my-10 md:hidden">
-                                    <h1 class="font-bold font-inter text-gray-900 dark:text-white text-xl">Recommended Shows
+                                    <h1 class="font-bold text-gray-900 dark:text-white text-xl">Recommended Shows
                                     </h1>
 
-                                    <div class="grid lg:grid-cols-2 sm:grid-cols-4 grid-cols-3 gap-4 mt-4">
+                                    <div class="grid lg:grid-cols-2 sm:grid-cols-4 grid-cols-2 gap-4 mt-4">
                                         @isset($recom)
                                             @foreach ($recom as $recommended)
                                                 <div class="w-full">
@@ -759,7 +795,7 @@
                                         <button type="button"
                                             class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                                             disabled>
-                                            Download Unavailable
+                                            Coming Soon
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="size-4">
                                                 <path stroke-linecap="round" stroke-linejoin="round"

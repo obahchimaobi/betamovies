@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Series;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use function Laravel\Prompts\info;
 
 class UpdateSeries extends Command
 {
@@ -28,7 +29,7 @@ class UpdateSeries extends Command
     public function handle()
     {
         //
-        $fetch = Series::whereNull('genres')->get();
+        $fetch = Series::whereNull('genres')->orWhereNull('popularity')->get();
 
         if (count($fetch) > 0) {
             foreach ($fetch as $movie) {
@@ -65,12 +66,15 @@ class UpdateSeries extends Command
                 // update the movie in the database
                 $movie->genres = $genres;
 
+                $popularity = $data['popularity'];
+                $movie->popularity = $popularity;
+
                 $movie->save();
 
-                echo '✔ '.$movie->name." updated successfully ✔\n";
+                $this->info('✔ '.$movie->name." updated successfully ✔");
             }
         } else {
-            echo '✘ No series to update ✘'."\n";
+            $this->info('✘ No series to update ✘');
         }
     }
 }

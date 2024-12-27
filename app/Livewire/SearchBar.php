@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Movies;
 use App\Models\Series;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -21,23 +20,15 @@ class SearchBar extends Component
         $results = [];
 
         if (strlen($this->searchBar) >= 1) {
-            $movies_results = Movies::search($this->searchBar)->get()->whereNull('deleted_at');
+            $movies_results = Movies::where('name', 'like', '%'.$this->searchBar.'%')
+                ->whereNull('deleted_at')
+                ->where('status', '!=', 'pending')
+                ->select(['name', 'formatted_name', 'poster_path', 'release_year']);
 
-            $series_results = Series::search($this->searchBar)->get()->whereNull('deleted_at');
-            // dump($results);
-
-            $allResults = $movies_results->merge($series_results);
-
-            $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
-
-            // Items per page
-            $perPage = 24;
-
-            // Slice the collection to get the items to display in current page
-            $currentPageResults = $allResults->slice(($page * $perPage) - $perPage, $perPage)->values();
-
-            // Create our paginator and add it to the view
-            $results = new LengthAwarePaginator($currentPageResults, count($allResults), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+            $results = Series::where('name', 'like', '%'.$this->searchBar.'%')
+                ->whereNull('deleted_at')
+                ->where('status', '!=', 'pending')
+                ->select(['name', 'formatted_name', 'poster_path', 'release_year'])->union($movies_results->getQuery())->simplePaginate('20');
         }
 
         $error = '';

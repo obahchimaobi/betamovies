@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('series', function (Blueprint $table) {
-            //
-            $table->string('downloads')->after('status')->default(0);
-        });
+        if (!Schema::hasColumn('series', 'downloads')) {
+            Schema::table('series', function (Blueprint $table) {
+                //
+                $table->string('downloads')->after('status')->default(0);
+            });
+        }
     }
 
     /**
