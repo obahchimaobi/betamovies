@@ -58,7 +58,14 @@
                 </div>
             @endforeach
         @else
-            <p class="dark:text-white/70 text-slate-800">No result found</p>
+            <div class="flex flex-col items-center justify-center mx-auto col-span-full">
+                <svg class="fi-ta-empty-state-icon w-10 h-10 mt-4 text-gray-500 dark:text-gray-400 dark:bg-slate-600 rounded-full p-2 mx-auto"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                </svg>
+                <h1 class="dark:text-white/70 text-slate-800 mt-2">No result found</h1>
+            </div>
         @endif
     </div>
     <div class="mt-8">

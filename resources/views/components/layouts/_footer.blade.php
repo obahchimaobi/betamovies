@@ -18,7 +18,7 @@
                                     class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
                                     href="{{ route('home') }}" wire:navigate>{{ config('app.name') }}</a> family, bringing movies closer to you.</p>
                             <p class="text-slate-400 dark:text-slate-500">
-                                © 2024 {{ config('app.name') }}.
+                                © {{ config('app.year') }} {{ config('app.name') }}.
                             </p>
                         </div>
 

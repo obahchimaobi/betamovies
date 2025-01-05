@@ -17,7 +17,6 @@
         "laravel/tinker": "^2.9",
         "laravolt/avatar": "*",
         "livewire/livewire": "^3.5",
-        "lwwcas/laravel-countries": "*",
         "mallardduck/blade-boxicons": "^2.4",
         "postare/blade-mdi": "^1.1",
         "rinvex/countries": "*",

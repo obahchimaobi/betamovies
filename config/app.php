@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 return [
 
     /*
@@ -125,5 +127,5 @@ return [
     ],
 
     'logo' => 'icons/betamovies.png',
-    'year' => date('Y'),
+    'year' => Carbon::now()->year,
 ];

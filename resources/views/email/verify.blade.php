@@ -8,7 +8,7 @@
 
 Thank you for signing up for {{ config('app.name') }}. We're thrilled to have you on board!
 
-To ensure the security of your account and enable full access to our platform, we need to verify your email address. Your One-Time Password (OTP) for verification is valid for 10 minutes.
+To ensure the security of your account and enable full access to our platform, we need to verify your email address. Please click the verification link sent to your email. The link is valid for 10 minutes.
 
 Please verify your email by clicking the button below:
 
