@@ -15,7 +15,13 @@ class PendingMoviesResource extends Resource
 {
     protected static ?string $model = Movies::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'bi-hourglass';
+
+    protected static ?string $activeNavigationIcon = 'bi-hourglass-bottom';
+
+    protected static ?string $pluralModelLabel = 'Pending movies';
+
+    protected static ?string $navigationGroup = 'Others';
 
     public static function form(Form $form): Form
     {
