@@ -5,6 +5,8 @@ namespace App\Filament\Resources\SeasonsResource\Pages;
 use App\Filament\Resources\SeasonsResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Components\Tab;
 
 class ManageSeasons extends ManageRecords
 {
@@ -14,6 +16,17 @@ class ManageSeasons extends ManageRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    public function getTabs(): array
+    {
+        return [
+            'All' => Tab::make('All'),
+            'Pending' => Tab::make('Pending')
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'pending')),
+            'Approved' => Tab::make('Approved')
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'approved')),
         ];
     }
 }

@@ -5,6 +5,8 @@ namespace App\Filament\Resources\MoviesResource\Pages;
 use App\Filament\Resources\MoviesResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Components\Tab;
 
 class ManageMovies extends ManageRecords
 {
@@ -14,6 +16,17 @@ class ManageMovies extends ManageRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    public function getTabs(): array
+    {
+        return [
+            'All' => Tab::make('All'),
+            'Pending' => Tab::make('Pending')
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'pending')),
+            'Approved' => Tab::make('Approved')
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'approved')),
         ];
     }
 }

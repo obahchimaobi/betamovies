@@ -2,22 +2,35 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SeasonsResource\Pages;
-use App\Filament\Resources\SeasonsResource\RelationManagers;
-use App\Models\Seasons;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Seasons;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Carbon;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\SeasonsResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\SeasonsResource\RelationManagers;
 
 class SeasonsResource extends Resource
 {
     protected static ?string $model = Seasons::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-film';
+
+    protected static ?string $activeNavigationIcon = 'heroicon-s-film';
+
+    protected static ?string $navigationGroup = 'Content Management';
+
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
     {
@@ -74,17 +87,11 @@ class SeasonsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('movieId')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('formatted_name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('origin_country')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('country')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('season_number')
                     ->searchable(),
@@ -92,14 +99,28 @@ class SeasonsResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('episode_title')
                     ->searchable(),
+                ImageColumn::make('poster_path')
+                    ->circular()
+                    ->disk('uploads'),
                 Tables\Columns\TextColumn::make('air_date')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('poster_path')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'approved' => 'success',
+                    }),
                 Tables\Columns\TextColumn::make('download_url')
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(15),
+                Tables\Columns\TextColumn::make('approved_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('deleted_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -108,21 +129,111 @@ class SeasonsResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('approved_at')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->form([
+                        Section::make()
+                            ->columns([
+                                'sm' => 3,
+                                'xl' => 6,
+                                '2xl' => 8,
+                            ])
+                            ->schema([
+                                TextInput::make('name')
+                                    ->disabled()
+                                    ->columnSpan([
+                                        'sm' => 2,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+
+                                TextInput::make('season_number')
+                                    ->disabled()
+                                    ->columnSpan([
+                                        'sm' => 2,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+
+                                TextInput::make('episode_number')
+                                    ->disabled()
+                                    ->columnSpan([
+                                        'sm' => 2,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+
+                                TextInput::make('episode_title')
+                                    // ->disabled()
+                                    ->columnSpan([
+                                        'sm' => 2,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+
+                                TextInput::make('status')
+                                    ->columnSpan([
+                                        'sm' => 2,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+
+                                TextInput::make('download_url')
+                                    ->columnSpan([
+                                        'sm' => 2,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+
+                                Textarea::make('overview')
+                                    ->columnSpanFull(),
+
+                            ]),
+                    ]),
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ForceDeleteAction::make(),
                 Tables\Actions\RestoreAction::make(),
+
+                Action::make('seasons')
+                    ->label('Approve')
+                    ->color('success')
+                    ->icon('heroicon-m-check-circle')
+                    ->action(function ($record) {
+                        // Fetch the Series using the series_id field
+                        $series = \App\Models\Series::where('movieId', $record->movieId)->first(); // Assuming series_id is the foreign key
+                        // dd($series);
+            
+                        if ($series && $series->status == 'pending') {
+                            // Approve the Series if not already approved
+                            $series->update([
+                                'status' => 'approved',
+                                'approved_at' => Carbon::now(),
+                            ]);
+
+                            // Notify that the Series has been approved
+                            Notification::make()
+                                ->title('Series Approved')
+                                ->success()
+                                ->send();
+                        }
+
+                        // Approve the Season
+                        $record->update([
+                            'status' => 'approved',
+                            'approved_at' => Carbon::now(),
+                        ]);
+
+                        // Notify about the Season approval
+                        Notification::make()
+                            ->title('Season Approved')
+                            ->success()
+                            ->send();
+                    })
+                    ->visible(fn($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -146,5 +257,15 @@ class SeasonsResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }
