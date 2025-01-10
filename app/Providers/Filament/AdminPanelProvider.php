@@ -53,6 +53,7 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->favicon(asset('icons/betamovies-icon.png'))
             ->userMenuItems([
                 'profile' => MenuItem::make()
                     ->label(fn () => auth()->user()->name)
@@ -64,7 +65,11 @@ class AdminPanelProvider extends PanelProvider
                     ->slug('my-profile')
                     ->setTitle('My Profile')
                     ->setNavigationLabel('My Profile')
-                    ->setNavigationGroup('Settings'),
+                    ->setNavigationGroup('Settings')
+                    ->shouldShowAvatarForm(
+                        value:true,
+                        directory:'public/avatars',
+                    ),
             ])
             ->authMiddleware([
                 Authenticate::class,
