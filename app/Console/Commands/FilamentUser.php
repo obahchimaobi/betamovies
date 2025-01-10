@@ -20,7 +20,7 @@ class FilamentUser extends Command
      *
      * @var string
      */
-    protected $signature = 'make:admin';
+    protected $signature = 'make:filament-user';
 
     /**
      * The console command description.
