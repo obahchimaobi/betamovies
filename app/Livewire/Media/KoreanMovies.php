@@ -44,7 +44,7 @@ class KoreanMovies extends Component
 
         $korean_movies_query = Movies::select(['name', 'formatted_name', 'poster_path', 'release_year', 'vote_count', 'id'])
             ->where('status', '!=', 'pending')
-            ->whereIn('origin_country', array_keys(array_filter($countryMapping, fn($val) => $val === 'Korea')))
+            ->whereIn('origin_country', array_keys(array_filter($countryMapping, fn ($val) => $val === 'Korea')))
             ->orderByDesc('release_year')
             ->whereNull('deleted_at')
             ->orderByDesc('id');
@@ -63,7 +63,7 @@ class KoreanMovies extends Component
 
         return view('livewire.media.korean-movies', [
             'korean_movies' => $korean_movies,
-            'year' => $year
+            'year' => $year,
         ]);
     }
 }

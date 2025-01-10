@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('comments', 'avatar')) {
+        if (! Schema::hasColumn('comments', 'avatar')) {
             Schema::table('comments', function (Blueprint $table) {
                 //
                 $table->string('avatar')->nullable();

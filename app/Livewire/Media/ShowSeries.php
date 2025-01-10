@@ -4,7 +4,6 @@ namespace App\Livewire\Media;
 
 use App\Models\Series;
 use Livewire\Component;
-use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
 class ShowSeries extends Component
@@ -22,8 +21,8 @@ class ShowSeries extends Component
                 'except' => null,
             ],
             'countryFilter' => [
-                'except' => null
-            ]
+                'except' => null,
+            ],
         ];
     }
 

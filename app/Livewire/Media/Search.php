@@ -4,10 +4,9 @@ namespace App\Livewire\Media;
 
 use App\Models\Movies;
 use App\Models\Series;
-use Livewire\Component;
-use Illuminate\Http\Request;
-use Livewire\WithPagination;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Livewire\Component;
+use Livewire\WithPagination;
 
 class Search extends Component
 {
@@ -26,9 +25,9 @@ class Search extends Component
                 'except' => null,
             ],
             'countryFilter' => [
-                'except' => null
+                'except' => null,
             ],
-            'search'
+            'search',
         ];
     }
 
@@ -59,8 +58,8 @@ class Search extends Component
 
         // dump($query);
 
-        $moviesQuery = Movies::where('name', 'like', '%' . $query . '%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
-        $seriesQuery = Series::where('name', 'like', '%' . $query . '%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
+        $moviesQuery = Movies::where('name', 'like', '%'.$query.'%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
+        $seriesQuery = Series::where('name', 'like', '%'.$query.'%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
 
         if ($this->movieFilter) {
             $moviesQuery->where('type', $this->movieFilter);

@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Download\DownloadController;
 use App\Http\Controllers\Google\GoogleController;
 use App\Http\Controllers\Media\MediaController;
-use App\Http\Controllers\Search\SearchController;
 use App\Livewire\DisplayMovies;
 use App\Livewire\DisplaySeries;
 use App\Livewire\Genres;
@@ -12,8 +11,8 @@ use App\Livewire\HomePage;
 use App\Livewire\KoreanDramas;
 use App\Livewire\KoreanMovies;
 use App\Livewire\Media\Details;
-use App\Livewire\Search;
 use App\Livewire\NewReleases;
+use App\Livewire\Search;
 use App\Livewire\TopRated;
 use App\Livewire\TrendingMovies;
 use App\Livewire\TrendingSeries;
@@ -45,7 +44,7 @@ Route::get('/reset-password', [AuthController::class, 'forgot_password_page'])->
 Route::get('/email/verify/{email}/{hash}', function ($email, $hash) {
     $user = User::where('email', $email)->firstOrFail();
 
-    if (!hash_equals(sha1($user->otp), $hash)) {
+    if (! hash_equals(sha1($user->otp), $hash)) {
         abort(403, 'Invalid verification link.');
     }
 

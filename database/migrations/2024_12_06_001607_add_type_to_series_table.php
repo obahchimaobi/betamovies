@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('series', 'type')) {
+        if (! Schema::hasColumn('series', 'type')) {
             Schema::table('series', function (Blueprint $table) {
                 //
                 $table->string('type')->after('overview')->nullable();

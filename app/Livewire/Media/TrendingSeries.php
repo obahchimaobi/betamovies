@@ -10,7 +10,7 @@ class TrendingSeries extends Component
 {
     use WithPagination;
 
-    public $yearFilter  = null;
+    public $yearFilter = null;
 
     public $countryFilter = null;
 
@@ -22,7 +22,7 @@ class TrendingSeries extends Component
             ],
             'countryFilter' => [
                 'except' => null,
-            ]
+            ],
         ];
     }
 

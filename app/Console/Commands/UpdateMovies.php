@@ -6,8 +6,6 @@ use App\Models\Movies;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
-use function Laravel\Prompts\info;
-
 class UpdateMovies extends Command
 {
     /**

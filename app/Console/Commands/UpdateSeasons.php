@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Seasons;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use function Laravel\Prompts\info;
 
 class UpdateSeasons extends Command
 {
@@ -33,14 +32,14 @@ class UpdateSeasons extends Command
         // Fetch all episodes that need updating
         $episodes = Seasons::where(function ($query) {
             $query->whereNull('overview')
-                  ->orWhere('overview', '')
-                  ->orWhereNull('episode_title')
-                  ->orWhere('episode_title', '');
+                ->orWhere('overview', '')
+                ->orWhereNull('episode_title')
+                ->orWhere('episode_title', '');
         })
-        ->whereNull('deleted_at')
-        ->get();
+            ->whereNull('deleted_at')
+            ->get();
 
-        if (sizeof($episodes) > 0) {
+        if (count($episodes) > 0) {
             foreach ($episodes as $episode) {
 
                 $response = Http::withToken('eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTg4ZDY3NDI1ZmJiN2VhYjIzNWViMDM4NTQyYjY0ZiIsIm5iZiI6MTY5Njk1NTU2Mi40MjMsInN1YiI6IjY1MjU3Y2FhMDcyMTY2NDViNDAwMTVhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ojZOyMvyWH8MfSpUVSUEFiFAiJcnRXtNevFiQs84eQE')
@@ -50,12 +49,12 @@ class UpdateSeasons extends Command
                 if ($response->successful()) {
                     $data = $response->json();
 
-                    if (isset($data['overview']) && !empty($data['overview'])) {
+                    if (isset($data['overview']) && ! empty($data['overview'])) {
                         $episode->overview = $data['overview'];
                         $episode->episode_title = $data['name'];
 
                         if (empty($episode->episode_title || $episode->episode_title === '')) {
-                            $episode->name = 'Episode ' . $episode->episode_number;
+                            $episode->name = 'Episode '.$episode->episode_number;
                         }
 
                         $episode->save();
@@ -67,7 +66,7 @@ class UpdateSeasons extends Command
                         $episode->episode_title = $data['name'];
 
                         if (empty($episode->episode_title || $episode->episode_title === '')) {
-                            $episode->name = 'Episode ' . $episode->episode_number;
+                            $episode->name = 'Episode '.$episode->episode_number;
                         }
 
                         $episode->save();

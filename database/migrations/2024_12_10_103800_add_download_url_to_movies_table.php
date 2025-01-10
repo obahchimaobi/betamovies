@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('movies', 'download_url')) {
+        if (! Schema::hasColumn('movies', 'download_url')) {
             Schema::table('movies', function (Blueprint $table) {
                 //
                 $table->string('download_url')->nullable()->after('status');

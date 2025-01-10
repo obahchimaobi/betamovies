@@ -6,7 +6,6 @@ use App\Models\Movies;
 use App\Models\Series;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
-use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
 class TopRated extends Component
@@ -24,8 +23,8 @@ class TopRated extends Component
                 'except' => null,
             ],
             'countryFilter' => [
-                'except' => null
-            ]
+                'except' => null,
+            ],
         ];
     }
 

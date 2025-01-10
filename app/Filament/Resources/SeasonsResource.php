@@ -2,23 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
+use App\Filament\Resources\SeasonsResource\Pages;
 use App\Models\Seasons;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Carbon;
-use Filament\Resources\Resource;
-use Filament\Tables\Actions\Action;
+use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\SeasonsResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\SeasonsResource\RelationManagers;
+use Illuminate\Support\Carbon;
 
 class SeasonsResource extends Resource
 {
@@ -106,7 +105,7 @@ class SeasonsResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         'pending' => 'warning',
                         'approved' => 'success',
                     }),
@@ -206,7 +205,7 @@ class SeasonsResource extends Resource
                         // Fetch the Series using the series_id field
                         $series = \App\Models\Series::where('movieId', $record->movieId)->first(); // Assuming series_id is the foreign key
                         // dd($series);
-            
+
                         if ($series && $series->status == 'pending') {
                             // Approve the Series if not already approved
                             $series->update([
@@ -233,7 +232,7 @@ class SeasonsResource extends Resource
                             ->success()
                             ->send();
                     })
-                    ->visible(fn($record) => $record->status === 'pending'),
+                    ->visible(fn ($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

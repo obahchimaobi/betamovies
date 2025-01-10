@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Series;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use function Laravel\Prompts\info;
 
 class UpdateSeries extends Command
 {
@@ -71,7 +70,7 @@ class UpdateSeries extends Command
 
                 $movie->save();
 
-                $this->info('✔ '.$movie->name." updated successfully ✔");
+                $this->info('✔ '.$movie->name.' updated successfully ✔');
             }
         } else {
             $this->info('✘ No series to update ✘');

@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\Movies;
-use App\Models\Series;
 use App\Models\Seasons;
+use App\Models\Series;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 

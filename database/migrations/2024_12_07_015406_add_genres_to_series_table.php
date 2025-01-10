@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('series', 'genres')) {
+        if (! Schema::hasColumn('series', 'genres')) {
             Schema::table('series', function (Blueprint $table) {
                 //
                 $table->string('genres')->nullable()->after('country');

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('series', 'downloads')) {
+        if (! Schema::hasColumn('series', 'downloads')) {
             Schema::table('series', function (Blueprint $table) {
                 //
                 $table->string('downloads')->after('status')->default(0);

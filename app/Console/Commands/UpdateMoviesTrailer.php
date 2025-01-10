@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Movies;
 use Illuminate\Console\Command;
+
 use function Laravel\Prompts\info;
 
 class UpdateMoviesTrailer extends Command

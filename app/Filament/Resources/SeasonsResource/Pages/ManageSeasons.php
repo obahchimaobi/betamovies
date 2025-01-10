@@ -4,9 +4,9 @@ namespace App\Filament\Resources\SeasonsResource\Pages;
 
 use App\Filament\Resources\SeasonsResource;
 use Filament\Actions;
+use Filament\Resources\Components\Tab;
 use Filament\Resources\Pages\ManageRecords;
 use Illuminate\Database\Eloquent\Builder;
-use Filament\Resources\Components\Tab;
 
 class ManageSeasons extends ManageRecords
 {

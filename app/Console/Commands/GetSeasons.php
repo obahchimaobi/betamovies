@@ -7,7 +7,6 @@ use App\Models\Series;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use function Laravel\Prompts\info;
 
 class GetSeasons extends Command
 {
@@ -184,7 +183,7 @@ class GetSeasons extends Command
                 }
             }
         } else {
-            $this->info("No approved series found in the database");
+            $this->info('No approved series found in the database');
         }
     }
 }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('series')) {
+        if (! Schema::hasTable('series')) {
             Schema::create('series', function (Blueprint $table) {
                 $table->id();
                 $table->string('movieId'); // Unique identifier for the movie

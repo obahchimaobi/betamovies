@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('comments', 'deleted_at')) {
+        if (! Schema::hasColumn('comments', 'deleted_at')) {
             Schema::table('comments', function (Blueprint $table) {
                 //
                 $table->string('deleted_at')->nullable();

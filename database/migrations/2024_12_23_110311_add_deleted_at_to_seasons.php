@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('seasons', 'deleted_at')) {
+        if (! Schema::hasColumn('seasons', 'deleted_at')) {
             Schema::table('seasons', function (Blueprint $table) {
                 //
                 $table->timestamp('deleted_at')->nullable();

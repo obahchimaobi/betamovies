@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\Series;
 use Illuminate\Console\Command;
-use function Laravel\Prompts\info;
 
 class UpdateSeriesTrailer extends Command
 {

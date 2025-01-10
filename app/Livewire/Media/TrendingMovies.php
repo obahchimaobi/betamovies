@@ -21,8 +21,8 @@ class TrendingMovies extends Component
                 'except' => null,
             ],
             'countryFilter' => [
-                'except' => null
-            ]
+                'except' => null,
+            ],
         ];
     }
 
