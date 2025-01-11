@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "5balloons/laravel-smart-ads": "^1.2",
+        "charrafimed/global-search-modal": "^3.4",
         "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.9",
         "joaopaulolndev/filament-edit-profile": "^1.0",

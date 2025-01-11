@@ -2,21 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PendingMoviesResource\Pages;
+use Filament\Tables;
 use App\Models\Movies;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Illuminate\Support\Carbon;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Notifications\Notification;
-use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
-use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Carbon;
+use App\Filament\Resources\PendingMoviesResource\Pages;
 
 class PendingMoviesResource extends Resource
 {
@@ -53,6 +54,9 @@ class PendingMoviesResource extends Resource
                 Tables\Columns\TextColumn::make('genres')
                     ->searchable()
                     ->limit('10'),
+                ImageColumn::make('poster_path')
+                    ->circular()
+                    ->disk('images'),
                 Tables\Columns\TextColumn::make('download_url')
                     ->limit(10),
                 Tables\Columns\TextColumn::make('trailer_url')

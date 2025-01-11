@@ -1,7 +1,7 @@
 <!-- ========== HEADER ========== -->
 @use('\App\Models\MyList')
 @php
-    $user = "";
+    $user = '';
     if (Auth::check()) {
         $user = auth()->user()->id;
     }
@@ -97,9 +97,10 @@
                     aria-controls="hs-basic-modal" data-hs-overlay="#hs-basic-modal">
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
-                            <svg class="shrink-0 size-4 text-gray-400 dark:text-white/60" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="shrink-0 size-4 text-gray-400 dark:text-white/60"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <path d="m21 21-4.3-4.3"></path>
                             </svg>
@@ -111,37 +112,38 @@
                 </div>
 
                 @auth
-                        <div class="hs-dropdown [--placement:bottom-right] relative inline-flex">
-                            <button id="hs-dropdown-account" type="button"
-                                class="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white"
-                                aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                                <img class="shrink-0  rounded-full"
-                                    src="{{ auth()->user()->avatar ?? Avatar::create(auth()->user()->name)->setBackground('#000000')->toGravatar() }}" alt="Avatar">
-                            </button>
+                    <div class="hs-dropdown [--placement:bottom-right] relative inline-flex">
+                        <button id="hs-dropdown-account" type="button"
+                            class="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white"
+                            aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                            <img class="shrink-0  rounded-full"
+                                src="{{ asset(auth()->user()->avatar) ??Avatar::create(auth()->user()->name)->setBackground('#000000')->toGravatar() }}"
+                                alt="Avatar">
+                        </button>
 
-                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
-                                role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-account">
-                                <div class="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-slate-700">
-                                    <p class="text-sm text-gray-500 dark:text-slate-400">Signed in as</p>
-                                    <p class="text-sm font-medium text-gray-600 dark:text-neutral-200">
-                                        {{ auth()->user()->email }}</p>
-                                </div>
-                                <div class="p-1.5 space-y-0.5">
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
-                                        href="{{ route('user.profile') }}" wire:navigate>
+                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-slate-800 dark:border dark:border-slate-700 dark:divide-slate-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+                            role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-account">
+                            <div class="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-slate-700">
+                                <p class="text-sm text-gray-500 dark:text-slate-400">Signed in as</p>
+                                <p class="text-sm font-medium text-gray-600 dark:text-neutral-200">
+                                    {{ auth()->user()->email }}</p>
+                            </div>
+                            <div class="p-1.5 space-y-0.5">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
+                                    href="{{ route('user.profile') }}" wire:navigate>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2" stroke="currentColor" class="size-4 shrink-0" width="24"
+                                        height="24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                    </svg>
+
+                                    Profile
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300 justify-between"
+                                    href="{{ route('my.watchlist') }}" wire:navigate>
+                                    <div class="flex gap-x-3.5 items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" class="size-4 shrink-0"
-                                            width="24" height="24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                                        </svg>
-
-                                        Profile
-                                    </a>
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300 justify-between"
-                                        href="{{ route('my.watchlist') }}" wire:navigate>
-                                        <div class="flex gap-x-3.5 items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="2" stroke="currentColor" class="size-4 shrink-0"
                                             width="24" height="24">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -149,27 +151,27 @@
                                         </svg>
 
                                         My Watchlist
-                                        </div>
+                                    </div>
 
-                                        <span class="text-xs font-medium bg-red-500 text-white py-0.5 px-1.5 rounded-full">
-                                            {{ $number_of_lists }}
-                                        </span>
-                                    </a>
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
-                                        href="{{ route('logout') }}" wire:navigate>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                            class="size-4 shrink-0 fill-slate-600 dark:fill-slate-500" width="24"
-                                            height="24" stroke-width="2"
-                                            stroke="currentColor"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                            <path
-                                                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
-                                        </svg>
-                                        Sign Out
-                                    </a>
-                                </div>
+                                    <span class="text-xs font-medium bg-red-500 text-white py-0.5 px-1.5 rounded-full">
+                                        {{ $number_of_lists }}
+                                    </span>
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300"
+                                    href="{{ route('logout') }}" wire:navigate>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                        class="size-4 shrink-0 fill-slate-600 dark:fill-slate-500" width="24"
+                                        height="24" stroke-width="2"
+                                        stroke="currentColor"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                        <path
+                                            d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
+                                    </svg>
+                                    Sign Out
+                                </a>
                             </div>
                         </div>
-                    @endauth
+                    </div>
+                @endauth
             </div>
     </nav>
 </header>
