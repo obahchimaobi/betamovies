@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class LoginForm extends Component
 {
@@ -27,9 +28,7 @@ class LoginForm extends Component
             // If the email is associated with a Google account (i.e., google_id is not null)
             if ($user->google_id) {
                 // Set a session message informing the user to log in with Google
-                session()->flash('error', 'This email is associated with a Google account. Please log in using Google.');
-
-                return redirect()->route('login');
+                Toaster::error('This email is associated with a Google account. Please log in using Google.');
             }
 
             // Check if the password matches
@@ -39,19 +38,16 @@ class LoginForm extends Component
                     Auth::login($user);
                     $this->redirectRoute('home', navigate: true);
                 } else {
-                    session()->flash('error', 'Your email address is not verified');
-                    $this->redirectRoute('login', navigate: true);
+                    Toaster::error('Your email address is not verified');
                 }
             } else {
                 // If password does not match, show the password error
-                session()->flash('error', 'Invalid credentials. Please try again.');
-                $this->redirectRoute('login', navigate: true);
+                Toaster::error('Invalid credentials. Please try again.');
             }
         } else {
             // If no user is found with that email, show the generic error message
-            session()->flash('error', 'No account found with this email.');
-
-            return redirect()->route('login');
+            Toaster::error('No account found with this email.');
+            $this->reset(['password', 'email']);
         }
     }
 

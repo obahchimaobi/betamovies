@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class RegisterForm extends Component
 {
@@ -46,7 +47,7 @@ class RegisterForm extends Component
             ['email' => $user->email, 'hash' => $hash]
         );
 
-        session()->flash('success', 'A confirmation email has been sent to '.$validatedData['email'].'. Click the verification link sent to your email to complete the verification process');
+        Toaster::success('A confirmation email has been sent to '.$validatedData['email'].'. Click the verification link sent to your email to complete the verification process');
 
         Mail::to($validatedData['email'])->send(new RegisterMail($user, $otp, $email, $hash, $verificationUrl));
 

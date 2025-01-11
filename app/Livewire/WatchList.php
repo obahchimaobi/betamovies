@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\MyList;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class WatchList extends Component
 {
@@ -35,8 +36,8 @@ class WatchList extends Component
     {
         if (! Auth::id()) {
             // code...
-            session()->flash('error', 'You must login to add a movie to watchlist');
-            $this->redirect(url()->previous(), navigate: true);
+
+            Toaster::error('You must login to add a movie to watchlist');
         } else {
             if (! $this->isInWatchlist) {
 
@@ -44,8 +45,8 @@ class WatchList extends Component
                 $userWatchLists = MyList::where('userId', Auth::id())->whereNull('deleted_at')->count();
 
                 if ($userWatchLists >= 10) {
-                    session()->flash('error', 'You can only add up to 10 movies to your watchlist');
-                    $this->redirect(url()->previous(), navigate: true);
+
+                    Toaster::error('You can only add up to 10 movies to your watchlist');
                 } else {
                     MyList::create([
                         'userId' => Auth::id(),

@@ -64,6 +64,7 @@
     @yield('content')
     @include('components.layouts._footer')
 
+    <x-toaster-hub />
     @livewireScripts
     <!-- ========== END MAIN CONTENT ========== -->
 </body>

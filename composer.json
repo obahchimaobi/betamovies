@@ -19,7 +19,7 @@
         "laravel/tinker": "^2.9",
         "laravolt/avatar": "*",
         "livewire/livewire": "^3.5",
-        "mallardduck/blade-boxicons": "^2.4",
+        "masmerise/livewire-toaster": "^2.6",
         "postare/blade-mdi": "^1.1",
         "rinvex/countries": "*",
         "socialiteproviders/google": "^4.1",

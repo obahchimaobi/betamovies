@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class CommentForm extends Component
 {
@@ -46,7 +47,7 @@ class CommentForm extends Component
 
         $comment->save();
 
-        session()->flash('success', 'Your comment has been added successfully!');
+        Toaster::success('Your comment has been added successfully!');
         $this->redirect(url()->previous(), navigate: true);
     }
 
