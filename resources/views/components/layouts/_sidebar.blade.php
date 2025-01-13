@@ -247,7 +247,7 @@ dark:bg-slate-900 dark:border-slate-800"
                     @guest
                         <li><a class="@if (Request::is('sign-in')) flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white @else w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @endif"
                                 href="{{ route('login') }}" wire:navigate>
-                                @svg('mdi-login', ['class' => 'size-4 shrink-0'])
+                                {{-- @svg('mdi-login', ['class' => 'size-4 shrink-0']) --}}
 
                                 Sign In
                             </a>
