@@ -75,6 +75,7 @@ class AdminPanelProvider extends PanelProvider
                         directory: 'public/avatars',
                     ),
             ])
+            ->unsavedChangesAlerts()
             ->authMiddleware([
                 Authenticate::class,
             ]);
