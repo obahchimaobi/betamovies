@@ -7,7 +7,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "5balloons/laravel-smart-ads": "^1.2",
         "bezhansalleh/filament-google-analytics": "^2.1",
         "charrafimed/global-search-modal": "^3.4",
         "filament/filament": "^3.2",
@@ -26,7 +25,6 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",

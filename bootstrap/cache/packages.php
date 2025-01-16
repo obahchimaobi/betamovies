@@ -1,15 +1,4 @@
 <?php return array (
-  '5balloons/laravel-smart-ads' => 
-  array (
-    'aliases' => 
-    array (
-      'LaravelSmartAds' => '_5balloons\\LaravelSmartAds\\LaravelSmartAdsFacade',
-    ),
-    'providers' => 
-    array (
-      0 => '_5balloons\\LaravelSmartAds\\LaravelSmartAdsServiceProvider',
-    ),
-  ),
   'anourvalar/eloquent-serialize' => 
   array (
     'aliases' => 
@@ -134,13 +123,6 @@
       0 => 'Kirschbaum\\PowerJoins\\PowerJoinsServiceProvider',
     ),
   ),
-  'laravel/pail' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Pail\\PailServiceProvider',
-    ),
-  ),
   'laravel/sail' => 
   array (
     'providers' => 
@@ -225,6 +207,13 @@
     'providers' => 
     array (
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    ),
+  ),
+  'postare/blade-mdi' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Postare\\BladeMdi\\BladeMdiServiceProvider',
     ),
   ),
   'ryangjchandler/blade-capture-directive' => 
