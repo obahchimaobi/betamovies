@@ -35,7 +35,7 @@ hidden
 fixed inset-y-0 start-0 z-[60]
 bg-white border-e border-gray-200
 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0
-dark:bg-slate-900 dark:border-slate-800"
+dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-900/90"
     role="dialog" tabindex="-1" aria-label="Sidebar">
     <div class="relative flex flex-col h-full max-h-full">
         <div class="px-6 pt-4">

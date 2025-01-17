@@ -178,7 +178,7 @@
 <!-- ========== END HEADER ========== -->
 
 <div id="hs-basic-modal"
-    class="hs-overlay hs-overlay-backdrop-open:bg-gray-500/90 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none dark:hs-overlay-backdrop-open:bg-slate-900/90"
+    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none dark:hs-overlay-backdrop-open:bg-slate-900/90"
     role="dialog" tabindex="-1" aria-labelledby="hs-basic-modal-label">
     <div class="sm:max-w-lg sm:w-full m-3 sm:mx-auto">
         <div class="flex flex-col shadow-sm rounded-xl pointer-events-auto">
