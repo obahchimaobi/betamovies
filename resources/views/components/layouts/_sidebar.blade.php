@@ -53,7 +53,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
             <nav class="hs-accordion-group p-3 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
                 <ul class="flex flex-col space-y-1">
                     <li>
-                        <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300 @if (Request::is('/')) bg-gray-100 focus:outline-none dark:bg-slate-700 @endif"
+                        <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300 @if (Request::is('/')) bg-gray-200 focus:outline-none dark:bg-slate-700 @endif"
                             href="{{ route('home') }}" wire:navigate>
                             <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -100,7 +100,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
                                     <ul class="pt-1 space-y-1">
                                         @foreach ($allGenres as $genres)
                                             <li>
-                                                <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 ps-8 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300 @if (Request::is('tag/'.Str::lower($genres))) bg-gray-100 focus:outline-none dark:bg-slate-700 @endif"
+                                                <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 ps-8 text-sm text-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-300 @if (Request::is('tag/'.Str::lower($genres))) bg-gray-200 focus:outline-none dark:bg-slate-700 @endif"
                                                     href="{{ route('genre', ['genre' => Str::lower($genres)]) }}"
                                                     wire:navigate>
                                                     {{ $genres }}
@@ -113,7 +113,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
                         </div>
                     </li>
 
-                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('movies')) bg-gray-100 focus:outline-none dark:bg-slate-700 @endif"
+                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('movies')) bg-gray-200 focus:outline-none dark:bg-slate-700 @endif"
                             href="{{ route('movies.page') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4 shrink-0">
@@ -124,7 +124,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
                             Movies
                         </a>
                     </li>
-                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('series')) bg-gray-100 focus:outline-none dark:bg-slate-700 @endif"
+                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('series')) bg-gray-200 focus:outline-none dark:bg-slate-700 @endif"
                             href="{{ route('series.page') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4 shrink-0">
@@ -145,7 +145,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
                             Top Rated
                         </a>
                     </li>
-                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('new-releases')) bg-gray-100 focus:outline-none dark:bg-slate-700 @endif"
+                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('new-releases')) bg-gray-200 focus:outline-none dark:bg-slate-700 @endif"
                             href="{{ route('new.releases') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4 shrink-0">
@@ -157,7 +157,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
                             New Releases
                         </a>
                     </li>
-                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('trending-movies')) bg-gray-100 focus:outline-none dark:bg-slate-700 @endif"
+                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('trending-movies')) bg-gray-200 focus:outline-none dark:bg-slate-700 @endif"
                             href="{{ route('trending.movies') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4" stroke-width="1.5">
@@ -172,7 +172,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
                             Trending Movies
                         </a>
                     </li>
-                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('trending-series')) bg-gray-100 focus:outline-none dark:bg-slate-700 @endif"
+                    <li><a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 dark:text-neutral-200 dark:hover:text-neutral-300 @if (Request::is('trending-series')) bg-gray-200 focus:outline-none dark:bg-slate-700 @endif"
                             href="{{ route('trending.series') }}" wire:navigate>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4" stroke-width="1.5">
@@ -254,7 +254,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
                             </a>
                         </li>
                     @endguest
-                    <li class="bottom-2 absolute w-auto"><a class="w-full flex items-center gap-x-1 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 dark:text-neutral-200 dark:hover:text-neutral-300 dark:bg-slate-700 duration-200"
+                    <li class="bottom-2 absolute w-auto"><a class="w-full flex items-center gap-x-1 py-2 px-2.5 text-sm text-gray-800 rounded-lg bg-slate-200 hover:bg-gray-300 dark:hover:bg-slate-800 dark:text-neutral-200 dark:hover:text-neutral-300 dark:bg-slate-700 duration-200"
                             href="{{ route('trending.series') }}" wire:navigate>
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>

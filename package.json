@@ -19,17 +19,19 @@
     },
     "dependencies": {
         "@preline/combobox": "^2.6.0",
+        "@preline/file-upload": "^2.5.2",
         "@preline/overlay": "^2.6.0",
         "@preline/remove-element": "^2.6.0",
         "@preline/select": "^2.6.0",
         "@preline/toggle-password": "^2.6.0",
         "@tailwindcss/container-queries": "^0.1.1",
+        "dropzone": "^6.0.0-beta.2",
         "flowbite": "^2.5.2",
+        "lodash": "^4.17.21",
         "preline": "^2.5.1",
         "tailwindcss-aspect-ratio": "^3.0.0"
     },
     "overrides": {
-  "glob": "^9.3.0"
-}
-
+        "glob": "^9.3.0"
+    }
 }

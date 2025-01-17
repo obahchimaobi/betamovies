@@ -434,16 +434,16 @@
         },
         {
             "name": "charrafimed/global-search-modal",
-            "version": "v3.5.0",
+            "version": "v3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CharrafiMed/global-search-modal.git",
-                "reference": "d505d588c54c176022f622282dd150db95613063"
+                "reference": "cf070388203fbcadd197e3d7dfb48e009e0ebac2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CharrafiMed/global-search-modal/zipball/d505d588c54c176022f622282dd150db95613063",
-                "reference": "d505d588c54c176022f622282dd150db95613063",
+                "url": "https://api.github.com/repos/CharrafiMed/global-search-modal/zipball/cf070388203fbcadd197e3d7dfb48e009e0ebac2",
+                "reference": "cf070388203fbcadd197e3d7dfb48e009e0ebac2",
                 "shasum": ""
             },
             "require": {
@@ -475,9 +475,9 @@
             "description": "advanced global search modal",
             "support": {
                 "issues": "https://github.com/CharrafiMed/global-search-modal/issues",
-                "source": "https://github.com/CharrafiMed/global-search-modal/tree/v3.5.0"
+                "source": "https://github.com/CharrafiMed/global-search-modal/tree/v3.6.0"
             },
-            "time": "2025-01-12T10:07:57+00:00"
+            "time": "2025-01-16T18:49:00+00:00"
         },
         {
             "name": "danharrin/date-format-converter",
