@@ -5,6 +5,7 @@ namespace App\Livewire\Profile;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class InfoForm extends Component
 {
@@ -26,19 +27,15 @@ class InfoForm extends Component
         // Validate the input
         $validated = $this->validate([
             'name' => 'required|string|max:255', // Add proper validation rules
-            'email' => 'required|email|unique:users,email,'.auth()->id(), // Ensure email uniqueness, excluding the current user
+            'email' => 'required|email|unique:users,email', // Ensure email uniqueness, excluding the current user
         ]);
 
         // Update the user's information
         $user->email = $validated['email'];
         $user->name = $validated['name'];
         $user->save();
-
-        // Provide feedback to the user
-        session()->flash('success', 'Your profile information has been updated successfully.');
-
-        // Redirect to the home route
-        $this->redirectRoute('user.profile', navigate: true);
+        
+        Toaster::success('Your profile information has been updated successfully.');
     }
 
     public function render()

@@ -72,6 +72,7 @@ class ShowMovies extends Component
         $year = Movies::pluck('release_year')
             ->filter(fn ($year) => ! empty($year))
             ->unique()
+            ->where('status', '!=', 'pending')
             ->sortDesc()
             ->values();
 

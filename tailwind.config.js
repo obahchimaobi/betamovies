@@ -10,7 +10,7 @@ export default {
         './resources/**/*.vue',
         'node_modules/preline/dist/*.js',
     ],
-    darkMode: 'class',
+    darkMode: 'selector',
     theme: {
         extend: {
             fontFamily: {
