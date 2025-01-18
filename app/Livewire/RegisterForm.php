@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Mail\RegisterMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 use Masmerise\Toaster\Toaster;
@@ -47,12 +48,9 @@ class RegisterForm extends Component
             ['email' => $user->email, 'hash' => $hash]
         );
 
-        Toaster::success('A confirmation email has been sent to '.$validatedData['email'].'. Click the verification link sent to your email to complete the verification process');
-
         Mail::to($validatedData['email'])->send(new RegisterMail($user, $otp, $email, $hash, $verificationUrl));
 
-        // return redirect()->route('login');
-        $this->redirectRoute('login', navigate: true);
+        return Redirect::route('login')->success('A confirmation email has been sent to '.$validatedData['email'].'. Click the verification link sent to your email to complete the verification process');
     }
 
     public function render()

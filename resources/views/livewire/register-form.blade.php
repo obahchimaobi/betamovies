@@ -9,7 +9,7 @@
                 <label for="email" class="block text-sm mb-2 dark:text-white">Name</label>
                 <div class="relative">
                     <input type="text" id="name"
-                        class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-neutral-400 dark:placeholder-slate-500 dark:focus:ring-slate-600 focus:outline-none"
+                        class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-neutral-400 dark:placeholder-slate-500 dark:focus:ring-blue-600 focus:outline-none"
                          aria-describedby="email-error" wire:model='name'>
                     <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                         <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor"
@@ -30,7 +30,7 @@
                 <label for="email" class="block text-sm mb-2 dark:text-white">Email address</label>
                 <div class="relative">
                     <input type="email" id="email"
-                        class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-neutral-400 dark:placeholder-slate-500 dark:focus:ring-slate-600 focus:outline-none"
+                        class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-neutral-400 dark:placeholder-slate-500 dark:focus:ring-blue-600 focus:outline-none"
                          aria-describedby="email-error" wire:model='email'>
                     <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                         <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor"
@@ -51,7 +51,7 @@
                 <label for="password" class="block text-sm mb-2 dark:text-white">Password</label>
                 <div class="relative">
                     <input type="password" id="password"
-                        class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-neutral-400 dark:placeholder-slate-500 dark:focus:ring-slate-600 focus:outline-none"
+                        class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-neutral-400 dark:placeholder-slate-500 dark:focus:ring-blue-600 focus:outline-none"
                          aria-describedby="password-error" wire:model='password'>
                     <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                         <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor"

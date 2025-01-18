@@ -11,7 +11,7 @@
         </div>
         <form action="{{ route('search') }}" class="w-full">
             <input type="text"
-                class="py-2 ps-10 pe-16 block w-full border bg-white border-slate-200 rounded-lg text-sm focus:border-slate-100 focus:ring-slate-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder:text-slate-400 dark:focus:ring-slate-600"
+                class="py-2 ps-10 pe-16 block w-full border bg-white border-slate-200 rounded-lg text-sm focus:border-slate-700 focus:ring-slate-600 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder:text-slate-400 dark:focus:ring-slate-600"
                 placeholder="Search" wire:model.live.debounce.300ms='searchBar' autofocus name="search"
                 autocomplete="off">
         </form>

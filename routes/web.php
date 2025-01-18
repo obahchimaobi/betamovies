@@ -18,6 +18,7 @@ use App\Livewire\TrendingMovies;
 use App\Livewire\TrendingSeries;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class)->name('home');
@@ -49,14 +50,14 @@ Route::get('/email/verify/{email}/{hash}', function ($email, $hash) {
     }
 
     if ($user->email_verified_at) {
-        return redirect()->route('login')->with('error', 'Your email is already verified.');
+        return Redirect::route('login')->error('Your email is already verified.');
     }
 
     // $user->update(['email_verified_at' => now()]);
     $user->email_verified_at = now();
     $user->save();
 
-    return redirect()->route('login')->with('success', 'Your email has been successfully verified.');
+    return Redirect::route('login')->success('Your email has been successfully verified.');
 })->middleware('signed')->name('verify.otp');
 
 // Signup and Login with google

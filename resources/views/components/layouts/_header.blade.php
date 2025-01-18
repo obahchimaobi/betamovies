@@ -117,7 +117,7 @@
                             class="size-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white"
                             aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                             <img class="shrink-0  rounded-full"
-                                src="{{ asset(auth()->user()->avatar) ??Avatar::create(auth()->user()->name)->setBackground('#000000')->toGravatar() }}"
+                                src="{{ auth()->user()->avatar ?? Avatar::create(auth()->user()->name)->setBackground('#000000')->toGravatar() }}"
                                 alt="Avatar">
                         </button>
 
