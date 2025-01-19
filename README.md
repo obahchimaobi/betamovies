@@ -58,7 +58,7 @@
 8. [Admin Panel](#admin-panel)
 9. [User Interface](#user-interface)
 10. [Customization](#customization)
-11. [Troubleshooting and Support](#troubleshooting-and-support)
+11. [Support](#support)
 
 ---
 
@@ -215,21 +215,6 @@ Developers can customize the platform by:
 
 ---
 
-## **Troubleshooting and Support**
-
-### Common Issues:
-1. **Slow Scrolling on Background Sections:**
-   - Ensure all images are optimized.
-   - Use `background-attachment: scroll` as a fallback for older devices.
-
-2. **Database Errors:**
-   - Verify `.env` database credentials.
-   - Run migrations using `php artisan migrate`.
-
-3. **API Errors:**
-   - Confirm TMDb API key validity.
-   - Check rate limits on the TMDb account.
-
-### Support:
+## *Support*:
 - Contact: support@betamovies.com
 - Documentation updates: [GitHub Wiki](https://github.com/obahcimaobi/betamovies/wiki)
