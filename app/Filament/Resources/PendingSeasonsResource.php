@@ -93,7 +93,6 @@ class PendingSeasonsResource extends Resource
                                     ]),
 
                                 TextInput::make('season_number')
-                                    ->disabled()
                                     ->columnSpan([
                                         'sm' => 2,
                                         'xl' => 3,
@@ -101,7 +100,6 @@ class PendingSeasonsResource extends Resource
                                     ]),
 
                                 TextInput::make('episode_number')
-                                    ->disabled()
                                     ->columnSpan([
                                         'sm' => 2,
                                         'xl' => 3,

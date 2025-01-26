@@ -56,6 +56,7 @@ class PendingMoviesResource extends Resource
                     ->limit('10'),
                 ImageColumn::make('poster_path')
                     ->circular()
+                    ->label('Images')
                     ->disk('images'),
                 Tables\Columns\TextColumn::make('download_url')
                     ->limit(10),
@@ -139,7 +140,6 @@ class PendingMoviesResource extends Resource
                                     ->columnSpanFull(),
 
                                 Textarea::make('overview')
-                                    ->disabled()
                                     ->columnSpanFull(),
                             ]),
                     ]),

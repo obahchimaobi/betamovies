@@ -9,6 +9,7 @@
         "php": "^8.2",
         "bezhansalleh/filament-google-analytics": "^2.1",
         "charrafimed/global-search-modal": "^3.4",
+        "diogogpinto/filament-auth-ui-enhancer": "^1.0",
         "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.9",
         "joaopaulolndev/filament-edit-profile": "^1.0",

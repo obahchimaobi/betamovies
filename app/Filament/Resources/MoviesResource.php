@@ -131,7 +131,7 @@ class MoviesResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'pending' => 'warning',
                         'approved' => 'success',
                     }),
@@ -208,6 +208,13 @@ class MoviesResource extends Resource
                                         '2xl' => 4,
                                     ]),
 
+                                TextInput::make('trailer_url')
+                                    ->columnSpan([
+                                        'sm' => 2,
+                                        'xl' => 3,
+                                        '2xl' => 4,
+                                    ]),
+
                                 TextInput::make('runtime')
                                     // ->disabled()
                                     ->columnSpan([
@@ -240,7 +247,7 @@ class MoviesResource extends Resource
                             ->success()
                             ->send();
                     })
-                    ->visible(fn ($record) => $record->status === 'pending'),
+                    ->visible(fn($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
