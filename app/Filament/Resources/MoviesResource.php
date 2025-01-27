@@ -34,6 +34,8 @@ class MoviesResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $recipient = auth()->user();
+        
         return $form
             ->schema([
                 Forms\Components\TextInput::make('movieId')
