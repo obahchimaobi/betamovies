@@ -244,9 +244,11 @@ class MoviesResource extends Resource
                             'approved_at' => Carbon::now(),
                         ]);
 
+                        $recipient = auth()->user();
                         Notification::make()
                             ->title('Approval Successful')
                             ->success()
+                            ->sendToDatabase($recipient)
                             ->send();
                     })
                     ->visible(fn($record) => $record->status === 'pending'),

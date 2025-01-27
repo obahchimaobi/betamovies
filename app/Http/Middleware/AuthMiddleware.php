@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthMiddleware
@@ -18,9 +19,7 @@ class AuthMiddleware
     {
         if (! Auth::check()) {
             // code...
-            session()->flash('error', 'Login Required');
-
-            return redirect()->route('login');
+            return Redirect::route('login')->error('Login Required!');
         }
 
         return $next($request);
