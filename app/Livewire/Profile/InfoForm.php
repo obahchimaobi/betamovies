@@ -3,11 +3,11 @@
 namespace App\Livewire\Profile;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Masmerise\Toaster\Toaster;
-use Livewire\Attributes\Validate;
-use Illuminate\Support\Facades\Auth;
 
 class InfoForm extends Component
 {
