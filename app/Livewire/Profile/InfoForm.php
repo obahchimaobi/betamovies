@@ -3,13 +3,20 @@
 namespace App\Livewire\Profile;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Masmerise\Toaster\Toaster;
+use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Auth;
 
 class InfoForm extends Component
 {
+    use WithFileUploads;
+
     public $name;
+
+    #[Validate('image|max:1024')]
+    public $photo;
 
     public $email;
 
@@ -27,12 +34,15 @@ class InfoForm extends Component
         // Validate the input
         $validated = $this->validate([
             'name' => 'required|string|max:255', // Add proper validation rules
-            'email' => 'required|email|unique:users,email', // Ensure email uniqueness, excluding the current user
+            'email' => 'required|email', // Ensure email uniqueness, excluding the current user
         ]);
+
+        $profile_pic = $this->photo->store('avatar', 'public');
 
         // Update the user's information
         $user->email = $validated['email'];
         $user->name = $validated['name'];
+        $user->avatar = $profile_pic;
         $user->save();
 
         Toaster::success('Your profile information has been updated successfully.');
