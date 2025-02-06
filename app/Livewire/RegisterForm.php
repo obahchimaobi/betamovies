@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
-use Masmerise\Toaster\Toaster;
 
 class RegisterForm extends Component
 {

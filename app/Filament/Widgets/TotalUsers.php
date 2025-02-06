@@ -2,16 +2,10 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\User;
-use App\Models\Movies;
-use App\Models\Series;
-use App\Models\Comment;
 use App\Filament\Resources\UserResource;
-use App\Filament\Resources\MoviesResource;
-use App\Filament\Resources\SeriesResource;
-use App\Filament\Resources\CommentResource;
-use Filament\Widgets\StatsOverviewWidget\Stat;
+use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class TotalUsers extends BaseWidget
 {

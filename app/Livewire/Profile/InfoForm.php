@@ -34,7 +34,7 @@ class InfoForm extends Component
         $user->email = $validated['email'];
         $user->name = $validated['name'];
         $user->save();
-        
+
         Toaster::success('Your profile information has been updated successfully.');
     }
 

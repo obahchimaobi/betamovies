@@ -65,6 +65,11 @@ Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name
 Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');
 
 Route::get('/logout', function () {
+
+    if (! auth()->check()) {
+        return Redirect::route('home')->error('You are not logged in');
+    }
+
     Auth::logout();
 
     return redirect()->route('home');

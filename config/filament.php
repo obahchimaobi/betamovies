@@ -45,8 +45,8 @@ return [
 
     'components' => [
         'actions.icon' => 'fa-icon',  // Use FontAwesome
-        'forms.icon'   => 'fa-icon',
-        'tables.icon'  => 'fa-icon',
+        'forms.icon' => 'fa-icon',
+        'tables.icon' => 'fa-icon',
     ],
 
     'default_icons' => [

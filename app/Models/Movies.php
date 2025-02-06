@@ -31,7 +31,7 @@ class Movies extends Model
         'popularity',
         'download_url',
         'status',
-        'approved_at'
+        'approved_at',
     ];
 
     public function toSearchableArray()

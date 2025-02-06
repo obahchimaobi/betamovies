@@ -2,22 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Tables;
+use App\Filament\Resources\PendingMoviesResource\Pages;
 use App\Models\Movies;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Carbon;
-use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
-use Filament\Tables\Actions\BulkAction;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\PendingMoviesResource\Pages;
+use Illuminate\Support\Carbon;
 
 class PendingMoviesResource extends Resource
 {
@@ -156,7 +156,7 @@ class PendingMoviesResource extends Resource
                             'status' => 'approved',
                             'approved_at' => Carbon::now(),
                         ]);
-                        
+
                         Notification::make()
                             ->title('Approval Successful')
                             ->success()

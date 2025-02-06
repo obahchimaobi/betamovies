@@ -35,7 +35,7 @@ class MoviesResource extends Resource
     public static function form(Form $form): Form
     {
         $recipient = auth()->user();
-        
+
         return $form
             ->schema([
                 Forms\Components\TextInput::make('movieId')
@@ -133,7 +133,7 @@ class MoviesResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         'pending' => 'warning',
                         'approved' => 'success',
                     }),
@@ -251,7 +251,7 @@ class MoviesResource extends Resource
                             ->sendToDatabase($recipient)
                             ->send();
                     })
-                    ->visible(fn($record) => $record->status === 'pending'),
+                    ->visible(fn ($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

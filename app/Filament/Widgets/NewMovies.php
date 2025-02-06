@@ -2,17 +2,17 @@
 
 namespace App\Filament\Widgets;
 
-use Carbon\Carbon;
-use Filament\Tables;
 use App\Models\Movies;
-use Filament\Tables\Table;
-use Filament\Tables\Actions\Action;
+use Carbon\Carbon;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
-use Filament\Tables\Actions\BulkAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Tables;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
 class NewMovies extends BaseWidget
@@ -20,7 +20,7 @@ class NewMovies extends BaseWidget
     protected int|string|array $columnSpan = 'full';
 
     protected static ?int $sort = 2;
-    
+
     public function table(Table $table): Table
     {
         return $table
@@ -40,7 +40,7 @@ class NewMovies extends BaseWidget
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         'pending' => 'warning',
                         'approved' => 'success',
                     }),
@@ -104,8 +104,8 @@ class NewMovies extends BaseWidget
 
                                 Textarea::make('overview')
                                     // ->disabled()
-                                    ->columnSpanFull()
-                            ])
+                                    ->columnSpanFull(),
+                            ]),
                     ]),
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ForceDeleteAction::make(),
@@ -126,7 +126,7 @@ class NewMovies extends BaseWidget
                             ->success()
                             ->send();
                     })
-                    ->visible(fn($record) => $record->status === 'pending'),
+                    ->visible(fn ($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -150,7 +150,7 @@ class NewMovies extends BaseWidget
                                 ->title('Approval Successful')
                                 ->success()
                                 ->send();
-                        })
+                        }),
                 ]),
             ]);
     }
