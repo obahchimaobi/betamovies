@@ -587,11 +587,11 @@
                                                                                 </div>
                                                                                 <br>
                                                                                 <span
-                                                                                    class="dark:text-slate-300 text-xs">{{ $episode->overview }}
+                                                                                    class="dark:text-slate-300 text-xs">{{ $episode->overview ? $episode->overview : 'No description available' }}
 
-                                                                                    @if (empty($epsiode->overview))
+                                                                                    {{-- @if (empty($epsiode->overview))
                                                                                         <span class="dark:text-slate-400"><i>No description available</i></span>
-                                                                                    @endif
+                                                                                    @endif --}}
                                                                                 </span>
                                                                             </h1>
                                                                         </div>
@@ -777,7 +777,7 @@
                             <div
                                 class="flex justify-end items-center gap-x-2 py-3 px-4 mt-auto border-t dark:border-slate-700">
                                 <button type="button"
-                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:hover:bg-slate-700 dark:focus:bg-slate-700"
+                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:hover:bg-slate-700 dark:focus:bg-slate-700"
                                     data-hs-overlay="#hs-full-screen-modal">
                                     Close
                                 </button>

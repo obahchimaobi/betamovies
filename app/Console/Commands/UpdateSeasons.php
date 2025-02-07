@@ -13,14 +13,14 @@ class UpdateSeasons extends Command
      *
      * @var string
      */
-    protected $signature = 'app:update-seasons';
+    protected $signature = 'update-seasons';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Fetch and update TV show seasons from TMDb API';
 
     /**
      * Execute the console command.

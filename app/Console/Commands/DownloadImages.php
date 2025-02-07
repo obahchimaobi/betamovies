@@ -22,7 +22,7 @@ class DownloadImages extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Download all backdrop missing image files. You can modify it by replaceing "backdrop_path" with "poster_path" to download all posters missing image files.';
 
     /**
      * Execute the console command.

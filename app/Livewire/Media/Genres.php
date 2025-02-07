@@ -86,7 +86,7 @@ class Genres extends Component
 
         // Pagination logic
         $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
-        $perPage = 24;
+        $perPage = 36;
         $currentPageResults = $merge_them->slice(($page * $perPage) - $perPage, $perPage)->values();
         $paginatedResults = new LengthAwarePaginator($currentPageResults, count($merge_them), $perPage, $page, [
             'path' => LengthAwarePaginator::resolveCurrentPath(),
