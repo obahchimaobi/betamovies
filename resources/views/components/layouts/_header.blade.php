@@ -51,7 +51,7 @@
             </div>
 
             <div class="flex flex-row items-center justify-end gap-1">
-                <button type="button"
+                {{-- <button type="button"
                     class="hs-dark-mode hs-dark-mode-active:hidden inline-flex items-center gap-x-2 py-2 px-2 bg-slate-200 rounded-full text-sm text-slate-700 hover:bg-slate-300 focus:outline-none"
                     data-hs-theme-click-value="dark">
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -78,7 +78,7 @@
                         <path d="m19.07 4.93-1.41 1.41"></path>
                     </svg>
 
-                </button>
+                </button> --}}
 
                 <button type="button"
                     class="size-[38px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-slate-700 dark:focus:bg-slate-700 md:hidden"

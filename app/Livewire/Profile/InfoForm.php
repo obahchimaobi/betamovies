@@ -15,7 +15,7 @@ class InfoForm extends Component
 
     public $name;
 
-    #[Validate('image|max:1024')]
+    #[Validate('image|max:5024')]
     public $photo;
 
     public $email;
