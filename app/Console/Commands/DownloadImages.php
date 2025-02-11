@@ -35,15 +35,15 @@ class DownloadImages extends Command
             $get_image_names = Movies::all();
 
             foreach ($get_image_names as $get_image_name) {
-                $directory = 'public/backdrop/';
+                $directory = 'public/images/';
 
                 // add the path of the image
-                $image_storage_path = $directory.$get_image_name->backdrop_path;
+                $image_storage_path = $directory.$get_image_name->poster_path;
 
                 // check if the image exists and update it if not
                 if (! Storage::exists($image_storage_path)) {
 
-                    $img_file_name = pathinfo($get_image_name->backdrop_path, PATHINFO_FILENAME);
+                    $img_file_name = pathinfo($get_image_name->poster_path, PATHINFO_FILENAME);
 
                     $base_url = 'https://image.tmdb.org/t/p/w780/'.$img_file_name.'.jpg';
 
@@ -234,7 +234,7 @@ class DownloadImages extends Command
         }
 
         // download_movies_images();
-        download_series_images();
-        // download_seasons_images();
+        // download_series_images();
+        download_seasons_images();
     }
 }

@@ -20,7 +20,7 @@
 
             <button type="button" wire:click='refresh'
                 class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                <span class="flex items-center gap-x-2" wire:loading.remove>
+                <span class="flex items-center gap-x-2" wire:loading.remove.delay>
                     Reset
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-4 shrink-0">
@@ -30,7 +30,7 @@
                 </span>
 
                 <div class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white/60 rounded-full dark:text-white/60"
-                    role="status" aria-label="loading" wire:loading>
+                    role="status" aria-label="loading" wire:loading.delay>
                     <span class="sr-only">Loading...</span>
                 </div>
             </button>

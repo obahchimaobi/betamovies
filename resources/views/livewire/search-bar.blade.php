@@ -61,7 +61,7 @@
                 stroke="currentColor" aria-hidden="true" data-slot="icon">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
             </svg>
-            <h1 class="text-sm font-medium text-slate-600 dark:text-slate-200 pb-4 pt-3">
+            <h1 class="text-sm font-medium text-slate-600 dark:text-slate-400 pb-4 pt-3">
                 @php
                     echo $error;
                 @endphp
