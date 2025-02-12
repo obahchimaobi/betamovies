@@ -106,8 +106,8 @@
                             </svg>
                         </div>
                         <input
-                            class="py-2 ps-10 pe-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-transparent dark:text-slate-400 dark:placeholder-slate-400 dark:focus:ring-slate-600 dark:focus:outline-none hover:cursor-pointer"
-                            type="text" aria-expanded="false" placeholder="Search" value="">
+                            class="py-2 ps-10 pe-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-100 disabled:pointer-events-none dark:bg-slate-800 dark:border-transparent dark:text-slate-400 dark:placeholder-slate-400 dark:focus:ring-blue-600 dark:focus:outline-none hover:cursor-pointer"
+                            type="text" aria-expanded="false" placeholder="Search" value="" disabled>
                     </div>
                 </div>
 

@@ -41,7 +41,7 @@ class DownloadImages extends Command
                 $base_url = 'https://image.tmdb.org/t/p/w780/' . $img_file_name . '.jpg';
 
                 // Check if the movie already has an image URL stored
-                if (!$get_image_name->cloudinary_url) {
+                if (!$get_image_name->backdrop_cloudinary_url) {
 
                     // Download the image from TMDb
                     $contents = file_get_contents($base_url);
@@ -62,7 +62,7 @@ class DownloadImages extends Command
                         $cloudinaryUrl = $cloudinaryResponse->getSecurePath();
 
                         // Update movie record in DB
-                        $get_image_name->update(['cloudinary_url' => $cloudinaryUrl]);
+                        $get_image_name->update(['backdrop_cloudinary_url' => $cloudinaryUrl]);
 
                         // Delete the temp file
                         unlink($tempPath);
@@ -72,7 +72,7 @@ class DownloadImages extends Command
                         echo "❌ Failed to fetch image from TMDb: {$base_url}\n";
                     }
                 } else {
-                    echo "✔ Image already exists in Cloudinary: {$get_image_name->cloudinary_url}\n";
+                    echo "✔ Image already exists in Cloudinary: {$get_image_name->backdrop_cloudinary_url}\n";
                 }
             }
 

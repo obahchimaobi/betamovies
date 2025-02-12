@@ -39,7 +39,7 @@
                         @if (isset($item))
                             @if ($item->type == 'movie')
                                 <div class="w-full relative bg-center bg-no-repeat bg-fixed bg-cover border-b-2 border-slate-400 dark:border-slate-700"
-                                    style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
+                                    style="background-image: url('{{ $item->backdrop_cloudinary_url }}')">
                                     <div class="absolute inset-0 dark:bg-black bg-white opacity-90"></div>
                                     <div class="relative mx-auto py-5">
 
