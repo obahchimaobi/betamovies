@@ -38,6 +38,17 @@
       0 => 'CharrafiMed\\GlobalSearchModal\\GlobalSearchModalServiceProvider',
     ),
   ),
+  'cloudinary-labs/cloudinary-laravel' => 
+  array (
+    'aliases' => 
+    array (
+      'Cloudinary' => 'CloudinaryLabs\\CloudinaryLaravel\\Facades\\Cloudinary',
+    ),
+    'providers' => 
+    array (
+      0 => 'CloudinaryLabs\\CloudinaryLaravel\\CloudinaryServiceProvider',
+    ),
+  ),
   'diogogpinto/filament-auth-ui-enhancer' => 
   array (
     'aliases' => 
