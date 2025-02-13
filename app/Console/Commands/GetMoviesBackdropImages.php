@@ -48,7 +48,7 @@ class GetMoviesBackdropImages extends Command
 
                     // Upload to Cloudinary
                     $cloudinaryResponse = Cloudinary::upload($tempPath, [
-                        'folder' => 'betamovies/backdrop',
+                        'folder' => 'betamovies/backdrop/movies',
                         'format' => 'webp', // Convert to WebP automatically
                         'quality' => 'auto', // Optimize quality
                     ]);
@@ -62,7 +62,7 @@ class GetMoviesBackdropImages extends Command
                     // Delete the temp file
                     unlink($tempPath);
 
-                    echo "✔ Movie Image uploaded to Cloudinary: {$cloudinaryUrl}\n";
+                    echo "✔ Backdrop Movie Image uploaded to Cloudinary: {$cloudinaryUrl}\n";
                 } else {
                     echo "❌ Failed to fetch image from TMDb: {$base_url}\n";
                 }

@@ -44,7 +44,7 @@
             @foreach ($trending_series as $trending)
                 <div class="w-full">
                     <a href="{{ route('movie.details', ['name' => $trending->formatted_name]) }}" wire:navigate><img
-                            src="{{ asset('storage/images/' . $trending->poster_path) }}" alt="{{ $trending->name }}"
+                            src="{{ $trending->poster_cloudinary_url }}" alt="{{ $trending->name }}"
                             class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                     <div class="flex justify-between mt-2 gap-3">

@@ -44,7 +44,7 @@
             @foreach ($paginatedResults as $top_rated)
                 <div class="w-full">
                     <a href="{{ route('movie.details', ['name' => $top_rated->formatted_name]) }}" wire:navigate><img
-                            src="{{ asset('storage/images/' . $top_rated->poster_path) }}" alt="{{ $top_rated->name }}"
+                            src="{{ $top_rated->poster_cloudinary_url }}" alt="{{ $top_rated->name }}"
                             class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                     <div class="flex justify-between mt-2 gap-4">

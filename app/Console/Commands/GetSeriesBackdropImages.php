@@ -48,7 +48,7 @@ class GetSeriesBackdropImages extends Command
 
                     // Upload to Cloudinary
                     $cloudinaryResponse = Cloudinary::upload($tempPath, [
-                        'folder' => 'betamovies/backdrop',
+                        'folder' => 'betamovies/backdrop/series',
                         'format' => 'webp', // Convert to WebP automatically
                         'quality' => 'auto', // Optimize quality
                     ]);

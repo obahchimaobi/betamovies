@@ -42,7 +42,7 @@ class KoreanMovies extends Component
             // Add other Korean-related codes as necessary
         ];
 
-        $korean_movies_query = Movies::select(['name', 'formatted_name', 'poster_path', 'release_year', 'vote_count', 'id'])
+        $korean_movies_query = Movies::select(['name', 'formatted_name', 'poster_path', 'release_year', 'vote_count', 'id', 'poster_cloudinary_url'])
             ->where('status', '!=', 'pending')
             ->whereIn('origin_country', array_keys(array_filter($countryMapping, fn ($val) => $val === 'Korea')))
             ->orderByDesc('release_year')

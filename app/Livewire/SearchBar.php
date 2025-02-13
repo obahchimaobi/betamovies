@@ -5,13 +5,15 @@ namespace App\Livewire;
 use App\Models\Movies;
 use App\Models\Series;
 use Livewire\Component;
-use Livewire\WithoutUrlPagination;
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
+use Livewire\WithoutUrlPagination;
 
 class SearchBar extends Component
 {
     use WithoutUrlPagination, WithPagination;
 
+    #[Url]
     public $searchBar = '';
 
     public function render()

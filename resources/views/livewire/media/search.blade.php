@@ -44,7 +44,7 @@
                 @foreach ($paginatedResults->lazy() as $movie)
                     <div class="w-full">
                         <a href="{{ route('movie.details', ['name' => $movie->formatted_name]) }}" wire:navigate><img
-                                src="{{ asset('storage/images/' . $movie->poster_path) }}" alt="{{ $movie->name }}"
+                                src="{{ $movie->poster_cloudinary_url }}" alt="{{ $movie->name }}"
                                 class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                         <div class="flex justify-between mt-2 gap-5">

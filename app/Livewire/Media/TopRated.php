@@ -52,7 +52,7 @@ class TopRated extends Component
     public function render()
     {
         $top_rated_movies_query = Movies::where('status', '!=', 'pending')
-            ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year'])
+            ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year', 'poster_cloudinary_url'])
             ->where('vote_count', '>', 5)
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
