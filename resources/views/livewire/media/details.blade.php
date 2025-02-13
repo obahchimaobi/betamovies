@@ -38,7 +38,7 @@
                     @foreach ($all as $item)
                         @if (isset($item))
                             @if ($item->type == 'movie')
-                                <div class="w-full relative bg-center bg-no-repeat bg-fixed bg-cover border-b-2 border-slate-400 dark:border-slate-700"
+                                <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
                                     style="background-image: url('{{ $item->backdrop_cloudinary_url }}')">
                                     <div class="absolute inset-0 dark:bg-black bg-white opacity-90"></div>
                                     <div class="relative mx-auto py-5">
@@ -184,8 +184,8 @@
 
                         @if (isset($item))
                             @if ($item->type == 'series')
-                                <div class="w-full relative bg-center bg-fixed bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
-                                    style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
+                                <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
+                                    style="background-image: url('{{ $item->backdrop_cloudinary_url }}')">
                                     <div class="absolute inset-0 dark:bg-black bg-white/90 opacity-95"></div>
                                     <div class="mx-auto py-5 relative">
 
@@ -498,7 +498,7 @@
                                                 <div class="w-full">
                                                     <a href="{{ route('movie.details', ['name' => $recommended->formatted_name]) }}"
                                                         wire:navigate>
-                                                        <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
+                                                        <img src="{{ $recommended->poster_cloudinary_url }}"
                                                             alt=""
                                                             class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
                                                     </a>
@@ -722,7 +722,7 @@
                                                 <div class="w-full">
                                                     <a href="{{ route('movie.details', ['name' => $recommended->formatted_name]) }}"
                                                         wire:navigate>
-                                                        <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
+                                                        <img src="{{ $recommended->poster_cloudinary_url }}"
                                                             alt=""
                                                             class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
                                                     </a>

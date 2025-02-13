@@ -2,38 +2,33 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Movies;
 use App\Models\Seasons;
-use App\Models\Series;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
-class DownloadImages extends Command
+class GetSeasonsImages extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'download-images';
+    protected $signature = 'get-seasons-images';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Download all poster missing image files. You can modify it by replaceing "poster_path" with "poster_path" to download all posters missing image files.';
+    protected $description = 'Command description';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-
-        function download_seasons_images()
-        {
-            $get_image_names = Seasons::all();
+        //
+        $get_image_names = Seasons::all();
 
             foreach ($get_image_names as $get_image_name) {
                 $directory = 'public/uploads/';
@@ -96,6 +91,5 @@ class DownloadImages extends Command
                     echo 'All images for season are up to date'."\n";
                 }
             }
-        }
     }
 }

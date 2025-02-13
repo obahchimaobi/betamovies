@@ -32,6 +32,7 @@ class Series extends Model
         'downloads',
         'popularity',
         'poster_cloudinary_url',
+        'backdrop_cloudinary_url',
     ];
 
     public function series()

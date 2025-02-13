@@ -41,7 +41,7 @@
                     class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-300 dark:focus:bg-slate-700 dark:focus:text-slate-300 relative"
                     wire:navigate id="results">
                     <img src="{{ $search_result->poster_cloudinary_url }}" alt="movie image"
-                        class="w-12 h-12 rounded-full object-cover">
+                        class="w-12 h-12 rounded-md object-cover">
                     <div class="flex flex-col justify-center">
                         <span
                             class="text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $search_result->name }}</span>
