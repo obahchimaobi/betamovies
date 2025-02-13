@@ -110,9 +110,8 @@ class SeriesResource extends Resource
                 Tables\Columns\TextColumn::make('genres')
                     ->searchable()
                     ->limit('15'),
-                ImageColumn::make('poster_path')
-                    ->circular()
-                    ->disk('images'),
+                ImageColumn::make('poster_cloudinary_url')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('trailer_url')
                     ->searchable()
                     ->limit('10'),

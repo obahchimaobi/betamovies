@@ -53,7 +53,7 @@ class ShowMovies extends Component
             ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
-            ->select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count']);
+            ->select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count', 'poster_cloudinary_url']);
 
         if ($this->yearFilter) {
             $moviesQuery->where('release_year', $this->yearFilter);

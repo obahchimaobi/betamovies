@@ -31,6 +31,7 @@ class Series extends Model
         'approved_at',
         'downloads',
         'popularity',
+        'poster_cloudinary_url',
     ];
 
     public function series()

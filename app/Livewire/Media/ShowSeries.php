@@ -49,7 +49,7 @@ class ShowSeries extends Component
 
     public function render()
     {
-        $seriesQuery = Series::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count'])
+        $seriesQuery = Series::select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count', 'poster_cloudinary_url'])
             ->whereNull('deleted_at')
             ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')

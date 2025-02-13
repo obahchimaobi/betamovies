@@ -32,7 +32,8 @@ class Movies extends Model
         'download_url',
         'status',
         'approved_at',
-        'cloudinary_url',
+        'backdrop_cloudinary_url',
+        'poster_cloudinary_url',
     ];
 
     public function toSearchableArray()

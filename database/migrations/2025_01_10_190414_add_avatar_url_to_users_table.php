@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasColumn('users', 'avatar')) {
+        if (! Schema::hasColumn('users', 'avatar')) {
             Schema::table('users', function (Blueprint $table) {
                 $table->string(config('filament-edit-profile.avatar_column', 'avatar'))->nullable();
             });
