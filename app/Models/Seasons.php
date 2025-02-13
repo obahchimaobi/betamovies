@@ -27,6 +27,7 @@ class Seasons extends Model
         'download_url',
         'approved_at',
         'deleted_at',
+        'poster_cloudinary_url',
     ];
 
     public function series()

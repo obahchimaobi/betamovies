@@ -23,12 +23,12 @@ class SearchBar extends Component
             $movies_results = Movies::where('name', 'like', '%'.$this->searchBar.'%')
                 ->whereNull('deleted_at')
                 ->where('status', '!=', 'pending')
-                ->select(['name', 'formatted_name', 'poster_path', 'release_year']);
+                ->select(['name', 'formatted_name', 'poster_path', 'release_year', 'poster_cloudinary_url']);
 
             $results = Series::where('name', 'like', '%'.$this->searchBar.'%')
                 ->whereNull('deleted_at')
                 ->where('status', '!=', 'pending')
-                ->select(['name', 'formatted_name', 'poster_path', 'release_year'])->union($movies_results->getQuery())->simplePaginate('20');
+                ->select(['name', 'formatted_name', 'poster_path', 'release_year', 'poster_cloudinary_url'])->union($movies_results->getQuery())->simplePaginate('20');
         }
 
         $error = '';

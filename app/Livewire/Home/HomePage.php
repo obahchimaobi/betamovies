@@ -22,14 +22,14 @@ class HomePage extends Component
     {
 
         $trending_movies = Movies::where('popularity', '>=', 100)
-            ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year'])
+            ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year', 'poster_cloudinary_url'])
             ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
             ->paginate('12');
 
         $trending_series = Series::where('popularity', '>=', 100)
-            ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year'])
+            ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year', 'poster_cloudinary_url'])
             ->where('status', '!=', 'pending')
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
@@ -38,7 +38,7 @@ class HomePage extends Component
         $movies = Movies::whereNull('deleted_at')
             ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
-            ->select(['name', 'formatted_name', 'release_year', 'vote_count', 'poster_path'])
+            ->select(['name', 'formatted_name', 'release_year', 'vote_count', 'poster_path', 'poster_cloudinary_url'])
             ->orderByDesc('id')
             ->paginate('24');
 
@@ -46,7 +46,7 @@ class HomePage extends Component
             ->where('status', '!=', 'pending')
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
-            ->select(['name', 'formatted_name', 'release_year', 'vote_count', 'poster_path'])
+            ->select(['name', 'formatted_name', 'release_year', 'vote_count', 'poster_path', 'poster_cloudinary_url'])
             ->orderByDesc('id')
             ->paginate('24');
 

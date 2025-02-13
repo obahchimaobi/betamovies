@@ -98,9 +98,8 @@ class SeasonsResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('episode_title')
                     ->searchable(),
-                ImageColumn::make('poster_path')
-                    ->circular()
-                    ->disk('uploads'),
+                ImageColumn::make('poster_cloudinary_url')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('air_date')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
