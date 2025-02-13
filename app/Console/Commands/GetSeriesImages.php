@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\Series;
-use Illuminate\Console\Command;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Console\Command;
 
 class GetSeriesImages extends Command
 {
@@ -33,17 +33,17 @@ class GetSeriesImages extends Command
         foreach ($get_image_names as $get_image_name) {
             $img_file_name = pathinfo($get_image_name->poster_path, PATHINFO_FILENAME);
 
-            $base_url = 'https://image.tmdb.org/t/p/w780/' . $img_file_name . '.jpg';
+            $base_url = 'https://image.tmdb.org/t/p/w780/'.$img_file_name.'.jpg';
 
             // Check if the movie already has an image URL stored
-            if (!$get_image_name->poster_cloudinary_url) {
+            if (! $get_image_name->poster_cloudinary_url) {
 
                 // Download the image from TMDb
                 $contents = file_get_contents($base_url);
 
                 if ($contents !== false) {
                     // Save the image temporarily
-                    $tempPath = storage_path('app/temp_' . $img_file_name . '.jpg');
+                    $tempPath = storage_path('app/temp_'.$img_file_name.'.jpg');
                     file_put_contents($tempPath, $contents);
 
                     // Upload to Cloudinary

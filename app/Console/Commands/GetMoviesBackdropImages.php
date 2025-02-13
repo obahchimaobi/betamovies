@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\Movies;
-use Illuminate\Console\Command;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Console\Command;
 
 class GetMoviesBackdropImages extends Command
 {
@@ -30,47 +30,47 @@ class GetMoviesBackdropImages extends Command
         //
         $get_image_names = Movies::all();
 
-            foreach ($get_image_names as $get_image_name) {
-                $img_file_name = pathinfo($get_image_name->backdrop_path, PATHINFO_FILENAME);
+        foreach ($get_image_names as $get_image_name) {
+            $img_file_name = pathinfo($get_image_name->backdrop_path, PATHINFO_FILENAME);
 
-                $base_url = 'https://image.tmdb.org/t/p/w780/' . $img_file_name . '.jpg';
+            $base_url = 'https://image.tmdb.org/t/p/w780/'.$img_file_name.'.jpg';
 
-                // Check if the movie already has an image URL stored
-                if (!$get_image_name->backdrop_cloudinary_url) {
+            // Check if the movie already has an image URL stored
+            if (! $get_image_name->backdrop_cloudinary_url) {
 
-                    // Download the image from TMDb
-                    $contents = file_get_contents($base_url);
+                // Download the image from TMDb
+                $contents = file_get_contents($base_url);
 
-                    if ($contents !== false) {
-                        // Save the image temporarily
-                        $tempPath = storage_path('app/temp_' . $img_file_name . '.jpg');
-                        file_put_contents($tempPath, $contents);
+                if ($contents !== false) {
+                    // Save the image temporarily
+                    $tempPath = storage_path('app/temp_'.$img_file_name.'.jpg');
+                    file_put_contents($tempPath, $contents);
 
-                        // Upload to Cloudinary
-                        $cloudinaryResponse = Cloudinary::upload($tempPath, [
-                            'folder' => 'betamovies/backdrop',
-                            'format' => 'webp', // Convert to WebP automatically
-                            'quality' => 'auto', // Optimize quality
-                        ]);
+                    // Upload to Cloudinary
+                    $cloudinaryResponse = Cloudinary::upload($tempPath, [
+                        'folder' => 'betamovies/backdrop',
+                        'format' => 'webp', // Convert to WebP automatically
+                        'quality' => 'auto', // Optimize quality
+                    ]);
 
-                        // Get the Cloudinary secure URL
-                        $cloudinaryUrl = $cloudinaryResponse->getSecurePath();
+                    // Get the Cloudinary secure URL
+                    $cloudinaryUrl = $cloudinaryResponse->getSecurePath();
 
-                        // Update movie record in DB
-                        $get_image_name->update(['backdrop_cloudinary_url' => $cloudinaryUrl]);
+                    // Update movie record in DB
+                    $get_image_name->update(['backdrop_cloudinary_url' => $cloudinaryUrl]);
 
-                        // Delete the temp file
-                        unlink($tempPath);
+                    // Delete the temp file
+                    unlink($tempPath);
 
-                        echo "✔ Movie Image uploaded to Cloudinary: {$cloudinaryUrl}\n";
-                    } else {
-                        echo "❌ Failed to fetch image from TMDb: {$base_url}\n";
-                    }
+                    echo "✔ Movie Image uploaded to Cloudinary: {$cloudinaryUrl}\n";
                 } else {
-                    echo "✔ Image already exists in Cloudinary: {$get_image_name->backdrop_cloudinary_url}\n";
+                    echo "❌ Failed to fetch image from TMDb: {$base_url}\n";
                 }
+            } else {
+                echo "✔ Image already exists in Cloudinary: {$get_image_name->backdrop_cloudinary_url}\n";
             }
+        }
 
-            echo "\n";
+        echo "\n";
     }
 }

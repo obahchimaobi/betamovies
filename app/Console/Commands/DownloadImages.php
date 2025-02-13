@@ -2,10 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Movies;
 use App\Models\Seasons;
-use App\Models\Series;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
