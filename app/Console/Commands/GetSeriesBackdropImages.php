@@ -62,7 +62,7 @@ class GetSeriesBackdropImages extends Command
                     // Delete the temp file
                     unlink($tempPath);
 
-                    echo "✔ Series Image uploaded to Cloudinary: {$cloudinaryUrl}\n";
+                    echo "✔ Backdrop Series Image uploaded to Cloudinary: {$cloudinaryUrl}\n";
                 } else {
                     echo "❌ Failed to fetch image from TMDb: {$base_url}\n";
                 }
