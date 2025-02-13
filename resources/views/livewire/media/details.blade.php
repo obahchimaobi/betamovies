@@ -148,7 +148,7 @@
                                             </p>
 
                                             <ul class="flex flex-wrap gap-2 mt-5 justify-center items-center">
-                                                <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
+                                                <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs  hover:cursor-pointer hover:bg-blue-700 duration-200"
                                                     aria-haspopup="dialog" aria-expanded="false"
                                                     aria-controls="hs-full-screen-modal"
                                                     data-hs-overlay="#hs-full-screen-modal">
@@ -157,7 +157,7 @@
                                                 </li>
                                                 @if (is_null($item->download_url) || empty($item->download_url))
                                                     <li
-                                                        class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs font-black duration-200 hover:cursor-not-allowed">
+                                                        class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs  duration-200 hover:cursor-not-allowed">
                                                         <i class="fa-solid fa-download hover:cursor-not-allowed"></i>
                                                         <button class="uppercase hover:cursor-not-allowed" disabled>Coming
                                                             Soon
@@ -165,7 +165,7 @@
                                                     </li>
                                                 @else
                                                     <a href="{{ route('download.movie', ['name' => $item->formatted_name]) }}"
-                                                        class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
+                                                        class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs  hover:cursor-pointer hover:bg-blue-700 duration-200">
                                                         <i class="fa-solid fa-download"></i> <button
                                                             class="uppercase">Download
                                                         </button>
@@ -271,7 +271,7 @@
                                             </p>
 
                                             <ul class="flex flex-wrap gap-2 mt-6 justify-center items-center">
-                                                <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
+                                                <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs  hover:cursor-pointer hover:bg-blue-700 duration-200"
                                                     aria-haspopup="dialog" aria-expanded="false"
                                                     aria-controls="hs-full-screen-modal"
                                                     data-hs-overlay="#hs-full-screen-modal">
