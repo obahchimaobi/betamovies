@@ -376,7 +376,7 @@
                                                         <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 mb-5">
                                                         <div class="grid xl:grid-cols-9 items-center gap-10">
                                                             <div class="col-span-full sm:-mt-0 flex gap-4">
-                                                                <img src="{{ asset('storage/images/' . $more->poster_path) }}"
+                                                                <img src="{{ $more->poster_cloudinary_url }}"
                                                                     alt="{{ $more->name }} poster"
                                                                     class="xl:h-32 h-44 rounded-md" loading="lazy">
                                                                 <h1 class="">
@@ -575,9 +575,6 @@
                                                                     <div
                                                                         class="col-span-8 -mt-6 sm:-mt-0 flex gap-4 justify-between">
                                                                         <div class="flex gap-4">
-                                                                            <img src="{{ asset('storage/uploads/' . $episode->poster_path) }}"
-                                                                                alt="{{ $episode->title }}"
-                                                                                class="xl:h-28 h-40 rounded-md">
                                                                             <h1 class="font-inter">
                                                                                 <div class="flex justify-between items-center">
                                                                                     <a class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
