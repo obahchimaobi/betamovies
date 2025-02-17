@@ -7,7 +7,7 @@
 
             @guest
                 <div
-                    class="max-w-[25rem] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-slate-900 dark:border-slate-700 mx-auto">
+                    class="max-w-[25rem] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-slate-800 dark:border-slate-800 mx-auto">
                     <div class="p-4 sm:p-7">
                         <div class="text-center">
                             <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign up</h1>
@@ -22,7 +22,7 @@
 
                         <div class="mt-5">
                             <a href="{{ route('google.redirect') }}"
-                                class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:hover:bg-slate-700 dark:focus:bg-slate-700">
+                                class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-700 dark:border-slate-700 dark:text-white dark:hover:bg-slate-700 dark:focus:bg-slate-700">
                                 <svg class="w-4 h-auto" width="46" height="47" viewBox="0 0 46 47" fill="none">
                                     <path
                                         d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z"

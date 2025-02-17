@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 
 class RegisterForm extends Component
@@ -24,7 +25,7 @@ class RegisterForm extends Component
         $validatedData = $this->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:4',
+            'password' => ['required', Password::min(6)->numbers()->letters()->mixedCase()->symbols()->uncompromised(3)],
             'checkbox' => 'accepted',
         ]);
 

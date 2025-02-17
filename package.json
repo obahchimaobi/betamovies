@@ -19,12 +19,15 @@
         "vite": "^5.4"
     },
     "dependencies": {
+        "@popperjs/core": "^2.11.8",
         "@preline/combobox": "^2.6.0",
         "@preline/file-upload": "^2.5.2",
         "@preline/overlay": "^2.6.0",
         "@preline/remove-element": "^2.6.0",
         "@preline/select": "^2.6.0",
+        "@preline/strong-password": "^2.5.2",
         "@preline/toggle-password": "^2.6.0",
+        "@preline/tooltip": "^2.5.2",
         "@tailwindcss/container-queries": "^0.1.1",
         "dropzone": "^6.0.0-beta.2",
         "flowbite": "^2.5.2",
