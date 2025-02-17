@@ -259,7 +259,7 @@ dark:bg-slate-900 dark:border-slate-800 dark:hs-overlay-backdrop-open:bg-slate-9
                     <li class="bottom-2 absolute w-auto"><a
                             class="w-full flex items-center gap-x-1 py-2 px-2.5 text-sm text-gray-800 rounded-lg bg-slate-200 hover:bg-gray-300 dark:hover:bg-slate-800 dark:text-neutral-200 dark:hover:text-neutral-300 dark:bg-slate-700 duration-200"
                             href="{{ route('trending.series') }}" wire:navigate>
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            <svg class="w-6 h-6 text-gray-800 dark:text-green-500" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
                                 <path fill="currentColor" fill-rule="evenodd"

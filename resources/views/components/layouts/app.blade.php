@@ -52,11 +52,7 @@
 
 </head>
 
-<body class="dark:bg-slate-900 bg-white font-inter text-sm [&::-webkit-scrollbar]:w-1
-  [&::-webkit-scrollbar-track]:bg-slate-100
-  [&::-webkit-scrollbar-thumb]:bg-slate-300
-  dark:[&::-webkit-scrollbar-track]:bg-slate-700
-  dark:[&::-webkit-scrollbar-thumb]:bg-slate-500">
+<body class="dark:bg-slate-900 bg-white font-inter text-sm [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500">
 
     @include('components.layouts._header')
     @include('components.layouts._main')

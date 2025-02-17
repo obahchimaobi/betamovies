@@ -4,11 +4,11 @@
         {{-- @csrf --}}
         <div class="grid grid-cols-full gap-3">
             <div
-                class="py-1 px-4 mb-4 bg-white rounded-lg rounded-t-lg border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+                class="py-1 px-4 mb-4 bg-white rounded-lg rounded-t-lg border-slate-200 dark:bg-slate-700 dark:border-slate-700">
                 <label for="comment" class="sr-only">Your
                     name</label>
                 <input type="text"
-                    class="px-0 w-full text-sm text-slate-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-slate-400 dark:bg-slate-800"
+                    class="px-0 w-full text-sm text-slate-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-slate-400 dark:bg-slate-700"
                     placeholder="Name (required)" @required(true) name="reply_name"
                     @auth value="{{ auth()->user()->name }}" @endauth wire:model='reply_name'>
             </div>
@@ -18,11 +18,11 @@
             @enderror
         </div>
         <div
-            class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+            class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-slate-200 dark:bg-slate-700 dark:border-slate-700">
             <label for="comment" class="sr-only">Your
                 comment</label>
             <textarea id="comment" rows="6"
-                class="px-0 w-full text-sm text-slate-700 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-slate-400 dark:bg-slate-800"
+                class="px-0 w-full text-sm text-slate-700 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-slate-400 dark:bg-slate-700"
                 placeholder="Write a comment..." required name="reply" wire:model='reply'></textarea>
 
             @error('reply')

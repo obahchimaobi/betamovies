@@ -409,7 +409,7 @@
                                             <livewire:comment-form :name="$item->formatted_name" :id="$item->movieId" />
 
                                             @foreach ($comments as $comment)
-                                                <article class="p-6 text-base bg-gray-100 rounded-lg dark:bg-gray-800 mt-3">
+                                                <article class="p-6 text-base bg-gray-100 rounded-lg dark:bg-slate-800 mt-3">
                                                     <footer class="flex justify-between items-center mb-2">
                                                         <div class="flex items-center">
                                                             <p
@@ -445,7 +445,7 @@
                                                             <div class="mt-5">
                                                                 <div class="flex justify-between items-center mb-6">
                                                                     <h2
-                                                                        class="text-base lg:text-xl font-bold text-gray-900 dark:text-white">
+                                                                        class="text-base lg:text-xl font-bold text-slate-900 dark:text-white">
                                                                         Replies
                                                                     </h2>
                                                                 </div>

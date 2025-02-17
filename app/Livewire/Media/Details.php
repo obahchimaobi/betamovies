@@ -14,6 +14,8 @@ class Details extends Component
 
     public $all;
 
+    public $showComments = false;
+
     public function mount(Details|string $name)
     {
         $this->name = $name;
