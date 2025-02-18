@@ -1,3 +1,4 @@
+@use('\Laravolt\Avatar\Facade as Avatar')
 <div>
     {{-- Because she competes with no one, no one can compete with her. --}}
     <form wire:submit.prevent='update' @class(['flex flex-col', 'font-bold' => false])>
@@ -14,19 +15,23 @@
                         <img src="{{ $photo->temporaryUrl() }}"
                             class="w-24 h-24 rounded-full mb-3 border border-gray-300 dark:border-slate-600 shadow-sm">
                     @else
-                        <img src="{{ asset('storage/' . auth()->user()->avatar) ? auth()->user()->avatar : Avatar::create(auth()->user()->name)->toBase64() }}" class="w-24 h-24 rounded-full mb-3 border border-gray-300 dark:border-slate-600 shadow-sm" alt="Profile Picture">
+                        <img src="{{ asset('storage/' . auth()->user()->avatar) ? auth()->user()->avatar : Avatar::create(auth()->user()->name)->toBase64() }}"
+                            class="w-24 h-24 rounded-full mb-3 border border-gray-300 dark:border-slate-600 shadow-sm"
+                            alt="Profile Picture">
                     @endif
                 </div>
 
                 <!-- File Input -->
-                <label class="flex justify-center items-center w-full cursor-pointer">
-                    <span class="sr-only">Choose profile photo</span>
-                    <input type="file" wire:model="photo" accept="image/*" class="hidden">
-                    <div
-                        class="py-2 px-3 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all duration-200">
-                        Upload New Photo
-                    </div>
-                </label>
+                @if (!auth()->user()->google_id)
+                    <label class="flex justify-center items-center w-full cursor-pointer">
+                        <span class="sr-only">Choose profile photo</span>
+                        <input type="file" wire:model="photo" accept="image/*" class="hidden">
+                        <div
+                            class="py-2 px-3 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all duration-200">
+                            Upload New Photo
+                        </div>
+                    </label>
+                @endif
 
                 @error('photo')
                     <span class="text-red-500 text-sm flex justify-center items-center mt-3">{{ $message }}</span>
@@ -42,7 +47,7 @@
                             x-text="progress"></span>%</p>
                 </div>
             </div>
-            
+
             <div @class(['flex flex-col mb-4', 'font-semibold' => false])>
                 <label for="Name" class="text-slate-800 dark:text-slate-100">Name<span
                         @class(['text-red-500', 'font-bold' => false])>*</span></label>
