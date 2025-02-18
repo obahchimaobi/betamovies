@@ -18,8 +18,8 @@
                     class="max-w-[25rem] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-slate-800 dark:border-slate-800 mx-auto">
                     <div class="p-4 sm:p-7">
                         <div class="text-center">
-                            <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign in</h1>
-                            <p class="mt-2 text-sm text-gray-600 dark:text-neutral-400">
+                            <h1 class="block text-2xl font-bold text-slate-800 dark:text-white">Sign in</h1>
+                            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
                                 Don't have an account yet?
                                 <a class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
                                     href="{{ route('register.page') }}" wire:navigate>

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Redirect;
 use Symfony\Component\HttpFoundation\Response;
 
 class isLoggedIn
@@ -17,9 +18,7 @@ class isLoggedIn
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            session()->flash('error', 'You are already logged in');
-
-            return redirect()->route('home');
+            return Redirect::route('home')->error('You are already logged in.');
         }
 
         return $next($request);

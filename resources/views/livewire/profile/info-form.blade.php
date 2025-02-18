@@ -14,7 +14,7 @@
                         <img src="{{ $photo->temporaryUrl() }}"
                             class="w-24 h-24 rounded-full mb-3 border border-gray-300 dark:border-slate-600 shadow-sm">
                     @else
-                        <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : Avatar::create(auth()->user()->name)->toBase64() }}" class="w-24 h-24 rounded-full mb-3 border border-gray-300 dark:border-slate-600 shadow-sm" alt="Profile Picture">
+                        <img src="{{ asset('storage/' . auth()->user()->avatar) ? auth()->user()->avatar : Avatar::create(auth()->user()->name)->toBase64() }}" class="w-24 h-24 rounded-full mb-3 border border-gray-300 dark:border-slate-600 shadow-sm" alt="Profile Picture">
                     @endif
                 </div>
 

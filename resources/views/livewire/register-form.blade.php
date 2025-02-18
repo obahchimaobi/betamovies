@@ -60,11 +60,11 @@
                                 class="hidden absolute z-10 w-full bg-white shadow-md rounded-lg p-4 dark:bg-slate-700 dark:border dark:border-slate-700 dark:divide-slate-700">
                                 <div id="hs-strong-password-in-popover"
                                     data-hs-strong-password='{
-              "target": "#hs-strong-password-with-indicator-and-hint-in-popover",
-              "hints": "#hs-strong-password-popover",
-              "stripClasses": "hs-strong-password:opacity-100 hs-strong-password-accepted:bg-teal-500 h-2 flex-auto rounded-full bg-blue-500 opacity-50 mx-1",
-              "mode": "popover"
-            }'
+                                        "target": "#hs-strong-password-with-indicator-and-hint-in-popover",
+                                        "hints": "#hs-strong-password-popover",
+                                        "stripClasses": "hs-strong-password:opacity-100 hs-strong-password-accepted:bg-teal-500 h-2 flex-auto rounded-full bg-blue-500 opacity-50 mx-1",
+                                        "mode": "popover"
+                                      }'
                                     class="flex mt-2 -mx-1">
                                 </div>
 

@@ -37,6 +37,11 @@ class GoogleController extends Controller
                 $existingUser->save();
             }
 
+            if (is_null($existingUser->avatar)) {
+                $existingUser->avatar = $user->getAvatar();
+                $existingUser->save();
+            }
+
             return redirect()->route('home');
         } else {
             $newUser = User::create([

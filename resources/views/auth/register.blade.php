@@ -11,7 +11,7 @@
                     <div class="p-4 sm:p-7">
                         <div class="text-center">
                             <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign up</h1>
-                            <p class="mt-2 text-sm text-gray-600 dark:text-neutral-400">
+                            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
                                 Already have an account?
                                 <a class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
                                     href="{{ route('login') }}" wire:navigate>
