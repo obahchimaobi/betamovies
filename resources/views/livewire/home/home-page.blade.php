@@ -46,8 +46,8 @@
                 @if ($movies_section)
                     @foreach ($movies_section as $movies)
                         <div class="w-full">
-                            <a href="{{ route('movie.details', parameters: ['name' => $movies->formatted_name]) }}"
-                                wire:navigate><img src="{{ $movies->poster_cloudinary_url }}"
+                            <a href="{{ route('movie.details', ['name' => $movies->formatted_name]) }}"
+                                wire:navigate><img src="{{ asset('storage/images/' . $movies->poster_path) }}"
                                     alt=""
                                     class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
@@ -108,7 +108,7 @@
                     @foreach ($series_section as $series)
                         <div class="w-full">
                             <a href="{{ route('movie.details', ['name' => $series->formatted_name]) }}"
-                                wire:navigate><img src="{{ $series->poster_cloudinary_url }}"
+                                wire:navigate><img src="{{ asset('storage/images/' . $series->poster_path) }}"
                                     alt=""
                                     class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
@@ -168,7 +168,7 @@
                 @foreach ($trending_movies as $trending)
                     <div class="w-full">
                         <a href="{{ route('movie.details', ['name' => $trending->formatted_name]) }}" wire:navigate><img
-                                src="{{ $trending->poster_cloudinary_url }}" alt=""
+                                src="{{ asset('storage/images/' . $trending->poster_path) }}" alt=""
                                 class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                         <div class="flex justify-between mt-2 gap-4">
@@ -225,7 +225,7 @@
                 @foreach ($trending_series as $trending_serie)
                     <div class="w-full">
                         <a href="{{ route('movie.details', ['name' => $trending_serie->formatted_name]) }}"
-                            wire:navigate><img src="{{ $trending_serie->poster_cloudinary_url }}"
+                            wire:navigate><img src="{{ asset('storage/images/' . $trending_serie->poster_path) }}"
                                 alt=""
                                 class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 

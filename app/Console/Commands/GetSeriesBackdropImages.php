@@ -3,8 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\Series;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class GetSeriesBackdropImages extends Command
 {
@@ -31,46 +32,65 @@ class GetSeriesBackdropImages extends Command
         $get_image_names = Series::all();
 
         foreach ($get_image_names as $get_image_name) {
-            $img_file_name = pathinfo($get_image_name->backdrop_path, PATHINFO_FILENAME);
+            $directory = 'public/backdrop/';
 
-            $base_url = 'https://image.tmdb.org/t/p/w780/'.$img_file_name.'.jpg';
+            // add the path of the image
+            $image_storage_path = $directory . $get_image_name->backdrop_path;
 
-            // Check if the movie already has an image URL stored
-            if (! $get_image_name->backdrop_cloudinary_url) {
+            // check if the image exists and update it if not
+            if (!Storage::exists($image_storage_path)) {
 
-                // Download the image from TMDb
-                $contents = file_get_contents($base_url);
+                $img_file_name = pathinfo($get_image_name->backdrop_path, PATHINFO_FILENAME);
 
-                if ($contents !== false) {
-                    // Save the image temporarily
-                    $tempPath = storage_path('app/temp_'.$img_file_name.'.jpg');
-                    file_put_contents($tempPath, $contents);
+                $base_url = 'https://image.tmdb.org/t/p/w780/' . $img_file_name . '.jpg';
 
-                    // Upload to Cloudinary
-                    $cloudinaryResponse = Cloudinary::upload($tempPath, [
-                        'folder' => 'betamovies/backdrop/series',
-                        'format' => 'webp', // Convert to WebP automatically
-                        'quality' => 'auto', // Optimize quality
-                    ]);
+                $url = $base_url;
 
-                    // Get the Cloudinary secure URL
-                    $cloudinaryUrl = $cloudinaryResponse->getSecurePath();
+                // Get the contents of the image from the URL
+                $contents = file_get_contents($url);
 
-                    // Update movie record in DB
-                    $get_image_name->update(['backdrop_cloudinary_url' => $cloudinaryUrl]);
+                // Get the image name from the URL (removing the extension)
+                $image_name = pathinfo($url, PATHINFO_FILENAME) . '.webp';
 
-                    // Delete the temp file
-                    unlink($tempPath);
+                // Define the path to save the WebP image
+                $path = $directory . $image_name;
 
-                    echo "✔ Backdrop Series Image uploaded to Cloudinary: {$cloudinaryUrl}\n";
-                } else {
-                    echo "❌ Failed to fetch image from TMDb: {$base_url}\n";
+                if (!is_dir(storage_path('app/' . $directory))) {
+                    mkdir(storage_path('app/' . $directory), 0755, true);
                 }
+
+                // Check if the WebP image already exists in storage, if not, save it
+                if (!Storage::exists($path)) {
+                    // Save the image to a temporary path first
+                    $tempPath = 'temp/' . basename($url);
+                    Storage::put($tempPath, $contents);
+
+                    // Get the full temporary path
+                    $fullTempPath = storage_path('app/' . $tempPath);
+
+                    // Create an image resource from the temporary file (assume it's a JPG)
+                    $image = imagecreatefromjpeg($fullTempPath);
+
+                    if ($image !== false) {
+                        // Convert and save the image as WebP
+                        $webpPath = storage_path('app/' . $path);
+
+                        $quality = 55;
+
+                        imagewebp($image, $webpPath);
+
+                        // Free up memory
+                        imagedestroy($image);
+                    }
+
+                    // Delete the temporary file
+                    Storage::delete($tempPath);
+                }
+
+                echo '✔ Missing Series Image has been added successfully ✔' . "\n";
             } else {
-                echo "✔ Image already exists in Cloudinary: {$get_image_name->backdrop_cloudinary_url}\n";
+                echo 'All images for series are up to date' . "\n";
             }
         }
-
-        echo "\n";
     }
 }

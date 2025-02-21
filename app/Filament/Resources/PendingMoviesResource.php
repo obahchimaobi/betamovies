@@ -54,9 +54,10 @@ class PendingMoviesResource extends Resource
                 Tables\Columns\TextColumn::make('genres')
                     ->searchable()
                     ->limit('10'),
-                ImageColumn::make('poster_cloudinary_url')
+                ImageColumn::make('poster_path')
                     ->circular()
-                    ->label('Images'),
+                    ->label('Images')
+                    ->disk('images'),
                 Tables\Columns\TextColumn::make('download_url')
                     ->limit(10),
                 Tables\Columns\TextColumn::make('trailer_url')

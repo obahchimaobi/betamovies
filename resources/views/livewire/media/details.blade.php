@@ -1,6 +1,9 @@
+@php
+    use Laravolt\Avatar\Facade as Avatar;
+@endphp
+
 <div>
     {{-- Be like water. --}}
-
 
     @foreach ($all as $item)
         @section('title')
@@ -38,8 +41,8 @@
                     @foreach ($all as $item)
                         @if (isset($item))
                             @if ($item->type == 'movie')
-                                <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
-                                    style="background-image: url('{{ $item->backdrop_cloudinary_url }}')">
+                                <div class="w-full relative bg-center bg-no-repeat bg-fixed bg-cover border-b-2 border-slate-400 dark:border-slate-700"
+                                    style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
                                     <div class="absolute inset-0 dark:bg-black bg-white opacity-90"></div>
                                     <div class="relative mx-auto py-5">
 
@@ -148,7 +151,7 @@
                                             </p>
 
                                             <ul class="flex flex-wrap gap-2 mt-5 justify-center items-center">
-                                                <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs  hover:cursor-pointer hover:bg-blue-700 duration-200 font-semibold"
+                                                <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
                                                     aria-haspopup="dialog" aria-expanded="false"
                                                     aria-controls="hs-full-screen-modal"
                                                     data-hs-overlay="#hs-full-screen-modal">
@@ -157,7 +160,7 @@
                                                 </li>
                                                 @if (is_null($item->download_url) || empty($item->download_url))
                                                     <li
-                                                        class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs  duration-200 hover:cursor-not-allowed font-semibold">
+                                                        class="bg-blue-800 text-white/60 px-6 py-3 rounded-full uppercase text-xs font-black duration-200 hover:cursor-not-allowed">
                                                         <i class="fa-solid fa-download hover:cursor-not-allowed"></i>
                                                         <button class="uppercase hover:cursor-not-allowed" disabled>Coming
                                                             Soon
@@ -165,7 +168,7 @@
                                                     </li>
                                                 @else
                                                     <a href="{{ route('download.movie', ['name' => $item->formatted_name]) }}"
-                                                        class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs  hover:cursor-pointer hover:bg-blue-700 duration-200 font-semibold">
+                                                        class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200">
                                                         <i class="fa-solid fa-download"></i> <button
                                                             class="uppercase">Download
                                                         </button>
@@ -184,8 +187,8 @@
 
                         @if (isset($item))
                             @if ($item->type == 'series')
-                                <div class="w-full relative bg-center bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
-                                    style="background-image: url('{{ $item->backdrop_cloudinary_url }}')">
+                                <div class="w-full relative bg-center bg-fixed bg-no-repeat bg-cover border-b-2 border-slate-400 dark:border-slate-700"
+                                    style="background-image: url('{{ asset('storage/backdrop/' . $item->backdrop_path) }}')">
                                     <div class="absolute inset-0 dark:bg-black bg-white/90 opacity-95"></div>
                                     <div class="mx-auto py-5 relative">
 
@@ -271,7 +274,7 @@
                                             </p>
 
                                             <ul class="flex flex-wrap gap-2 mt-6 justify-center items-center">
-                                                <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs  hover:cursor-pointer hover:bg-blue-700 duration-200 font-semibold"
+                                                <li class="bg-blue-600 text-white px-6 py-3 rounded-full uppercase text-xs font-black hover:cursor-pointer hover:bg-blue-700 duration-200"
                                                     aria-haspopup="dialog" aria-expanded="false"
                                                     aria-controls="hs-full-screen-modal"
                                                     data-hs-overlay="#hs-full-screen-modal">
@@ -376,7 +379,7 @@
                                                         <hr class="border-0 h-[1px] bg-slate-200 dark:bg-slate-700 mb-5">
                                                         <div class="grid xl:grid-cols-9 items-center gap-10">
                                                             <div class="col-span-full sm:-mt-0 flex gap-4">
-                                                                <img src="{{ $more->poster_cloudinary_url }}"
+                                                                <img src="{{ asset('storage/images/' . $more->poster_path) }}"
                                                                     alt="{{ $more->name }} poster"
                                                                     class="xl:h-32 h-44 rounded-md" loading="lazy">
                                                                 <h1 class="">
@@ -409,7 +412,7 @@
                                             <livewire:comment-form :name="$item->formatted_name" :id="$item->movieId" />
 
                                             @foreach ($comments as $comment)
-                                                <article class="p-6 text-base bg-gray-100 rounded-lg dark:bg-slate-800 mt-3">
+                                                <article class="p-6 text-base bg-gray-100 rounded-lg dark:bg-gray-800 mt-3">
                                                     <footer class="flex justify-between items-center mb-2">
                                                         <div class="flex items-center">
                                                             <p
@@ -445,7 +448,7 @@
                                                             <div class="mt-5">
                                                                 <div class="flex justify-between items-center mb-6">
                                                                     <h2
-                                                                        class="text-base lg:text-xl font-bold text-slate-900 dark:text-white">
+                                                                        class="text-base lg:text-xl font-bold text-gray-900 dark:text-white">
                                                                         Replies
                                                                     </h2>
                                                                 </div>
@@ -498,7 +501,7 @@
                                                 <div class="w-full">
                                                     <a href="{{ route('movie.details', ['name' => $recommended->formatted_name]) }}"
                                                         wire:navigate>
-                                                        <img src="{{ $recommended->poster_cloudinary_url }}"
+                                                        <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
                                                             alt=""
                                                             class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
                                                     </a>
@@ -575,6 +578,9 @@
                                                                     <div
                                                                         class="col-span-8 -mt-6 sm:-mt-0 flex gap-4 justify-between">
                                                                         <div class="flex gap-4">
+                                                                            <img src="{{ asset('storage/uploads/' . $episode->poster_path) }}"
+                                                                                alt="{{ $episode->title }}"
+                                                                                class="xl:h-28 h-40 rounded-md">
                                                                             <h1 class="font-inter">
                                                                                 <div class="flex justify-between items-center">
                                                                                     <a class="text-slate-800 dark:text-white dark:hover:text-slate-200 text-sm font-bold"
@@ -719,7 +725,7 @@
                                                 <div class="w-full">
                                                     <a href="{{ route('movie.details', ['name' => $recommended->formatted_name]) }}"
                                                         wire:navigate>
-                                                        <img src="{{ $recommended->poster_cloudinary_url }}"
+                                                        <img src="{{ asset('storage/images/' . $recommended->poster_path) }}"
                                                             alt=""
                                                             class="rounded-lg border dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100">
                                                     </a>

@@ -114,9 +114,10 @@ class MoviesResource extends Resource
                 Tables\Columns\TextColumn::make('genres')
                     ->searchable()
                     ->limit('10'),
-                ImageColumn::make('poster_cloudinary_url')
+                ImageColumn::make('poster_path')
                     ->circular()
-                    ->label('Poster'),
+                    ->label('Poster')
+                    ->disk('images'),
                 Tables\Columns\TextColumn::make('trailer_url')
                     ->searchable()
                     ->limit('10'),
