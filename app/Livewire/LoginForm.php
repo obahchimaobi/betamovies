@@ -29,6 +29,7 @@ class LoginForm extends Component
             if ($user->google_id) {
                 // Set a session message informing the user to log in with Google
                 Toaster::error('This email is associated with a Google account. Please log in using Google.');
+
                 return;
             }
 
@@ -40,17 +41,20 @@ class LoginForm extends Component
                     $this->redirectRoute('home', navigate: true);
                 } else {
                     Toaster::error('Your email address is not verified');
+
                     return;
                 }
             } else {
                 // If password does not match, show the password error
                 Toaster::error('Invalid credentials. Please try again.');
+
                 return;
             }
         } else {
             // If no user is found with that email, show the generic error message
             Toaster::error('No account found with this email.');
             $this->reset(['password', 'email']);
+
             return;
         }
     }

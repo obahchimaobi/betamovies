@@ -44,7 +44,7 @@
             @foreach ($paginatedResults as $new_releases)
                 <div class="w-full">
                     <a href="{{ route('movie.details', ['name' => $new_releases->formatted_name]) }}" wire:navigate><img
-                            src="{{ $new_releases->poster_cloudinary_url }}"
+                            src="{{ asset('storage/images/' . $new_releases->poster_path) }}"
                             alt="{{ $new_releases->name }}"
                             class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 

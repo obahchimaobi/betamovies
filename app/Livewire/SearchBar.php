@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Movies;
 use App\Models\Series;
-use Livewire\Component;
 use Livewire\Attributes\Url;
-use Livewire\WithPagination;
+use Livewire\Component;
 use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 class SearchBar extends Component
 {

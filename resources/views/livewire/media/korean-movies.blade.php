@@ -35,7 +35,7 @@
             @foreach ($korean_movies as $movies)
                 <div class="w-full">
                     <a href="{{ route('movie.details', ['name' => $movies->formatted_name]) }}" wire:navigate><img
-                            src="{{ $movies->poster_cloudinary_url }}" alt="{{ $movies->name }}"
+                            src="{{ asset('storage/images/' . $movies->poster_path) }}" alt="{{ $movies->name }}"
                             class="rounded-lg dark:border-slate-700 lg:hover:scale-105 duration-200 w-full border-slate-100"></a>
 
                     <div class="flex justify-between mt-2 gap-4">

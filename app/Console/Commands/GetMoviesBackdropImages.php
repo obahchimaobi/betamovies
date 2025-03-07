@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Movies;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class GetMoviesBackdropImages extends Command
 {
@@ -35,14 +34,14 @@ class GetMoviesBackdropImages extends Command
             $directory = 'public/backdrop/';
 
             // add the path of the image
-            $image_storage_path = $directory . $get_image_name->backdrop_path;
+            $image_storage_path = $directory.$get_image_name->backdrop_path;
 
             // check if the image exists and update it if not
-            if (!Storage::exists($image_storage_path)) {
+            if (! Storage::exists($image_storage_path)) {
 
                 $img_file_name = pathinfo($get_image_name->backdrop_path, PATHINFO_FILENAME);
 
-                $base_url = 'https://image.tmdb.org/t/p/w780/' . $img_file_name . '.jpg';
+                $base_url = 'https://image.tmdb.org/t/p/w780/'.$img_file_name.'.jpg';
 
                 $url = $base_url;
 
@@ -50,30 +49,30 @@ class GetMoviesBackdropImages extends Command
                 $contents = file_get_contents($url);
 
                 // Get the image name from the URL (removing the extension)
-                $image_name = pathinfo($url, PATHINFO_FILENAME) . '.webp';
+                $image_name = pathinfo($url, PATHINFO_FILENAME).'.webp';
 
                 // Define the path to save the WebP image
-                $path = $directory . $image_name;
+                $path = $directory.$image_name;
 
-                if (!is_dir(storage_path('app/' . $directory))) {
-                    mkdir(storage_path('app/' . $directory), 0755, true);
+                if (! is_dir(storage_path('app/'.$directory))) {
+                    mkdir(storage_path('app/'.$directory), 0755, true);
                 }
 
                 // Check if the WebP image already exists in storage, if not, save it
-                if (!Storage::exists($path)) {
+                if (! Storage::exists($path)) {
                     // Save the image to a temporary path first
-                    $tempPath = 'temp/' . basename($url);
+                    $tempPath = 'temp/'.basename($url);
                     Storage::put($tempPath, $contents);
 
                     // Get the full temporary path
-                    $fullTempPath = storage_path('app/' . $tempPath);
+                    $fullTempPath = storage_path('app/'.$tempPath);
 
                     // Create an image resource from the temporary file (assume it's a JPG)
                     $image = imagecreatefromjpeg($fullTempPath);
 
                     if ($image !== false) {
                         // Convert and save the image as WebP
-                        $webpPath = storage_path('app/' . $path);
+                        $webpPath = storage_path('app/'.$path);
 
                         $quality = 55;
 
@@ -87,9 +86,9 @@ class GetMoviesBackdropImages extends Command
                     Storage::delete($tempPath);
                 }
 
-                echo '✔ Missing Movie Image has been added successfully ✔' . "\n";
+                echo '✔ Missing Movie Image has been added successfully ✔'."\n";
             } else {
-                echo 'All images for movies are up to date' . "\n";
+                echo 'All images for movies are up to date'."\n";
             }
         }
 
