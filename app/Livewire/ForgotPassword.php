@@ -6,6 +6,7 @@ use App\Mail\ResetMail;
 use App\Models\User;
 use Livewire\Component;
 use Mail;
+use Redirect;
 use Str;
 
 class ForgotPassword extends Component
@@ -22,14 +23,17 @@ class ForgotPassword extends Component
         $check_email = User::where('email', $validatedData['email'])->first();
 
         if ($check_email && $check_email->is_admin == true) {
-            session()->flash('error', 'Email does not exist.');
-            $this->redirectRoute('forgot.password', navigate: true);
+            // session()->flash('error', 'Email does not exist.');
+            // $this->redirectRoute('forgot.password', navigate: true);
+            return Redirect::back()->error('Email does not exists.');
         } elseif (! $check_email) {
-            session()->flash('error', 'Email does not exist. Consider registering');
-            $this->redirectRoute('forgot.password', navigate: true);
+            // session()->flash('error', 'Email does not exist. Consider registering');
+            // $this->redirectRoute('forgot.password', navigate: true);
+            return Redirect::back()->error('Email does not exist. Consider registering');
         } elseif ($check_email && ! is_null($check_email->google_id)) {
-            session()->flash('error', 'This is a google account. Login using google');
-            $this->redirectRoute('forgot.password', navigate: true);
+            // session()->flash('error', 'This is a google account. Login using google');
+            // $this->redirectRoute('forgot.password', navigate: true);
+            return Redirect::back()->error('This is a google account. Login using google');
         } else {
 
             $name = $check_email->name;

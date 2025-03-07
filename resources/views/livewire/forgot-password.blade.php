@@ -1,11 +1,11 @@
 <div>
     {{-- Be like water. --}}
     <div
-        class="max-w-[25rem] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-slate-900 dark:border-slate-700 mx-auto">
+        class="max-w-[25rem] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-slate-800 dark:border-slate-700 mx-auto">
         <div class="p-4 sm:p-7">
             <div class="text-center">
                 <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Forgot password?</h1>
-                <p class="mt-2 text-sm text-gray-600 dark:text-neutral-400">
+                <p class="mt-2 text-sm text-gray-600 dark:text-slate-400">
                     Remember your password?
                     <a class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
                         href="{{ route('login') }}" wire:navigate>
@@ -24,7 +24,7 @@
 
                             <div class="relative">
                                 <input type="email" id="email" name="email"
-                                    class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:placeholder-slate-500 dark:focus:ring-blue-600 focus:outline-none"
+                                    class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-700 dark:border-slate-600 dark:text-slate-300 dark:placeholder-slate-500 dark:focus:ring-blue-600 focus:outline-none"
                                     aria-describedby="email-error" wire:model='email'>
                                 <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                                     <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor"
