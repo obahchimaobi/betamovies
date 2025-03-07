@@ -29,7 +29,7 @@
                     </svg>
                 </span>
 
-                <div class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white/60 rounded-full dark:text-white/60"
+                <div class="animate-spin inline-block size-5 border-[3px] border-current border-t-transparent text-white/60 rounded-full dark:text-white/60"
                     role="status" aria-label="loading" wire:loading.delay>
                     <span class="sr-only">Loading...</span>
                 </div>
