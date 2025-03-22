@@ -61,11 +61,11 @@ class Genres extends Component
         // Fetch movies and series based on genre and year filter
         $moviesQuery = Movies::where('genres', 'LIKE', "%{$this->genre}%")
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending');
+            ->where('status', true);
 
         $seriesQuery = Series::where('genres', 'LIKE', "%{$this->genre}%")
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending');
+            ->where('status', true);
 
         // Apply year filter if selected
         if ($this->yearFilter) {

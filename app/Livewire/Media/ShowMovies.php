@@ -50,7 +50,7 @@ class ShowMovies extends Component
     public function render()
     {
         $moviesQuery = Movies::whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
             ->select(['name', 'formatted_name', 'release_year', 'poster_path', 'vote_count', 'poster_cloudinary_url']);

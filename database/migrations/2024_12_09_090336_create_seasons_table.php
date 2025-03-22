@@ -26,7 +26,7 @@ return new class extends Migration
                 $table->string('episode_title')->nullable();
                 $table->string('air_date')->nullable();
                 $table->string('poster_path')->nullable();
-                $table->string('status')->nullable();
+                $table->boolean('status')->nullable();
                 $table->string('download_url')->nullable();
                 $table->timestamp('approved_at')->nullable();
                 $table->timestamp('deleted_at')->nullable();

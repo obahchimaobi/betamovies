@@ -2,22 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PendingMoviesResource\Pages;
+use Filament\Tables;
 use App\Models\Movies;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Illuminate\Support\Carbon;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Notifications\Notification;
-use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Table;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Carbon;
+use App\Filament\Resources\PendingMoviesResource\Pages;
 
 class PendingMoviesResource extends Resource
 {
@@ -42,7 +43,7 @@ class PendingMoviesResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->query(Movies::query()->where('status', 'pending'))
+            ->query(Movies::query()->where('status', false))
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('name')
@@ -64,13 +65,10 @@ class PendingMoviesResource extends Resource
                     ->limit(10),
                 Tables\Columns\TextColumn::make('popularity')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'pending' => 'warning',
-                        'approved' => 'success',
-                    }),
-
+                ToggleColumn::make('status')
+                    ->label('Is Approved')
+                    ->onIcon('heroicon-m-check-circle')
+                    ->offIcon('heroicon-m-x-circle'),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -153,7 +151,7 @@ class PendingMoviesResource extends Resource
                     ->icon('heroicon-m-check-circle')
                     ->action(function ($record) {
                         $record->update([
-                            'status' => 'approved',
+                            'status' => true,
                             'approved_at' => Carbon::now(),
                         ]);
 
@@ -162,7 +160,7 @@ class PendingMoviesResource extends Resource
                             ->success()
                             ->send();
                     })
-                    ->visible(fn ($record) => $record->status === 'pending'),
+                    ->visible(fn($record) => $record->status === false),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -209,7 +207,7 @@ class PendingMoviesResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::where('status', 'pending')->count();
+        return static::getModel()::where('status', false)->count();
     }
 
     public static function canCreate(): bool

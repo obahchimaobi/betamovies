@@ -23,27 +23,27 @@ class HomePage extends Component
 
         $trending_movies = Movies::where('popularity', '>=', 100)
             ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year', 'poster_cloudinary_url'])
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
             ->paginate('12');
 
         $trending_series = Series::where('popularity', '>=', 100)
             ->select(['name', 'formatted_name', 'vote_count', 'poster_path', 'release_year', 'poster_cloudinary_url'])
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
             ->paginate('12');
 
         $movies = Movies::whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             ->orderByDesc('approved_at')
             ->select(['name', 'formatted_name', 'release_year', 'vote_count', 'poster_path', 'poster_cloudinary_url'])
             ->orderByDesc('id')
             ->paginate('24');
 
         $series = Series::whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             ->orderByDesc('approved_at')
             ->orderByDesc('id')
             ->select(['name', 'formatted_name', 'release_year', 'vote_count', 'poster_path', 'poster_cloudinary_url'])
@@ -52,7 +52,7 @@ class HomePage extends Component
 
         $seasons = DB::table('seasons as s1')
             ->select('s1.*')
-            ->join(DB::raw('(SELECT MAX(id) as id, movieId FROM seasons WHERE status != "pending" GROUP BY movieId) as s2'), function ($join) {
+            ->join(DB::raw('(SELECT MAX(id) as id, movieId FROM seasons WHERE status != 0 GROUP BY movieId) as s2'), function ($join) {
                 $join->on('s1.id', '=', 's2.id');
                 $join->on('s1.movieId', '=', 's2.movieId');
             })

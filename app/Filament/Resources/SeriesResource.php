@@ -2,18 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SeriesResource\Pages;
-use App\Models\Series;
 use Filament\Forms;
+use Filament\Tables;
+use App\Models\Series;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Table;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\SeriesResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SeriesResource extends Resource
@@ -129,12 +130,10 @@ class SeriesResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('status')
-                    ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'pending' => 'warning',
-                        'approved' => 'success',
-                    }),
+                ToggleColumn::make('status')
+                    ->label('Is Approved')
+                    ->onIcon('heroicon-m-check-circle')
+                    ->offIcon('heroicon-m-x-circle'),
                 Tables\Columns\TextColumn::make('downloads')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('popularity')

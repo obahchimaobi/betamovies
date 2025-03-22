@@ -42,12 +42,12 @@ class KoreanDramas extends Component
         ];
 
         // Retrieve series where the mapped country is 'Korea' and status is not 'pending'
-        $korean_drama_query = Series::where('status', '!=', 'pending')
+        $korean_drama_query = Series::where('status', true)
             ->select(['name', 'formatted_name', 'release_year', 'country', 'origin_country', 'deleted_at', 'id', 'poster_path', 'vote_count', 'poster_cloudinary_url'])
             ->whereIn('origin_country', array_keys(array_filter($countryMapping, fn ($val) => $val === 'Korea')))
             ->orderByDesc('release_year')
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             ->orderByDesc('id');
 
         if ($this->yearFilter) {

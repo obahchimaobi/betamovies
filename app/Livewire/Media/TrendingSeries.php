@@ -50,7 +50,7 @@ class TrendingSeries extends Component
     {
         $trending_series_query = Series::where('popularity', '>=', 100)
             ->select(['name', 'formatted_name', 'poster_path', 'vote_count', 'release_year', 'poster_cloudinary_url'])
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             ->whereNull('deleted_at')
             ->orderByDesc('popularity')
             ->orderByDesc('id');

@@ -58,8 +58,8 @@ class Search extends Component
 
         // dump($query);
 
-        $moviesQuery = Movies::where('name', 'like', '%'.$query.'%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
-        $seriesQuery = Series::where('name', 'like', '%'.$query.'%')->whereNull('deleted_at')->where('status', '!=', 'pending')->latest();
+        $moviesQuery = Movies::where('name', 'like', '%'.$query.'%')->whereNull('deleted_at')->where('status', true)->latest();
+        $seriesQuery = Series::where('name', 'like', '%'.$query.'%')->whereNull('deleted_at')->where('status', true)->latest();
 
         if ($this->movieFilter) {
             $moviesQuery->where('type', $this->movieFilter);

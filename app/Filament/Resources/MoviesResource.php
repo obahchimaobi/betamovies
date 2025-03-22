@@ -8,6 +8,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
@@ -15,6 +16,7 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -89,9 +91,7 @@ class MoviesResource extends Resource
                 Forms\Components\TextInput::make('download_url')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255),
+                ToggleColumn::make('status'),
                 Forms\Components\TextInput::make('downloads')
                     ->maxLength(255)
                     ->default(0),
@@ -131,12 +131,10 @@ class MoviesResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('vote_count')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'pending' => 'warning',
-                        'approved' => 'success',
-                    }),
+                ToggleColumn::make('status')
+                    ->label('Is Approved')
+                    ->onIcon('heroicon-m-check-circle')
+                    ->offIcon('heroicon-m-x-circle'),
                 Tables\Columns\TextColumn::make('downloads')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('popularity')
@@ -195,13 +193,11 @@ class MoviesResource extends Resource
                                         '2xl' => 4,
                                     ]),
 
-                                TextInput::make('status')
-                                    // ->disabled()
-                                    ->columnSpan([
-                                        'sm' => 2,
-                                        'xl' => 3,
-                                        '2xl' => 4,
-                                    ]),
+                                Toggle::make('status')
+                                    ->live()
+                                    ->onColor('success')
+                                    ->offColor('danger')
+                                    ->inline(false),
 
                                 TextInput::make('download_url')
                                     ->columnSpan([
@@ -251,7 +247,7 @@ class MoviesResource extends Resource
                             ->sendToDatabase($recipient)
                             ->send();
                     })
-                    ->visible(fn ($record) => $record->status === 'pending'),
+                    ->visible(fn($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

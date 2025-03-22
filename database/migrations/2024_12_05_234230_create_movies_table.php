@@ -38,7 +38,7 @@ return new class extends Migration
                 // Voting and rating details
                 // $table->string('vote_average')->nullable();
                 $table->string('vote_count')->nullable();
-                $table->string('status')->nullable();
+                $table->boolean('status')->nullable();
                 $table->timestamp('approved_at')->nullable();
                 $table->timestamp('deleted_at')->nullable();
 

@@ -30,7 +30,7 @@ class Details extends Component
                 ->where('vote_count', '>', 6)
                 ->where('formatted_name', '<>', $this->name)
                 ->whereNull('deleted_at')
-                ->where('status', '!=', 'pending')
+                ->where('status', true)
                 ->inRandomOrder()
                 ->limit(4)
                 ->get();
@@ -39,7 +39,7 @@ class Details extends Component
                 ->where('vote_count', '>', 6)
                 ->where('formatted_name', '<>', $this->name)
                 ->whereNull('deleted_at')
-                ->where('status', '!=', 'pending')
+                ->where('status', true)
                 ->inRandomOrder()
                 ->limit(4)
                 ->get();
@@ -56,14 +56,14 @@ class Details extends Component
         $media = DB::table('series')
             ->where('formatted_name', $this->name)
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             // ->where('titleType', $type)
             ->get();
 
         $media2 = DB::table('movies')
             ->where('formatted_name', $this->name)
             ->whereNull('deleted_at')
-            ->where('status', '!=', 'pending')
+            ->where('status', true)
             // ->where('titleType', $type)
             ->get();
 
@@ -81,7 +81,7 @@ class Details extends Component
             $mergedSeries = DB::table('series')
                 ->where('formatted_name', '<>', $this->name)
                 ->whereNull('deleted_at')
-                ->where('status', '!=', 'pending')
+                ->where('status', true)
                 ->inRandomOrder()
                 ->limit($seriesLimit ?? 2) // Use dynamic limit if provided
                 ->get();
@@ -89,7 +89,7 @@ class Details extends Component
             $mergedMovies = DB::table('movies')
                 ->where('formatted_name', '<>', $this->name)
                 ->whereNull('deleted_at')
-                ->where('status', '!=', 'pending')
+                ->where('status', true)
                 ->inRandomOrder()
                 ->limit($moviesLimit ?? 2) // Use dynamic limit if provided
                 ->get();
@@ -106,7 +106,7 @@ class Details extends Component
             Cache::put($cacheKey, $merged, $cacheDuration ?? 160);
         }
 
-        $seasons = Seasons::where('formatted_name', $this->name)->whereNull('deleted_at')->where('status', '!=', 'pending')->get();
+        $seasons = Seasons::where('formatted_name', $this->name)->whereNull('deleted_at')->where('status', true)->get();
         $totalEpisodes = $seasons->sum('episode_number');
 
         $comments = Comment::where('title', $this->name)->with('replies')->whereNull('deleted_at')->orderByDesc('id')->get();

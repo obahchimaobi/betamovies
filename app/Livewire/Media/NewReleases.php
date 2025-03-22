@@ -51,11 +51,11 @@ class NewReleases extends Component
 
     public function render()
     {
-        $new_released_movies_query = Movies::where('status', '!=', 'pending')
+        $new_released_movies_query = Movies::where('status', true)
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
             ->orderByDesc('id');
-        $new_released_series_query = Series::where('status', '!=', 'pending')
+        $new_released_series_query = Series::where('status', true)
             ->whereNull('deleted_at')
             ->orderByDesc('approved_at')
             ->orderByDesc('id');

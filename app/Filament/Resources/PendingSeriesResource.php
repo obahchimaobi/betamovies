@@ -2,23 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PendingSeriesResource\Pages;
+use Filament\Tables;
 use App\Models\Series;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Illuminate\Support\Carbon;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Notifications\Notification;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\BulkAction;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Table;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Carbon;
+use App\Filament\Resources\PendingSeriesResource\Pages;
 
 class PendingSeriesResource extends Resource
 {
@@ -41,7 +42,7 @@ class PendingSeriesResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->query(Series::query()->where('status', 'pending'))
+            ->query(Series::query()->where('status', false))
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -57,13 +58,10 @@ class PendingSeriesResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('popularity')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->searchable()
-                    ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'pending' => 'warning',
-                        'approved' => 'success',
-                    }),
+                ToggleColumn::make('status')
+                    ->label('Is Approved')
+                    ->onIcon('heroicon-m-check-circle')
+                    ->offIcon('heroicon-m-x-circle'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -162,7 +160,7 @@ class PendingSeriesResource extends Resource
                             ->success()
                             ->send();
                     })
-                    ->visible(fn ($record) => $record->status === 'pending'),
+                    ->visible(fn($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -209,7 +207,7 @@ class PendingSeriesResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::where('status', 'pending')->count();
+        return static::getModel()::where('status', false)->count();
     }
 
     public static function canCreate(): bool

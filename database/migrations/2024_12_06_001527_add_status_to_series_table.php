@@ -14,7 +14,7 @@ return new class extends Migration
         if (! Schema::hasColumn('series', 'status')) {
             Schema::table('series', function (Blueprint $table) {
                 //
-                $table->string('status')->nullable();
+                $table->boolean('status')->nullable();
             });
         }
     }

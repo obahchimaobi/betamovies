@@ -46,4 +46,8 @@ class Movies extends Model
 
         return $array;
     }
+
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 }

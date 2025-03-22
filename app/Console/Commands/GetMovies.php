@@ -198,7 +198,7 @@ class GetMovies extends Command
                             'release_year' => $year,
                             'vote_count' => $rating,
                             'type' => 'movie',
-                            'status' => 'pending',
+                            'status' => false,
                             'popularity' => $popularity,
                             'created_at' => Carbon::now()->format('Y-m-d'),
                         ]);
