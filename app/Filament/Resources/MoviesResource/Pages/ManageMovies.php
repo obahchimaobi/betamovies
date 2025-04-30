@@ -24,9 +24,9 @@ class ManageMovies extends ManageRecords
         return [
             'All' => Tab::make('All'),
             'Pending' => Tab::make('Pending')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'pending')),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', false)),
             'Approved' => Tab::make('Approved')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'approved')),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', true)),
         ];
     }
 }

@@ -130,9 +130,7 @@ class GetMovies extends Command
 
                         // Format the name for storage
                         $name = $result['title'].' '.$year.' download movie';
-                        $formatted_name = preg_replace('/[^a-zA-Z0-9 ]/', ' ', $name);
-                        $formatted_name2 = preg_replace('/\s+/', '-', $formatted_name);
-                        $formatted_name3 = trim(Str::lower($formatted_name2), '-');
+                        $slug = Str::slug($name);
 
                         // Round the vote average to one decimal place
                         $rating = floor($vote_average * 10) / 10;
@@ -188,7 +186,7 @@ class GetMovies extends Command
                         Movies::create([
                             'movieId' => $id,
                             'name' => $full_name,
-                            'formatted_name' => $formatted_name3,
+                            'formatted_name' => $slug,
                             'poster_path' => $image_name,
                             'backdrop_path' => $backdrop_image_name,
                             'origin_country' => '',

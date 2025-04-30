@@ -58,7 +58,11 @@ class WatchList extends Component
                         'poster_path' => $this->poster_path,
                     ]);
 
+                    Toaster::success($this->movie_name . ' has been added to watchlist');
                     $this->isInWatchlist = true; // Update the property
+
+                    session(['list_count', MyList::where('userId', auth()->user()->id)->count()]);
+                    $this->dispatch('list-updated');
                 }
             }
         }
@@ -70,7 +74,11 @@ class WatchList extends Component
             ->where('movieId', $this->movieId)
             ->delete();
 
+        Toaster::error($this->movie_name . ' was removed from watchlist');
         $this->isInWatchlist = false; // Update the property
+
+        session(['list_count', MyList::where('userId', auth()->user()->id)->count()]);
+        $this->dispatch('list-updated');
     }
 
     public function render()

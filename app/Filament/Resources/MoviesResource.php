@@ -206,13 +206,6 @@ class MoviesResource extends Resource
                                         '2xl' => 4,
                                     ]),
 
-                                TextInput::make('trailer_url')
-                                    ->columnSpan([
-                                        'sm' => 2,
-                                        'xl' => 3,
-                                        '2xl' => 4,
-                                    ]),
-
                                 TextInput::make('runtime')
                                     // ->disabled()
                                     ->columnSpan([
@@ -220,6 +213,9 @@ class MoviesResource extends Resource
                                         'xl' => 3,
                                         '2xl' => 4,
                                     ]),
+
+                                TextInput::make('trailer_url')
+                                    ->columnSpanFull(),
 
                                 Textarea::make('overview')
                                     ->columnSpanFull(),
