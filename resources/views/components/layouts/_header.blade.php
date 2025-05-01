@@ -1,14 +1,5 @@
 <!-- ========== HEADER ========== -->
-@use('\App\Models\MyList')
 @use('\Laravolt\Avatar\Facade as Avatar')
-@php
-    $user = '';
-    if (Auth::check()) {
-        $user = auth()->user()->id;
-    }
-    $number_of_lists = MyList::where('userId', $user)->whereNull('deleted_at')->count();
-@endphp
-
 <!-- Toast -->
 <div id="dismiss-toast"
     class="fixed top-2 right-2 z-50 hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-slate-800 dark:border-slate-700"
@@ -34,10 +25,23 @@
     <nav class="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
         <div class="me-5 lg:me-0 lg:hidden">
             <!-- Logo -->
-            <a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
+            {{-- <a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
                 href="{{ route('home') }}" aria-label="Preline" wire:navigate>
                 <img src="{{ asset('icons/betamovies.png') }}" alt="" class="h-12 w-80">
-            </a>
+            </a> --}}
+            <button type="button"
+                class="size-8 flex justify-center items-center gap-x-2 border border-transparent text-gray-800 hover:text-gray-500 rounded-lg focus:outline-none focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:border-transparent dark:text-slate-200 dark:hover:text-slate-400 dark:focus:text-slate-400"
+                aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-application-sidebar"
+                aria-label="Toggle navigation" data-hs-overlay="#hs-application-sidebar">
+                <span class="sr-only">Toggle Navigation</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd"
+                        d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                        clip-rule="evenodd" />
+                </svg>
+
+            </button>
+            <!-- End Navigation Toggle -->
             <!-- End Logo -->
         </div>
 
