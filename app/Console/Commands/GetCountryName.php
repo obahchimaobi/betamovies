@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Symfony\Component\Intl\Countries;
 
 class GetCountryName extends Command
 {
@@ -48,8 +49,8 @@ class GetCountryName extends Command
             $countryCode = $movie->origin_country;
 
             // Fetch the full country name using the country code
-            $country = country($countryCode);
-            $countryName = $country ? $country->getName() : $countryCode; // Use code if name not found
+            $country = Countries::getName($countryCode);
+            $countryName = $country ? $country : $countryCode; // Use code if name not found
 
             // Update the country_name column
             $movie->country = $countryName;

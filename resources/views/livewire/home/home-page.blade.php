@@ -1,5 +1,5 @@
 <div>
-    <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300">
+    <hr class="border-0 h-0.5 dark:bg-slate-800 bg-slate-300">
 
     <!-- Content -->
     <div class="w-full lg:ps-64">
@@ -33,7 +33,7 @@
     <!-- End Content -->
 
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300">
+    <hr class="border-0 h-0.5 dark:bg-slate-800 bg-slate-300">
 
     <!-- Content -->
     <div class="w-full lg:ps-64">
@@ -94,7 +94,7 @@
     </div>
     <!-- End Content -->
 
-    <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300">
+    <hr class="border-0 h-0.5 dark:bg-slate-800 bg-slate-300">
 
     <!-- Content -->
     <div class="w-full lg:ps-64">
@@ -155,7 +155,7 @@
     </div>
     <!-- End Content -->
 
-    <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300">
+    <hr class="border-0 h-0.5 dark:bg-slate-800 bg-slate-300">
 
     <!-- Content -->
     <div class="w-full lg:ps-64">
@@ -211,7 +211,7 @@
     </div>
     <!-- End Content -->
 
-    <hr class="border-0 h-0.5 dark:bg-slate-700 bg-slate-300">
+    <hr class="border-0 h-0.5 dark:bg-slate-800 bg-slate-300">
 
     <!-- Content -->
     <div class="w-full lg:ps-64">

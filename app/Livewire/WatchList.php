@@ -37,7 +37,7 @@ class WatchList extends Component
         if (! Auth::id()) {
             // code...
 
-            Toaster::error('You need to log in to save movies to your favorites. Please log in or create an account');
+            Toaster::error('You need to log in to save movies to your favorites.');
         } else {
             if (! $this->isInWatchlist) {
 
