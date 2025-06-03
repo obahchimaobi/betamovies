@@ -351,7 +351,7 @@
                                     <h1 class="font-bold dark:text-white text-2xl pb-4">More Like This</h1>
                                     <div class="hs-accordion-group space-y-3">
                                         @foreach ($merged as $more)
-                                            <div class="hs-accordion {{ $loop->first ? 'active' : '' }} bg-white border -mt-px rounded-lg dark:bg-slate-800 dark:border-slate-700"
+                                            <div class="hs-accordion {{ $loop->first ? 'active' : '' }} bg-white border -mt-px rounded-lg dark:bg-slate-800/80 dark:border-slate-700/50"
                                                 id="hs-bordered-heading-{{ $loop->index }}">
                                                 <button title="Toggle details for {{ $more->name }}"
                                                     class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
@@ -536,7 +536,7 @@
                                             @endphp
 
                                             @foreach ($groupedSeasons as $seasonNumber => $episodes)
-                                                <div class="hs-accordion {{ $loop->first ? 'active' : '' }} bg-white border -mt-px rounded-lg dark:bg-slate-800 dark:border-slate-700"
+                                                <div class="hs-accordion {{ $loop->first ? 'active' : '' }} bg-white border -mt-px rounded-lg dark:bg-slate-800/80 dark:border-slate-700/50"
                                                     id="hs-bordered-heading-{{ $loop->index }}}">
                                                     <button
                                                         class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
