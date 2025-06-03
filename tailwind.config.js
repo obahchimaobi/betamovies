@@ -19,6 +19,7 @@ export default {
                 inter: ["Inter", "sans-serif"],
                 keania: ["Keania One", "sans-serif"],
                 grotesk: ["Host Grotesk", "sans-serif"],
+                instrument: ["Instrument Sans", "sans-serif"],
             },
             aspectRatio: {
                 '4/3': '4 / 3',
