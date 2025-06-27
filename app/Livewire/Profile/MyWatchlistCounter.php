@@ -3,8 +3,8 @@
 namespace App\Livewire\Profile;
 
 use App\Models\MyList;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class MyWatchlistCounter extends Component
 {
@@ -20,6 +20,7 @@ class MyWatchlistCounter extends Component
     {
         $this->count = session('list_count', MyList::where('userId', auth()->user()->id)->count());
     }
+
     public function render()
     {
         return view('livewire.profile.my-watchlist-counter');

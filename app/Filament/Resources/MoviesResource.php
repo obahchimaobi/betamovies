@@ -243,7 +243,7 @@ class MoviesResource extends Resource
                             ->sendToDatabase($recipient)
                             ->send();
                     })
-                    ->visible(fn($record) => $record->status === 'pending'),
+                    ->visible(fn ($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -2,24 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Tables;
+use App\Filament\Resources\PendingSeriesResource\Pages;
 use App\Models\Series;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Carbon;
-use Filament\Resources\Resource;
-use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
-use Filament\Tables\Actions\BulkAction;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\PendingSeriesResource\Pages;
+use Illuminate\Support\Carbon;
 
 class PendingSeriesResource extends Resource
 {
@@ -160,7 +160,7 @@ class PendingSeriesResource extends Resource
                             ->success()
                             ->send();
                     })
-                    ->visible(fn($record) => $record->status === 'pending'),
+                    ->visible(fn ($record) => $record->status === 'pending'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

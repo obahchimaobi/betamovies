@@ -48,7 +48,7 @@ class CommentForm extends Component
         $comment->save();
 
         Toaster::success('Your comment has been added successfully!');
-        $this->redirect(url()->previous(), navigate: true);
+        // $this->redirect(url()->previous(), navigate: true);
     }
 
     public function render()
