@@ -67,7 +67,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 GlobalSearchModalPlugin::make()
                     ->closeButton(enabled: true),
-                \BezhanSalleh\FilamentGoogleAnalytics\FilamentGoogleAnalyticsPlugin::make(),
+                // \BezhanSalleh\FilamentGoogleAnalytics\FilamentGoogleAnalyticsPlugin::make(),
                 \Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin::make()
                     ->slug('my-profile')
                     ->setTitle('My Profile')
