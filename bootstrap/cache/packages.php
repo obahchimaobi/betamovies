@@ -116,6 +116,24 @@
       0 => 'Filament\\Widgets\\WidgetsServiceProvider',
     ),
   ),
+  'geo-sot/filament-env-editor' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'GeoSot\\FilamentEnvEditor\\ServiceProvider',
+    ),
+  ),
+  'geo-sot/laravel-env-editor' => 
+  array (
+    'aliases' => 
+    array (
+      'EnvEditor' => 'GeoSot\\EnvEditor\\Facades\\EnvEditor',
+    ),
+    'providers' => 
+    array (
+      0 => 'GeoSot\\EnvEditor\\ServiceProvider',
+    ),
+  ),
   'jenssegers/agent' => 
   array (
     'aliases' => 

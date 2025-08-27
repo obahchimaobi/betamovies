@@ -13,6 +13,7 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use GeoSot\FilamentEnvEditor\FilamentEnvEditorPlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -60,8 +61,8 @@ class AdminPanelProvider extends PanelProvider
             ->favicon(asset('icons/betamovies-icon.png'))
             ->userMenuItems([
                 'profile' => MenuItem::make()
-                    ->label(fn () => auth()->user()->name)
-                    ->url(fn (): string => EditProfilePage::getUrl())
+                    ->label(fn() => auth()->user()->name)
+                    ->url(fn(): string => EditProfilePage::getUrl())
                     ->icon('heroicon-m-user-circle'),
             ])
             ->plugins([
@@ -77,6 +78,16 @@ class AdminPanelProvider extends PanelProvider
                         value: true,
                         directory: 'public/avatars',
                     ),
+                FilamentEnvEditorPlugin::make()
+                    ->navigationGroup('System Tools')
+                    ->navigationLabel('My Env')
+                    ->navigationIcon('heroicon-o-cog-8-tooth')
+                    ->navigationSort(1)
+                    ->slug('env-editor')
+                    ->hideKeys('APP_KEY', 'BCRYPT_ROUNDS')
+                    ->authorize(
+                        fn () => auth()->user()->is_admin
+                    )
             ])
             ->unsavedChangesAlerts()
             ->authMiddleware([
