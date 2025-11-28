@@ -35,7 +35,7 @@ class GetMovies extends Command
 
         do {
 
-            $response = Http::withToken(env('TMDB_KEY'))
+            $response = Http::withToken(env('TMDB_KEY', 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTg4ZDY3NDI1ZmJiN2VhYjIzNWViMDM4NTQyYjY0ZiIsIm5iZiI6MTY5Njk1NTU2Mi40MjMsInN1YiI6IjY1MjU3Y2FhMDcyMTY2NDViNDAwMTVhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ojZOyMvyWH8MfSpUVSUEFiFAiJcnRXtNevFiQs84eQE'))
                 ->accept('applicable/json')
                 ->get("https://api.themoviedb.org/3/account/20553054/favorite/movies?language=en-US&page={$page}&sort_by=created_at.desc");
 

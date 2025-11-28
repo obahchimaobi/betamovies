@@ -40,7 +40,7 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
     'tmdb' => [
-        'key' => env('TMDB_KEY')
+        'key' => env('TMDB_KEY', 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTg4ZDY3NDI1ZmJiN2VhYjIzNWViMDM4NTQyYjY0ZiIsIm5iZiI6MTY5Njk1NTU2Mi40MjMsInN1YiI6IjY1MjU3Y2FhMDcyMTY2NDViNDAwMTVhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ojZOyMvyWH8MfSpUVSUEFiFAiJcnRXtNevFiQs84eQE')
     ]
 
 ];

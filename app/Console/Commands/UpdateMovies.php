@@ -34,7 +34,7 @@ class UpdateMovies extends Command
             foreach ($fetch as $movie) {
                 $id = $movie->movieId;
 
-                $response = Http::withToken(env('TMDB_KEY'))
+                $response = Http::withToken(env('TMDB_KEY', 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTg4ZDY3NDI1ZmJiN2VhYjIzNWViMDM4NTQyYjY0ZiIsIm5iZiI6MTY5Njk1NTU2Mi40MjMsInN1YiI6IjY1MjU3Y2FhMDcyMTY2NDViNDAwMTVhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ojZOyMvyWH8MfSpUVSUEFiFAiJcnRXtNevFiQs84eQE'))
                     ->accept('application/json')
                     ->get("https://api.themoviedb.org/3/movie/{$id}?language=en-US");
 
